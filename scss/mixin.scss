@@ -1,0 +1,57 @@
+@import './variables.scss';
+
+//= text_title 
+@mixin text_title ($f, $color, $w: $f) {
+        font-family: "Roboto";
+        font-size: $f;
+        font-weight: 500;
+        color: $color;
+        line-height: 120%;
+
+        @media (max-width: 760px){
+            font-size: $w;
+        }
+}
+
+//= text_streach 
+@mixin text_streach ($max, $min, $color, $w:500, $font: "Roboto", ) {
+    font-family: $font;
+    font-size: $max + px;
+    font-weight: $w;
+    color: $color;
+    line-height: 120%;
+
+    @media (max-width: 1910px){
+        font-size: calc(#{$min}px + (#{$max - $min}) * (100vw - 375px) / 1535);
+    }
+    @media (max-width: 375px){
+        font-size: $min + px;
+    }
+}
+
+//= button_style 
+@mixin button_style ($b, $br, $p) {
+    background: $b;
+    border-radius: $br;
+    padding: $p;
+}
+
+
+%dont-arrow {
+    input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+    }
+
+    input[type='number'],
+    input[type="number"]:hover,
+    input[type="number"]:focus {
+    appearance: none;
+    -moz-appearance: textfield;
+    }
+}
+
+
+
+

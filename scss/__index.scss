@@ -1,0 +1,43 @@
+@import '../scss/mixin.scss';
+@import '../scss/variables.scss';
+
+.main-picture {
+    // .main-picture__body
+    &__body {
+        position: relative;
+
+        overflow: hidden;
+
+        padding-top: 75vh;
+        
+        background:#fff url('../img/index/main.jpg') 0 0 / cover no-repeat;
+        @supports (background: url('../img/index/main.webp') 0 0 / cover no-repeat) {
+            background: #fff url('../img/index/main.webp') 0 0 / cover no-repeat;
+            background-attachment:fixed;
+        }
+
+        background-attachment:fixed;
+    }
+    &__text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+
+        transform: translate(-50%, -50%);
+
+        @include text_streach (100, 150, #fff);
+
+        & span {
+            color: red;
+        }
+    }
+}
+
+.title-main {
+    @include text_streach (30, 23, #000, 600);
+    text-align: center;
+}
+
+.fill {
+    padding: 1000px 0px 0px 0px;
+}

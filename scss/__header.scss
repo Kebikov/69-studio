@@ -1,0 +1,207 @@
+@import '../scss/mixin.scss';
+@import '../scss/variables.scss';
+
+//= .header 
+.header {
+    background-color: #E8E8E8;
+    width: 100%;
+    position: relative;
+    // .header__body
+    &__body {
+        width: 100%;
+
+        display: flex;
+        justify-content: center;
+    }
+}
+
+//= .menu 
+.menu {
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    left: 0;
+    width: 100%;
+
+    border-bottom: 2px solid #000;
+
+    background: $color-bg-main;
+
+    display: flex;
+    justify-content: center;
+
+    // .menu__body
+    &__body {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        //position: relative;
+    }
+    // .menu__logo
+    &__logo {
+        width: 120px;
+        padding: 0px 0px 3px 0px;
+        & img {
+            object-fit: cover;
+            width: 100%;
+        }
+    }
+    // .menu__list
+    &__list {
+        display: flex;
+        //gap: 20px;
+
+        padding: 10px 0px 10px 0px;
+
+        @media (max-width: 1000px){
+            flex-direction: column;
+            justify-content: center;
+
+            position: absolute;
+            z-index: 2;
+            top: 100%;
+            right: -100%;
+            width: 100vw;
+            height: 100vh;
+            background-color: #fff;
+
+            transform: translateY(-10%);
+
+            transition:all 0.3s ease;
+        }
+
+        &.active-menu {
+            @media (max-width: 1000px){
+                position: absolute;
+                z-index: 2;
+                top: 100%;
+                right: 0%;
+                width: 100vw;
+                height: 100vh;
+                background-color: #fff;
+
+                transform: translateY(-10%);
+            }
+        }
+    }
+    // .menu__line
+    &__line {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        @media (min-width: 1000px){
+            margin: 0px 0px 0px 10px; 
+        }
+    }
+    // .menu__link
+    &__link {
+        padding: 15px 30px 10px 30px;
+        @include text_streach (15, 13, #000, 400);
+        text-transform: uppercase;
+
+        border-top: 3px solid #00000000;
+
+        &.active-link {
+            @media (min-width: 1000px){
+                border-top: 3px solid #000;
+            }
+            @media (max-width: 1000px){
+                color: #00000036;
+            }
+        }
+
+        &:hover {
+            border-top: 3px solid #000;
+            color: #000000ad;
+        }
+
+        @media (max-width: 1000px){
+            width: 200px;
+            border-bottom: 1px solid #000;
+            text-align: center;
+        }
+    }
+}
+
+//= menu burger
+.burger {
+    display: none;
+    @media (max-width: 1000px){
+        display: block;
+    }
+    &.active-burger {
+        position: relative;
+        z-index: 3;
+    }
+    // .burger__body
+    &__body {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 64px;
+        width: 100%;
+        position: relative;
+        &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 4px;
+            width: 100%;
+        }
+    }
+    
+    // .burger__button
+    &__button {
+        margin:4px 0px 0px 0px;
+    }
+    // .burger__square
+    &__square {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 44px;
+        width: 44px;
+        border-radius: 3px;
+    }
+    // .burger__span
+    &__span {
+        height: 3px;
+        width: 30px;
+        background-color: $burger-line;
+        position: relative;
+        &.active-burger {
+            height: 0;
+        }
+        &.active-burger::before{
+            transform: rotate(45deg);
+            top: 0px;
+        }
+        &.active-burger::after{
+            transform: rotate(-45deg);
+            top: 0px;
+        }
+        &::before {
+            content: "";
+            position: absolute;
+            top: -10px;
+            left: 0;
+            height: 3px;
+            width: 30px;
+            background-color: $burger-line;
+            transition: all 0.3s ease;
+        }
+        &::after {
+            content: "";
+            position: absolute;
+            top: 10px;
+            left: 0;
+            height: 3px;
+            width: 30px;
+            background-color: $burger-line;
+            transition: all 0.3s ease;
+        }
+    }
+}
