@@ -13,9 +13,12 @@ export const menu = () => {
         console.log('Error in function menu >>> ', error);
     } 
 };
+
 //= menuFill 
 export const menuFill = () => {
     try{
+        changeHight();
+        
         window.addEventListener('resize', changeHight);
 
         function changeHight() {
