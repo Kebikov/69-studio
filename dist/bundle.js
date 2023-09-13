@@ -10,8 +10,8 @@
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "menu": () => (/* binding */ menu),
-/* harmony export */   "menuFill": () => (/* binding */ menuFill)
+/* harmony export */   menu: () => (/* binding */ menu),
+/* harmony export */   menuFill: () => (/* binding */ menuFill)
 /* harmony export */ });
 //= menu 
 const menu = () => {
@@ -62,7 +62,7 @@ const menuFill = () => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "numberScroll": () => (/* binding */ numberScroll)
+/* harmony export */   numberScroll: () => (/* binding */ numberScroll)
 /* harmony export */ });
 //= numberScroll
 const numberScroll = () => {

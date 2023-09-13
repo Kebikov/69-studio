@@ -8,3 +8,37 @@
 .bg-grey {
     background: $color-bg-main;
 }
+
+.m_0_30_-100_50 {
+    position: relative;
+    z-index: 2;
+    margin: 0px 30px -100px 50px;
+
+    @media (max-width: 1000px){
+        margin: -100px 20px 0px 20px;
+    }
+}
+
+.m_-100_50_0_30 {
+    position: relative;
+    z-index: 2;
+    margin: -100px 50px 0px 30px;
+
+    @media (max-width: 1000px){
+        margin: -100px 20px 0px 20px;
+    }
+}
+
+.m_300_350 {
+    position: relative;
+    z-index: 2;
+    margin: 350px -300px 0px 0px;
+
+    @media (max-width: 1000px){
+        margin: -180px 20px 0px 20px;
+    }
+}
+
+.mt-50 {
+    margin: 50px 0px 0px 0px;
+}
