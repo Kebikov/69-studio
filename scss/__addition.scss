@@ -1,14 +1,35 @@
 @import '../scss/mixin.scss';
 @import '../scss/variables.scss';
 
+
+.mt-50 {
+    margin: 50px 0px 0px 0px;
+}
+
+.mt-75 {
+    padding: 75px 0px 75px 0px;
+    background-color: $color-bg-main-2;
+    @media (max-width: 1000px){
+        padding: 50px 0px 50px 0px;  
+    }
+}
+
 .ptb-10 {
     padding: 10px 0px 10px 0px;
+}
+
+.pt_100 {
+    padding-top: 100px;
+    @media (max-width: 1000px){
+        padding-top: 70px;
+    }
 }
 
 .bg-grey {
     background: $color-bg-main;
 }
 
+//= stuff  
 .m_0_30_-100_50 {
     position: relative;
     z-index: 2;
@@ -39,6 +60,9 @@
     }
 }
 
-.mt-50 {
-    margin: 50px 0px 0px 0px;
+.mp5 {
+    margin: 0px 35px 0px 300px;
+    @media (max-width: 1000px){
+        margin: 0px 20px 0px 20px;
+    }
 }

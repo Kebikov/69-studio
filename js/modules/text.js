@@ -7,10 +7,7 @@ export const numberScroll = () => {
             window.addEventListener('scroll', scroll69);
 
             function scroll69() {
-                console.log(text69Size);
-                console.log(window.scrollY);
                 text69.style.fontSize = `${text69Size - window.scrollY / 2}px`;
-                console.log(`${text69Size - window.scrollY}px`);
             }
         }
 

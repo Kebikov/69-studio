@@ -1,0 +1,70 @@
+@import '../scss/mixin.scss';
+@import '../scss/variables.scss';
+
+
+//= .info-employees 
+.info-employees {
+    border: 3px solid #000;
+
+    &.our-story__info-employees {
+        width: 370px;
+        height: 220px;
+
+        position: relative;
+        z-index: 2;
+
+        margin: -30px 0px 0px -20px;
+    }
+    // .info-employees__body
+    &__body {
+        padding: 60px 40px 60px 60px;
+
+        @media (max-width: 1000px){
+            padding: 40px 25px 25px 25px;
+        }
+    }
+    // .info-employees__name
+    &__name {
+        @include text_streach (20, 17, #000, 300);
+    }
+    // .info-employees__line
+    &__line {
+        border-bottom: 1px solid #000;
+        width: 60px;
+
+        margin: 10px 0px 0px 0px;
+    }
+    // .info-employees__position
+    &__position {
+        margin: 12px 0px 0px 0px;
+
+        @include text_streach (14, 13, #000, 600);
+    }
+    // .info-employees__email
+    &__email {
+        margin: 5px 0px 0px 0px;
+
+        @include text_streach (14, 12, #000, 400);
+    }
+    // .info-employees__phone
+    &__phone {
+        margin: 5px 0px 0px 0px;
+
+        @include text_streach (14, 12, #000, 400);
+    }
+    // .info-employees__arrow
+    &__arrow {
+        display: flex;
+        justify-content: flex-end;
+
+        padding: 20px 0px 0px 0px;
+
+        @media (max-width: 1000px){
+            justify-content: flex-start;
+        }
+
+        & img {
+            width: 30px;
+        }
+    }
+}
