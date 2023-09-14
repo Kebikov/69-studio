@@ -1,4 +1,4 @@
-<!---- test -->
+<!---- projects -->
 <!DOCTYPE html>
 <html lang="en">
     <head> 
@@ -6,8 +6,8 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="description" content="69.stidio">
         <meta name="keywords" content="69.stidio">
-        <link rel="icon" type="image/png" href="../img/public/favicon.png">
-        <link rel="stylesheet" href="../css/style.css?v=1.0">
+        <link rel="icon" type="image/png" href="../../img/public/favicon.png">
+        <link rel="stylesheet" href="../../css/style.css?v=1.0">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>69.stidio</title>
     </head>
@@ -18,11 +18,11 @@
                 <div class="header__body">
                     <nav class="menu">
                         <div class="menu__body container">
-                            <!--: logo -->
+                            <!--* logo -->
                             <div class="menu__logo">
-                                <img src="../img/public/logo-full.png" alt="">
+                                <img src="../../img/public/logo-full.png" alt="">
                             </div>
-                            <!--: бургер меню -->
+                            <!--* бургер меню -->
                             <div class="burger">
                                 <div class="burger__body">
                                     <div class="burger__button">
@@ -32,19 +32,19 @@
                                     </div>
                                 </div>
                             </div>
-                            <!--: меню -->
+                            <!--* меню -->
                             <ul class="menu__list">
                                 <li class="menu__line">
-                                    <a href="../" class="menu__link">home</a>
+                                    <a href="/" class="menu__link">home</a>
                                 </li>
                                 <li class="menu__line">
                                     <a href="../our-story/" class="menu__link">our story</a>
                                 </li>
                                 <li class="menu__line">
-                                    <a href="../projects/" class="menu__link">projects</a>
+                                    <a href="" class="menu__link active-link">projects</a>
                                 </li>
                                 <li class="menu__line">
-                                    <a href="" class="menu__link active-link">contacts</a>
+                                    <a href="../test/" class="menu__link">contacts</a>
                                 </li>
                             </ul>
                         </div>
@@ -54,48 +54,41 @@
             </heder>
             <!--= main -->
             <main class="main bg-grey">
-
-                <!--: project-block-text -->
-                <div class="project-block-text">
-                    <div class="project-block-text__body">
-                        <div class="project-block-text__title">Project no.1</div>
-                        <div class="project-block-text__line"></div>
-                        <div class="project-block-text__text">
-                            I'm a paragraph. Click here to add your own text and edit me. Let your users get to know you.
-                        </div>
-                        <div class="project-block-text__arrow">
-                            <img src="../img/icon/arrow.png" alt="arrow img">
+                <!--: projects-img -->
+                <ProjectsImg class="projects-img">
+                    <div class="projects-img__body">
+                        <div class="projects-img__img">
+                            <picture>
+                                <source data-srcset="../img/projects/1.webp" type="image/webp">
+                                <img class="lazy-img" data-src="../img/projects/1.jpg" alt="my_alt">
+                            </picture>
                         </div>
                     </div>
-                </div>
+                </ProjectsImg>
 
-                <div style="margin-top: 20px;"></div>
-
-                <!--: info-employees -->
-                <div class="info-employees">
-                    <div class="info-employees__body">
-                        <div class="info-employees__name">Andy Segal</div>
-                        <div class="info-employees__line"></div>
-                        <div class="info-employees__position">Partner</div>
-                        <div class="info-employees__email">info@mysite.com</div>
-                        <div class="info-employees__phone">Tel: 123-456-7890</div>
-                        <div class="info-employees__arrow">
-                            <img src="../img/icon/arrow.png" alt="arrow">
+                <!--: back-to-top -->
+                <BackToTop class="back-to-top bg-grey">
+                    <div class="back-to-top__body">
+                        <div class="back-to-top__img">
+                            <img src="../../img/icon/arrow-up.png" alt="arrow">
                         </div>
+                        <div class="back-to-top__text">Back to top</div>
                     </div>
-                </div>
-                
-
-
+                    <div class="back-to-top__img-mobile">
+                        <img src="../../img/icon/arrow-mobile.png" alt="arrow">
+                    </div>
+                </BackToTop>
 
             </main>
             <!--= footer -->
             <footer class="footer">
                 <div class="footer__body">
-                    <img src="../img/public/logo-full-white.png" alt="">
+                    <img src="../..//img/public/logo-full-white.png" alt="">
                 </div>
             </footer>
         </div>
-        <script src="../dist/bundle.js?v=1.0"></script>
+        <script src="../../dist/bundle.js?v=1.0"></script>
     </body>
 </html>
+
+

@@ -1,0 +1,15 @@
+@import '../scss/mixin.scss';
+@import '../scss/variables.scss';
+
+//= .projects-img 
+.projects-img {
+    // .projects-img__body
+    &__body {
+    }
+    // .projects-img__img
+    &__img {
+        & img {
+            
+        }
+    }
+}

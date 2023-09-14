@@ -20,7 +20,7 @@
                         <div class="menu__body container">
                             <!--* logo -->
                             <div class="menu__logo">
-                                <img src="../..//img/public/logo-full.png" alt="">
+                                <img src="../../img/public/logo-full.png" alt="">
                             </div>
                             <!--* бургер меню -->
                             <div class="burger">
@@ -41,7 +41,7 @@
                                     <a href="" class="menu__link active-link">our story</a>
                                 </li>
                                 <li class="menu__line">
-                                    <a href="" class="menu__link">projects</a>
+                                    <a href="../projects/" class="menu__link">projects</a>
                                 </li>
                                 <li class="menu__line">
                                     <a href="../test/" class="menu__link">contacts</a>
@@ -54,13 +54,13 @@
             </heder>
             <!--= main -->
             <main class="main bg-grey">
-                <!--* our-story-main -->
+                <!--: our-story-main -->
                 <div class="our-story-main">
                     <div class="our-story-main__body">
                         <div class="our-story-main__img">
                             <picture>
-                                <source srcset="../img/our-story/1.webp" type="image/webp">
-                                <img src="../img/our-story/1.jpg" alt="my_alt">
+                                <source data-srcset="../img/our-story/1.webp" type="image/webp">
+                                <img class="lazy-img" data-src="../img/our-story/1.jpg" alt="my_alt">
                             </picture>
                         </div>
                         <div class="project-block-text our-story__project-block-text">
@@ -75,17 +75,43 @@
                         </div>
                     </div>
                 </div>
-                <!--* title -->
+                <!--: title -->
                 <div class="title-main pt_100">Our Team.</div>
 
-                <!--* employees-1 -->
+                <!--: employees-1 -->
                 <div class="employee">
                     <div class="employee__body container">
                         <div class="employee__block">
                             <div class="employee__img">
                                 <picture>
-                                    <source srcset="../img/our-story/2.webp" type="image/webp">
-                                    <img src="../img/our-story/2.jpg" alt="foto employee">
+                                    <source data-srcset="../img/our-story/2.webp" type="image/webp">
+                                    <img class="lazy-img" data-src="../img/our-story/2.jpg" alt="foto employee">
+                                </picture>
+                            </div>
+                            <div class="info-employees our-story__info-employees">
+                                <div class="info-employees__body">
+                                    <div class="info-employees__name">Ben Knoll</div>
+                                    <div class="info-employees__line"></div>
+                                    <div class="info-employees__position">Partner</div>
+                                    <div class="info-employees__email">info@mysite.com</div>
+                                    <div class="info-employees__phone">Tel: 123-456-7890</div>
+                                    <div class="info-employees__arrow">
+                                        <img src="../img/icon/arrow.png" alt="arrow">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--: employees-2 -->
+                <div class="employee">
+                    <div class="employee__body container employee__block-right">
+                        <div class="employee__block">
+                            <div class="employee__img">
+                                <picture>
+                                    <source data-srcset="../img/our-story/3.webp" type="image/webp">
+                                    <img class="lazy-img" data-src="../img/our-story/3.jpg" alt="foto employee">
                                 </picture>
                             </div>
                             <div class="info-employees our-story__info-employees">
@@ -104,8 +130,60 @@
                     </div>
                 </div>
 
-                <!--* back-to-top -->
-                <div class="back-to-top">
+                <!--: employees-3 -->
+                <div class="employee">
+                    <div class="employee__body container">
+                        <div class="employee__block">
+                            <div class="employee__img">
+                                <picture>
+                                    <source data-srcset="../img/our-story/4.webp" type="image/webp">
+                                    <img class="lazy-img" data-src="../img/our-story/4.jpg" alt="foto employee">
+                                </picture>
+                            </div>
+                            <div class="info-employees our-story__info-employees">
+                                <div class="info-employees__body">
+                                    <div class="info-employees__name">Rachel Lazar</div>
+                                    <div class="info-employees__line"></div>
+                                    <div class="info-employees__position">Architect</div>
+                                    <div class="info-employees__email">info@mysite.com</div>
+                                    <div class="info-employees__phone">Tel: 123-456-7890</div>
+                                    <div class="info-employees__arrow">
+                                        <img src="../img/icon/arrow.png" alt="arrow">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--: employees-4 -->
+                <div class="employee">
+                    <div class="employee__body container employee__block-right">
+                        <div class="employee__block">
+                            <div class="employee__img">
+                                <picture>
+                                    <source data-srcset="../img/our-story/5.webp" type="image/webp">
+                                    <img class="lazy-img" data-src="../img/our-story/5.jpg" alt="foto employee">
+                                </picture>
+                            </div>
+                            <div class="info-employees our-story__info-employees">
+                                <div class="info-employees__body">
+                                    <div class="info-employees__name">Ron Bird</div>
+                                    <div class="info-employees__line"></div>
+                                    <div class="info-employees__position">Architect</div>
+                                    <div class="info-employees__email">info@mysite.com</div>
+                                    <div class="info-employees__phone">Tel: 123-456-7890</div>
+                                    <div class="info-employees__arrow">
+                                        <img src="../img/icon/arrow.png" alt="arrow">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--: back-to-top -->
+                <div class="back-to-top bg-grey">
                     <div class="back-to-top__body">
                         <div class="back-to-top__img">
                             <img src="../../img/icon/arrow-up.png" alt="arrow">

@@ -10,7 +10,7 @@ const intersectionObserver = (classBlock, classPlus, arrClassAlso, classPlussAls
             entryAll.forEach(item => {
                 if(item.isIntersecting) {
                     item.target.classList.add(`${classPlus}`);
-                    console.log('Yes');
+                    
                     addAndRemoveArrayClass(arrClassAlso, classPlussAlso, true);
 
                 }else{

@@ -57,7 +57,7 @@ const intersectionObserver = (classBlock, classPlus, arrClassAlso, classPlussAls
             entryAll.forEach(item => {
                 if(item.isIntersecting) {
                     item.target.classList.add(`${classPlus}`);
-                    console.log('Yes');
+                    
                     addAndRemoveArrayClass(arrClassAlso, classPlussAlso, true);
 
                 }else{
@@ -95,6 +95,52 @@ function addAndRemoveArrayClass(arrClassAlso, classPlussAlso, isAddClass) {
 
 
     
+
+/***/ }),
+
+/***/ "./js/modules/lazyLoading.js":
+/*!***********************************!*\
+  !*** ./js/modules/lazyLoading.js ***!
+  \***********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+
+{/* <picture>
+    <source data-srcset="../img/projects/1.webp" type="image/webp">
+    <img class="lazy-img" data-src="../img/projects/1.jpg" alt="my_alt">
+</picture> */}
+
+const lazyLoading = () => {
+
+    const imgObserver = new IntersectionObserver((entryAll, observer) => {
+
+        entryAll.forEach((item) => {
+            if(item.isIntersecting){
+                let itemTarget = item.target;
+                let parent = itemTarget.parentElement;
+                let sourceAll = parent.querySelectorAll('source');
+                sourceAll.forEach((item) => {item.srcset = item.dataset.srcset});
+                itemTarget.src = itemTarget.dataset.src;
+                itemTarget.setAttribute('src', itemTarget.dataset.src);
+                observer.unobserve(itemTarget);
+            }
+        });
+    },{
+        //тут пишем при необходимости опции
+        //root:,
+        rootMargin: '0px 0px 0px 50px',
+        //threshold: [0, 0.25, 0.5, 0.75, 1],
+    });
+
+    const imgElAll = document.querySelectorAll('.lazy-img');
+    imgElAll.forEach((item) => imgObserver.observe(item));
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (lazyLoading);
 
 /***/ }),
 
@@ -251,6 +297,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_menu__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/menu */ "./js/modules/menu.js");
 /* harmony import */ var _modules_text__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/text */ "./js/modules/text.js");
 /* harmony import */ var _modules_backToTop__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/backToTop */ "./js/modules/backToTop.js");
+/* harmony import */ var _modules_lazyLoading__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/lazyLoading */ "./js/modules/lazyLoading.js");
+
 
 
 
@@ -260,6 +308,7 @@ window.addEventListener('DOMContentLoaded', () => {
     (0,_modules_menu__WEBPACK_IMPORTED_MODULE_0__.menuFill)();
     (0,_modules_text__WEBPACK_IMPORTED_MODULE_1__.numberScroll)();
     (0,_modules_backToTop__WEBPACK_IMPORTED_MODULE_2__["default"])();
+    (0,_modules_lazyLoading__WEBPACK_IMPORTED_MODULE_3__["default"])();
 });
 })();
 
