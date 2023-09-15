@@ -31,16 +31,19 @@ const intersectionObserver = (classBlock, classPlus, arrClassAlso, classPlussAls
 }
 
 function addAndRemoveArrayClass(arrClassAlso, classPlussAlso, isAddClass) {
-    console.log();
-    if(Array.isArray(arrClassAlso) && arrClassAlso.length > 0 && classPlussAlso) {
-        arrClassAlso.forEach(item => {
-            const element = document.querySelector(`.${item}`);
-            if(isAddClass) {
-                element.classList.add(`${classPlussAlso}`);
-            }else{
-                element.classList.remove(`${classPlussAlso}`);
-            }
-        });
+    try{
+        if(Array.isArray(arrClassAlso) && arrClassAlso.length > 0 && classPlussAlso) {
+            arrClassAlso.forEach(item => {
+                const element = document.querySelector(`.${item}`);
+                if(isAddClass) {
+                    element.classList.add(`${classPlussAlso}`);
+                }else{
+                    element.classList.remove(`${classPlussAlso}`);
+                }
+            });
+        }
+    }catch(error){
+        console.log('Error in function addAndRemoveArrayClass >>> ', error);
     }
 }
 

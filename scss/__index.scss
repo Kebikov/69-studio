@@ -337,6 +337,8 @@
     justify-content: center;
 
     background-color: $color-bg-main-2;
+
+    position: relative;
     // .contacts-main__body
 
     &__body {
@@ -517,6 +519,11 @@
         }
     }
 }
+
+
+
+
+
 
 
 

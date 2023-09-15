@@ -78,16 +78,19 @@ const intersectionObserver = (classBlock, classPlus, arrClassAlso, classPlussAls
 }
 
 function addAndRemoveArrayClass(arrClassAlso, classPlussAlso, isAddClass) {
-    console.log();
-    if(Array.isArray(arrClassAlso) && arrClassAlso.length > 0 && classPlussAlso) {
-        arrClassAlso.forEach(item => {
-            const element = document.querySelector(`.${item}`);
-            if(isAddClass) {
-                element.classList.add(`${classPlussAlso}`);
-            }else{
-                element.classList.remove(`${classPlussAlso}`);
-            }
-        });
+    try{
+        if(Array.isArray(arrClassAlso) && arrClassAlso.length > 0 && classPlussAlso) {
+            arrClassAlso.forEach(item => {
+                const element = document.querySelector(`.${item}`);
+                if(isAddClass) {
+                    element.classList.add(`${classPlussAlso}`);
+                }else{
+                    element.classList.remove(`${classPlussAlso}`);
+                }
+            });
+        }
+    }catch(error){
+        console.log('Error in function addAndRemoveArrayClass >>> ', error);
     }
 }
 
@@ -115,29 +118,32 @@ __webpack_require__.r(__webpack_exports__);
 </picture> */}
 
 const lazyLoading = () => {
+    try{
+        const imgObserver = new IntersectionObserver((entryAll, observer) => {
 
-    const imgObserver = new IntersectionObserver((entryAll, observer) => {
-
-        entryAll.forEach((item) => {
-            if(item.isIntersecting){
-                let itemTarget = item.target;
-                let parent = itemTarget.parentElement;
-                let sourceAll = parent.querySelectorAll('source');
-                sourceAll.forEach((item) => {item.srcset = item.dataset.srcset});
-                itemTarget.src = itemTarget.dataset.src;
-                itemTarget.setAttribute('src', itemTarget.dataset.src);
-                observer.unobserve(itemTarget);
-            }
+            entryAll.forEach((item) => {
+                if(item.isIntersecting){
+                    let itemTarget = item.target;
+                    let parent = itemTarget.parentElement;
+                    let sourceAll = parent.querySelectorAll('source');
+                    sourceAll.forEach((item) => {item.srcset = item.dataset.srcset});
+                    itemTarget.src = itemTarget.dataset.src;
+                    itemTarget.setAttribute('src', itemTarget.dataset.src);
+                    observer.unobserve(itemTarget);
+                }
+            });
+        },{
+            //тут пишем при необходимости опции
+            //root:,
+            rootMargin: '250px',
+            threshold: 0,
         });
-    },{
-        //тут пишем при необходимости опции
-        //root:,
-        rootMargin: '0px 0px 0px 50px',
-        //threshold: [0, 0.25, 0.5, 0.75, 1],
-    });
 
-    const imgElAll = document.querySelectorAll('.lazy-img');
-    imgElAll.forEach((item) => imgObserver.observe(item));
+        const imgElAll = document.querySelectorAll('.lazy-img');
+        imgElAll.forEach((item) => imgObserver.observe(item));
+    }catch(error){
+        console.log('Error in function lazyLoading >>> ', error);
+    }
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (lazyLoading);
