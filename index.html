@@ -22,8 +22,40 @@
                         <div class="menu__body container">
                             <!--: logo -->
                             <div class="menu__logo">
-                                <img class="ar_120_43" src="./img/public/logo-full-150.png" alt="logo" >
+                                <img class="ar_120_43" src="/img/public/logo-full-150.png" alt="logo" >
                             </div>
+
+                            <!--: select-language -->
+                            <div class="select-language">
+
+                                <div class="select-active">
+                                    <div class="select-active__body">
+                                        <img class="select-active__img" src="/img/flag/en.jpg" alt="">
+                                        <div class="select-active__text">english</div>
+                                    </div>
+                                </div>
+
+                                <div class="select-language__body">
+                                        <!-- pl -->
+                                    <div class="select-language__line">
+                                        <label for="en" class="select-language__label">
+                                            <img src="/img/flag/en.jpg" alt="">
+                                            <span>english</span> 
+                                        </label>
+                                        <input type="radio" name="language" id="en" value="en" class="select-language__input">
+                                    </div>
+                                    <div class="gap-lang"></div>
+                                        <!-- pl -->
+                                    <div class="select-language__line">
+                                        <label for="ru" class="select-language__label">
+                                            <img src="/img/flag/ru.jpg" alt="">
+                                            <span>russia</span>
+                                        </label>
+                                        <input type="radio" name="language" id="ru" value="ru" class="select-language__input">
+                                    </div>
+                                </div>
+                            </div>
+                            
                             <!--: бургер меню -->
                             <div class="burger">
                                 <div class="burger__body">
@@ -37,16 +69,16 @@
                             <!--: меню -->
                             <ul class="menu__list">
                                 <li class="menu__line">
-                                    <a href="/" class="menu__link active-link">home</a>
+                                    <a href="/" class="menu__link active-link" data-menu="home" >home</a>
                                 </li>
                                 <li class="menu__line">
-                                    <a href="our-story" class="menu__link">our story</a>
+                                    <a href="/our-story" class="menu__link" data-menu="our story" >our story</a>
                                 </li>
                                 <li class="menu__line">
-                                    <a href="projects" class="menu__link">projects</a>
+                                    <a href="/projects" class="menu__link" data-menu="projects" >projects</a>
                                 </li>
                                 <li class="menu__line">
-                                    <a href="contacts" class="menu__link">contacts</a>
+                                    <a href="/contacts" class="menu__link" data-menu="contacts" >contacts</a>
                                 </li>
                             </ul>
                         </div>
@@ -63,7 +95,7 @@
                     </div>
                 </div>
                 <!--: title -->
-                <div class="title-main ptb-10 mt-50">Our Featured Projects.</div>
+                <div class="title-main ptb-10 mt-50" data-translation="main title" >Our Featured Projects.</div>
                 <!--: project_1-2 -->
                 <div class="project-one">
                     <div class="project-one__body container">

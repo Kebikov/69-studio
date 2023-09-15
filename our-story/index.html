@@ -20,11 +20,43 @@
                 <div class="header__body">
                     <nav class="menu">
                         <div class="menu__body container">
-                            <!--* logo -->
+                            <!--: logo -->
                             <div class="menu__logo">
-                                <img class="ar_120_43" src="../../img/public/logo-full.png" alt="logo">
+                                <img class="ar_120_43" src="/img/public/logo-full-150.png" alt="logo" >
                             </div>
-                            <!--* бургер меню -->
+
+                            <!--: select-language -->
+                            <div class="select-language">
+
+                                <div class="select-active">
+                                    <div class="select-active__body">
+                                        <img class="select-active__img" src="/img/flag/pl.jpg" alt="">
+                                        <div class="select-active__text">poland</div>
+                                    </div>
+                                </div>
+
+                                <div class="select-language__body">
+                                        <!-- pl -->
+                                    <div class="select-language__line">
+                                        <label for="en" class="select-language__label">
+                                            <img src="/img/flag/en.jpg" alt="">
+                                            <span>english</span> 
+                                        </label>
+                                        <input type="radio" name="language" id="en" value="en" class="select-language__input">
+                                    </div>
+                                    <div class="gap-lang"></div>
+                                        <!-- pl -->
+                                    <div class="select-language__line">
+                                        <label for="ru" class="select-language__label">
+                                            <img src="/img/flag/ru.jpg" alt="">
+                                            <span>russia</span>
+                                        </label>
+                                        <input type="radio" name="language" id="ru" value="ru" class="select-language__input">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!--: бургер меню -->
                             <div class="burger">
                                 <div class="burger__body">
                                     <div class="burger__button">
@@ -34,19 +66,19 @@
                                     </div>
                                 </div>
                             </div>
-                            <!--* меню -->
+                            <!--: меню -->
                             <ul class="menu__list">
                                 <li class="menu__line">
-                                    <a href="/" class="menu__link">home</a>
+                                    <a href="/" class="menu__link" data-menu="home" >home</a>
                                 </li>
                                 <li class="menu__line">
-                                    <a href="" class="menu__link active-link">our story</a>
+                                    <a href="/our-story" class="menu__link active-link" data-menu="our story" >our story</a>
                                 </li>
                                 <li class="menu__line">
-                                    <a href="../projects/" class="menu__link">projects</a>
+                                    <a href="/projects" class="menu__link" data-menu="projects" >projects</a>
                                 </li>
                                 <li class="menu__line">
-                                    <a href="../contacts/" class="menu__link">contacts</a>
+                                    <a href="/contacts" class="menu__link" data-menu="contacts" >contacts</a>
                                 </li>
                             </ul>
                         </div>
@@ -69,7 +101,7 @@
                         </div>
                         <div class="project-block-text our-story__project-block-text">
                             <div class="project-block-text__body">
-                                <div class="project-block-text__title">About us</div>
+                                <div class="project-block-text__title" data-translation="project-block-title" >About us</div>
                                 <div class="project-block-text__line"></div>
                                 <div class="project-block-text__text">I'm a paragraph. Click here to add your own text and edit me. It’s easy. Just click “Edit Text” or double click me to add your own content and make changes to the font. Feel free to drag and drop me anywhere you like on your page. I’m a great place for you to tell a story and let your users know a little more about you.<br/><br/>This is a great space to write long text about your company and your services. You can use this space to go into a little more detail about your company. Talk about your team and what services you provide. Tell your visitors the story of how you came up with the idea for your business and what makes you different from your competitors. Make your company stand out and show your visitors who you are.</div>
                                 <div class="project-block-text__arrow our-story__project-block-text">

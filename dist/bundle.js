@@ -111,16 +111,133 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var _textLanguage__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./textLanguage */ "./js/modules/textLanguage.js");
+
+
+//= language 
 const language = () => {
-    console.log('browserLanguage');
     // en, ru, pl
-    const browserLanguage = navigator.language.slice(0,2);
+    const startLanguage = 'en';
+    const arrayLanguage = ['en', 'ru'];
+
+    const radioButtons = document.querySelectorAll('.select-language__input');
+    const body = document.querySelector('.select-language__body');
+    const activeRadio = document.querySelector('.select-active');
+    const activeImg = activeRadio.querySelector('.select-active__img');
+    const activeText = activeRadio.querySelector('.select-active__text');
+    const language = localStorage.getItem('language');
+
+
+    // если язык не установлен в localStorage
+    if(!language) {
+        // установка языка браузера в localStorage из массива предпочитаемых, en, ru, pl
+        const browserLanguages = navigator.languages;
+        
+        for (var i = 0; i < browserLanguages.length; i++) {
+            const cutLanguage = browserLanguages[i].slice(0,2);
+            const isArrayLanguage =  arrayLanguage.includes(cutLanguage);
+            // если язык есть в массиве языков сайта 
+            if(isArrayLanguage) {
+                localStorage.setItem('language', cutLanguage);
+                break;
+            }else{
+                // начальное состояние, если нет языка браузера
+                localStorage.setItem('language', startLanguage);
+            }
+        };
+    }
+
+    beginningState(activeImg, activeText);
+
+    activeRadio.addEventListener('click', () => {
+        body.classList.toggle('active');
+    });
+
+    eventChangeRadio(radioButtons, activeImg, activeText, body);
+}
+
+//= functions 
+
+//* состояние при загрузке страницы
+function beginningState(activeImg, activeText) {
+    const language = localStorage.getItem('language');
+    setSelectActive(activeImg, activeText, language);
+    setMenu(language);
+    setTextPage(language);
+}
+
+//* состояние при изминении выбора языка 
+function eventChangeRadio(radioButtons, activeImg, activeText, body) {
+    radioButtons.forEach(radio => {
+        radio.addEventListener('change', (e) => {
+            if(e.target.checked) {
+                const value = e.target.value;
+                setSelectActive(activeImg, activeText, value);
+                localStorage.setItem('language', value);
+                setMenu(value);
+                setTextPage(value);
+            }
+
+            body.classList.toggle('active');
+        });
+    });
+}
+
+//* изминение активного блока силектора 
+function setSelectActive(activeImg, activeText, value) {
+    activeImg.src = `/img/flag/${value}.jpg`;
+
+    switch (value) {
+        case 'ru':
+            activeText.textContent = 'russia';
+            break;
+        case 'en':
+            activeText.textContent = 'english';
+            break;
+        default:
+            activeText.textContent = '';
+            break;
+    }
+}
+
+//* изминение меню 
+function setMenu(language) {
+    const menuLinks = document.querySelectorAll('[data-menu]');
+    
+    menuLinks.forEach(link => {
+        const data = link.dataset.menu;
+        link.textContent = _textLanguage__WEBPACK_IMPORTED_MODULE_0__.textMenu[data][language];
+    });
+}
+
+//* изминение текста на странице
+function setTextPage(language) {
     const path = window.location.pathname;
-    console.log(browserLanguage);
     console.log(path);
+    const elementsText = document.querySelectorAll('[data-translation]');
+
+    let textForPage = {};
+
+    switch(path) {
+        case '/':
+            textForPage = _textLanguage__WEBPACK_IMPORTED_MODULE_0__.textMain;
+            break;
+        case '/our-story/':
+            textForPage = _textLanguage__WEBPACK_IMPORTED_MODULE_0__.textOurStory;
+            break;
+    }
+
+    elementsText.forEach(element => {
+        const data = element.dataset.translation;
+        console.log(data);
+        console.log(language);
+        element.textContent = textForPage[data][language];
+    })
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (language);
+
+
 
 /***/ }),
 
@@ -257,6 +374,53 @@ const numberScroll = () => {
         console.log('Error in function numberScroll >>> ', error);
     }
 };
+
+/***/ }),
+
+/***/ "./js/modules/textLanguage.js":
+/*!************************************!*\
+  !*** ./js/modules/textLanguage.js ***!
+  \************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "textMain": () => (/* binding */ textMain),
+/* harmony export */   "textMenu": () => (/* binding */ textMenu),
+/* harmony export */   "textOurStory": () => (/* binding */ textOurStory)
+/* harmony export */ });
+const textMenu = {
+    home: {
+        ru: 'Главная',
+        en: 'Home'
+    },
+    'our story': {
+        ru: 'наша история',
+        en: 'our-story'
+    },
+    projects: {
+        ru: 'проекты',
+        en: 'projects'
+    },
+    contacts: {
+        ru: 'контакты',
+        en: 'contacts'
+    }
+}
+
+const textMain = {
+    'main title': {
+        ru: 'Наши основные проекты.',
+        en: 'Our Featured Projects.'
+    }
+}
+
+const textOurStory = {
+    'project-block-title': {
+        ru: 'о нас',
+        en: 'About us'
+    }
+}
 
 /***/ })
 
