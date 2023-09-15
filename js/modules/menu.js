@@ -5,7 +5,7 @@ export const menu = () => {
     try {
         // отслеживание появления футера, для появления стрелки вверх
         intersectionObserver('footer', 'active', ['back-to-top__img-mobile'], 'active');
-
+        
         const burger = document.querySelector('.burger');
         const  burgerSpan = document.querySelector('.burger__span');
         const  menuList = document.querySelector('.menu__list');
