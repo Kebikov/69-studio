@@ -1116,7 +1116,7 @@ input[type=number]:focus {
 .select-language__body {
   position: absolute;
   z-index: 2;
-  top: -100%;
+  top: -300%;
   left: 0;
   background-color: #E9EBEB;
   padding: 7px;

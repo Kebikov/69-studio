@@ -4,7 +4,7 @@ import { textMenu,  textMain, textOurStory} from "./textLanguage";
 const language = () => {
     // en, ru, pl
     const startLanguage = 'en';
-    const arrayLanguage = ['en', 'ru'];
+    const arrayLanguage = ['en', 'ru', 'pl', 'de'];
 
     const radioButtons = document.querySelectorAll('.select-language__input');
     const body = document.querySelector('.select-language__body');
@@ -18,7 +18,7 @@ const language = () => {
     if(!language) {
         // установка языка браузера в localStorage из массива предпочитаемых, en, ru, pl
         const browserLanguages = navigator.languages;
-        
+        console.log('',browserLanguages);
         for (var i = 0; i < browserLanguages.length; i++) {
             const cutLanguage = browserLanguages[i].slice(0,2);
             const isArrayLanguage =  arrayLanguage.includes(cutLanguage);
@@ -75,10 +75,16 @@ function setSelectActive(activeImg, activeText, value) {
 
     switch (value) {
         case 'ru':
-            activeText.textContent = 'russia';
+            activeText.textContent = 'Russia';
             break;
         case 'en':
-            activeText.textContent = 'english';
+            activeText.textContent = 'English';
+            break;
+        case 'pl':
+            activeText.textContent = 'Polski';
+            break;
+        case 'de':
+            activeText.textContent = 'Deutsch';
             break;
         default:
             activeText.textContent = '';
