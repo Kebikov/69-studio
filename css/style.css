@@ -205,7 +205,7 @@ input[type=number]:focus {
 }
 .project-block-text__title {
   font-family: "Roboto";
-  font-size: 15px;
+  font-size: 17px;
   font-weight: 600;
   color: #000;
   line-height: 120%;
@@ -213,12 +213,12 @@ input[type=number]:focus {
 }
 @media (max-width: 1910px) {
   .project-block-text__title {
-    font-size: calc(13px + (2) * (100vw - 375px) / 1535);
+    font-size: calc(15px + (2) * (100vw - 375px) / 1535);
   }
 }
 @media (max-width: 375px) {
   .project-block-text__title {
-    font-size: 13px;
+    font-size: 15px;
   }
 }
 .project-block-text__line {
@@ -615,6 +615,9 @@ input[type=number]:focus {
   .contacts-blank__title {
     font-size: 23px;
   }
+}
+.contacts-blank__title span {
+  color: red;
 }
 .contacts-blank__line {
   margin: 20px 0px 0px 0px;

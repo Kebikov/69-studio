@@ -94,7 +94,7 @@
     }
     // .project-block-text__title
     &__title {
-        @include text_streach (15, 13, #000, 600);
+        @include text_streach (17, 15, #000, 600);
 
         padding: 0px 0px 17px 0px;
     }
@@ -411,6 +411,9 @@
     // .contacts-blank__title
     &__title {
         @include text_streach (25, 23, #000, 600);
+        & span {
+            color: red;
+        }
     }
     // .contacts-blank__line
     &__line {

@@ -115,9 +115,9 @@ function setTextPage(language) {
 
     elementsText.forEach(element => {
         const data = element.dataset.translation;
-        console.log(data);
-        console.log(language);
-        element.textContent = textForPage[data][language];
+        if(textForPage?.[data]?.[language]) {
+            element.innerHTML = textForPage[data][language];
+        }
     })
 }
 
