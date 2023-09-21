@@ -2,191 +2,166 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./js/modules/backToTop.js":
+/***/ "./js/modules/backToTop.ts":
 /*!*********************************!*\
-  !*** ./js/modules/backToTop.js ***!
+  !*** ./js/modules/backToTop.ts ***!
   \*********************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ ((__unused_webpack_module, exports) => {
 
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-const backToTop = () => {
-    try{
-        const body = document.querySelector('.back-to-top__body');
-        const arrowMobile = document.querySelector('.back-to-top__img-mobile');
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+var backToTop = function () {
+    function top() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    }
+    try {
+        var body = document.querySelector('.back-to-top__body');
+        var arrowMobile = document.querySelector('.back-to-top__img-mobile');
         body.addEventListener('click', top);
         arrowMobile.addEventListener('click', top);
-        function top() {
-            window.scrollTo({
-                top: 0,
-                top: 0,
-                behavior: 'smooth'
-                });
-                
-        }
-    }catch(error){
+    }
+    catch (error) {
         console.log('Error in function backToTop >>> ', error);
     }
-}
+};
+exports["default"] = backToTop;
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (backToTop);
 
 /***/ }),
 
-/***/ "./js/modules/intersectionObserver.js":
+/***/ "./js/modules/intersectionObserver.ts":
 /*!********************************************!*\
-  !*** ./js/modules/intersectionObserver.js ***!
+  !*** ./js/modules/intersectionObserver.ts ***!
   \********************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ ((__unused_webpack_module, exports) => {
 
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
+
 // classBlock - отслеживаемый класс блока 
 // classPlus - класс добавляемый к отслеживаемому блоку
 // arrClassAlso - массив классов к которым так же добавится класс classPlussAlso
 // classPlussAlso - класс который добавится к каждому классу в массиве
-
-const intersectionObserver = (classBlock, classPlus, arrClassAlso, classPlussAlso) => {
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+var intersectionObserver = function (classBlock, classPlus, arrClassAlso, classPlussAlso) {
     try {
-        const block = document.querySelector(`.${classBlock}`);
-        const divObserver = new IntersectionObserver((entryAll, observer) => {
-            entryAll.forEach(item => {
-                if(item.isIntersecting) {
-                    item.target.classList.add(`${classPlus}`);
-                    
+        var block = document.querySelector(".".concat(classBlock));
+        var divObserver = new IntersectionObserver(function (entryAll, observer) {
+            entryAll.forEach(function (item) {
+                if (item.isIntersecting) {
+                    item.target.classList.add("".concat(classPlus));
                     addAndRemoveArrayClass(arrClassAlso, classPlussAlso, true);
-
-                }else{
-                    item.target.classList.remove(`${classPlus}`);
+                }
+                else {
+                    item.target.classList.remove("".concat(classPlus));
                     addAndRemoveArrayClass(arrClassAlso, classPlussAlso, false);
                 }
             });
-        },{
+        }, {
             rootMargin: '0px 0px 150px 0px'
         });
-
         divObserver.observe(block);
-
-    } catch (error) {
+    }
+    catch (error) {
         console.log('Error in function intersectionObserver >>> ', error);
     }
-    
-}
-
+};
 function addAndRemoveArrayClass(arrClassAlso, classPlussAlso, isAddClass) {
-    try{
-        if(Array.isArray(arrClassAlso) && arrClassAlso.length > 0 && classPlussAlso) {
-            arrClassAlso.forEach(item => {
-                const element = document.querySelector(`.${item}`);
-                if(isAddClass) {
-                    element.classList.add(`${classPlussAlso}`);
-                }else{
-                    element.classList.remove(`${classPlussAlso}`);
+    try {
+        if (Array.isArray(arrClassAlso) && arrClassAlso.length > 0 && classPlussAlso) {
+            arrClassAlso.forEach(function (item) {
+                var element = document.querySelector(".".concat(item));
+                if (isAddClass) {
+                    element.classList.add("".concat(classPlussAlso));
+                }
+                else {
+                    element.classList.remove("".concat(classPlussAlso));
                 }
             });
         }
-    }catch(error){
+    }
+    catch (error) {
         console.log('Error in function addAndRemoveArrayClass >>> ', error);
     }
 }
+exports["default"] = intersectionObserver;
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (intersectionObserver);
-
-
-    
 
 /***/ }),
 
-/***/ "./js/modules/language.js":
+/***/ "./js/modules/language.ts":
 /*!********************************!*\
-  !*** ./js/modules/language.js ***!
+  !*** ./js/modules/language.ts ***!
   \********************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _textLanguage__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./textLanguage */ "./js/modules/textLanguage.js");
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+var textLanguage_1 = __webpack_require__(/*! ./textLanguage */ "./js/modules/textLanguage.ts");
 //= language 
-const language = () => {
+var language = function () {
     // en, ru, pl
-    const startLanguage = 'en';
-    const arrayLanguage = ['en', 'ru', 'pl', 'de'];
-
-    const radioButtons = document.querySelectorAll('.select-language__input');
-    const body = document.querySelector('.select-language__body');
-    const activeRadio = document.querySelector('.select-active');
-    const activeImg = activeRadio.querySelector('.select-active__img');
-    const activeText = activeRadio.querySelector('.select-active__text');
-    const language = localStorage.getItem('language');
-
-
+    var startLanguage = 'en';
+    var arrayLanguage = ['en', 'ru', 'pl', 'de'];
+    var radioButtons = document.querySelectorAll('.select-language__input');
+    var body = document.querySelector('.select-language__body');
+    var activeRadio = document.querySelector('.select-active');
+    var activeImg = activeRadio.querySelector('.select-active__img');
+    var activeText = activeRadio.querySelector('.select-active__text');
+    var language = localStorage.getItem('language');
     // если язык не установлен в localStorage
-    if(!language) {
+    if (!language) {
         // установка языка браузера в localStorage из массива предпочитаемых, en, ru, pl
-        const browserLanguages = navigator.languages;
-        console.log('',browserLanguages);
+        var browserLanguages = navigator.languages;
+        console.log('', browserLanguages);
         for (var i = 0; i < browserLanguages.length; i++) {
-            const cutLanguage = browserLanguages[i].slice(0,2);
-            const isArrayLanguage =  arrayLanguage.includes(cutLanguage);
+            var cutLanguage = browserLanguages[i].slice(0, 2);
+            var isArrayLanguage = arrayLanguage.includes(cutLanguage);
             // если язык есть в массиве языков сайта 
-            if(isArrayLanguage) {
+            if (isArrayLanguage) {
                 localStorage.setItem('language', cutLanguage);
                 break;
-            }else{
+            }
+            else {
                 // начальное состояние, если нет языка браузера
                 localStorage.setItem('language', startLanguage);
             }
-        };
+        }
+        ;
     }
-
     beginningState(activeImg, activeText);
-
-    activeRadio.addEventListener('click', () => {
+    activeRadio.addEventListener('click', function () {
         body.classList.toggle('active');
     });
-
     eventChangeRadio(radioButtons, activeImg, activeText, body);
-}
-
+};
 //= functions 
-
 //* состояние при загрузке страницы
 function beginningState(activeImg, activeText) {
-    const language = localStorage.getItem('language');
+    var language = localStorage.getItem('language');
     setSelectActive(activeImg, activeText, language);
     setMenu(language);
     setTextPage(language);
 }
-
 //* состояние при изминении выбора языка 
 function eventChangeRadio(radioButtons, activeImg, activeText, body) {
-    radioButtons.forEach(radio => {
-        radio.addEventListener('change', (e) => {
-            if(e.target.checked) {
-                const value = e.target.value;
+    radioButtons.forEach(function (radio) {
+        radio.addEventListener('change', function (event) {
+            if (event.target.checked) {
+                var value = event.target.value;
                 setSelectActive(activeImg, activeText, value);
                 localStorage.setItem('language', value);
                 setMenu(value);
                 setTextPage(value);
             }
-
             body.classList.toggle('active');
         });
     });
 }
-
 //* изминение активного блока силектора 
 function setSelectActive(activeImg, activeText, value) {
-    activeImg.src = `/img/flag/${value}.jpg`;
-
+    activeImg.src = "/img/flag/".concat(value, ".jpg");
     switch (value) {
         case 'ru':
             activeText.textContent = 'Russia';
@@ -205,197 +180,180 @@ function setSelectActive(activeImg, activeText, value) {
             break;
     }
 }
-
 //* изминение меню 
 function setMenu(language) {
-    const menuLinks = document.querySelectorAll('[data-menu]');
-    
-    menuLinks.forEach(link => {
-        const data = link.dataset.menu;
-        link.textContent = _textLanguage__WEBPACK_IMPORTED_MODULE_0__.textMenu[data][language];
+    var menuLinks = document.querySelectorAll('[data-menu]');
+    ;
+    menuLinks.forEach(function (link) {
+        var data = link.dataset.menu;
+        link.textContent = textLanguage_1.textMenu[data][language];
     });
 }
-
 //* изминение текста на странице
 function setTextPage(language) {
-    const path = window.location.pathname;
+    var path = window.location.pathname;
     console.log(path);
-    const elementsText = document.querySelectorAll('[data-translation]');
-
-    let textForPage = {};
-
-    switch(path) {
+    var elementsText = document.querySelectorAll('[data-translation]');
+    var textForPage = {};
+    switch (path) {
         case '/':
-            textForPage = _textLanguage__WEBPACK_IMPORTED_MODULE_0__.textMain;
+            textForPage = textLanguage_1.textMain;
             break;
         case '/our-story/':
-            textForPage = _textLanguage__WEBPACK_IMPORTED_MODULE_0__.textOurStory;
+            textForPage = textLanguage_1.textOurStory;
             break;
     }
-
-    elementsText.forEach(element => {
-        const data = element.dataset.translation;
-        if(textForPage?.[data]?.[language]) {
+    elementsText.forEach(function (element) {
+        var _a;
+        var data = element.dataset.translation;
+        if ((_a = textForPage === null || textForPage === void 0 ? void 0 : textForPage[data]) === null || _a === void 0 ? void 0 : _a[language]) {
             element.innerHTML = textForPage[data][language];
         }
-    })
+    });
 }
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (language);
-
+exports["default"] = language;
 
 
 /***/ }),
 
-/***/ "./js/modules/lazyLoading.js":
+/***/ "./js/modules/lazyLoading.ts":
 /*!***********************************!*\
-  !*** ./js/modules/lazyLoading.js ***!
+  !*** ./js/modules/lazyLoading.ts ***!
   \***********************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ ((__unused_webpack_module, exports) => {
 
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
 
-{/* <picture>
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+{ /* <picture>
     <source data-srcset="../img/projects/1.webp" type="image/webp">
     <img class="lazy-img" data-src="../img/projects/1.jpg" alt="my_alt">
-</picture> */}
-
-const lazyLoading = () => {
-    try{
-        const imgObserver = new IntersectionObserver((entryAll, observer) => {
-
-            entryAll.forEach((item) => {
-                if(item.isIntersecting){
-                    let itemTarget = item.target;
-                    let parent = itemTarget.parentElement;
-                    let sourceAll = parent.querySelectorAll('source');
-                    sourceAll.forEach((item) => {item.srcset = item.dataset.srcset});
+</picture> */
+}
+var lazyLoading = function () {
+    try {
+        var imgObserver_1 = new IntersectionObserver(function (entryAll, observer) {
+            entryAll.forEach(function (item) {
+                if (item.isIntersecting) {
+                    var itemTarget = item.target;
+                    var parent_1 = itemTarget.parentElement;
+                    var sourceAll = parent_1.querySelectorAll('source');
+                    sourceAll.forEach(function (item) { item.srcset = item.dataset.srcset; });
                     itemTarget.src = itemTarget.dataset.src;
                     itemTarget.setAttribute('src', itemTarget.dataset.src);
                     observer.unobserve(itemTarget);
                 }
             });
-        },{
+        }, {
             //тут пишем при необходимости опции
             //root:,
             rootMargin: '250px',
             threshold: 0,
         });
-
-        const imgElAll = document.querySelectorAll('.lazy-img');
-        imgElAll.forEach((item) => imgObserver.observe(item));
-    }catch(error){
+        var imgElAll = document.querySelectorAll('.lazy-img');
+        imgElAll.forEach(function (item) { return imgObserver_1.observe(item); });
+    }
+    catch (error) {
         console.log('Error in function lazyLoading >>> ', error);
     }
-}
+};
+exports["default"] = lazyLoading;
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (lazyLoading);
 
 /***/ }),
 
-/***/ "./js/modules/menu.js":
+/***/ "./js/modules/menu.ts":
 /*!****************************!*\
-  !*** ./js/modules/menu.js ***!
+  !*** ./js/modules/menu.ts ***!
   \****************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   menu: () => (/* binding */ menu),
-/* harmony export */   menuFill: () => (/* binding */ menuFill)
-/* harmony export */ });
-/* harmony import */ var _intersectionObserver__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./intersectionObserver */ "./js/modules/intersectionObserver.js");
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.menuFill = exports.menu = void 0;
+var intersectionObserver_1 = __importDefault(__webpack_require__(/*! ./intersectionObserver */ "./js/modules/intersectionObserver.ts"));
 //= menu 
-const menu = () => {
+var menu = function () {
     try {
         // отслеживание появления футера, для появления стрелки вверх
-        (0,_intersectionObserver__WEBPACK_IMPORTED_MODULE_0__["default"])('footer', 'active', ['back-to-top__img-mobile'], 'active');
-        
-        const burger = document.querySelector('.burger');
-        const  burgerSpan = document.querySelector('.burger__span');
-        const  menuList = document.querySelector('.menu__list');
-        burger.addEventListener('click', () => {
-            burgerSpan.classList.toggle('active-burger');
-            menuList.classList.toggle('active-menu');
-            burger.classList.toggle('active-burger');
+        (0, intersectionObserver_1.default)('footer', 'active', ['back-to-top__img-mobile'], 'active');
+        var burger_1 = document.querySelector('.burger');
+        var burgerSpan_1 = document.querySelector('.burger__span');
+        var menuList_1 = document.querySelector('.menu__list');
+        burger_1 === null || burger_1 === void 0 ? void 0 : burger_1.addEventListener('click', function () {
+            burgerSpan_1 === null || burgerSpan_1 === void 0 ? void 0 : burgerSpan_1.classList.toggle('active-burger');
+            menuList_1 === null || menuList_1 === void 0 ? void 0 : menuList_1.classList.toggle('active-menu');
+            burger_1.classList.toggle('active-burger');
         });
-    }catch(error) {
+    }
+    catch (error) {
         console.log('Error in function menu >>> ', error);
-    } 
+    }
 };
-
+exports.menu = menu;
 //= menuFill 
-const menuFill = () => {
-    try{
+var menuFill = function () {
+    function changeHight() {
+        var menu = document.querySelector('.menu');
+        var menuFill = document.querySelector('.menu-fill');
+        var menuHeight = menu.offsetHeight;
+        menuFill.style.paddingTop = "".concat(menuHeight - 1, "px");
+    }
+    try {
         changeHight();
-        
         window.addEventListener('resize', changeHight);
-
-        function changeHight() {
-            const menu = document.querySelector('.menu');
-            const menuFill = document.querySelector('.menu-fill');
-    
-            const menuHeight = menu.offsetHeight;
-            menuFill.style.paddingTop = `${menuHeight - 1}px`;
-        }
-    }catch(error){
+    }
+    catch (error) {
         console.log('Error in function menuFill >>> ', error);
     }
-}
-
-
+};
+exports.menuFill = menuFill;
 
 
 /***/ }),
 
-/***/ "./js/modules/text.js":
+/***/ "./js/modules/text.ts":
 /*!****************************!*\
-  !*** ./js/modules/text.js ***!
+  !*** ./js/modules/text.ts ***!
   \****************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ ((__unused_webpack_module, exports) => {
 
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   numberScroll: () => (/* binding */ numberScroll)
-/* harmony export */ });
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.numberScroll = void 0;
 //= numberScroll
-const numberScroll = () => {
+var numberScroll = function () {
     try {
-        const text69 = document.querySelector('.main-picture__text');
-        if(text69){
-            const text69Size = parseInt( window.getComputedStyle(text69).getPropertyValue('font-size') );
+        var text69_1 = document.querySelector('.main-picture__text');
+        if (text69_1) {
+            var text69Size_1 = parseInt(window.getComputedStyle(text69_1).getPropertyValue('font-size'));
             window.addEventListener('scroll', scroll69);
-
             function scroll69() {
-                text69.style.fontSize = `${text69Size - window.scrollY / 2}px`;
+                text69_1.style.fontSize = "".concat(text69Size_1 - window.scrollY / 2, "px");
             }
         }
-
-    } catch (error) {
+    }
+    catch (error) {
         console.log('Error in function numberScroll >>> ', error);
     }
 };
+exports.numberScroll = numberScroll;
+
 
 /***/ }),
 
-/***/ "./js/modules/textLanguage.js":
+/***/ "./js/modules/textLanguage.ts":
 /*!************************************!*\
-  !*** ./js/modules/textLanguage.js ***!
+  !*** ./js/modules/textLanguage.ts ***!
   \************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ ((__unused_webpack_module, exports) => {
 
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   textMain: () => (/* binding */ textMain),
-/* harmony export */   textMenu: () => (/* binding */ textMenu),
-/* harmony export */   textOurStory: () => (/* binding */ textOurStory)
-/* harmony export */ });
-const textMenu = {
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.textOurStory = exports.textMain = exports.textMenu = void 0;
+exports.textMenu = {
     home: {
         ru: 'Главная',
         en: 'Home',
@@ -420,16 +378,14 @@ const textMenu = {
         pl: 'kontakty',
         de: 'Kontakte'
     }
-}
-
-const textMain = {
+};
+exports.textMain = {
     'main title': {
         ru: 'Наши основные проекты.',
         en: 'Our Featured Projects.',
         pl: 'Nasze polecane projekty.',
         de: 'Unsere vorgestellten Projekte.'
     },
-
     'title project no.1': {
         ru: 'Проект №1',
         en: 'Project no.1',
@@ -442,7 +398,6 @@ const textMain = {
         pl: 'Jestem paradą. Kliknij tutaj, aby dodać własny tekst i edytować mnie. Pozwól użytkownikom Cię poznać.',
         de: 'Ich bin ein Paradeaph. Klicken Sie hier, um Ihren eigenen Text hinzuzufügen und mich zu bearbeiten. Lassen Sie Ihre Benutzer Sie kennenlernen.'
     },
-
     'title project no.2': {
         ru: 'Проект №2',
         en: 'Project no.2',
@@ -455,7 +410,6 @@ const textMain = {
         pl: 'Jestem paradą. Kliknij tutaj, aby dodać własny tekst i edytować mnie. Pozwól użytkownikom Cię poznać.',
         de: 'Ich bin ein Paradeaph. Klicken Sie hier, um Ihren eigenen Text hinzuzufügen und mich zu bearbeiten. Lassen Sie Ihre Benutzer Sie kennenlernen.'
     },
-
     'title project no.3': {
         ru: 'Проект №3',
         en: 'Project no.3',
@@ -463,12 +417,11 @@ const textMain = {
         de: 'Projekt Nr.3'
     },
     'text project no.3': {
-        ru: `Я абзац. Нажмите здесь, чтобы добавить свой собственный текст и изменить меня. Это легко. Просто нажмите кнопку "Изменить текст" или дважды щелкните меня, чтобы добавить свой собственный контент и внести изменения в шрифт. Не стесняйтесь перетащить меня в любое место на вашей странице. Я - отличное место, чтобы рассказать историю и дать пользователям немного больше о вас.<br/><br/>Это отличное место для написания длинного текста о Вашей компании и Ваших услугах. Вы можете использовать это пространство, чтобы перейти к более подробной информации о вашей компании. Расскажите о вашей команде и о том, какие услуги вы предоставляете. Расскажите своим посетителям историю о том, как вы придумали идею для своего бизнеса и что отличает вас от ваших конкурентов. Выделите свою компанию и покажите посетителям, кто вы.`,
+        ru: "\u042F \u0430\u0431\u0437\u0430\u0446. \u041D\u0430\u0436\u043C\u0438\u0442\u0435 \u0437\u0434\u0435\u0441\u044C, \u0447\u0442\u043E\u0431\u044B \u0434\u043E\u0431\u0430\u0432\u0438\u0442\u044C \u0441\u0432\u043E\u0439 \u0441\u043E\u0431\u0441\u0442\u0432\u0435\u043D\u043D\u044B\u0439 \u0442\u0435\u043A\u0441\u0442 \u0438 \u0438\u0437\u043C\u0435\u043D\u0438\u0442\u044C \u043C\u0435\u043D\u044F. \u042D\u0442\u043E \u043B\u0435\u0433\u043A\u043E. \u041F\u0440\u043E\u0441\u0442\u043E \u043D\u0430\u0436\u043C\u0438\u0442\u0435 \u043A\u043D\u043E\u043F\u043A\u0443 \"\u0418\u0437\u043C\u0435\u043D\u0438\u0442\u044C \u0442\u0435\u043A\u0441\u0442\" \u0438\u043B\u0438 \u0434\u0432\u0430\u0436\u0434\u044B \u0449\u0435\u043B\u043A\u043D\u0438\u0442\u0435 \u043C\u0435\u043D\u044F, \u0447\u0442\u043E\u0431\u044B \u0434\u043E\u0431\u0430\u0432\u0438\u0442\u044C \u0441\u0432\u043E\u0439 \u0441\u043E\u0431\u0441\u0442\u0432\u0435\u043D\u043D\u044B\u0439 \u043A\u043E\u043D\u0442\u0435\u043D\u0442 \u0438 \u0432\u043D\u0435\u0441\u0442\u0438 \u0438\u0437\u043C\u0435\u043D\u0435\u043D\u0438\u044F \u0432 \u0448\u0440\u0438\u0444\u0442. \u041D\u0435 \u0441\u0442\u0435\u0441\u043D\u044F\u0439\u0442\u0435\u0441\u044C \u043F\u0435\u0440\u0435\u0442\u0430\u0449\u0438\u0442\u044C \u043C\u0435\u043D\u044F \u0432 \u043B\u044E\u0431\u043E\u0435 \u043C\u0435\u0441\u0442\u043E \u043D\u0430 \u0432\u0430\u0448\u0435\u0439 \u0441\u0442\u0440\u0430\u043D\u0438\u0446\u0435. \u042F - \u043E\u0442\u043B\u0438\u0447\u043D\u043E\u0435 \u043C\u0435\u0441\u0442\u043E, \u0447\u0442\u043E\u0431\u044B \u0440\u0430\u0441\u0441\u043A\u0430\u0437\u0430\u0442\u044C \u0438\u0441\u0442\u043E\u0440\u0438\u044E \u0438 \u0434\u0430\u0442\u044C \u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044F\u043C \u043D\u0435\u043C\u043D\u043E\u0433\u043E \u0431\u043E\u043B\u044C\u0448\u0435 \u043E \u0432\u0430\u0441.<br/><br/>\u042D\u0442\u043E \u043E\u0442\u043B\u0438\u0447\u043D\u043E\u0435 \u043C\u0435\u0441\u0442\u043E \u0434\u043B\u044F \u043D\u0430\u043F\u0438\u0441\u0430\u043D\u0438\u044F \u0434\u043B\u0438\u043D\u043D\u043E\u0433\u043E \u0442\u0435\u043A\u0441\u0442\u0430 \u043E \u0412\u0430\u0448\u0435\u0439 \u043A\u043E\u043C\u043F\u0430\u043D\u0438\u0438 \u0438 \u0412\u0430\u0448\u0438\u0445 \u0443\u0441\u043B\u0443\u0433\u0430\u0445. \u0412\u044B \u043C\u043E\u0436\u0435\u0442\u0435 \u0438\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u044C \u044D\u0442\u043E \u043F\u0440\u043E\u0441\u0442\u0440\u0430\u043D\u0441\u0442\u0432\u043E, \u0447\u0442\u043E\u0431\u044B \u043F\u0435\u0440\u0435\u0439\u0442\u0438 \u043A \u0431\u043E\u043B\u0435\u0435 \u043F\u043E\u0434\u0440\u043E\u0431\u043D\u043E\u0439 \u0438\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u0438 \u043E \u0432\u0430\u0448\u0435\u0439 \u043A\u043E\u043C\u043F\u0430\u043D\u0438\u0438. \u0420\u0430\u0441\u0441\u043A\u0430\u0436\u0438\u0442\u0435 \u043E \u0432\u0430\u0448\u0435\u0439 \u043A\u043E\u043C\u0430\u043D\u0434\u0435 \u0438 \u043E \u0442\u043E\u043C, \u043A\u0430\u043A\u0438\u0435 \u0443\u0441\u043B\u0443\u0433\u0438 \u0432\u044B \u043F\u0440\u0435\u0434\u043E\u0441\u0442\u0430\u0432\u043B\u044F\u0435\u0442\u0435. \u0420\u0430\u0441\u0441\u043A\u0430\u0436\u0438\u0442\u0435 \u0441\u0432\u043E\u0438\u043C \u043F\u043E\u0441\u0435\u0442\u0438\u0442\u0435\u043B\u044F\u043C \u0438\u0441\u0442\u043E\u0440\u0438\u044E \u043E \u0442\u043E\u043C, \u043A\u0430\u043A \u0432\u044B \u043F\u0440\u0438\u0434\u0443\u043C\u0430\u043B\u0438 \u0438\u0434\u0435\u044E \u0434\u043B\u044F \u0441\u0432\u043E\u0435\u0433\u043E \u0431\u0438\u0437\u043D\u0435\u0441\u0430 \u0438 \u0447\u0442\u043E \u043E\u0442\u043B\u0438\u0447\u0430\u0435\u0442 \u0432\u0430\u0441 \u043E\u0442 \u0432\u0430\u0448\u0438\u0445 \u043A\u043E\u043D\u043A\u0443\u0440\u0435\u043D\u0442\u043E\u0432. \u0412\u044B\u0434\u0435\u043B\u0438\u0442\u0435 \u0441\u0432\u043E\u044E \u043A\u043E\u043C\u043F\u0430\u043D\u0438\u044E \u0438 \u043F\u043E\u043A\u0430\u0436\u0438\u0442\u0435 \u043F\u043E\u0441\u0435\u0442\u0438\u0442\u0435\u043B\u044F\u043C, \u043A\u0442\u043E \u0432\u044B.",
         en: 'I am a paradeaph. Click here to add your own text and edit me. It’s easy. Just click “Edit Text” or double click me to add your own content and make changes to the font. Feel free to drag and drop me anywhere you like on your page. I’m a deeat place for you to tell a story and let your users know a little more about you.<br/><br/>This is a deeat space to write long text about your company and your services. You can use this space to go into a little more detail about your company. Talk about your team and what services you provide. Tell your visitors the story of how you came up with the idea for your business and what makes you different from your competitors. Make your company stand out and show your visitors who you are.',
         pl: 'Jestem paradą. Kliknij tutaj, aby dodać własny tekst i edytować mnie. To jest łatwe. Wystarczy kliknąć “ Edytuj tekst ” lub dwukrotnie kliknąć mnie, aby dodać własną treść i wprowadzić zmiany w czcionce. Możesz przeciągnąć i upuścić mnie w dowolnym miejscu na swojej stronie. Jestem miejscem, w którym możesz opowiedzieć historię i poinformować użytkowników o tobie trochę więcej. < br / > < br/> Jest to miejsce na deeat do pisania długiego tekstu o Twojej firmie i twoich usługach. Możesz użyć tego miejsca, aby uzyskać bardziej szczegółowe informacje na temat swojej firmy. Porozmawiaj o swoim zespole i świadczonych usługach. Opowiedz odwiedzającym historię tego, jak wpadłeś na pomysł swojej firmy i co odróżnia cię od konkurencji. Wyróżnij swoją firmę i pokaż odwiedzającym, kim jesteś.',
         de: 'Ich bin ein Paradeaph. Klicken Sie hier, um Ihren eigenen Text hinzuzufügen und mich zu bearbeiten. Es ist einfach. Klicken Sie einfach auf "Text bearbeiten" oder doppelklicken Sie auf mich, um Ihre eigenen Inhalte hinzuzufügen und Änderungen an der Schriftart vorzunehmen. Fühlen Sie sich frei, mich per Drag & Drop überall auf Ihrer Seite. Ich bin ein Ort, an dem Sie eine Geschichte erzählen und Ihre Benutzer ein wenig mehr über Sie wissen lassen können. <br/><br/>Hier können Sie einen langen Text über Ihr Unternehmen und Ihre Dienstleistungen schreiben. Sie können diesen Bereich nutzen, um ein wenig mehr über Ihr Unternehmen zu erfahren. Sprechen Sie über Ihr Team und welche Dienstleistungen Sie erbringen. Erzählen Sie Ihren Besuchern, wie Sie auf die Idee für Ihr Unternehmen gekommen sind und was Sie von Ihren Mitbewerbern unterscheidet. Heben Sie Ihr Unternehmen hervor und zeigen Sie Ihren Besuchern, wer Sie sind.'
     },
-
     'title project no.4': {
         ru: 'Проект №4',
         en: 'Project no.4',
@@ -481,7 +434,6 @@ const textMain = {
         pl: 'Jestem paradą. Kliknij tutaj, aby dodać własny tekst i edytować mnie. Pozwól użytkownikom Cię poznać.',
         de: 'Ich bin ein Paradeaph. Klicken Sie hier, um Ihren eigenen Text hinzuzufügen und mich zu bearbeiten. Lassen Sie Ihre Benutzer Sie kennenlernen.'
     },
-
     'title project no.5': {
         ru: 'Проект №5',
         en: 'Project no.5',
@@ -494,44 +446,38 @@ const textMain = {
         pl: 'Jestem paradą. Kliknij tutaj, aby dodać własny tekst i edytować mnie. Pozwól użytkownikom Cię poznać.',
         de: 'Ich bin ein Paradeaph. Klicken Sie hier, um Ihren eigenen Text hinzuzufügen und mich zu bearbeiten. Lassen Sie Ihre Benutzer Sie kennenlernen.'
     },
-
     'title contacts': {
         ru: 'Оставайтесь На Связи.',
         en: 'Stay In Touch.',
         pl: 'Pozostać W Kontakcie.',
         de: 'In Kontakt Zu Bleiben.'
     },
-
     'adress street': {
         ru: 'Ул.Тери Франсина 500<br/>Сан-Франциско, CA 94158',
         en: '500 Terry Francine Street<br/>San Francisco, CA 94158',
         pl: '500 Terry Francine Street<br/>San Francisco, CA 94158',
         de: '500 Terry Francine Street<br/>San Francisco, CA 94158'
     },
-
     'phone': {
         ru: 'Тел:',
         en: 'Tel:',
         pl: 'Tel:',
         de: 'Tel:'
     },
-
     'fax': {
         ru: 'Факс:',
         en: 'Fax:',
         pl: 'Faks',
         de: 'Fax:'
     },
-
     'back to top': {
         ru: 'Вернуться наверх',
         en: 'Back to top',
         pl: 'Powrót do góry',
         de: 'Zurück nach oben'
     },
-}
-
-const textOurStory = {
+};
+exports.textOurStory = {
     'project-block-title': {
         ru: 'о нас',
         en: 'About us',
@@ -562,7 +508,36 @@ const textOurStory = {
         ru: 'Архитектор',
         en: 'Architect'
     },
-}
+};
+
+
+/***/ }),
+
+/***/ "./js/script.ts":
+/*!**********************!*\
+  !*** ./js/script.ts ***!
+  \**********************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+var menu_1 = __webpack_require__(/*! ./modules/menu */ "./js/modules/menu.ts");
+var text_1 = __webpack_require__(/*! ./modules/text */ "./js/modules/text.ts");
+var backToTop_1 = __importDefault(__webpack_require__(/*! ./modules/backToTop */ "./js/modules/backToTop.ts"));
+var lazyLoading_1 = __importDefault(__webpack_require__(/*! ./modules/lazyLoading */ "./js/modules/lazyLoading.ts"));
+var language_1 = __importDefault(__webpack_require__(/*! ./modules/language */ "./js/modules/language.ts"));
+window.addEventListener('DOMContentLoaded', function () {
+    (0, menu_1.menu)();
+    (0, menu_1.menuFill)();
+    (0, text_1.numberScroll)();
+    (0, backToTop_1.default)();
+    (0, lazyLoading_1.default)();
+    (0, language_1.default)();
+});
+
 
 /***/ })
 
@@ -586,70 +561,19 @@ const textOurStory = {
 /******/ 		};
 /******/ 	
 /******/ 		// Execute the module function
-/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
+/******/ 		__webpack_modules__[moduleId].call(module.exports, module, module.exports, __webpack_require__);
 /******/ 	
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
 /******/ 	}
 /******/ 	
 /************************************************************************/
-/******/ 	/* webpack/runtime/define property getters */
-/******/ 	(() => {
-/******/ 		// define getter functions for harmony exports
-/******/ 		__webpack_require__.d = (exports, definition) => {
-/******/ 			for(var key in definition) {
-/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
-/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
-/******/ 				}
-/******/ 			}
-/******/ 		};
-/******/ 	})();
 /******/ 	
-/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
-/******/ 	(() => {
-/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
-/******/ 	})();
+/******/ 	// startup
+/******/ 	// Load entry module and return exports
+/******/ 	// This entry module is referenced by other modules so it can't be inlined
+/******/ 	var __webpack_exports__ = __webpack_require__("./js/script.ts");
 /******/ 	
-/******/ 	/* webpack/runtime/make namespace object */
-/******/ 	(() => {
-/******/ 		// define __esModule on exports
-/******/ 		__webpack_require__.r = (exports) => {
-/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
-/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
-/******/ 			}
-/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
-/******/ 		};
-/******/ 	})();
-/******/ 	
-/************************************************************************/
-var __webpack_exports__ = {};
-// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
-(() => {
-/*!**********************!*\
-  !*** ./js/script.js ***!
-  \**********************/
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _modules_menu__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/menu */ "./js/modules/menu.js");
-/* harmony import */ var _modules_text__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/text */ "./js/modules/text.js");
-/* harmony import */ var _modules_backToTop__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/backToTop */ "./js/modules/backToTop.js");
-/* harmony import */ var _modules_lazyLoading__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/lazyLoading */ "./js/modules/lazyLoading.js");
-/* harmony import */ var _modules_language__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/language */ "./js/modules/language.js");
-
-
-
-
-
-
-window.addEventListener('DOMContentLoaded', () => {
-    (0,_modules_menu__WEBPACK_IMPORTED_MODULE_0__.menu)();
-    (0,_modules_menu__WEBPACK_IMPORTED_MODULE_0__.menuFill)();
-    (0,_modules_text__WEBPACK_IMPORTED_MODULE_1__.numberScroll)();
-    (0,_modules_backToTop__WEBPACK_IMPORTED_MODULE_2__["default"])();
-    (0,_modules_lazyLoading__WEBPACK_IMPORTED_MODULE_3__["default"])();
-    (0,_modules_language__WEBPACK_IMPORTED_MODULE_4__["default"])();
-});
-})();
-
 /******/ })()
 ;
 //# sourceMappingURL=bundle.js.map

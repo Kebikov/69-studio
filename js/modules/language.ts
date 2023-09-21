@@ -6,12 +6,12 @@ const language = () => {
     const startLanguage = 'en';
     const arrayLanguage = ['en', 'ru', 'pl', 'de'];
 
-    const radioButtons = document.querySelectorAll('.select-language__input');
-    const body = document.querySelector('.select-language__body');
-    const activeRadio = document.querySelector('.select-active');
-    const activeImg = activeRadio.querySelector('.select-active__img');
-    const activeText = activeRadio.querySelector('.select-active__text');
-    const language = localStorage.getItem('language');
+    const radioButtons = document.querySelectorAll('.select-language__input') as NodeListOf<HTMLInputElement>;
+    const body = document.querySelector('.select-language__body') as HTMLDivElement;
+    const activeRadio = document.querySelector('.select-active') as HTMLDivElement;
+    const activeImg = activeRadio.querySelector('.select-active__img') as HTMLImageElement;
+    const activeText = activeRadio.querySelector('.select-active__text') as HTMLDivElement;
+    const language: string | null = localStorage.getItem('language');
 
 
     // если язык не установлен в localStorage
@@ -45,7 +45,7 @@ const language = () => {
 //= functions 
 
 //* состояние при загрузке страницы
-function beginningState(activeImg, activeText) {
+function beginningState(activeImg: HTMLImageElement, activeText: HTMLDivElement) {
     const language = localStorage.getItem('language');
     setSelectActive(activeImg, activeText, language);
     setMenu(language);
@@ -53,11 +53,11 @@ function beginningState(activeImg, activeText) {
 }
 
 //* состояние при изминении выбора языка 
-function eventChangeRadio(radioButtons, activeImg, activeText, body) {
+function eventChangeRadio(radioButtons: NodeListOf<HTMLInputElement>, activeImg: HTMLImageElement, activeText: HTMLDivElement, body: HTMLDivElement) {
     radioButtons.forEach(radio => {
-        radio.addEventListener('change', (e) => {
-            if(e.target.checked) {
-                const value = e.target.value;
+        radio.addEventListener('change', (event: ChangeEvent<HTMLInputElement>) => {
+            if(event.target.checked) {
+                const value = event.target.value;
                 setSelectActive(activeImg, activeText, value);
                 localStorage.setItem('language', value);
                 setMenu(value);
@@ -70,7 +70,7 @@ function eventChangeRadio(radioButtons, activeImg, activeText, body) {
 }
 
 //* изминение активного блока силектора 
-function setSelectActive(activeImg, activeText, value) {
+function setSelectActive(activeImg: HTMLImageElement, activeText: HTMLDivElement, value: string) {
     activeImg.src = `/img/flag/${value}.jpg`;
 
     switch (value) {
@@ -93,17 +93,17 @@ function setSelectActive(activeImg, activeText, value) {
 }
 
 //* изминение меню 
-function setMenu(language) {
-    const menuLinks = document.querySelectorAll('[data-menu]');
+function setMenu(language: string) {
+    const menuLinks = document.querySelectorAll('[data-menu]') as NodeListOf<HTMLInputElement>;;
     
     menuLinks.forEach(link => {
-        const data = link.dataset.menu;
+        const data: string = link.dataset.menu;
         link.textContent = textMenu[data][language];
     });
 }
 
 //* изминение текста на странице
-function setTextPage(language) {
+function setTextPage(language: string) {
     const path = window.location.pathname;
     console.log(path);
     const elementsText = document.querySelectorAll('[data-translation]');
