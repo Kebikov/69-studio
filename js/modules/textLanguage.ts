@@ -1,4 +1,10 @@
-export const textMenu = {
+export interface Trasnslate {
+    [key: string]: {
+        [key: string]: string
+    }
+}
+
+export const textMenu: Trasnslate = {
     home: {
         ru: 'Главная',
         en: 'Home',
@@ -25,7 +31,7 @@ export const textMenu = {
     }
 }
 
-export const textMain = {
+export const textMain: Trasnslate = {
     'main title': {
         ru: 'Наши основные проекты.',
         en: 'Our Featured Projects.',
@@ -134,7 +140,7 @@ export const textMain = {
     },
 }
 
-export const textOurStory = {
+export const textOurStory: Trasnslate = {
     'project-block-title': {
         ru: 'о нас',
         en: 'About us',
@@ -143,26 +149,39 @@ export const textOurStory = {
     },
     'project-block-text': {
         ru: 'Я абзац. Нажмите здесь, чтобы добавить свой собственный текст и изменить меня. Это легко. Просто нажмите кнопку "Изменить текст" или дважды щелкните меня, чтобы добавить свой собственный контент и внести изменения в шрифт. Не стесняйтесь перетащить меня в любое место на вашей странице. Я - отличное место, чтобы рассказать историю и дать пользователям немного больше о вас. <br/><br/>Это отличное место для написания длинного текста о Вашей компании и Ваших услугах. Вы можете использовать это пространство, чтобы перейти к более подробной информации о вашей компании. Расскажите о вашей команде и о том, какие услуги вы предоставляете. Расскажите своим посетителям историю о том, как вы придумали идею для своего бизнеса и что отличает вас от ваших конкурентов. Выделите свою компанию и покажите посетителям, кто вы.',
-        en: 'I am a paradeaph. Click here to add your own text and edit me. It’s easy. Just click “Edit Text” or double click me to add your own content and make changes to the font. Feel free to drag and drop me anywhere you like on your page. I’m a deeat place for you to tell a story and let your users know a little more about you.<br/><br/>This is a deeat space to write long text about your company and your services. You can use this space to go into a little more detail about your company. Talk about your team and what services you provide. Tell your visitors the story of how you came up with the idea for your business and what makes you different from your competitors. Make your company stand out and show your visitors who you are.'
+        en: 'I am a paradeaph. Click here to add your own text and edit me. It’s easy. Just click “Edit Text” or double click me to add your own content and make changes to the font. Feel free to drag and drop me anywhere you like on your page. I’m a deeat place for you to tell a story and let your users know a little more about you.<br/><br/>This is a deeat space to write long text about your company and your services. You can use this space to go into a little more detail about your company. Talk about your team and what services you provide. Tell your visitors the story of how you came up with the idea for your business and what makes you different from your competitors. Make your company stand out and show your visitors who you are.',
+        pl: '',
+        de: ''
     },
     'title': {
         ru: 'Наша Команда.',
-        en: 'Our Team.'
+        en: 'Our Team.',
+        pl: '',
+        de: ''
     },
     'back to top': {
         ru: 'Вернуться наверх',
-        en: 'Back to top'
+        en: 'Back to top',
+        pl: '',
+        de: ''
     },
     'phone': {
         ru: 'Тел.',
-        en: 'Tel.'
+        en: 'Tel.',
+        pl: '',
+        de: ''
     },
     'partner': {
         ru: 'Партнер',
-        en: 'Partner'
+        en: 'Partner',
+        pl: '',
+        de: ''
     },
     'architect': {
         ru: 'Архитектор',
-        en: 'Architect'
+        en: 'Architect',
+        pl: '',
+        de: ''
     },
 }
+

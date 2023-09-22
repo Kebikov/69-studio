@@ -10,12 +10,16 @@ const lazyLoading = () => {
 
             entryAll.forEach((item) => {
                 if(item.isIntersecting){
-                    let itemTarget = item.target;
-                    let parent = itemTarget.parentElement;
-                    let sourceAll = parent.querySelectorAll('source');
-                    sourceAll.forEach((item) => {item.srcset = item.dataset.srcset});
-                    itemTarget.src = itemTarget.dataset.src;
-                    itemTarget.setAttribute('src', itemTarget.dataset.src);
+                    let itemTarget = item.target as HTMLImageElement;
+                    let parent = itemTarget.parentElement as HTMLDivElement;
+                    let sourceAll = parent.querySelectorAll('source') as NodeListOf<HTMLSourceElement>;
+                    sourceAll.forEach((item: HTMLSourceElement) => {item.dataset.srcset ? item.srcset = item.dataset.srcset : null});
+
+                    if(itemTarget.dataset.src) {
+                        itemTarget.src = itemTarget.dataset.src;
+                        itemTarget.setAttribute('src', itemTarget.dataset.src);
+                    }
+                    
                     observer.unobserve(itemTarget);
                 }
             });

@@ -47,7 +47,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 var intersectionObserver = function (classBlock, classPlus, arrClassAlso, classPlussAlso) {
     try {
         var block = document.querySelector(".".concat(classBlock));
-        var divObserver = new IntersectionObserver(function (entryAll, observer) {
+        var divObserver = new IntersectionObserver(function (entryAll) {
             entryAll.forEach(function (item) {
                 if (item.isIntersecting) {
                     item.target.classList.add("".concat(classPlus));
@@ -140,20 +140,24 @@ var language = function () {
 //* состояние при загрузке страницы
 function beginningState(activeImg, activeText) {
     var language = localStorage.getItem('language');
-    setSelectActive(activeImg, activeText, language);
-    setMenu(language);
-    setTextPage(language);
+    if (language) {
+        setSelectActive(activeImg, activeText, language);
+        setMenu(language);
+        setTextPage(language);
+    }
 }
 //* состояние при изминении выбора языка 
 function eventChangeRadio(radioButtons, activeImg, activeText, body) {
     radioButtons.forEach(function (radio) {
         radio.addEventListener('change', function (event) {
-            if (event.target.checked) {
-                var value = event.target.value;
-                setSelectActive(activeImg, activeText, value);
-                localStorage.setItem('language', value);
-                setMenu(value);
-                setTextPage(value);
+            if (event.target instanceof HTMLInputElement) {
+                if (event.target.checked) {
+                    var value = event.target.value;
+                    setSelectActive(activeImg, activeText, value);
+                    localStorage.setItem('language', value);
+                    setMenu(value);
+                    setTextPage(value);
+                }
             }
             body.classList.toggle('active');
         });
@@ -162,6 +166,7 @@ function eventChangeRadio(radioButtons, activeImg, activeText, body) {
 //* изминение активного блока силектора 
 function setSelectActive(activeImg, activeText, value) {
     activeImg.src = "/img/flag/".concat(value, ".jpg");
+    console.log(typeof activeImg);
     switch (value) {
         case 'ru':
             activeText.textContent = 'Russia';
@@ -183,16 +188,18 @@ function setSelectActive(activeImg, activeText, value) {
 //* изминение меню 
 function setMenu(language) {
     var menuLinks = document.querySelectorAll('[data-menu]');
-    ;
     menuLinks.forEach(function (link) {
-        var data = link.dataset.menu;
-        link.textContent = textLanguage_1.textMenu[data][language];
+        if (link.dataset.menu) {
+            var data = link.dataset.menu;
+            if (data && textLanguage_1.textMenu[data] && textLanguage_1.textMenu[data][language]) {
+                link.textContent = textLanguage_1.textMenu[data][language];
+            }
+        }
     });
 }
 //* изминение текста на странице
 function setTextPage(language) {
     var path = window.location.pathname;
-    console.log(path);
     var elementsText = document.querySelectorAll('[data-translation]');
     var textForPage = {};
     switch (path) {
@@ -204,10 +211,11 @@ function setTextPage(language) {
             break;
     }
     elementsText.forEach(function (element) {
-        var _a;
-        var data = element.dataset.translation;
-        if ((_a = textForPage === null || textForPage === void 0 ? void 0 : textForPage[data]) === null || _a === void 0 ? void 0 : _a[language]) {
-            element.innerHTML = textForPage[data][language];
+        if (element.dataset.translation) {
+            var data = element.dataset.translation;
+            if (textForPage[data][language]) {
+                element.innerHTML = textForPage[data][language];
+            }
         }
     });
 }
@@ -237,9 +245,11 @@ var lazyLoading = function () {
                     var itemTarget = item.target;
                     var parent_1 = itemTarget.parentElement;
                     var sourceAll = parent_1.querySelectorAll('source');
-                    sourceAll.forEach(function (item) { item.srcset = item.dataset.srcset; });
-                    itemTarget.src = itemTarget.dataset.src;
-                    itemTarget.setAttribute('src', itemTarget.dataset.src);
+                    sourceAll.forEach(function (item) { item.dataset.srcset ? item.srcset = item.dataset.srcset : null; });
+                    if (itemTarget.dataset.src) {
+                        itemTarget.src = itemTarget.dataset.src;
+                        itemTarget.setAttribute('src', itemTarget.dataset.src);
+                    }
                     observer.unobserve(itemTarget);
                 }
             });
@@ -325,14 +335,14 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.numberScroll = void 0;
 //= numberScroll
 var numberScroll = function () {
+    function scroll69(text69, text69Size) {
+        text69.style.fontSize = "".concat(text69Size - window.scrollY / 2, "px");
+    }
     try {
         var text69_1 = document.querySelector('.main-picture__text');
         if (text69_1) {
             var text69Size_1 = parseInt(window.getComputedStyle(text69_1).getPropertyValue('font-size'));
-            window.addEventListener('scroll', scroll69);
-            function scroll69() {
-                text69_1.style.fontSize = "".concat(text69Size_1 - window.scrollY / 2, "px");
-            }
+            window.addEventListener('scroll', function () { return scroll69(text69_1, text69Size_1); });
         }
     }
     catch (error) {
@@ -486,27 +496,39 @@ exports.textOurStory = {
     },
     'project-block-text': {
         ru: 'Я абзац. Нажмите здесь, чтобы добавить свой собственный текст и изменить меня. Это легко. Просто нажмите кнопку "Изменить текст" или дважды щелкните меня, чтобы добавить свой собственный контент и внести изменения в шрифт. Не стесняйтесь перетащить меня в любое место на вашей странице. Я - отличное место, чтобы рассказать историю и дать пользователям немного больше о вас. <br/><br/>Это отличное место для написания длинного текста о Вашей компании и Ваших услугах. Вы можете использовать это пространство, чтобы перейти к более подробной информации о вашей компании. Расскажите о вашей команде и о том, какие услуги вы предоставляете. Расскажите своим посетителям историю о том, как вы придумали идею для своего бизнеса и что отличает вас от ваших конкурентов. Выделите свою компанию и покажите посетителям, кто вы.',
-        en: 'I am a paradeaph. Click here to add your own text and edit me. It’s easy. Just click “Edit Text” or double click me to add your own content and make changes to the font. Feel free to drag and drop me anywhere you like on your page. I’m a deeat place for you to tell a story and let your users know a little more about you.<br/><br/>This is a deeat space to write long text about your company and your services. You can use this space to go into a little more detail about your company. Talk about your team and what services you provide. Tell your visitors the story of how you came up with the idea for your business and what makes you different from your competitors. Make your company stand out and show your visitors who you are.'
+        en: 'I am a paradeaph. Click here to add your own text and edit me. It’s easy. Just click “Edit Text” or double click me to add your own content and make changes to the font. Feel free to drag and drop me anywhere you like on your page. I’m a deeat place for you to tell a story and let your users know a little more about you.<br/><br/>This is a deeat space to write long text about your company and your services. You can use this space to go into a little more detail about your company. Talk about your team and what services you provide. Tell your visitors the story of how you came up with the idea for your business and what makes you different from your competitors. Make your company stand out and show your visitors who you are.',
+        pl: '',
+        de: ''
     },
     'title': {
         ru: 'Наша Команда.',
-        en: 'Our Team.'
+        en: 'Our Team.',
+        pl: '',
+        de: ''
     },
     'back to top': {
         ru: 'Вернуться наверх',
-        en: 'Back to top'
+        en: 'Back to top',
+        pl: '',
+        de: ''
     },
     'phone': {
         ru: 'Тел.',
-        en: 'Tel.'
+        en: 'Tel.',
+        pl: '',
+        de: ''
     },
     'partner': {
         ru: 'Партнер',
-        en: 'Partner'
+        en: 'Partner',
+        pl: '',
+        de: ''
     },
     'architect': {
         ru: 'Архитектор',
-        en: 'Architect'
+        en: 'Architect',
+        pl: '',
+        de: ''
     },
 };
 

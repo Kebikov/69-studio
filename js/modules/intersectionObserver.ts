@@ -4,10 +4,13 @@
 // classPlussAlso - класс который добавится к каждому классу в массиве
 
 const intersectionObserver = (classBlock: string, classPlus: string, arrClassAlso: Array<string>, classPlussAlso: string) => {
+
     try {
         const block = document.querySelector(`.${classBlock}`) as HTMLDivElement;
-        const divObserver = new IntersectionObserver((entryAll, observer) => {
-            entryAll.forEach(item => {
+
+        const divObserver = new IntersectionObserver((entryAll) => {
+            entryAll.forEach((item: IntersectionObserverEntry ) => {
+                
                 if(item.isIntersecting) {
                     item.target.classList.add(`${classPlus}`);
                     

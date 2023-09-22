@@ -1,10 +1,10 @@
-import { textMenu,  textMain, textOurStory} from "./textLanguage";
+import { textMenu,  textMain, textOurStory, Trasnslate} from "./textLanguage";
 
 //= language 
 const language = () => {
     // en, ru, pl
-    const startLanguage = 'en';
-    const arrayLanguage = ['en', 'ru', 'pl', 'de'];
+    const startLanguage: string = 'en';
+    const arrayLanguage: Array<string> = ['en', 'ru', 'pl', 'de'];
 
     const radioButtons = document.querySelectorAll('.select-language__input') as NodeListOf<HTMLInputElement>;
     const body = document.querySelector('.select-language__body') as HTMLDivElement;
@@ -46,24 +46,29 @@ const language = () => {
 
 //* состояние при загрузке страницы
 function beginningState(activeImg: HTMLImageElement, activeText: HTMLDivElement) {
-    const language = localStorage.getItem('language');
-    setSelectActive(activeImg, activeText, language);
-    setMenu(language);
-    setTextPage(language);
+    const language: string | null = localStorage.getItem('language');
+
+    if(language) {
+        setSelectActive(activeImg, activeText, language);
+        setMenu(language);
+        setTextPage(language);
+    }
+    
 }
 
 //* состояние при изминении выбора языка 
 function eventChangeRadio(radioButtons: NodeListOf<HTMLInputElement>, activeImg: HTMLImageElement, activeText: HTMLDivElement, body: HTMLDivElement) {
     radioButtons.forEach(radio => {
-        radio.addEventListener('change', (event: ChangeEvent<HTMLInputElement>) => {
-            if(event.target.checked) {
-                const value = event.target.value;
-                setSelectActive(activeImg, activeText, value);
-                localStorage.setItem('language', value);
-                setMenu(value);
-                setTextPage(value);
+        radio.addEventListener('change', (event) => {
+            if (event.target instanceof HTMLInputElement) {
+                if(event.target.checked) {
+                    const value = event.target.value;
+                    setSelectActive(activeImg, activeText, value);
+                    localStorage.setItem('language', value);
+                    setMenu(value);
+                    setTextPage(value);
+                }
             }
-
             body.classList.toggle('active');
         });
     });
@@ -72,7 +77,7 @@ function eventChangeRadio(radioButtons: NodeListOf<HTMLInputElement>, activeImg:
 //* изминение активного блока силектора 
 function setSelectActive(activeImg: HTMLImageElement, activeText: HTMLDivElement, value: string) {
     activeImg.src = `/img/flag/${value}.jpg`;
-
+    console.log(typeof activeImg);
     switch (value) {
         case 'ru':
             activeText.textContent = 'Russia';
@@ -93,22 +98,27 @@ function setSelectActive(activeImg: HTMLImageElement, activeText: HTMLDivElement
 }
 
 //* изминение меню 
-function setMenu(language: string) {
-    const menuLinks = document.querySelectorAll('[data-menu]') as NodeListOf<HTMLInputElement>;;
+function setMenu(language: string): void {
+    const menuLinks = document.querySelectorAll('[data-menu]') as NodeListOf<HTMLInputElement>;
     
     menuLinks.forEach(link => {
-        const data: string = link.dataset.menu;
-        link.textContent = textMenu[data][language];
+        if(link.dataset.menu) {
+            const data: string = link.dataset.menu;
+
+            if(data && textMenu[data] && textMenu[data][language]) {
+                link.textContent = textMenu[data][language];
+            }
+        }
     });
 }
 
 //* изминение текста на странице
 function setTextPage(language: string) {
     const path = window.location.pathname;
-    console.log(path);
-    const elementsText = document.querySelectorAll('[data-translation]');
 
-    let textForPage = {};
+    const elementsText = document.querySelectorAll('[data-translation]') as NodeListOf<HTMLDivElement>;
+
+    let textForPage: Trasnslate = {};
 
     switch(path) {
         case '/':
@@ -120,9 +130,12 @@ function setTextPage(language: string) {
     }
 
     elementsText.forEach(element => {
-        const data = element.dataset.translation;
-        if(textForPage?.[data]?.[language]) {
-            element.innerHTML = textForPage[data][language];
+        if(element.dataset.translation) {
+            const data: string = element.dataset.translation;
+
+            if(textForPage[data][language]) {
+                element.innerHTML = textForPage[data][language];
+            }
         }
     })
 }
