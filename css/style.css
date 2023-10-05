@@ -128,9 +128,9 @@ input[type=number]:focus {
   -webkit-transform: translate(-50%, -50%);
       -ms-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
-  font-family: "Century Gothic";
+  font-family: "Rubik";
   font-size: 100px;
-  font-weight: 700;
+  font-weight: 400;
   color: #fff;
   line-height: 120%;
 }
@@ -190,7 +190,7 @@ input[type=number]:focus {
   -webkit-transform: translate(-50%, -50%);
       -ms-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
-  font-family: "Century Gothic";
+  font-family: "Arial";
   font-size: 35px;
   font-weight: 400;
   color: #fff;
@@ -358,8 +358,6 @@ input[type=number]:focus {
   aspect-ratio: 717/870;
   -o-object-fit: cover;
      object-fit: cover;
-  -o-object-position: center center;
-     object-position: center center;
 }
 @media (max-width: 1000px) {
   .project-one__img img {
@@ -493,8 +491,8 @@ input[type=number]:focus {
   aspect-ratio: 361/425;
   -o-object-fit: cover;
      object-fit: cover;
-  -o-object-position: center center;
-     object-position: center center;
+  -o-object-position: right center;
+     object-position: right center;
 }
 @media (max-width: 1000px) {
   .project-3__img img {
@@ -660,9 +658,9 @@ input[type=number]:focus {
   }
 }
 .contacts-blank__title {
-  font-family: "Roboto";
+  font-family: "Rubik";
   font-size: 25px;
-  font-weight: 600;
+  font-weight: 400;
   color: #000;
   line-height: 120%;
 }
@@ -929,6 +927,27 @@ input[type=number]:focus {
   font-family: "Century Gothic";
   src: url("/font/CenturyGothic-Bold.woff2") format("woff2"), url("/font/CenturyGothic-Bold.woff") format("woff");
   font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Arial";
+  src: url("/font/ArialMT.woff2") format("woff2"), url("/font/ArialMT.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Rubik";
+  src: url("/font/Rubik-Regular.woff2") format("woff2"), url("/font/Rubik-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Rubik";
+  src: url("/font/Rubik-Light.woff2") format("woff2"), url("/font/Rubik-Light.woff") format("woff");
+  font-weight: 300;
   font-style: normal;
   font-display: swap;
 }
@@ -1249,7 +1268,7 @@ input[type=number]:focus {
 .select-language__label img {
   -o-object-fit: cover;
      object-fit: cover;
-  width: 30px;
+  width: 27px;
 }
 @media (max-width: 1000px) {
   .select-language__label img {
@@ -1257,16 +1276,19 @@ input[type=number]:focus {
   }
 }
 .select-language__label span {
+  -webkit-transform: translateY(15%);
+      -ms-transform: translateY(15%);
+          transform: translateY(15%);
   padding: 0px 0px 0px 5px;
   font-family: "Roboto";
-  font-size: 14pxpx;
+  font-size: 13pxpx;
   font-weight: 400;
   color: #fff;
   line-height: 120%;
 }
 @media (max-width: 1910px) {
   .select-language__label span {
-    font-size: calc(11pxpx + (3px) * (100vw - 375px) / 1535);
+    font-size: calc(11pxpx + (2px) * (100vw - 375px) / 1535);
   }
 }
 @media (max-width: 375px) {
@@ -1306,7 +1328,7 @@ input[type=number]:focus {
 .select-active__img {
   -o-object-fit: cover;
      object-fit: cover;
-  width: 30px;
+  width: 27px;
 }
 @media (max-width: 1000px) {
   .select-active__img {
@@ -1314,17 +1336,20 @@ input[type=number]:focus {
   }
 }
 .select-active__text {
+  -webkit-transform: translateY(10%);
+      -ms-transform: translateY(10%);
+          transform: translateY(10%);
   width: 60px;
   padding: 0px 0px 0px 5px;
   font-family: "Roboto";
-  font-size: 14pxpx;
+  font-size: 13pxpx;
   font-weight: 400;
   color: #fff;
   line-height: 120%;
 }
 @media (max-width: 1910px) {
   .select-active__text {
-    font-size: calc(11pxpx + (3px) * (100vw - 375px) / 1535);
+    font-size: calc(11pxpx + (2px) * (100vw - 375px) / 1535);
   }
 }
 @media (max-width: 375px) {
@@ -1339,7 +1364,7 @@ input[type=number]:focus {
 }
 
 .gap-lang {
-  padding: 4px 0px 3px 0px;
+  padding: 4px;
 }
 
 .footer {
@@ -1604,6 +1629,21 @@ input[type=number]:focus {
 
 ._font-weight-600 {
   font-weight: 600;
+}
+
+._op_c-c {
+  -o-object-position: center center;
+     object-position: center center;
+}
+
+._op-r-c {
+  -o-object-position: right center;
+     object-position: right center;
+}
+
+._op_l-c {
+  -o-object-position: left center;
+     object-position: left center;
 }
 
 @media (max-width: 1000px) {
@@ -1875,6 +1915,7 @@ input[type=number]:focus {
   font-weight: 600;
   color: #000;
   line-height: 120%;
+  text-align: center;
 }
 @media (max-width: 1910px) {
   .projects-collections__img:hover .projects-collections__text span {
@@ -2066,9 +2107,9 @@ input[type=number]:focus {
   width: 100%;
 }
 .gallery__img img {
+  width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
-  width: 100%;
 }
 .gallery__img:hover .gallery__text {
   display: block;

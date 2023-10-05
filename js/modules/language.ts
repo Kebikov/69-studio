@@ -1,6 +1,17 @@
-import { textMenu,  textMain, textOurStory, Trasnslate} from "../translation/textLanguage";
+import { textMain, Trasnslate, TranslationObject} from "../translation/textIndex";
+import { textMenu } from "../translation/textMenu";
+import { textPublic } from "../translation/public";
+import { textOurStory } from "../translation/textOurStory";
+
+import { textProjects } from "../translation/projects";
 import { textProject1 } from "../translation/project-1";
 import { textProject2 } from "../translation/project-2";
+import { textProject3 } from "../translation/project-3";
+import { textProject4 } from "../translation/project-4";
+import { textProject5 } from "../translation/project-5";
+import { textProject6 } from "../translation/project-6";
+import { textProject7 } from "../translation/project-7";
+
 
 //= language 
 const language = () => {
@@ -81,7 +92,7 @@ function eventChangeRadio(radioButtons: NodeListOf<HTMLInputElement>, activeImg:
 //* изминение активного блока силектора 
 function setSelectActive(activeImg: HTMLImageElement, activeText: HTMLDivElement, value: string) {
     activeImg.src = `/img/flag/${value}.jpg`;
-    console.log(typeof activeImg);
+
     switch (value) {
         case 'ru':
             activeText.textContent = 'Russia';
@@ -104,6 +115,7 @@ function setSelectActive(activeImg: HTMLImageElement, activeText: HTMLDivElement
 //* изминение меню 
 function setMenu(language: string): void {
     const menuLinks = document.querySelectorAll('[data-menu]') as NodeListOf<HTMLInputElement>;
+    const elementsPublic = document.querySelectorAll('[data-public]') as NodeListOf<HTMLInputElement>;
     
     menuLinks.forEach(link => {
         if(link.dataset.menu) {
@@ -111,6 +123,16 @@ function setMenu(language: string): void {
 
             if(data && textMenu[data] && textMenu[data][language]) {
                 link.textContent = textMenu[data][language];
+            }
+        }
+    });
+
+    elementsPublic.forEach(link => {
+        if(link.dataset.public) {
+            const data: string = link.dataset.public;
+
+            if(data && textPublic[data] && textPublic[data][language]) {
+                link.textContent = textPublic[data][language];
             }
         }
     });
@@ -122,25 +144,23 @@ function setTextPage(language: string) {
 
     const elementsText = document.querySelectorAll('[data-translation]') as NodeListOf<HTMLDivElement>;
 
-    let textForPage: Trasnslate = {};
-
-    switch(path) {
-        case '/':
-            textForPage = textMain;
-            break;
-        case '/our-story/':
-            textForPage = textOurStory;
-            break;
-        case '/project-1/':
-            textForPage = textProject1;
-            break;
-        case '/project-2/':
-            textForPage = textProject2;
-            break;
-        default:
-            textForPage = textMain;
-            break;
+    const changeTranslation = (path: string) => {
+        const translation: TranslationObject = {
+            '/': textMain,
+            '/our-story/': textOurStory,
+            '/projects/': textProjects,
+            '/project-1/': textProject1,
+            '/project-2/': textProject2,
+            '/project-3/': textProject3,
+            '/project-4/': textProject4,
+            '/project-5/': textProject5,
+            '/project-6/': textProject6,
+            '/project-7/': textProject7,
+        }
+        return translation[path];
     }
+
+    let textForPage: Trasnslate = changeTranslation(path);
 
     elementsText.forEach(element => {
         if(element.dataset.translation) {

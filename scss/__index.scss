@@ -47,7 +47,7 @@
 
         transform: translate(-50%, -50%);
 
-        @include text_streach (100, 56, #fff, 700, 'Century Gothic');
+        @include text_streach (100, 56, #fff, 400, 'Rubik');
 
         & span:nth-child(1) {
             @include text_streach (70, 60, #f25917, 400);
@@ -68,7 +68,7 @@
         width: 95vw;
         transform: translate(-50%, -50%);
 
-        @include text_streach (35, 20, #fff, 400, 'Century Gothic');
+        @include text_streach (35, 20, #fff, 400, 'Arial');
         text-align: center;
     }
 }
@@ -180,7 +180,8 @@
         
             aspect-ratio: 717 / 870;
             object-fit: cover;
-            object-position: center center;
+            
+
             @media (max-width: 1000px) {
                 width: 100%;
                 aspect-ratio: 280 / 340;
@@ -279,7 +280,7 @@
             aspect-ratio: 361 / 425;
             
             object-fit: cover;
-            object-position: center center;
+            object-position: right center;
 
             @media (max-width: 1000px){
                 width: 100%;
@@ -430,7 +431,7 @@
     }
     // .contacts-blank__title
     &__title {
-        @include text_streach (25, 23, #000, 600);
+        @include text_streach (25, 23, #000, 400, 'Rubik');
         & span {
             color: red;
         }

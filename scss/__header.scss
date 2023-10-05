@@ -260,6 +260,8 @@
         }
 
         & span {
+            transform: translateY(15%);
+
             padding: 0px 0px 0px 5px;
             @include text_streach ($size-text-max, $size-text-min, #fff, 400);
         }
@@ -307,6 +309,8 @@
     }
     // .select-active__text
     &__text {
+        transform: translateY(10%);
+
         width: 60px;
         padding: 0px 0px 0px 5px;
         @include text_streach ($size-text-max, $size-text-min, #fff, 400);
@@ -318,7 +322,7 @@
 }
 
 .gap-lang {
-    padding: 4px 0px 3px 0px;
+    padding: 4px;
 }
 
 

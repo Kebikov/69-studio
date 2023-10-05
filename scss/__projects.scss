@@ -78,6 +78,7 @@
                 transform: translate(-50%, -50%);
     
                 @include text_streach (16, 13, #000, 600);
+                text-align: center;
             }
         }
     }
@@ -205,14 +206,15 @@
     }
 
     // .gallery__img
-
     &__img {
         position: relative;
 
         width: 100%;
         & img {
-            object-fit: cover;
             width: 100%;
+            //aspect-ratio: 2 / 3;
+
+            object-fit: cover;
         }
         &:hover .gallery__text {
             display: block;
