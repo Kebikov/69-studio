@@ -134,6 +134,9 @@
     &__title {
         @include text_streach (18, 16, #000, 300);
     }
+    &__object {
+        @include text_streach (15, 13, #000, 500);
+    }
     // .back-link__line
     &__line {
         margin: 25px 0px 0px 0px;
@@ -145,7 +148,7 @@
     &__text {
         margin: 25px 0px 40px 0px;
 
-        @include text_streach (14, 12, #000, 300);
+        @include text_streach (15, 13, #000, 300);
         line-height: 140%;
 
         @media (max-width: 1000px){

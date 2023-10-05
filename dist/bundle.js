@@ -98,12 +98,16 @@ exports["default"] = intersectionObserver;
 
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-var textLanguage_1 = __webpack_require__(/*! ./textLanguage */ "./js/modules/textLanguage.ts");
+var textLanguage_1 = __webpack_require__(/*! ../translation/textLanguage */ "./js/translation/textLanguage.ts");
+var project_1_1 = __webpack_require__(/*! ../translation/project-1 */ "./js/translation/project-1.ts");
+var project_2_1 = __webpack_require__(/*! ../translation/project-2 */ "./js/translation/project-2.ts");
 //= language 
 var language = function () {
-    // en, ru, pl
-    var startLanguage = 'en';
-    var arrayLanguage = ['en', 'ru', 'pl', 'de'];
+    //* en, ru, pl стартовый язык
+    var startLanguage = 'pl';
+    //* массив языков на сайте 
+    var arrayLanguage = ['en', 'pl'];
+    //const arrayLanguage: Array<string> = ['en', 'ru', 'pl', 'de'];
     var radioButtons = document.querySelectorAll('.select-language__input');
     var body = document.querySelector('.select-language__body');
     var activeRadio = document.querySelector('.select-active');
@@ -208,6 +212,15 @@ function setTextPage(language) {
             break;
         case '/our-story/':
             textForPage = textLanguage_1.textOurStory;
+            break;
+        case '/project-1/':
+            textForPage = project_1_1.textProject1;
+            break;
+        case '/project-2/':
+            textForPage = project_2_1.textProject2;
+            break;
+        default:
+            textForPage = textLanguage_1.textMain;
             break;
     }
     elementsText.forEach(function (element) {
@@ -354,10 +367,128 @@ exports.numberScroll = numberScroll;
 
 /***/ }),
 
-/***/ "./js/modules/textLanguage.ts":
-/*!************************************!*\
-  !*** ./js/modules/textLanguage.ts ***!
-  \************************************/
+/***/ "./js/script.ts":
+/*!**********************!*\
+  !*** ./js/script.ts ***!
+  \**********************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+var menu_1 = __webpack_require__(/*! ./modules/menu */ "./js/modules/menu.ts");
+var text_1 = __webpack_require__(/*! ./modules/text */ "./js/modules/text.ts");
+var backToTop_1 = __importDefault(__webpack_require__(/*! ./modules/backToTop */ "./js/modules/backToTop.ts"));
+var lazyLoading_1 = __importDefault(__webpack_require__(/*! ./modules/lazyLoading */ "./js/modules/lazyLoading.ts"));
+var language_1 = __importDefault(__webpack_require__(/*! ./modules/language */ "./js/modules/language.ts"));
+window.addEventListener('DOMContentLoaded', function () {
+    (0, menu_1.menu)();
+    (0, menu_1.menuFill)();
+    (0, text_1.numberScroll)();
+    (0, backToTop_1.default)();
+    (0, lazyLoading_1.default)();
+    (0, language_1.default)();
+});
+
+
+/***/ }),
+
+/***/ "./js/translation/project-1.ts":
+/*!*************************************!*\
+  !*** ./js/translation/project-1.ts ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.textProject1 = void 0;
+exports.textProject1 = {
+    'title': {
+        pl: 'BUDYNEK BIUROWY "TECHMAR" W KIELCACH',
+        en: '"TECHMAR" OFFICE BUILDING IN KIELCE',
+        ru: 'sorry, no translation',
+        de: 'sorry, no translation'
+    },
+    'body': {
+        pl: 'Projekt i wygląd aktualny biura to rodzaj metamorfozy po adaptacji istniejącego budynku, termomodernizacji, wymianie instalacji i adaptacji wnętrz na nowoczesny budynek biurowy z gabinetami prezesów, recepcją, salą konferencyjną, zapleczem sanitarnym.<br/><br/>Idea budynku to korespondencja trzech brył funkcjonalnie zróżnicowanych, stąd pomysł na ich kolorystyczną separację. Część biała mieści funkcję sklepu z materiałami budowlanymi, farbami, narzędziami. Część czarna to biura zarządu, pomieszczenia pracowników, recepcja, sala konferencyjna i toalety. Betonowy element na górnej kondygnacji mieści taras i otwarte foyear do rozmów i wypoczynku przy kawie z widokiem na okolicę.<br/><br/>Wszystkie części budynku połączone komunikacyjnie z pomieszczenia holu głównego przy recepcji , na górną kondygnację prowadzą otwarte, przestrzenne , industrialne schody o konstrukcji stalowej pokrytej czarną farbą.',
+        en: 'The current design and appearance of the office is a kind of metamorphosis after the adaptation of the existing building, thermal modernization, replacement of installations and interior adaptation to a modern office building with offices of presidents, reception, conference room, sanitary facilities.The idea of the building is a correspondence of three functionally diverse blocks, hence the idea for their color separation. The white part houses the function of a shop with building materials, paints and tools.<br/><br/>The black part is the management offices, staff rooms, reception, conference room and toilets. The concrete element on the upper storey houses a terrace and an open foyear for chatting and relaxing over a coffee overlooking the countryside. All parts of the building are connected by communication from the main hall at the reception, to the upper floor there are open, spacious, industrial stairs with a steel structure covered with black paint.',
+        ru: 'sorry, no translation',
+        de: 'sorry, no translation'
+    },
+    'object': {
+        pl: 'Powrót do strony Projektów',
+        en: 'Object completed',
+        ru: 'sorry, no translation',
+        de: 'sorry, no translation',
+    },
+    'option': {
+        pl: 'Lokalizacja: ul. Witosa, Kielce<br/>Pow. działki – 2 219,87m2<br/>Pow. użytkowa budynku – 793, 00m2<br/>Pow. całkowita – 844,37m2',
+        en: 'Location: ul. Witosa, Kielce<br/>area plots – 2 219,87 m2<br/>area usable area of the building – 793,00 m2<br/>area total – 844,37 m2<br/>Volume – 3 013,40 m3',
+        ru: 'sorry, no translation',
+        de: 'sorry, no translation',
+    },
+    'back': {
+        pl: 'Powrót do strony Projektów',
+        en: 'Back to Projects page',
+        ru: 'sorry, no translation',
+        de: 'sorry, no translation'
+    }
+};
+
+
+/***/ }),
+
+/***/ "./js/translation/project-2.ts":
+/*!*************************************!*\
+  !*** ./js/translation/project-2.ts ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.textProject2 = void 0;
+exports.textProject2 = {
+    'title': {
+        pl: 'DOM Z WIÓRA',
+        en: 'CHIP HOUSE',
+        ru: 'sorry, no translation',
+        de: 'sorry, no translation'
+    },
+    'body': {
+        pl: 'Projekt powstał w 2012r. zakup działki w pagórkowatych, wiejskich terenach pod Krakowem zmobilizował do myślenia o ekologii i naturalnych materiałach jak ceramika, drewno, kamień, szkło. Dom realizowano metodą ,,gospodarczą ‘’, oraz eksperymentalną w związku z czym budowę ukończono w 2015r.<br/><br/>Ze względu na wilgotny klimat i położenie w dolinie, zachowano tradycyjną technologię ścian z bloczków ceramicznych i elementów stropów i podciągów z betonu. Ściany pokryto szkieletem drewnianym, wypełnionym wełną mineralną, jako pokrycie użyto ,,wiór osikowy’’. Podobnie zrealizowano dach, z większą ilością warstw drewna w celu zapewnienia maksymalnej szczelności. Ściany wewnątrz pokryte tynkiem gipsowym. Podłogę w części salonowej wykonano z użyciem materiału z własnego wykopu – czyli gliny. Tradycyjne klepisko powstało jednak z myślą o komforcie użytkowania. Zamontowano na całej powierzchni ogrzewanie podłogowe – wodne oraz pokryto ubitą warstwę ziemi pokostem lnianym na gorąco.<br/><br/>Kominek wraz z funkcjami towarzyszącymi umieszczono w centralnej części domu (,,serce domu’’). Do pokrycia ścian kominka użyto naturalnego kamienia pochodzącego z Tatr Słowackich. Schody wykonano jako drewniane ,,szuflady’’ oraz  zamontowano na konstrukcji stalowej przykręconej do ściany nośnej budynku. Prostota i funkcjonalność to motto idei wyposażenia i organizacji wnętrz. Ściany pokryte białą farbą , podłogi na piętrze z drewna, meble i wyposażenie minimalistyczne ale również nawiązujące do wiejskiego klimatu.',
+        en: 'The project was created in 2012. the purchase of a plot of land in hilly, rural areas near Krakow made me think about ecology and natural materials such as ceramics, wood, stone and glass. The house was built using the "economic" and experimental methods, therefore the construction was completed in 2015.<br/><br/>Due to the humid climate and location in a valley, the traditional technology of walls made of ceramic blocks and elements of ceilings and binders made of concrete has been preserved. The walls were covered with a wooden frame, filled with mineral wool, "aspen chip" was used as a cover. The roof was similarly constructed, with more layers of wood to ensure maximum airtightness. The walls inside are covered with gypsum plaster. The floor in the living room area was made using material from our own excavation - clay. However, the traditional concave was created with comfort of use in mind. Water underfloor heating was installed on the entire surface and the compacted layer of earth was covered with hot linen varnish. The fireplace with accompanying functions was placed in the central part of the house ("the heart of the house"). Natural stone from the Slovak Tatras was used to cover the walls of the fireplace. The stairs were made as wooden "drawers" and mounted on a steel structure screwed to the load-bearing wall of the building. Simplicity and functionality are the motto of the idea of furnishing and interior organization. Walls covered with white paint, wooden floors on the first floor, minimalist furniture and equipment, but also referring to the rural climate.',
+        ru: 'sorry, no translation',
+        de: 'sorry, no translation'
+    },
+    'object': {
+        pl: 'Powrót do strony Projektów',
+        en: 'Object completed',
+        ru: 'sorry, no translation',
+        de: 'sorry, no translation',
+    },
+    'option': {
+        pl: 'Lokalizacja: ul. Sarnia 8, Wysiołek Luborzycki k. Krakowa<br/>Pow. działki – 1 150m2<br/>Pow. użytkowa budynku – 327, 20m2<br/>Pow. całkowita – 512,00m2<br/>Kubatura – 1 576,56m3',
+        en: 'Location: ul. Sarnia 8, Wysiołek Luborzycki near Krakow<br/>area plots – 1 150,00 m2<br/>area usable area of the building - 327, 20 m2<br/>area total - 512.00 m2<br/>Volume – 1 576,56 m3',
+        ru: 'sorry, no translation',
+        de: 'sorry, no translation',
+    },
+    'back': {
+        pl: 'Powrót do strony Projektów',
+        en: 'Back to Projects page',
+        ru: 'sorry, no translation',
+        de: 'sorry, no translation'
+    }
+};
+
+
+/***/ }),
+
+/***/ "./js/translation/textLanguage.ts":
+/*!****************************************!*\
+  !*** ./js/translation/textLanguage.ts ***!
+  \****************************************/
 /***/ ((__unused_webpack_module, exports) => {
 
 
@@ -371,9 +502,9 @@ exports.textMenu = {
         de: 'Startseite'
     },
     'our story': {
-        ru: 'наша история',
-        en: 'our-story',
-        pl: 'nasza historia',
+        ru: 'обо мне',
+        en: 'About me',
+        pl: 'o mnie',
         de: 'unsere Geschichte'
     },
     projects: {
@@ -489,9 +620,9 @@ exports.textMain = {
 };
 exports.textOurStory = {
     'project-block-title': {
-        ru: 'о нас',
-        en: 'About us',
-        pl: '',
+        ru: 'обо мне',
+        en: 'About me',
+        pl: 'O mnie',
         de: ''
     },
     'project-block-text': {
@@ -531,34 +662,6 @@ exports.textOurStory = {
         de: ''
     },
 };
-
-
-/***/ }),
-
-/***/ "./js/script.ts":
-/*!**********************!*\
-  !*** ./js/script.ts ***!
-  \**********************/
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-var menu_1 = __webpack_require__(/*! ./modules/menu */ "./js/modules/menu.ts");
-var text_1 = __webpack_require__(/*! ./modules/text */ "./js/modules/text.ts");
-var backToTop_1 = __importDefault(__webpack_require__(/*! ./modules/backToTop */ "./js/modules/backToTop.ts"));
-var lazyLoading_1 = __importDefault(__webpack_require__(/*! ./modules/lazyLoading */ "./js/modules/lazyLoading.ts"));
-var language_1 = __importDefault(__webpack_require__(/*! ./modules/language */ "./js/modules/language.ts"));
-window.addEventListener('DOMContentLoaded', function () {
-    (0, menu_1.menu)();
-    (0, menu_1.menuFill)();
-    (0, text_1.numberScroll)();
-    (0, backToTop_1.default)();
-    (0, lazyLoading_1.default)();
-    (0, language_1.default)();
-});
 
 
 /***/ })

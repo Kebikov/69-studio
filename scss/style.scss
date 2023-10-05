@@ -1,8 +1,8 @@
-@import "__null", "__index", "__font", "__header", "__footer", "__addition", "__our-story", "__test", "__projects";
+@import "__null", "__index", "__font", "__header", "__footer", "__addition", "__our-story", "__test", "__projects", "__supplement";
 
 .wrapper {
     display: flex;
-    flex-direction: column;
+    flex-direction: column; 
     min-height: 100%;
     position: relative;
     overflow: hidden;
@@ -29,6 +29,7 @@
     }
 }
 
+
 .unselect {
     -webkit-touch-callout: none;
     -webkit-user-select: none;   
@@ -41,3 +42,5 @@
 html {
     scroll-behavior: smooth;
 }
+
+

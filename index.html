@@ -6,8 +6,8 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="description" content="69.stidio">
         <meta name="keywords" content="69.stidio">
-        <link rel="icon" type="image/png" href="img/public/favicon.png">
-        <link rel="stylesheet" href="./css/style.css?v=1.6">
+        <link rel="icon" type="image/png" href="/img/public/favicon.png">
+        <link rel="stylesheet" href="/css/style.css?v=1.6">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>69.stidio</title>
     </head>
@@ -17,64 +17,12 @@
             <heder class="header">
                 <div class="header__body">
                     <nav class="menu">
-                        <div class="menu__body container">
+                        <div class="menu__body _container-without-padding">
                             <!--: logo -->
-                            <div class="menu__logo">
-                                <img class="ar_120_43" src="/img/public/logo-full-150.png" alt="logo" >
-                            </div>
+                            <a href="/" class="menu__logo">
+                                <img src="/img/public/logo-full.png" alt="logo" >
+                            </a>
 
-                            <!--: select-language -->
-                            <div class="select-language">
-
-                                <div class="select-active">
-                                    <div class="select-active__body">
-                                        <img class="select-active__img" src="/img/flag/en.jpg" alt="flag">
-                                        <div class="select-active__text">English</div>
-                                    </div>
-                                </div>
-
-                                <div class="select-language__body">
-                                        <!-- en -->
-                                    <div class="select-language__line">
-                                        <label for="en" class="select-language__label">
-                                            <img src="/img/flag/en.jpg" alt="flag">
-                                            <span>English</span> 
-                                        </label>
-                                        <input type="radio" name="language" id="en" value="en" class="select-language__input">
-                                    </div>
-
-                                    <div class="gap-lang"></div>
-                                        <!-- ru -->
-                                    <div class="select-language__line">
-                                        <label for="ru" class="select-language__label">
-                                            <img src="/img/flag/ru.jpg" alt="flag">
-                                            <span>Russia</span>
-                                        </label>
-                                        <input type="radio" name="language" id="ru" value="ru" class="select-language__input">
-                                    </div>
-
-                                    <div class="gap-lang"></div>
-                                        <!-- pl -->
-                                    <div class="select-language__line">
-                                        <label for="pl" class="select-language__label">
-                                            <img src="/img/flag/pl.jpg" alt="flag">
-                                            <span>Polski</span>
-                                        </label>
-                                        <input type="radio" name="language" id="pl" value="pl" class="select-language__input">
-                                    </div>
-
-                                    <div class="gap-lang"></div>
-                                        <!-- de -->
-                                    <div class="select-language__line">
-                                        <label for="de" class="select-language__label">
-                                            <img src="/img/flag/de.jpg" alt="flag">
-                                            <span>Deutsch</span>
-                                        </label>
-                                        <input type="radio" name="language" id="de" value="de" class="select-language__input">
-                                    </div>
-                                </div>
-                            </div>
-                            
                             <!--: бургер меню -->
                             <div class="burger">
                                 <div class="burger__body">
@@ -100,6 +48,65 @@
                                     <a href="/contacts" class="menu__link" data-menu="contacts" >contacts</a>
                                 </li>
                             </ul>
+
+                            <!--: select-language -->
+                            <div class="select-language">
+                                <!--. ACTIVE -->
+                                <div class="select-active">
+                                    <div class="select-active__body">
+                                        <img class="select-active__img" src="/img/flag/pl.jpg" alt="flag">
+                                        <div class="select-active__text">Polski</div>
+                                    </div>
+                                </div>
+                                
+                                <!--. BODY -->
+                                <div class="select-language__body">
+
+                                    <!--. English -->
+                                    <div class="select-language__line">
+                                        <label for="en" class="select-language__label">
+                                            <img src="/img/flag/en.jpg" alt="flag">
+                                            <span>English</span>
+                                        </label>
+                                        <input type="radio" name="language" id="en" value="en" class="select-language__input">
+                                    </div>
+
+                                    <!-- <div class="gap-lang"></div> -->
+
+                                    <!--. Russia -->
+                                    <!-- <div class="select-language__line">
+                                        <label for="ru" class="select-language__label">
+                                            <img src="/img/flag/ru.jpg" alt="flag">
+                                            <span>Russia</span>
+                                        </label>
+                                        <input type="radio" name="language" id="ru" value="ru" class="select-language__input">
+                                    </div> -->
+
+                                    <div class="gap-lang"></div>
+
+                                    <!--. Polski -->
+                                    <div class="select-language__line">
+                                        <label for="pl" class="select-language__label">
+                                            <img src="/img/flag/pl.jpg" alt="flag">
+                                            <span>Polski</span>
+                                        </label>
+                                        <input type="radio" name="language" id="pl" value="pl" class="select-language__input">
+                                    </div>
+
+                                    <!-- <div class="gap-lang"></div> -->
+
+                                    <!--. Deutsch -->
+                                    <!-- <div class="select-language__line">
+                                        <label for="de" class="select-language__label">
+                                            <img src="/img/flag/de.jpg" alt="flag">
+                                            <span>Deutsch</span>
+                                        </label>
+                                        <input type="radio" name="language" id="de" value="de" class="select-language__input">
+                                    </div> -->
+                                    
+                                </div>
+                            </div>
+                            
                         </div>
                     </nav>
                     <div class="menu-fill"></div>
@@ -110,7 +117,8 @@
                 <!--: main-picture -->
                 <div class="main-picture">
                     <div class="main-picture__body">
-                        <div class="main-picture__text">69<span>.</span></div>
+                        <div class="main-picture__text">69<span>.</span><span>studio</span></div>
+                        <div class="main-picture__slogan">,,Architekci do spraw pozornie nierealnych, koncepcje, projekty, management, realizacja’’</div>
                     </div>
                 </div>
                 <!--: title -->
@@ -246,7 +254,7 @@
                                 <div class="contacts-blank__fax" ><span data-translation="fax" >Fax:</span> 123-456-7890</div>
                                 <div class="contacts-blank__social">
                                     <div class="contacts-blank__icon">
-                                        <img src="img/icon/twiter.png" alt="">
+                                        <img src="img/icon/fb.png" alt="">
                                     </div>
                                     <div class="contacts-blank__icon">
                                         <img src="img/icon/instagram.png" alt="">
@@ -274,7 +282,22 @@
             <!--= footer -->
             <footer class="footer" >
                 <div class="footer__body">
-                    <img class="ar_120_43" src="./img/public/logo-full-white.png" alt="logo" >
+                    <div class="footer__left">
+                        <div class="footer__phone">
+                            <a href="tel:+48501031774">tel. +48 501031774</a>
+                        </div>
+                    </div>
+                    <div class="footer__center">
+                        <img src="/img/public/logo-full.png" alt="logo" >
+                    </div>
+                    <div class="footer__right">
+                        <a href="https://www.instagram.com/savchenkokaty" target="_blank" class="footer__icon">
+                            <img src="/img/icon/instagram-white.png" alt="">
+                        </a>
+                        <a href="https://www.facebook.com/savchenkokaty1/" target="_blank" class="footer__icon">
+                            <img src="/img/icon/fb-white.png" alt="">
+                        </a>
+                    </div>
                 </div>
             </footer>
         </div>

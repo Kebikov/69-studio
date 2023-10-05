@@ -1,10 +1,14 @@
-import { textMenu,  textMain, textOurStory, Trasnslate} from "./textLanguage";
+import { textMenu,  textMain, textOurStory, Trasnslate} from "../translation/textLanguage";
+import { textProject1 } from "../translation/project-1";
+import { textProject2 } from "../translation/project-2";
 
 //= language 
 const language = () => {
-    // en, ru, pl
-    const startLanguage: string = 'en';
-    const arrayLanguage: Array<string> = ['en', 'ru', 'pl', 'de'];
+    //* en, ru, pl стартовый язык
+    const startLanguage: string = 'pl';
+    //* массив языков на сайте 
+    const arrayLanguage: Array<string> = ['en', 'pl'];
+    //const arrayLanguage: Array<string> = ['en', 'ru', 'pl', 'de'];
 
     const radioButtons = document.querySelectorAll('.select-language__input') as NodeListOf<HTMLInputElement>;
     const body = document.querySelector('.select-language__body') as HTMLDivElement;
@@ -126,6 +130,15 @@ function setTextPage(language: string) {
             break;
         case '/our-story/':
             textForPage = textOurStory;
+            break;
+        case '/project-1/':
+            textForPage = textProject1;
+            break;
+        case '/project-2/':
+            textForPage = textProject2;
+            break;
+        default:
+            textForPage = textMain;
             break;
     }
 

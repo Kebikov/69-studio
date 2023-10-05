@@ -12,9 +12,9 @@ export const textMenu: Trasnslate = {
         de: 'Startseite'
     },
     'our story': {
-        ru: 'наша история',
-        en: 'our-story',
-        pl: 'nasza historia',
+        ru: 'обо мне',
+        en: 'About me',
+        pl: 'o mnie',
         de: 'unsere Geschichte'
     },
     projects: {
@@ -142,9 +142,9 @@ export const textMain: Trasnslate = {
 
 export const textOurStory: Trasnslate = {
     'project-block-title': {
-        ru: 'о нас',
-        en: 'About us',
-        pl: '',
+        ru: 'обо мне',
+        en: 'About me',
+        pl: 'O mnie',
         de: ''
     },
     'project-block-text': {

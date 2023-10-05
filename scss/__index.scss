@@ -10,9 +10,9 @@
 
         overflow: hidden;
 
-        padding-top: 75vh;
+        padding-top: 80vh;
 
-        background:#fff url('../img/index/main.jpg') 0 0 / cover no-repeat;
+        background:#fff url('../img/index/main.jpg') 0 0 / cover no-repeat; 
 
         @supports (background: url('../img/index/main.webp') 0 0 / cover no-repeat) {
             background-image: url('../img/index/main.webp');
@@ -39,18 +39,37 @@
 
         background-attachment:fixed;
     }
+    //.main-picture__text
     &__text {
         position: absolute;
-        top: 50%;
-        left: 50%;
+            top: 50%;
+            left: 50%;
 
         transform: translate(-50%, -50%);
 
-        @include text_streach (100, 150, #fff);
+        @include text_streach (100, 56, #fff, 700, 'Century Gothic');
 
-        & span {
-            color: red;
+        & span:nth-child(1) {
+            @include text_streach (70, 60, #f25917, 400);
+            position: relative;
+            left: -5%;
         }
+        & span:nth-child(2) {
+            @include text_streach (66, 40, #fff, 400, 'Century Gothic');
+            position: relative;
+            left: 0%;
+        }
+    }
+    //.main-picture__slogan
+    &__slogan {
+        position: absolute;
+        top: 70%;
+        left: 50%;
+        width: 95vw;
+        transform: translate(-50%, -50%);
+
+        @include text_streach (35, 20, #fff, 400, 'Century Gothic');
+        text-align: center;
     }
 }
 //= .title-main 
@@ -58,6 +77,7 @@
     @include text_streach (30, 23, #000, 600);
     text-align: center;
 }
+
 //= .fill 
 .fill {
     padding: 1000px 0px 0px 0px;
@@ -450,7 +470,7 @@
     }
     // .contacts-blank__icon
     &__icon {
-        width: 20px;
+        width: 25px;
         & img {
             object-fit: cover;
             width: 100%;
