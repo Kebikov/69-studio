@@ -3,13 +3,13 @@
 <html lang="en">
     <head> 
         <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="description" content="69.stidio">
-        <meta name="keywords" content="69.stidio">
-        <link rel="icon" type="image/png" href="../img/public/favicon.png">
-        <link rel="stylesheet" href="../css/style.css?v=1.6">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+        <meta name="description" content="69.stidio" >
+        <meta name="keywords" content="69.stidio" >
+        <link rel="icon" type="image/png" href="/img/public/favicon.png" >
+        <link rel="stylesheet" href="/css/style.css?v=1.6" >
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>69.stidio</title>
+        <title>69.stidio / project 2</title>
     </head>
     <body>
         <div class="wrapper unselect">
@@ -19,38 +19,65 @@
                     <nav class="menu">
                         <div class="menu__body container">
                             <!--: logo -->
-                            <div class="menu__logo">
-                                <img class="ar_120_43" src="/img/public/logo-full-150.png" alt="logo" >
-                            </div>
+                                          <a href="/" class="menu__logo">
+                                <img src="/img/public/logo-full.png" alt="logo" >
+                            </a>
 
                             <!--: select-language -->
                             <div class="select-language">
-
+                                <!--. ACTIVE -->
                                 <div class="select-active">
                                     <div class="select-active__body">
-                                        <img class="select-active__img" src="/img/flag/en.jpg" alt="">
-                                        <div class="select-active__text">english</div>
+                                        <img class="select-active__img" src="/img/flag/pl.jpg" alt="flag">
+                                        <div class="select-active__text">Polski</div>
                                     </div>
                                 </div>
-
+                                
+                                <!--. BODY -->
                                 <div class="select-language__body">
-                                        <!-- pl -->
+
+                                    <!--. English -->
                                     <div class="select-language__line">
                                         <label for="en" class="select-language__label">
-                                            <img src="/img/flag/en.jpg" alt="">
-                                            <span>english</span> 
+                                            <img src="/img/flag/en.jpg" alt="flag">
+                                            <span>English</span>
                                         </label>
                                         <input type="radio" name="language" id="en" value="en" class="select-language__input">
                                     </div>
-                                    <div class="gap-lang"></div>
-                                        <!-- pl -->
-                                    <div class="select-language__line">
+
+                                    <!-- <div class="gap-lang"></div> -->
+
+                                    <!--. Russia -->
+                                    <!-- <div class="select-language__line">
                                         <label for="ru" class="select-language__label">
-                                            <img src="/img/flag/ru.jpg" alt="">
-                                            <span>russia</span>
+                                            <img src="/img/flag/ru.jpg" alt="flag">
+                                            <span>Russia</span>
                                         </label>
                                         <input type="radio" name="language" id="ru" value="ru" class="select-language__input">
+                                    </div> -->
+
+                                    <div class="gap-lang"></div>
+
+                                    <!--. Polski -->
+                                    <div class="select-language__line">
+                                        <label for="pl" class="select-language__label">
+                                            <img src="/img/flag/pl.jpg" alt="flag">
+                                            <span>Polski</span>
+                                        </label>
+                                        <input type="radio" name="language" id="pl" value="pl" class="select-language__input">
                                     </div>
+
+                                    <!-- <div class="gap-lang"></div> -->
+
+                                    <!--. Deutsch -->
+                                    <!-- <div class="select-language__line">
+                                        <label for="de" class="select-language__label">
+                                            <img src="/img/flag/de.jpg" alt="flag">
+                                            <span>Deutsch</span>
+                                        </label>
+                                        <input type="radio" name="language" id="de" value="de" class="select-language__input">
+                                    </div> -->
+                                    
                                 </div>
                             </div>
                             
@@ -91,8 +118,8 @@
                 <div class="main-img-progect">
                     <div class="main-img-progect__body">
                         <picture>
-                            <source data-srcset="../img/project-1/1.webp" type="image/webp">
-                            <img class="lazy-img" data-src="../img/project-1/1.jpg" alt="my_alt">
+                            <source data-srcset="/img/index/2.webp" type="image/webp">
+                            <img class="lazy-img" data-src="/img/index/2.jpg" alt="my_alt">
                         </picture>
                     </div>
                 </div>
@@ -100,10 +127,12 @@
                 <!--: back-link -->
                 <div class="back-link">
                     <div class="back-link__body">
-                        <div class="back-link__title">Project no.2</div>
+                        <div class="back-link__title" data-translation="title" >DOM Z WIÓRA</div>
                         <div class="back-link__line"></div>
-                        <div class="back-link__text">I'm a paragraph. Click here to add your own text and edit me. It’s easy. Just click “Edit Text” or double click me to add your own content and make changes to the font. Feel free to drag and drop me anywhere you like on your page. I’m a great place for you to tell a story and let your users know a little more about you.<br/><br/>This is a great space to write long text about your company and your services. You can use this space to go into a little more detail about your company. Talk about your team and what services you provide. Tell your visitors the story of how you came up with the idea for your business and what makes you different from your competitors. Make your company stand out and show your visitors who you are.<br/><br/>At Wix we’re passionate about making templates that allow you to build fabulous websites and it’s all thanks to the support and feedback from users like you! Keep up to date with New Releases and what’s Coming Soon in Wixellaneous in Support. Feel free to tell us what you think.</div>
-                        <a href="javascript:history.back()" class="back-link__link" >Back to Projects page</a>
+                        <div class="back-link__text" data-translation="body" >Projekt powstał w 2012r. zakup działki w pagórkowatych, wiejskich terenach pod Krakowem zmobilizował do myślenia o ekologii i naturalnych materiałach jak ceramika, drewno, kamień, szkło. Dom realizowano metodą ,,gospodarczą ‘’, oraz eksperymentalną w związku z czym budowę ukończono w 2015r.<br/><br/>Ze względu na wilgotny klimat i położenie w dolinie, zachowano tradycyjną technologię ścian z bloczków ceramicznych i elementów stropów i podciągów z betonu. Ściany pokryto szkieletem drewnianym, wypełnionym wełną mineralną, jako pokrycie użyto ,,wiór osikowy’’. Podobnie zrealizowano dach, z większą ilością warstw drewna w celu zapewnienia maksymalnej szczelności. Ściany wewnątrz pokryte tynkiem gipsowym. Podłogę w części salonowej wykonano z użyciem materiału z własnego wykopu – czyli gliny. Tradycyjne klepisko powstało jednak z myślą o komforcie użytkowania. Zamontowano na całej powierzchni ogrzewanie podłogowe – wodne oraz pokryto ubitą warstwę ziemi pokostem lnianym na gorąco.<br/><br/>Kominek wraz z funkcjami towarzyszącymi umieszczono w centralnej części domu (,,serce domu’’). Do pokrycia ścian kominka użyto naturalnego kamienia pochodzącego z Tatr Słowackich. Schody wykonano jako drewniane ,,szuflady’’ oraz  zamontowano na konstrukcji stalowej przykręconej do ściany nośnej budynku. Prostota i funkcjonalność to motto idei wyposażenia i organizacji wnętrz. Ściany pokryte białą farbą , podłogi na piętrze z drewna, meble i wyposażenie minimalistyczne ale również nawiązujące do wiejskiego klimatu.</div>
+                        <div class="back-link__object" data-translation="object" >Obiekt zrealizowany</div>
+                        <div class="back-link__text" data-translation="option" >Lokalizacja: ul. Sarnia 8, Wysiołek Luborzycki k. Krakowa<br/>Pow. działki – 1 150m2<br/>Pow. użytkowa budynku – 327, 20m2<br/>Pow. całkowita – 512,00m2<br/>Kubatura – 1 576,56m3</div>
+                        <a href="javascript:history.back()" class="back-link__link" data-translation="back" >Powrót do strony Projektów</a>
                     </div>
                 </div>
 
@@ -181,9 +210,24 @@
 
             </main>
             <!--= footer -->
-            <footer class="footer" >
+               <footer class="footer" >
                 <div class="footer__body">
-                    <img src="../img/public/logo-full-white.png" alt="">
+                    <div class="footer__left">
+                        <div class="footer__phone">
+                            <a href="tel:+48501031774">tel. +48 501031774</a>
+                        </div>
+                    </div>
+                    <div class="footer__center">
+                        <img src="/img/public/logo-full.png" alt="logo" >
+                    </div>
+                    <div class="footer__right">
+                        <a href="https://www.instagram.com/savchenkokaty" target="_blank" class="footer__icon">
+                            <img src="/img/icon/instagram-white.png" alt="">
+                        </a>
+                        <a href="https://www.facebook.com/savchenkokaty1/" target="_blank" class="footer__icon">
+                            <img src="/img/icon/fb-white.png" alt="">
+                        </a>
+                    </div>
                 </div>
             </footer>
         </div>

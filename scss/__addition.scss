@@ -1,6 +1,11 @@
 @import '../scss/mixin.scss';
 @import '../scss/variables.scss';
 
+._container-without-padding {
+    max-width: 1000px;
+    width: 100%;
+}
+
 //* margin 
 .mt-50 {
     margin: 50px 0px 0px 0px;
@@ -103,3 +108,21 @@
 .ar_1_1 {
     aspect-ratio: 1 / 1;
 }
+
+//= Fonts 
+._font-weight-600 {
+    font-weight: 600;
+}
+
+//= object-position 
+._op_c-c {
+    object-position: center center;
+} 
+
+._op-r-c {
+    object-position: right center;
+} 
+
+._op_l-c {
+    object-position: left center;
+} 

@@ -2,19 +2,94 @@
 @import '../scss/variables.scss';
 
 
+
 .footer {
     background: #000;
-
     display: flex;
     justify-content: center;
-
     padding: 10px 0px 10px 0px;
     // .footer__body
     &__body {
-        width: 80px;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+
+        max-width: 1000px;
+        width: 100%;
+        height: 50px;
+
+        padding: 0px 20px 0px 20px;
+
+        @media (max-width: 1000px){
+
+            justify-content: center;
+            align-items: center;
+        }
+    }
+    &__left {
+        flex: 1  0 30%;
+        display: flex;
+        align-items: center;
+
+        @media (max-width: 1000px){
+            display: none;
+        }
+    }
+    //.footer__center
+    &__center {
+        flex: 1  0 40%;
+
+        display: flex;
+        justify-content: center;
+
+        height: 100%;
         & img {
             object-fit: cover;
-            width: 100%;
+            height: 100%;
+        }
+
+        @media (max-width: 1000px){
+            order: 1;
+            flex: 1  0 50%;
+            justify-content: flex-start;
+
+            height: 60px;
+
+            padding: 10px 0px;
+
+            & img {
+                object-fit: cover;
+                height: 100%;
+            }
+        }
+    }
+
+    &__right {
+        flex: 1  0 30%;
+
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        gap: 10px;
+
+        @media (max-width: 1000px){
+            order: 3;
+            flex: 1  0 50%;
+        }
+    }
+    &__icon {
+        height: 30px;
+        & img {
+            object-fit: cover;
+            height: 100%;
+
+            opacity: .8;
+        }
+    }
+    &__phone {
+        & a {
+            @include text_streach (17, 15, #fff, 400);
+            opacity: .8;
         }
     }
 }

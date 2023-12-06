@@ -10,6 +10,7 @@ const lazyLoading = () => {
 
             entryAll.forEach((item) => {
                 if(item.isIntersecting){
+                    console.log(item.target);
                     let itemTarget = item.target as HTMLImageElement;
                     let parent = itemTarget.parentElement as HTMLDivElement;
                     let sourceAll = parent.querySelectorAll('source') as NodeListOf<HTMLSourceElement>;
@@ -26,12 +27,16 @@ const lazyLoading = () => {
         },{
             //тут пишем при необходимости опции
             //root:,
-            rootMargin: '250px',
+            rootMargin: '100px',
             threshold: 0,
         });
 
         const imgElAll = document.querySelectorAll('.lazy-img');
-        imgElAll.forEach((item) => imgObserver.observe(item));
+        console.log(imgElAll.length);
+        if(imgElAll.length > 0) {
+            imgElAll.forEach((item) => imgObserver.observe(item));
+        }
+        
     }catch(error){
         console.log('Error in function lazyLoading >>> ', error);
     }

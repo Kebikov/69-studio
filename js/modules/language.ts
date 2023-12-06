@@ -1,4 +1,17 @@
-import { textMenu,  textMain, textOurStory, Trasnslate} from "./textLanguage";
+import { textMain, Trasnslate, TranslationObject} from "../translation/textIndex";
+import { textMenu } from "../translation/textMenu";
+import { textPublic } from "../translation/public";
+import { textOurStory } from "../translation/textOurStory";
+
+import { textProjects } from "../translation/projects";
+import { textProject1 } from "../translation/project-1";
+import { textProject2 } from "../translation/project-2";
+import { textProject3 } from "../translation/project-3";
+import { textProject4 } from "../translation/project-4";
+import { textProject5 } from "../translation/project-5";
+import { textProject6 } from "../translation/project-6";
+import { textProject7 } from "../translation/project-7";
+
 
 /**
  * Функция установки определения и установки языка в localStorage.
@@ -125,6 +138,7 @@ function setMenu(language: string): void {
      * Массив элементов меню с атрабутом "data-menu".
      */
     const menuLinks = document.querySelectorAll('[data-menu]') as NodeListOf<HTMLInputElement>;
+    const elementsPublic = document.querySelectorAll('[data-public]') as NodeListOf<HTMLInputElement>;
     
     menuLinks.forEach(link => {
         if(link.dataset.menu) {
@@ -137,6 +151,16 @@ function setMenu(language: string): void {
             }
         }
     });
+
+    elementsPublic.forEach(link => {
+        if(link.dataset.public) {
+            const data: string = link.dataset.public;
+
+            if(data && textPublic[data] && textPublic[data][language]) {
+                link.textContent = textPublic[data][language];
+            }
+        }
+    });
 }
 
 //* изминение текста на странице
@@ -145,16 +169,23 @@ function setTextPage(language: string) {
 
     const elementsText = document.querySelectorAll('[data-translation]') as NodeListOf<HTMLDivElement>;
 
-    let textForPage: Trasnslate = {};
-
-    switch(path) {
-        case '/':
-            textForPage = textMain;
-            break;
-        case '/our-story/':
-            textForPage = textOurStory;
-            break;
+    const changeTranslation = (path: string) => {
+        const translation: TranslationObject = {
+            '/': textMain,
+            '/our-story/': textOurStory,
+            '/projects/': textProjects,
+            '/project-1/': textProject1,
+            '/project-2/': textProject2,
+            '/project-3/': textProject3,
+            '/project-4/': textProject4,
+            '/project-5/': textProject5,
+            '/project-6/': textProject6,
+            '/project-7/': textProject7,
+        }
+        return translation[path];
     }
+
+    let textForPage: Trasnslate = changeTranslation(path);
 
     elementsText.forEach(element => {
         if(element.dataset.translation) {

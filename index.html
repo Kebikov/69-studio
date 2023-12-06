@@ -6,8 +6,8 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="description" content="69.stidio">
         <meta name="keywords" content="69.stidio">
-        <link rel="icon" type="image/png" href="img/public/favicon.png">
-        <link rel="stylesheet" href="./css/style.css?v=1.6">
+        <link rel="icon" type="image/png" href="/img/public/favicon.png">
+        <link rel="stylesheet" href="/css/style.css?v=1.6">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>69.stidio</title>
     </head>
@@ -17,64 +17,12 @@
             <heder class="header">
                 <div class="header__body">
                     <nav class="menu">
-                        <div class="menu__body container">
+                        <div class="menu__body _container-without-padding">
                             <!--: logo -->
-                            <div class="menu__logo">
-                                <img class="ar_120_43" src="/img/public/logo-full-150.png" alt="logo" >
-                            </div>
+                            <a href="/" class="menu__logo">
+                                <img src="/img/public/logo-full.png" alt="logo" >
+                            </a>
 
-                            <!--: select-language -->
-                            <div class="select-language">
-
-                                <div class="select-active">
-                                    <div class="select-active__body">
-                                        <img class="select-active__img" src="/img/flag/en.jpg" alt="flag">
-                                        <div class="select-active__text">English</div>
-                                    </div>
-                                </div>
-
-                                <div class="select-language__body">
-                                        <!-- en -->
-                                    <div class="select-language__line">
-                                        <label for="en" class="select-language__label">
-                                            <img src="/img/flag/en.jpg" alt="flag">
-                                            <span>English</span> 
-                                        </label>
-                                        <input type="radio" name="language" id="en" value="en" class="select-language__input">
-                                    </div>
-
-                                    <div class="gap-lang"></div>
-                                        <!-- ru -->
-                                    <div class="select-language__line">
-                                        <label for="ru" class="select-language__label">
-                                            <img src="/img/flag/ru.jpg" alt="flag">
-                                            <span>Russia</span>
-                                        </label>
-                                        <input type="radio" name="language" id="ru" value="ru" class="select-language__input">
-                                    </div>
-
-                                    <div class="gap-lang"></div>
-                                        <!-- pl -->
-                                    <div class="select-language__line">
-                                        <label for="pl" class="select-language__label">
-                                            <img src="/img/flag/pl.jpg" alt="flag">
-                                            <span>Polski</span>
-                                        </label>
-                                        <input type="radio" name="language" id="pl" value="pl" class="select-language__input">
-                                    </div>
-
-                                    <div class="gap-lang"></div>
-                                        <!-- de -->
-                                    <div class="select-language__line">
-                                        <label for="de" class="select-language__label">
-                                            <img src="/img/flag/de.jpg" alt="flag">
-                                            <span>Deutsch</span>
-                                        </label>
-                                        <input type="radio" name="language" id="de" value="de" class="select-language__input">
-                                    </div>
-                                </div>
-                            </div>
-                            
                             <!--: бургер меню -->
                             <div class="burger">
                                 <div class="burger__body">
@@ -100,6 +48,65 @@
                                     <a href="/contacts" class="menu__link" data-menu="contacts" >contacts</a>
                                 </li>
                             </ul>
+
+                            <!--: select-language -->
+                            <div class="select-language">
+                                <!--. ACTIVE -->
+                                <div class="select-active">
+                                    <div class="select-active__body">
+                                        <img class="select-active__img" src="/img/flag/pl.jpg" alt="flag">
+                                        <div class="select-active__text">Polski</div>
+                                    </div>
+                                </div>
+                                
+                                <!--. BODY -->
+                                <div class="select-language__body">
+
+                                    <!--. English -->
+                                    <div class="select-language__line">
+                                        <label for="en" class="select-language__label">
+                                            <img src="/img/flag/en.jpg" alt="flag">
+                                            <span>English</span>
+                                        </label>
+                                        <input type="radio" name="language" id="en" value="en" class="select-language__input">
+                                    </div>
+
+                                    <!-- <div class="gap-lang"></div> -->
+
+                                    <!--. Russia -->
+                                    <!-- <div class="select-language__line">
+                                        <label for="ru" class="select-language__label">
+                                            <img src="/img/flag/ru.jpg" alt="flag">
+                                            <span>Russia</span>
+                                        </label>
+                                        <input type="radio" name="language" id="ru" value="ru" class="select-language__input">
+                                    </div> -->
+
+                                    <div class="gap-lang"></div>
+
+                                    <!--. Polski -->
+                                    <div class="select-language__line">
+                                        <label for="pl" class="select-language__label">
+                                            <img src="/img/flag/pl.jpg" alt="flag">
+                                            <span>Polski</span>
+                                        </label>
+                                        <input type="radio" name="language" id="pl" value="pl" class="select-language__input">
+                                    </div>
+
+                                    <!-- <div class="gap-lang"></div> -->
+
+                                    <!--. Deutsch -->
+                                    <!-- <div class="select-language__line">
+                                        <label for="de" class="select-language__label">
+                                            <img src="/img/flag/de.jpg" alt="flag">
+                                            <span>Deutsch</span>
+                                        </label>
+                                        <input type="radio" name="language" id="de" value="de" class="select-language__input">
+                                    </div> -->
+                                    
+                                </div>
+                            </div>
+                            
                         </div>
                     </nav>
                     <div class="menu-fill"></div>
@@ -110,34 +117,37 @@
                 <!--: main-picture -->
                 <div class="main-picture">
                     <div class="main-picture__body">
-                        <div class="main-picture__text">69<span>.</span></div>
+                        <div class="main-picture__text" >69<span id="dot" >.</span><span id="studio" >studio</span></div>
+                        <div class="main-picture__slogan">,,Architekci do spraw pozornie nierealnych, koncepcje, projekty, management, realizacja''</div>
                     </div>
                 </div>
                 <!--: title -->
-                <div class="title-main ptb-10 mt-50" data-translation="main title" >Our Featured Projects.</div>
-                <!--: project_1-2 -->
+                <div class="title-main ptb-10 mt-50" data-translation="main title" >Nasze polecane projekty.</div>
+                <!--: project 1-2 -->
                 <div class="project-one">
                     <div class="project-one__body container">
+                        <!--. project 1 -->
                         <div class="project-one__left">
                             <div class="project-block-text m_0_30_-100_50">
-                                <div class="project-block-text__body">
-                                    <div class="project-block-text__title" data-translation="title project no.1" >Project no.1</div>
+                                <a href="./project-1/" class="project-block-text__body">
+                                    <div class="project-block-text__title" data-translation="title project-1" >BUDYNEK BIUROWY ,,TECHMAR’’ W KIELCACH</div>
                                     <div class="project-block-text__line"></div>
-                                    <div class="project-block-text__text" data-translation="text project no.1" >
+                                    <div class="project-block-text__text" data-translation="text project-1" >
                                         I'm a paragraph. Click here to add your own text and edit me. Let your users get to know you.
                                     </div>
                                     <div class="project-block-text__arrow">
-                                        <img class="ar_128_32" src="../img/icon/arrow.png" alt="arrow img">
+                                        <img class="ar_128_32" src="/img/icon/arrow.png" alt="arrow img">
                                     </div>
-                                </div>
+                                </a>
                             </div>
                             <a href="./project-1/" class="project-one__img">
                                 <picture>
-                                    <source data-srcset="img/index/1.webp" type="image/webp">
-                                    <img class="lazy-img" data-src="img/index/1.jpg" alt="my_alt">
+                                    <source data-srcset="img/index/main.webp" type="image/webp">
+                                    <img class="lazy-img" data-src="img/index/main.jpg" alt="my_alt">
                                 </picture>
                             </a>
                         </div>
+                        <!--. project 2 -->
                         <div class="project-one__right">
                             <a href="./project-2/" class="project-one__img">
                                 <picture>
@@ -146,21 +156,21 @@
                                 </picture>
                             </a>
                             <div class="project-block-text m_-100_50_0_30">
-                                <div class="project-block-text__body">
-                                    <div class="project-block-text__title" data-translation="title project no.2" >Project no.2</div>
+                                <a href="./project-2/" class="project-block-text__body">
+                                    <div class="project-block-text__title" data-translation="title project-2" >DOM Z WIÓRA</div>
                                     <div class="project-block-text__line"></div>
-                                    <div class="project-block-text__text" data-translation="text project no.2" >
+                                    <div class="project-block-text__text" data-translation="text project-2" >
                                         I'm a paragraph. Click here to add your own text and edit me. Let your users get to know you.
                                     </div>
                                     <div class="project-block-text__arrow">
                                         <img class="ar_128_32" src="../img/icon/arrow.png" alt="arrow img">
                                     </div>
-                                </div>
+                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!--: project_3 -->
+                <!--: project 3 -->
                 <div class="project-3">
                     <div class="project-3__body container">
                         <a href="./project-3/" class="project-3__img">
@@ -170,29 +180,29 @@
                             </picture>
                         </a>
                         <div class="project-block-text-3">
-                            <div class="project-block-text-3__body">
-                                <div class="project-block-text-3__title" data-translation="title project no.3" >Project no.3</div>
+                            <a href="./project-3/" class="project-block-text-3__body">
+                                <div class="project-block-text-3__title" data-translation="title project-3" >DOM Z BETONU</div>
                                 <div class="project-block-text-3__line"></div>
-                                <div class="project-block-text-3__text" data-translation="text project no.3" >I'm a paragraph. Click here to add your own text and edit me. It’s easy. Just click “Edit Text” or double click me to add your own content and make changes to the font. Feel free to drag and drop me anywhere you like on your page. I’m a great place for you to tell a story and let your users know a little more about you.<br/><br/>This is a great space to write long text about your company and your services. You can use this space to go into a little more detail about your company. Talk about your team and what services you provide. Tell your visitors the story of how you came up with the idea for your business and what makes you different from your competitors. Make your company stand out and show your visitors who you are.</div>
+                                <div class="project-block-text-3__text" data-translation="text project-3" >I'm a paragraph. Click here to add your own text and edit me. It’s easy. Just click “Edit Text” or double click me to add your own content and make changes to the font. Feel free to drag and drop me anywhere you like on your page. I’m a great place for you to tell a story and let your users know a little more about you.<br/><br/>This is a great space to write long text about your company and your services. You can use this space to go into a little more detail about your company. Talk about your team and what services you provide. Tell your visitors the story of how you came up with the idea for your business and what makes you different from your competitors. Make your company stand out and show your visitors who you are.</div>
                                 <div class="project-block-text-3__arrow">
                                     <img class="ar_128_32" src="./img/icon/arrow.png" alt="arrow img">
                                 </div>
-                            </div>
+                            </a>
                         </div>
                     </div>
                 </div>
-                <!--: project_4 -->
+                <!--: project 4 -->
                 <div class="project-4">
                     <div class="project-4__body container">
                         <div class="project-block-text m_300_350">
-                            <div class="project-block-text__body">
-                                <div class="project-block-text__title" data-translation="title project no.4" >Project no.4</div>
+                            <a href="./project-4/" class="project-block-text__body">
+                                <div class="project-block-text__title" data-translation="title project-4" >ZOREN-SLICZNA, BUDYNEK MIESZKALNY-WIELORODZINNY</div>
                                 <div class="project-block-text__line"></div>
-                                <div class="project-block-text__text" data-translation="text project no.4" >I'm a paragraph. Click here to add your own text and edit me. It’s easy. Just click “Edit Text” or double click me to add your own content and make changes to the font. Feel free to drag and drop me anywhere you like on your page. I’m a great place for you to tell a story and let your users know a little more about you.<br/><br/>This is a great space to write long text about your company and your services. You can use this space to go into a little more detail about your company. Talk about your team and what services you provide. Tell your visitors the story of how you came up with the idea for your business and what makes you different from your competitors. Make your company stand out and show your visitors who you are.</div>
+                                <div class="project-block-text__text" data-translation="text project-4" >I'm a paragraph. Click here to add your own text and edit me. It’s easy. Just click “Edit Text” or double click me to add your own content and make changes to the font. Feel free to drag and drop me anywhere you like on your page. I’m a great place for you to tell a story and let your users know a little more about you.<br/><br/>This is a great space to write long text about your company and your services. You can use this space to go into a little more detail about your company. Talk about your team and what services you provide. Tell your visitors the story of how you came up with the idea for your business and what makes you different from your competitors. Make your company stand out and show your visitors who you are.</div>
                                 <div class="project-block-text__arrow">
                                     <img class="ar_128_32" src="../img/icon/arrow.png" alt="arrow img">
                                 </div>
-                            </div>
+                            </a>
                         </div>
                         <a href="./project-4/" class="project-4__img">
                             <picture>
@@ -202,7 +212,7 @@
                         </a>
                     </div>
                 </div>
-                <!--: project_5 -->
+                <!--: project 5 -->
                 <div class="project-5">
                     <div class="project-5__body container">
                         <a href="./project-5/" class="project-5__img">
@@ -212,27 +222,74 @@
                             </picture>
                         </a>
                         <div class="project-block-text mp5">
-                            <div class="project-block-text__body">
-                                <div class="project-block-text__title" data-translation="title project no.5" >Project no.5</div>
+                            <a href="./project-5/" class="project-block-text__body">
+                                <div class="project-block-text__title" data-translation="title project-5" >BRZYCZYNA, OSIEDLE DOMÓW</div>
                                 <div class="project-block-text__line"></div>
-                                <div class="project-block-text__text" data-translation="text project no.5" >I'm a paragraph. Click here to add your own text and edit me. It’s easy. Just click “Edit Text” or double click me to add your own content and make changes to the font.</div>
+                                <div class="project-block-text__text" data-translation="text project-5" >I'm a paragraph. Click here to add your own text and edit me. It’s easy. Just click “Edit Text” or double click me to add your own content and make changes to the font.</div>
                                 <div class="project-block-text__arrow">
                                     <img class="ar_128_32" src="../img/icon/arrow.png" alt="arrow img">
                                 </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!--: project 6-7 -->
+                <div class="project-one">
+                    <div class="project-one__body container">
+                        <!--. project 6 -->
+                        <div class="project-one__left">
+                            <div class="project-block-text m_0_30_-100_50">
+                                <a href="./project-6/" class="project-block-text__body">
+                                    <div class="project-block-text__title" data-translation="title project-6" >KLINY - BUDYNEK MIESZKALNY-WIELORODZINNY</div>
+                                    <div class="project-block-text__line"></div>
+                                    <div class="project-block-text__text" data-translation="text project-6" >
+                                        I'm a paragraph. Click here to add your own text and edit me. Let your users get to know you.
+                                    </div>
+                                    <div class="project-block-text__arrow">
+                                        <img class="ar_128_32" src="../img/icon/arrow.png" alt="arrow img">
+                                    </div>
+                                </a>
+                            </div>
+                            <a href="./project-6/" class="project-one__img">
+                                <picture>
+                                    <source data-srcset="img/index/6.webp" type="image/webp">
+                                    <img class="lazy-img" data-src="img/index/6.jpg" alt="my_alt">
+                                </picture>
+                            </a>
+                        </div>
+                        <!--. project 7 -->
+                        <div class="project-one__right">
+                            <a href="./project-7/" class="project-one__img">
+                                <picture>
+                                    <source data-srcset="img/index/7.webp" type="image/webp">
+                                    <img class="lazy-img _op-r-c" data-src="img/index/7.jpg" alt="my_alt">
+                                </picture>
+                            </a>
+                            <div class="project-block-text m_-100_50_0_30">
+                                <a href="./project-7/" class="project-block-text__body">
+                                    <div class="project-block-text__title" data-translation="title project-7" >TARNÓW – RESTAURACJA NA WZGÓRZU ZGŁOBICE</div>
+                                    <div class="project-block-text__line"></div>
+                                    <div class="project-block-text__text" data-translation="text project-7" >
+                                        I'm a paragraph. Click here to add your own text and edit me. Let your users get to know you.
+                                    </div>
+                                    <div class="project-block-text__arrow">
+                                        <img class="ar_128_32" src="../img/icon/arrow.png" alt="arrow img">
+                                    </div>
+                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="tab"></div>
                 <!--: title -->
-                <div class="title-main mt-75" data-translation="title contacts" >Stay In Touch.</div>
+                <div class="title-main mt-75" data-translation="title contacts" >Pozostać W Kontakcie.</div>
                 <!--: contacts -->
                 <div class="contacts-main">
                     <div class="contacts-main__body container">
                         <div class="contacts-main__img">
                             <picture>
-                                <source data-srcset="img/index/6.webp" type="image/webp">
-                                <img class="lazy-img" data-src="img/index/6.jpg" alt="my_alt">
+                                <source data-srcset="img/index/7.webp" type="image/webp">
+                                <img class="lazy-img" data-src="img/index/7.jpg" alt="my_alt">
                             </picture>
                         </div>
 
@@ -243,10 +300,10 @@
                                 <div class="contacts-blank__adress" data-translation="adress street" >500 Terry Francine Street<br/>San Francisco, CA 94158</div>
                                 <div class="contacts-blank__email">info@mysite.com</div>
                                 <div class="contacts-blank__phone" ><span data-translation="phone" >Tel:</span> 123-456-7890</div>
-                                <div class="contacts-blank__fax" ><span data-translation="fax" >Fax:</span> 123-456-7890</div>
+                                <div class="contacts-blank__fax" ><span data-translation="fax" >Faks:</span> 123-456-7890</div>
                                 <div class="contacts-blank__social">
                                     <div class="contacts-blank__icon">
-                                        <img src="img/icon/twiter.png" alt="">
+                                        <img src="img/icon/fb.png" alt="">
                                     </div>
                                     <div class="contacts-blank__icon">
                                         <img src="img/icon/instagram.png" alt="">
@@ -263,7 +320,7 @@
                         <div class="back-to-top__img">
                             <img src="img/icon/arrow-up.png" alt="arrow">
                         </div>
-                        <div class="back-to-top__text" data-translation="back to top" >Back to top</div>
+                        <div class="back-to-top__text" data-public="back to top" >Powrót do góry</div>
                     </div>
                     <div class="back-to-top__img-mobile">
                         <img src="img/icon/arrow-mobile.png" alt="arrow">
@@ -274,7 +331,22 @@
             <!--= footer -->
             <footer class="footer" >
                 <div class="footer__body">
-                    <img class="ar_120_43" src="./img/public/logo-full-white.png" alt="logo" >
+                    <div class="footer__left">
+                        <div class="footer__phone">
+                            <a href="tel:+48501031774">tel. +48 501031774</a>
+                        </div>
+                    </div>
+                    <div class="footer__center">
+                        <img src="/img/public/logo-full.png" alt="logo" >
+                    </div>
+                    <div class="footer__right">
+                        <a href="https://www.instagram.com/savchenkokaty" target="_blank" class="footer__icon">
+                            <img src="/img/icon/instagram-white.png" alt="">
+                        </a>
+                        <a href="https://www.facebook.com/savchenkokaty1/" target="_blank" class="footer__icon">
+                            <img src="/img/icon/fb-white.png" alt="">
+                        </a>
+                    </div>
                 </div>
             </footer>
         </div>

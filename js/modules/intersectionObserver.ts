@@ -42,6 +42,7 @@ function addAndRemoveArrayClass(arrClassAlso: Array<string>, classPlussAlso: str
         if(Array.isArray(arrClassAlso) && arrClassAlso.length > 0 && classPlussAlso) {
             arrClassAlso.forEach(item => {
                 const element = document.querySelector(`.${item}`) as HTMLDivElement;
+                if(!element) return;
                 if(isAddClass) {
                     element.classList.add(`${classPlussAlso}`);
                 }else{

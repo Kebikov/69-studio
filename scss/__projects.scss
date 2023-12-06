@@ -78,6 +78,7 @@
                 transform: translate(-50%, -50%);
     
                 @include text_streach (16, 13, #000, 600);
+                text-align: center;
             }
         }
     }
@@ -134,6 +135,9 @@
     &__title {
         @include text_streach (18, 16, #000, 300);
     }
+    &__object {
+        @include text_streach (15, 13, #000, 500);
+    }
     // .back-link__line
     &__line {
         margin: 25px 0px 0px 0px;
@@ -145,7 +149,7 @@
     &__text {
         margin: 25px 0px 40px 0px;
 
-        @include text_streach (14, 12, #000, 300);
+        @include text_streach (15, 13, #000, 300);
         line-height: 140%;
 
         @media (max-width: 1000px){
@@ -202,14 +206,15 @@
     }
 
     // .gallery__img
-
     &__img {
         position: relative;
 
         width: 100%;
         & img {
-            object-fit: cover;
             width: 100%;
+            //aspect-ratio: 2 / 3;
+
+            object-fit: cover;
         }
         &:hover .gallery__text {
             display: block;

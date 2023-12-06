@@ -78,6 +78,8 @@ function addAndRemoveArrayClass(arrClassAlso, classPlussAlso, isAddClass) {
         if (Array.isArray(arrClassAlso) && arrClassAlso.length > 0 && classPlussAlso) {
             arrClassAlso.forEach(function (item) {
                 var element = document.querySelector(".".concat(item));
+                if (!element)
+                    return;
                 if (isAddClass) {
                     element.classList.add("".concat(classPlussAlso));
                 }
@@ -220,14 +222,23 @@ function setMenu(language) {
      * Массив элементов меню с атрабутом "data-menu".
      */
     var menuLinks = document.querySelectorAll('[data-menu]');
+    var elementsPublic = document.querySelectorAll('[data-public]');
     menuLinks.forEach(function (link) {
         if (link.dataset.menu) {
             /**
              * Отображаемый текст меню (home, our story...).
              */
             var data = link.dataset.menu;
-            if (data && textLanguage_1.textMenu[data] && textLanguage_1.textMenu[data][language]) {
-                link.textContent = textLanguage_1.textMenu[data][language];
+            if (data && textMenu_1.textMenu[data] && textMenu_1.textMenu[data][language]) {
+                link.textContent = textMenu_1.textMenu[data][language];
+            }
+        }
+    });
+    elementsPublic.forEach(function (link) {
+        if (link.dataset.public) {
+            var data = link.dataset.public;
+            if (data && public_1.textPublic[data] && public_1.textPublic[data][language]) {
+                link.textContent = public_1.textPublic[data][language];
             }
         }
     });
@@ -236,15 +247,22 @@ function setMenu(language) {
 function setTextPage(language) {
     var path = window.location.pathname;
     var elementsText = document.querySelectorAll('[data-translation]');
-    var textForPage = {};
-    switch (path) {
-        case '/':
-            textForPage = textLanguage_1.textMain;
-            break;
-        case '/our-story/':
-            textForPage = textLanguage_1.textOurStory;
-            break;
-    }
+    var changeTranslation = function (path) {
+        var translation = {
+            '/': textIndex_1.textMain,
+            '/our-story/': textOurStory_1.textOurStory,
+            '/projects/': projects_1.textProjects,
+            '/project-1/': project_1_1.textProject1,
+            '/project-2/': project_2_1.textProject2,
+            '/project-3/': project_3_1.textProject3,
+            '/project-4/': project_4_1.textProject4,
+            '/project-5/': project_5_1.textProject5,
+            '/project-6/': project_6_1.textProject6,
+            '/project-7/': project_7_1.textProject7,
+        };
+        return translation[path];
+    };
+    var textForPage = changeTranslation(path);
     elementsText.forEach(function (element) {
         if (element.dataset.translation) {
             var data = element.dataset.translation;
@@ -277,6 +295,7 @@ var lazyLoading = function () {
         var imgObserver_1 = new IntersectionObserver(function (entryAll, observer) {
             entryAll.forEach(function (item) {
                 if (item.isIntersecting) {
+                    console.log(item.target);
                     var itemTarget = item.target;
                     var parent_1 = itemTarget.parentElement;
                     var sourceAll = parent_1.querySelectorAll('source');
@@ -291,11 +310,14 @@ var lazyLoading = function () {
         }, {
             //тут пишем при необходимости опции
             //root:,
-            rootMargin: '250px',
+            rootMargin: '100px',
             threshold: 0,
         });
         var imgElAll = document.querySelectorAll('.lazy-img');
-        imgElAll.forEach(function (item) { return imgObserver_1.observe(item); });
+        console.log(imgElAll.length);
+        if (imgElAll.length > 0) {
+            imgElAll.forEach(function (item) { return imgObserver_1.observe(item); });
+        }
     }
     catch (error) {
         console.log('Error in function lazyLoading >>> ', error);
@@ -370,14 +392,20 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.numberScroll = void 0;
 //= numberScroll
 var numberScroll = function () {
-    function scroll69(text69, text69Size) {
-        text69.style.fontSize = "".concat(text69Size - window.scrollY / 2, "px");
-    }
     try {
         var text69_1 = document.querySelector('.main-picture__text');
-        if (text69_1) {
+        var studio_1 = document.querySelector('#studio');
+        var dot_1 = document.querySelector('#dot');
+        if (text69_1 && studio_1 && dot_1) {
             var text69Size_1 = parseInt(window.getComputedStyle(text69_1).getPropertyValue('font-size'));
-            window.addEventListener('scroll', function () { return scroll69(text69_1, text69Size_1); });
+            var studioSize_1 = parseInt(window.getComputedStyle(studio_1).getPropertyValue('font-size'));
+            var dotSize_1 = parseInt(window.getComputedStyle(dot_1).getPropertyValue('font-size'));
+            var scroll69 = function () {
+                text69_1.style.fontSize = "".concat(text69Size_1 - window.scrollY / 2, "px");
+                studio_1.style.fontSize = "".concat(studioSize_1 - window.scrollY / 2, "px");
+                dot_1.style.fontSize = "".concat(dotSize_1 - window.scrollY / 2, "px");
+            };
+            window.addEventListener('scroll', scroll69);
         }
     }
     catch (error) {
@@ -389,6 +417,7 @@ exports.numberScroll = numberScroll;
 
 /***/ }),
 
+<<<<<<< HEAD
 /***/ "./js/modules/textLanguage.ts":
 /*!************************************!*\
   !*** ./js/modules/textLanguage.ts ***!
@@ -581,6 +610,8 @@ exports.textOurStory = {
 
 /***/ }),
 
+=======
+>>>>>>> f957acc9efd5dda1268a9ac6adb8a413f1c1a03d
 /***/ "./js/script.ts":
 /*!**********************!*\
   !*** ./js/script.ts ***!
@@ -605,6 +636,651 @@ window.addEventListener('DOMContentLoaded', function () {
     (0, lazyLoading_1.default)();
     (0, language_1.default)();
 });
+
+
+/***/ }),
+
+/***/ "./js/translation/project-1.ts":
+/*!*************************************!*\
+  !*** ./js/translation/project-1.ts ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.textProject1 = void 0;
+var textIndex_1 = __webpack_require__(/*! ./textIndex */ "./js/translation/textIndex.ts");
+exports.textProject1 = {
+    'title': {
+        pl: 'BUDYNEK BIUROWY "TECHMAR" W KIELCACH',
+        en: '"TECHMAR" OFFICE BUILDING IN KIELCE',
+        ru: textIndex_1.sorry,
+        de: textIndex_1.sorry
+    },
+    'body': {
+        pl: 'Projekt i wygląd aktualny biura to rodzaj metamorfozy po adaptacji istniejącego budynku, termomodernizacji, wymianie instalacji i adaptacji wnętrz na nowoczesny budynek biurowy z gabinetami prezesów, recepcją, salą konferencyjną, zapleczem sanitarnym.<br/><br/>Idea budynku to korespondencja trzech brył funkcjonalnie zróżnicowanych, stąd pomysł na ich kolorystyczną separację. Część biała mieści funkcję sklepu z materiałami budowlanymi, farbami, narzędziami. Część czarna to biura zarządu, pomieszczenia pracowników, recepcja, sala konferencyjna i toalety. Betonowy element na górnej kondygnacji mieści taras i otwarte foyear do rozmów i wypoczynku przy kawie z widokiem na okolicę.<br/><br/>Wszystkie części budynku połączone komunikacyjnie z pomieszczenia holu głównego przy recepcji , na górną kondygnację prowadzą otwarte, przestrzenne , industrialne schody o konstrukcji stalowej pokrytej czarną farbą.',
+        en: 'The current design and appearance of the office is a kind of metamorphosis after the adaptation of the existing building, thermal modernization, replacement of installations and interior adaptation to a modern office building with offices of presidents, reception, conference room, sanitary facilities.The idea of the building is a correspondence of three functionally diverse blocks, hence the idea for their color separation. The white part houses the function of a shop with building materials, paints and tools.<br/><br/>The black part is the management offices, staff rooms, reception, conference room and toilets. The concrete element on the upper storey houses a terrace and an open foyear for chatting and relaxing over a coffee overlooking the countryside. All parts of the building are connected by communication from the main hall at the reception, to the upper floor there are open, spacious, industrial stairs with a steel structure covered with black paint.',
+        ru: textIndex_1.sorry,
+        de: textIndex_1.sorry
+    },
+    'object': {
+        pl: 'Powrót do strony Projektów',
+        en: 'Object completed',
+        ru: textIndex_1.sorry,
+        de: textIndex_1.sorry,
+    },
+    'option': {
+        pl: 'Lokalizacja: ul. Witosa, Kielce<br/>Pow. działki – 2 219,87m2<br/>Pow. użytkowa budynku – 793, 00m2<br/>Pow. całkowita – 844,37m2',
+        en: 'Location: ul. Witosa, Kielce<br/>area plots – 2 219,87 m2<br/>area usable area of the building – 793,00 m2<br/>area total – 844,37 m2<br/>Volume – 3 013,40 m3',
+        ru: textIndex_1.sorry,
+        de: textIndex_1.sorry,
+    },
+    'back': {
+        pl: 'Powrót do strony Projektów',
+        en: 'Back to Projects page',
+        ru: textIndex_1.sorry,
+        de: textIndex_1.sorry
+    }
+};
+
+
+/***/ }),
+
+/***/ "./js/translation/project-2.ts":
+/*!*************************************!*\
+  !*** ./js/translation/project-2.ts ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.textProject2 = void 0;
+var textIndex_1 = __webpack_require__(/*! ./textIndex */ "./js/translation/textIndex.ts");
+exports.textProject2 = {
+    'title': {
+        pl: 'DOM Z WIÓRA',
+        en: 'CHIP HOUSE',
+        ru: textIndex_1.sorry,
+        de: textIndex_1.sorry
+    },
+    'body': {
+        pl: 'Projekt powstał w 2012r. zakup działki w pagórkowatych, wiejskich terenach pod Krakowem zmobilizował do myślenia o ekologii i naturalnych materiałach jak ceramika, drewno, kamień, szkło. Dom realizowano metodą ,,gospodarczą ‘’, oraz eksperymentalną w związku z czym budowę ukończono w 2015r.<br/><br/>Ze względu na wilgotny klimat i położenie w dolinie, zachowano tradycyjną technologię ścian z bloczków ceramicznych i elementów stropów i podciągów z betonu. Ściany pokryto szkieletem drewnianym, wypełnionym wełną mineralną, jako pokrycie użyto ,,wiór osikowy’’. Podobnie zrealizowano dach, z większą ilością warstw drewna w celu zapewnienia maksymalnej szczelności. Ściany wewnątrz pokryte tynkiem gipsowym. Podłogę w części salonowej wykonano z użyciem materiału z własnego wykopu – czyli gliny. Tradycyjne klepisko powstało jednak z myślą o komforcie użytkowania. Zamontowano na całej powierzchni ogrzewanie podłogowe – wodne oraz pokryto ubitą warstwę ziemi pokostem lnianym na gorąco.<br/><br/>Kominek wraz z funkcjami towarzyszącymi umieszczono w centralnej części domu (,,serce domu’’). Do pokrycia ścian kominka użyto naturalnego kamienia pochodzącego z Tatr Słowackich. Schody wykonano jako drewniane ,,szuflady’’ oraz  zamontowano na konstrukcji stalowej przykręconej do ściany nośnej budynku. Prostota i funkcjonalność to motto idei wyposażenia i organizacji wnętrz. Ściany pokryte białą farbą , podłogi na piętrze z drewna, meble i wyposażenie minimalistyczne ale również nawiązujące do wiejskiego klimatu.',
+        en: 'The project was created in 2012. the purchase of a plot of land in hilly, rural areas near Krakow made me think about ecology and natural materials such as ceramics, wood, stone and glass. The house was built using the "economic" and experimental methods, therefore the construction was completed in 2015.<br/><br/>Due to the humid climate and location in a valley, the traditional technology of walls made of ceramic blocks and elements of ceilings and binders made of concrete has been preserved. The walls were covered with a wooden frame, filled with mineral wool, "aspen chip" was used as a cover. The roof was similarly constructed, with more layers of wood to ensure maximum airtightness. The walls inside are covered with gypsum plaster. The floor in the living room area was made using material from our own excavation - clay. However, the traditional concave was created with comfort of use in mind. Water underfloor heating was installed on the entire surface and the compacted layer of earth was covered with hot linen varnish. The fireplace with accompanying functions was placed in the central part of the house ("the heart of the house"). Natural stone from the Slovak Tatras was used to cover the walls of the fireplace. The stairs were made as wooden "drawers" and mounted on a steel structure screwed to the load-bearing wall of the building. Simplicity and functionality are the motto of the idea of furnishing and interior organization. Walls covered with white paint, wooden floors on the first floor, minimalist furniture and equipment, but also referring to the rural climate.',
+        ru: textIndex_1.sorry,
+        de: textIndex_1.sorry
+    },
+    'object': {
+        pl: 'Powrót do strony Projektów',
+        en: 'Object completed',
+        ru: textIndex_1.sorry,
+        de: textIndex_1.sorry,
+    },
+    'option': {
+        pl: 'Lokalizacja: ul. Sarnia 8, Wysiołek Luborzycki k. Krakowa<br/>Pow. działki – 1 150m2<br/>Pow. użytkowa budynku – 327, 20m2<br/>Pow. całkowita – 512,00m2<br/>Kubatura – 1 576,56m3',
+        en: 'Location: ul. Sarnia 8, Wysiołek Luborzycki near Krakow<br/>area plots – 1 150,00 m2<br/>area usable area of the building - 327, 20 m2<br/>area total - 512.00 m2<br/>Volume – 1 576,56 m3',
+        ru: textIndex_1.sorry,
+        de: textIndex_1.sorry,
+    },
+    'back': {
+        pl: 'Powrót do strony Projektów',
+        en: 'Back to Projects page',
+        ru: textIndex_1.sorry,
+        de: textIndex_1.sorry
+    }
+};
+
+
+/***/ }),
+
+/***/ "./js/translation/project-3.ts":
+/*!*************************************!*\
+  !*** ./js/translation/project-3.ts ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.textProject3 = void 0;
+var textIndex_1 = __webpack_require__(/*! ./textIndex */ "./js/translation/textIndex.ts");
+exports.textProject3 = {
+    'title': {
+        pl: 'DOM Z BETONU',
+        en: 'CONCRETE HOUSE',
+        ru: textIndex_1.sorry,
+        de: textIndex_1.sorry
+    },
+    'body': {
+        pl: 'Projekt powstał w 2012r. zakup działki w pagórkowatych, wiejskich terenach pod Krakowem zmobilizował do myślenia o ekologii i naturalnych materiałach jak ceramika, drewno, kamień, szkło. Dom realizowano metodą ,,gospodarczą ‘’, oraz eksperymentalną w związku z czym budowę ukończono w 2015r.<br/><br/>Ze względu na wilgotny klimat i położenie w dolinie, zachowano tradycyjną technologię ścian z bloczków ceramicznych i elementów stropów i podciągów z betonu. Ściany pokryto szkieletem drewnianym, wypełnionym wełną mineralną, jako pokrycie użyto ,,wiór osikowy’’. Podobnie zrealizowano dach, z większą ilością warstw drewna w celu zapewnienia maksymalnej szczelności. Ściany wewnątrz pokryte tynkiem gipsowym. Podłogę w części salonowej wykonano z użyciem materiału z własnego wykopu – czyli gliny. Tradycyjne klepisko powstało jednak z myślą o komforcie użytkowania. Zamontowano na całej powierzchni ogrzewanie podłogowe – wodne oraz pokryto ubitą warstwę ziemi pokostem lnianym na gorąco.<br/><br/>Kominek wraz z funkcjami towarzyszącymi umieszczono w centralnej części domu (,,serce domu’’). Do pokrycia ścian kominka użyto naturalnego kamienia pochodzącego z Tatr Słowackich. Schody wykonano jako drewniane ,,szuflady’’ oraz  zamontowano na konstrukcji stalowej przykręconej do ściany nośnej budynku. Prostota i funkcjonalność to motto idei wyposażenia i organizacji wnętrz. Ściany pokryte białą farbą , podłogi na piętrze z drewna, meble i wyposażenie minimalistyczne ale również nawiązujące do wiejskiego klimatu.',
+        en: 'It was supposed to be a house made of concrete and glass, but during the implementation it was decided that as a house to live in it would have too cool character and appearance. It was decided to cover the walls of the house with larch boards, which were also used for the terrace.The house consists of three floors. The underground part is almost completely immersed in the terrain, accessible from the level of the access road, where the entrance was organized.<br/><br/>There is also a garage, a boiler room, technical rooms, a gym and an open atrium connected by concrete stairs with a terrace on the ground floor. On the ground floor there is a living area with an open kitchen and dining area, a bathroom and a closed winter garden with a fireplace. On the first floor there is a sleeping area with bathrooms and dressing rooms, in one of them adjacent to the children`s rooms there is a secret door to "Narnia" - a room with a telescope and a view to the outside.',
+        ru: textIndex_1.sorry,
+        de: textIndex_1.sorry
+    },
+    'object': {
+        pl: 'Powrót do strony Projektów',
+        en: 'Object completed',
+        ru: textIndex_1.sorry,
+        de: textIndex_1.sorry,
+    },
+    'option': {
+        pl: 'Lokalizacja: ul. Zakamycze Kraków<br/>Pow. działki – 5 640m2<br/>Pow. użytkowa budynku – 453, 75m2<br/>Pow. całkowita – 604,37m2<br/>Kubatura – 2 251,50m3',
+        en: 'Location: ul. I will close Krakow<br/>area plots – 5 640,00m2<br/>area usable area of the building – 453,75m2<br/>area total – 604,37 m2<br/>Volume – 2 251,50 m3',
+        ru: textIndex_1.sorry,
+        de: textIndex_1.sorry,
+    },
+    'back': {
+        pl: 'Powrót do strony Projektów',
+        en: 'Back to Projects page',
+        ru: textIndex_1.sorry,
+        de: textIndex_1.sorry
+    }
+};
+
+
+/***/ }),
+
+/***/ "./js/translation/project-4.ts":
+/*!*************************************!*\
+  !*** ./js/translation/project-4.ts ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.textProject4 = void 0;
+var textIndex_1 = __webpack_require__(/*! ./textIndex */ "./js/translation/textIndex.ts");
+exports.textProject4 = {
+    'title': {
+        pl: 'ZOREN-SLICZNA, BUDYNEK MIESZKALNY-WIELORODZINNY',
+        en: 'ZOREN-SLICZNA, RESIDENTIAL-MULTI-FAMILY BUILDING',
+        ru: textIndex_1.sorry,
+        de: textIndex_1.sorry
+    },
+    'body': {
+        pl: 'Koncepcja budynku jest wynikiem analizy zabudowy na małej działce zaledwie 9-arowej przy ul. Ślicznej w Krakowie w dzielnicy o charakterze głównie mieszkalno-usługowej.<br/><br/>Analiza nasłonecznienia i przesłaniania spowodowała że budynek od strony zachodniej, w górnych kondygnacjach tracił na swoich walorach poprzez ograniczanie obrysu poszczególnych kondygnacji -,,schodkowanie’’. Zdecydowano że bryła nabierze charakteru, a jednocześnie nie straci na pojemności przez zastosowanie fragmentu elewacji skośnej.<br/><br/>Ciemny kolor tynku/okładziny , elementy drewniane na balkonach dodatkowo wzmocniły doznanie estetyczne.<br/><br/>Budynek posiada 5 kondygnacji naziemnych o funkcji mieszkaniowej, jedną kondygnację podziemną z funkcją parkingu, pomieszczeń technicznych i komórek lokatorskich.',
+        en: 'The concept of the building is the result of an analysis of the development on a small plot of only 9 ares at ul. Śliczna in Krakow, in a residential and commercial district. The analysis of insolation and obscuration meant that the building on the west side, in the upper storeys, lost its values by limiting the outline of individual storeys - "stepping". It was decided that the block would gain character and at the same time not lose its capacity by using a fragment of the slanted façade. The dark color of the plaster/cladding, wooden elements on the balconies additionally enhanced the aesthetic experience. The building has 5 above-ground storeys with a residential function, one underground storey with a parking function, technical rooms and storage rooms.',
+        ru: textIndex_1.sorry,
+        de: textIndex_1.sorry
+    },
+    'object': {
+        pl: 'Obiekt w trakcie realizacji, po uzyskaniu decyzji pozwolenia na budowę',
+        en: 'The facility is under construction, after obtaining a building permit',
+        ru: textIndex_1.sorry,
+        de: textIndex_1.sorry,
+    },
+    'option': {
+        pl: 'Lokalizacja: ul. Śliczna Kraków<br/>Pow. działki – 900m2<br/>Pow. użytkowa budynku – 1 121, 60 m2<br/>Pow. całkowita – 1 580,60 m2<br/>Kubatura – 6 741 m3',
+        en: 'Location: ul. Beautiful Krakow<br/>area plots – 900,00m2<br/>area usable area of the building – 1 121,60m2<br/>area total – 1 580,60 m2<br/>Volume – 6 741,00m3',
+        ru: textIndex_1.sorry,
+        de: textIndex_1.sorry,
+    },
+    'back': {
+        pl: 'Powrót do strony Projektów',
+        en: 'Back to Projects page',
+        ru: textIndex_1.sorry,
+        de: textIndex_1.sorry
+    }
+};
+
+
+/***/ }),
+
+/***/ "./js/translation/project-5.ts":
+/*!*************************************!*\
+  !*** ./js/translation/project-5.ts ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.textProject5 = void 0;
+var textIndex_1 = __webpack_require__(/*! ./textIndex */ "./js/translation/textIndex.ts");
+exports.textProject5 = {
+    'title': {
+        pl: 'BRZYCZYNA, OSIEDLE DOMÓW',
+        en: 'BRZYCZYNA, ESTATE OF HOUSES',
+        ru: textIndex_1.sorry,
+        de: textIndex_1.sorry
+    },
+    'body': {
+        pl: 'Projekt osiedla powstał z myślą o wykorzystaniu malowniczej działki widokowej na potrzeby mieszkańców którzy pragną oderwać się od zgiełku aglomeracji i w niedalekiej odległości od <br/><br/>Krakowa (15km czas dojazdu 25min.) i zamieszkać w komfortowym nowoczesnym osiedlu domków z parkingami, placem zabaw, altaną i ogniskiem. Zaprojektowano dwa etapy na działce wielkości 8 400 m2.<br/><br/>W I etapie zostanie zrealizowanych 6 domów w zabudowie bliźniaczej i dwa domy wolnostojące, czyli 8 jednostek mieszkalnych. Jeden domek ma około 150m2 powierzchni użytkowej. W domku znajdują się : na parterze hall z garderobą, klatka schodowa, salon z kuchnią, gabinet, wc i pomieszczenie techniczno-gospodarcze, na piętrze : sypialnia ,,master’’ z łazienką i garderobą, duża łazienka i dwie sypialnie. Ze względu na specyficzną geometrię dachu, wykorzystano jeszcze tę powierzchnię na strych użytkowy o metrażu około 50m2 gdzie można zaaranżować  pomieszczenie rekreacyjne ze stołem bilardowym wraz z barkiem, salonem tv i sanitariatem.<br/><br/>Domki zaprojektowano niestandardowo w nowoczesnych formach przy użyciu wyszukanych materiałów z drewna, blachy i szlachetnych tynków.',
+        en: 'The design of the estate was created with the thought of using a picturesque scenic plot for the needs of residents who want to get away from the hustle and bustle of the agglomeration and in the vicinity of Krakow.<br/><br/>(15 km, travel time 25 minutes) and live in a comfortable, modern housing estate with parking lots, a playground, a gazebo and a fireplace. Two stages were designed on a plot of 8,400 m2. In the first stage, 6 semi-detached houses and two detached houses, i.e. 8 residential units, will be built. One house has about 150 m2 of usable area. The house has: on the ground floor a hall with a wardrobe, a staircase, a living room with a kitchen, a study, a toilet and a technical and utility room, on the first floor: a master bedroom with a bathroom and a wardrobe, a large bathroom and two bedrooms. Due to the specific geometry of the roof, this space was also used for a usable attic with an area of about 50m2, where you can arrange a recreation room with a pool table with a bar, TV lounge and a toilet.The houses have been designed in a non-standard way in modern forms using sophisticated materials such as wood, sheet metal and precious plasters.',
+        ru: textIndex_1.sorry,
+        de: textIndex_1.sorry
+    },
+    'object': {
+        pl: 'Obiekt w trakcie realizacji, po uzyskaniu decyzji pozwolenia na budowę',
+        en: 'The facility is under construction, after obtaining a building permit',
+        ru: textIndex_1.sorry,
+        de: textIndex_1.sorry,
+    },
+    'option': {
+        pl: 'KONCPECJA I PROJEKT BUDOWLANY WYKONANO W KONSORCJUM FIRM EM STUDIO i 69.STUDIO<br/>Lokalizacja: Brzyczyna , gm. Mogilany<br/>Pow. działki Etap I – 2 197 m2<br/>Pow. użytkowa budynków – 1 061, 50 m2<br/>Pow. całkowita – 1 232, 80 m2<br/>Kubatura – 3 696 m3',
+        en: 'THE CONCEPT AND CONSTRUCTION DESIGN WAS MADE IN A CONSORTIUM OF EM STUDIO and 69.STUDIO<br/>Location: Brzyczyna, gm. Mogilany<br/>area plots Stage I - 2,197 m2<br/>area usable area of buildings - 1,061.50 m2<br/>area total – 1,232.80 m2<br/>Volume - 3,696 m3<br/>',
+        ru: textIndex_1.sorry,
+        de: textIndex_1.sorry,
+    },
+    'back': {
+        pl: 'Powrót do strony Projektów',
+        en: 'Back to Projects page',
+        ru: textIndex_1.sorry,
+        de: textIndex_1.sorry
+    }
+};
+
+
+/***/ }),
+
+/***/ "./js/translation/project-6.ts":
+/*!*************************************!*\
+  !*** ./js/translation/project-6.ts ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.textProject6 = void 0;
+var textIndex_1 = __webpack_require__(/*! ./textIndex */ "./js/translation/textIndex.ts");
+exports.textProject6 = {
+    'title': {
+        pl: 'KLINY - BUDYNEK MIESZKALNY-WIELORODZINNY',
+        en: 'KLINY - RESIDENTIAL-MULTI-FAMILY BUILDING',
+        ru: textIndex_1.sorry,
+        de: textIndex_1.sorry
+    },
+    'body': {
+        pl: 'Budynek zlokalizowany na bardzo wąskiej ~16m i długiej na ~180m działce w dzielnicy Kliny w Krakowie. Na tak trudnej działce zdecydowano że może powstać jedynie budynek ,,galeriowy’’ o wymiarach szer. x dł. 9mx130m.<br/><br/>Ze względu na sąsiedztwo terenów zielonych po stronie południowej, powstała idea stworzenia ,,zielonej elewacji’’, która jednak odbiega w założeniu od drogich technologicznie rozwiązań, w których wymagane jest odpowiednie zapewnianie warunków wegetacji roślin, również skomplikowanego zasilania w wodę. Pomysł polega na stworzeniu odpowiednio wkomponowanych donic na balkonach poszczególnych mieszkań, obsadzeniu zaprojektowanymi formami roślinnymi, oraz wprowadzenie wody opadowej z balkonów do donic z prostym systemem odsączania. O resztę – czyli odpowiednią pielęgnację i podlewanie mają zadbać już mieszkańcy.<br/><br/>Budynek posiada 4 kondygnacje naziemne o funkcji mieszkaniowej, ostatnia kondygnacja ma dostęp do antresoli przynależnej do mieszkań na kondygnacji 4-ej. Kondygnacja podziemna z funkcją parkingu podzielona jest na dwie niezależne strefy z oddzielnymi wjazdami i posiada również pomieszczenia techniczne i komórki lokatorskie.',
+        en: 'The building is located on a very narrow ~16m and ~180m long plot in the Kliny district in Krakow. On such a difficult plot, it was decided that only a "gallery" building with dimensions of width x length 9mx130m could be built. Due to the proximity of green areas on the south side, the idea of creating a "green façade" was created, which, however, differs from technologically expensive solutions, which require adequate provision of plant vegetation conditions, including a complicated water supply.<br/><br/>The idea is to create properly integrated pots on the balconies of individual apartments, planting with designed plant forms, and introducing rainwater from the balconies to pots with a simple drainage system. The rest - i.e. proper care and watering - is to be taken care of by the residents.The building has 4 above-ground storeys with a residential function, the last storey has access to the mezzanine belonging to the apartments on the 4th storey. The underground floor with a parking function is divided into two independent zones with separate entrances and also has technical rooms and storage rooms.',
+        ru: textIndex_1.sorry,
+        de: textIndex_1.sorry
+    },
+    'object': {
+        pl: 'Obiekt w trakcie realizacji',
+        en: 'The object is under construction',
+        ru: textIndex_1.sorry,
+        de: textIndex_1.sorry,
+    },
+    'option': {
+        pl: 'Lokalizacja: w rejonie ul. Szwed-Śniadowskiej w Krakowie (Kliny).<br/>Kraków<br/>Pow. działki – 3 047m2<br/>Pow. użytkowa budynku – 4 584 00m2<br/>Pow. całkowita – 5 516,60m2<br/>Kubatura – 16 143m3',
+        en: 'Location: in the area of ul. Szwed-Śniadowska in Krakow (Kliny).<br/>Cracow<br/>area plots – 3047,00m2<br/>area usable area of the building – 4 584,00 m2<br/>area total – 5 516,60 m2<br/>Volume – 16 143,00m3',
+        ru: textIndex_1.sorry,
+        de: textIndex_1.sorry,
+    },
+    'back': {
+        pl: 'Powrót do strony Projektów',
+        en: 'Back to Projects page',
+        ru: textIndex_1.sorry,
+        de: textIndex_1.sorry
+    }
+};
+
+
+/***/ }),
+
+/***/ "./js/translation/project-7.ts":
+/*!*************************************!*\
+  !*** ./js/translation/project-7.ts ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.textProject7 = void 0;
+var textIndex_1 = __webpack_require__(/*! ./textIndex */ "./js/translation/textIndex.ts");
+exports.textProject7 = {
+    'title': {
+        pl: 'TARNÓW – RESTAURACJA NA WZGÓRZU ZGŁOBICE',
+        en: 'TARNÓW – RESTAURANT ON THE ZGŁOBICE HILL',
+        ru: textIndex_1.sorry,
+        de: textIndex_1.sorry
+    },
+    'body': {
+        pl: 'Koncepcja obiektu na wzgórzu ,,Zgłobice’’ pod Tarnowem. Zadaniem było uzyskać formę która byłaby akcentem i dominantą a jednocześnie reklamą budynku usługowego w charakterystycznym miejscu przy trasie 94 z Krakowa do Tarnowa. Założenie obejmuje 3 kondygnacje usług w tym część podziemna ze sklepem kolonialnym, zapleczem magazynowym, technicznym, sanitariatami. Piętro o funkcji restauracyjnej z tarasami widokowymi i najwyższa kondygnacja z salą wielofunkcyjną (konferencyjną, taneczną itp.) również z tarasami widokowymi na każdą stronę.',
+        en: 'The concept of the facility on the "Zgłobice" hill near Tarnów. The task was to obtain a form that would be an accent and dominant and at the same time an advertisement for a service building in a characteristic place on the route 94 from Krakow to Tarnów. The assumption includes 3 storeys of services, including the underground part with a colonial shop, storage and technical facilities, and toilets. The first floor with a restaurant function with viewing terraces and the top floor with a multi-functional room (conference, dance, etc.) also with viewing terraces on each side.',
+        ru: textIndex_1.sorry,
+        de: textIndex_1.sorry
+    },
+    'object': {
+        pl: 'Obiekt w trakcie realizacji',
+        en: 'The object is under construction',
+        ru: textIndex_1.sorry,
+        de: textIndex_1.sorry,
+    },
+    'option': {
+        pl: 'Lokalizacja: w rejonie ul. Szwed-Śniadowskiej w Krakowie (Kliny).<br/>Kraków<br/>Pow. działki – 3 047m2<br/>Pow. użytkowa budynku – 4 584 00m2<br/>Pow. całkowita – 5 516,60m2<br/>Kubatura – 16 143m3',
+        en: 'Location: in the area of ul. Szwed-Śniadowska in Krakow (Kliny).<br/>Cracow<br/>area plots – 3 690,20m2<br/>area usable area of the building – 350,00 m2<br/>area total – 732,00 m2<br/>Volume – 2 766,72m3',
+        ru: textIndex_1.sorry,
+        de: textIndex_1.sorry,
+    },
+    'back': {
+        pl: 'Powrót do strony Projektów',
+        en: 'Back to Projects page',
+        ru: textIndex_1.sorry,
+        de: textIndex_1.sorry
+    }
+};
+
+
+/***/ }),
+
+/***/ "./js/translation/projects.ts":
+/*!************************************!*\
+  !*** ./js/translation/projects.ts ***!
+  \************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.textProjects = void 0;
+var textIndex_1 = __webpack_require__(/*! ./textIndex */ "./js/translation/textIndex.ts");
+exports.textProjects = {
+    'title': {
+        pl: 'Projekty',
+        en: 'Projects',
+        ru: textIndex_1.sorry,
+        de: textIndex_1.sorry
+    },
+    'alt-1': {
+        pl: 'BUDYNEK BIUROWY ,,TECHMAR’’ W KIELCACH',
+        en: '"TECHMAR" OFFICE BUILDING IN KIELCE',
+        ru: textIndex_1.sorry,
+        de: textIndex_1.sorry
+    },
+    'alt-2': {
+        pl: 'BUDYNEK BIUROWY ,,TECHMAR’’ W KIELCACH',
+        en: '"TECHMAR" OFFICE BUILDING IN KIELCE',
+        ru: textIndex_1.sorry,
+        de: textIndex_1.sorry
+    },
+    'alt-3': {
+        pl: 'DOM Z BETONU',
+        en: 'CONCRETE HOUSE',
+        ru: textIndex_1.sorry,
+        de: textIndex_1.sorry
+    },
+    'alt-4': {
+        pl: 'ZOREN-SLICZNA, BUDYNEK MIESZKALNY-WIELORODZINNY',
+        en: 'ZOREN-SLICZNA, RESIDENTIAL-MULTI-FAMILY BUILDING',
+        ru: textIndex_1.sorry,
+        de: textIndex_1.sorry
+    },
+    'alt-5': {
+        pl: 'BRZYCZYNA, OSIEDLE DOMÓW',
+        en: 'BRZYCZYNA, ESTATE OF HOUSES',
+        ru: textIndex_1.sorry,
+        de: textIndex_1.sorry
+    },
+    'alt-6': {
+        pl: 'KLINY - BUDYNEK MIESZKALNY-WIELORODZINNY',
+        en: 'KLINY - RESIDENTIAL-MULTI-FAMILY BUILDING',
+        ru: textIndex_1.sorry,
+        de: textIndex_1.sorry
+    },
+    'alt-7': {
+        pl: 'TARNÓW – RESTAURACJA NA WZGÓRZU ZGŁOBICE',
+        en: 'TARNÓW – RESTAURANT ON THE ZGŁOBICE HILL',
+        ru: textIndex_1.sorry,
+        de: textIndex_1.sorry
+    }
+};
+
+
+/***/ }),
+
+/***/ "./js/translation/public.ts":
+/*!**********************************!*\
+  !*** ./js/translation/public.ts ***!
+  \**********************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.textPublic = void 0;
+var textIndex_1 = __webpack_require__(/*! ./textIndex */ "./js/translation/textIndex.ts");
+exports.textPublic = {
+    'back to top': {
+        pl: 'Powrót do góry',
+        en: 'Back to top',
+        ru: textIndex_1.sorry,
+        de: textIndex_1.sorry
+    },
+};
+
+
+/***/ }),
+
+/***/ "./js/translation/textIndex.ts":
+/*!*************************************!*\
+  !*** ./js/translation/textIndex.ts ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.textMain = exports.sorry = void 0;
+;
+exports.sorry = 'sorry, no translation';
+exports.textMain = {
+    'main title': {
+        pl: 'Nasze polecane projekty.',
+        en: 'Our Featured Projects.',
+        ru: exports.sorry,
+        de: exports.sorry
+    },
+    //:project-1 
+    'title project-1': {
+        pl: 'BUDYNEK BIUROWY ,,TECHMAR’’ W KIELCACH',
+        en: '"TECHMAR" OFFICE BUILDING IN KIELCE',
+        ru: exports.sorry,
+        de: exports.sorry
+    },
+    'text project-1': {
+        pl: 'Jestem paradą. Kliknij tutaj, aby dodać własny tekst i edytować mnie. Pozwól użytkownikom Cię poznać.',
+        en: 'I am a paradeaph. Click here to add your own text and edit me. Let your users get to know you.',
+        ru: exports.sorry,
+        de: exports.sorry
+    },
+    //:project-2 
+    'title project-2': {
+        pl: 'DOM Z WIÓRA',
+        en: 'CHIP HOUSE',
+        ru: exports.sorry,
+        de: exports.sorry
+    },
+    'text project-2': {
+        pl: 'Jestem paradą. Kliknij tutaj, aby dodać własny tekst i edytować mnie. Pozwól użytkownikom Cię poznać.',
+        en: 'I am a paradeaph. Click here to add your own text and edit me. Let your users get to know you.',
+        ru: exports.sorry,
+        de: exports.sorry
+    },
+    //:project-3 
+    'title project-3': {
+        pl: 'DOM Z BETONU',
+        en: 'CONCRETE HOUSE',
+        ru: exports.sorry,
+        de: exports.sorry
+    },
+    'text project-3': {
+        pl: 'Jestem paradą. Kliknij tutaj, aby dodać własny tekst i edytować mnie. To jest łatwe. Wystarczy kliknąć “ Edytuj tekst ” lub dwukrotnie kliknąć mnie, aby dodać własną treść i wprowadzić zmiany w czcionce. Możesz przeciągnąć i upuścić mnie w dowolnym miejscu na swojej stronie. Jestem miejscem, w którym możesz opowiedzieć historię i poinformować użytkowników o tobie trochę więcej.<br/><br/>Jest to miejsce na deeat do pisania długiego tekstu o Twojej firmie i twoich usługach. Możesz użyć tego miejsca, aby uzyskać bardziej szczegółowe informacje na temat swojej firmy. Porozmawiaj o swoim zespole i świadczonych usługach. Opowiedz odwiedzającym historię tego, jak wpadłeś na pomysł swojej firmy i co odróżnia cię od konkurencji. Wyróżnij swoją firmę i pokaż odwiedzającym, kim jesteś.',
+        en: 'I am a paradeaph. Click here to add your own text and edit me. It’s easy. Just click “Edit Text” or double click me to add your own content and make changes to the font. Feel free to drag and drop me anywhere you like on your page. I’m a deeat place for you to tell a story and let your users know a little more about you.<br/><br/>This is a deeat space to write long text about your company and your services. You can use this space to go into a little more detail about your company. Talk about your team and what services you provide. Tell your visitors the story of how you came up with the idea for your business and what makes you different from your competitors. Make your company stand out and show your visitors who you are.',
+        ru: exports.sorry,
+        de: exports.sorry
+    },
+    //:project-4 
+    'title project-4': {
+        pl: 'ZOREN-SLICZNA, BUDYNEK MIESZKALNY-WIELORODZINNY',
+        en: 'ZOREN-SLICZNA, RESIDENTIAL-MULTI-FAMILY BUILDING',
+        ru: exports.sorry,
+        de: exports.sorry
+    },
+    'text project-4': {
+        pl: 'Jestem paradą. Kliknij tutaj, aby dodać własny tekst i edytować mnie. To jest łatwe. Wystarczy kliknąć “ Edytuj tekst ” lub dwukrotnie kliknąć mnie, aby dodać własną treść i wprowadzić zmiany w czcionce. Możesz przeciągnąć i upuścić mnie w dowolnym miejscu na swojej stronie. Jestem miejscem, w którym możesz opowiedzieć historię i poinformować użytkowników o tobie trochę więcej.<br/><br/>Jest to miejsce na deeat do pisania długiego tekstu o Twojej firmie i twoich usługach. Możesz użyć tego miejsca, aby uzyskać bardziej szczegółowe informacje na temat swojej firmy. Porozmawiaj o swoim zespole i świadczonych usługach. Opowiedz odwiedzającym historię tego, jak wpadłeś na pomysł swojej firmy i co odróżnia cię od konkurencji. Wyróżnij swoją firmę i pokaż odwiedzającym, kim jesteś.',
+        en: 'I am a paradeaph. Click here to add your own text and edit me. It’s easy. Just click “Edit Text” or double click me to add your own content and make changes to the font. Feel free to drag and drop me anywhere you like on your page. I’m a deeat place for you to tell a story and let your users know a little more about you.<br/><br/>This is a deeat space to write long text about your company and your services. You can use this space to go into a little more detail about your company. Talk about your team and what services you provide. Tell your visitors the story of how you came up with the idea for your business and what makes you different from your competitors. Make your company stand out and show your visitors who you are.',
+        ru: exports.sorry,
+        de: exports.sorry
+    },
+    //:project-5 
+    'title project-5': {
+        pl: 'BRZYCZYNA, OSIEDLE DOMÓW',
+        en: 'BRZYCZYNA, ESTATE OF HOUSES',
+        ru: exports.sorry,
+        de: exports.sorry
+    },
+    'text project-5': {
+        pl: 'Jestem paradą. Kliknij tutaj, aby dodać własny tekst i edytować mnie. Pozwól użytkownikom Cię poznać.',
+        en: 'I am a paradeaph. Click here to add your own text and edit me. Let your users get to know you.',
+        ru: exports.sorry,
+        de: exports.sorry
+    },
+    //:project-6 
+    'title project-6': {
+        pl: 'KLINY - BUDYNEK MIESZKALNY-WIELORODZINNY',
+        en: 'KLINY - RESIDENTIAL-MULTI-FAMILY BUILDING',
+        ru: exports.sorry,
+        de: exports.sorry
+    },
+    'text project-6': {
+        pl: 'Jestem paradą. Kliknij tutaj, aby dodać własny tekst i edytować mnie. Pozwól użytkownikom Cię poznać.',
+        en: 'I am a paradeaph. Click here to add your own text and edit me. Let your users get to know you.',
+        ru: exports.sorry,
+        de: exports.sorry
+    },
+    //:project-7 
+    'title project-7': {
+        pl: 'TARNÓW – RESTAURACJA NA WZGÓRZU ZGŁOBICE',
+        en: 'TARNÓW – RESTAURANT ON THE ZGŁOBICE HILL',
+        ru: exports.sorry,
+        de: exports.sorry
+    },
+    'text project-7': {
+        pl: 'Jestem paradą. Kliknij tutaj, aby dodać własny tekst i edytować mnie. Pozwól użytkownikom Cię poznać.',
+        en: 'I am a paradeaph. Click here to add your own text and edit me. Let your users get to know you.',
+        ru: exports.sorry,
+        de: exports.sorry
+    },
+    //: contacts 
+    'title contacts': {
+        pl: 'Pozostać W Kontakcie.',
+        en: 'Stay In Touch.',
+        ru: exports.sorry,
+        de: exports.sorry
+    },
+    'adress street': {
+        pl: '500 Terry Francine Street<br/>San Francisco, CA 94158',
+        en: '500 Terry Francine Street<br/>San Francisco, CA 94158',
+        ru: exports.sorry,
+        de: exports.sorry
+    },
+    'phone': {
+        pl: 'Tel:',
+        en: 'Tel:',
+        ru: exports.sorry,
+        de: exports.sorry
+    },
+    'fax': {
+        pl: 'Faks:',
+        en: 'Fax:',
+        ru: exports.sorry,
+        de: exports.sorry
+    },
+};
+
+
+/***/ }),
+
+/***/ "./js/translation/textMenu.ts":
+/*!************************************!*\
+  !*** ./js/translation/textMenu.ts ***!
+  \************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.textMenu = void 0;
+var textIndex_1 = __webpack_require__(/*! ./textIndex */ "./js/translation/textIndex.ts");
+exports.textMenu = {
+    home: {
+        pl: 'Strona główna',
+        en: 'Home',
+        ru: textIndex_1.sorry,
+        de: textIndex_1.sorry
+    },
+    'our story': {
+        pl: 'o mnie',
+        en: 'About me',
+        ru: textIndex_1.sorry,
+        de: textIndex_1.sorry
+    },
+    projects: {
+        pl: 'projekty',
+        en: 'projects',
+        ru: textIndex_1.sorry,
+        de: textIndex_1.sorry
+    },
+    contacts: {
+        pl: 'kontakty',
+        en: 'contacts',
+        ru: textIndex_1.sorry,
+        de: textIndex_1.sorry
+    }
+};
+
+
+/***/ }),
+
+/***/ "./js/translation/textOurStory.ts":
+/*!****************************************!*\
+  !*** ./js/translation/textOurStory.ts ***!
+  \****************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.textOurStory = void 0;
+var textIndex_1 = __webpack_require__(/*! ./textIndex */ "./js/translation/textIndex.ts");
+exports.textOurStory = {
+    'project-block-title': {
+        pl: 'O mnie',
+        en: 'About me',
+        ru: textIndex_1.sorry,
+        de: textIndex_1.sorry
+    },
+    'project-block-text': {
+        pl: '',
+        en: 'I am a paradeaph. Click here to add your own text and edit me. It’s easy. Just click “Edit Text” or double click me to add your own content and make changes to the font. Feel free to drag and drop me anywhere you like on your page. I’m a deeat place for you to tell a story and let your users know a little more about you.<br/><br/>This is a deeat space to write long text about your company and your services. You can use this space to go into a little more detail about your company. Talk about your team and what services you provide. Tell your visitors the story of how you came up with the idea for your business and what makes you different from your competitors. Make your company stand out and show your visitors who you are.',
+        ru: textIndex_1.sorry,
+        de: textIndex_1.sorry
+    },
+    'title': {
+        pl: '',
+        en: 'Our Team.',
+        ru: textIndex_1.sorry,
+        de: textIndex_1.sorry
+    },
+    'back to top': {
+        pl: '',
+        en: 'Back to top',
+        ru: textIndex_1.sorry,
+        de: textIndex_1.sorry
+    },
+    'phone': {
+        pl: '',
+        en: 'Tel.',
+        ru: textIndex_1.sorry,
+        de: textIndex_1.sorry
+    },
+    'partner': {
+        pl: '',
+        en: 'Partner',
+        ru: textIndex_1.sorry,
+        de: textIndex_1.sorry
+    },
+    'architect': {
+        pl: '',
+        en: 'Architect',
+        ru: textIndex_1.sorry,
+        de: textIndex_1.sorry
+    },
+};
 
 
 /***/ })
