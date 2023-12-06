@@ -4,6 +4,9 @@ export interface Trasnslate {
     }
 }
 
+/**
+ * Обьект с обьектами названий меню ( textMenu.home.ru: 'Главная' ).
+ */
 export const textMenu: Trasnslate = {
     home: {
         ru: 'Главная',
@@ -31,6 +34,10 @@ export const textMenu: Trasnslate = {
     }
 }
 
+/**
+ * Обьект, содержащий обьекты с текстом для страницы: 
+ * - Главная.
+ */
 export const textMain: Trasnslate = {
     'main title': {
         ru: 'Наши основные проекты.',
@@ -139,7 +146,10 @@ export const textMain: Trasnslate = {
         de: 'Zurück nach oben'
     },
 }
-
+/**
+ * Обьект, содержащий обьекты с текстом для страницы: 
+ * - О нас.
+ */
 export const textOurStory: Trasnslate = {
     'project-block-title': {
         ru: 'о нас',

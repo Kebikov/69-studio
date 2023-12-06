@@ -1,24 +1,38 @@
 import { textMenu,  textMain, textOurStory, Trasnslate} from "./textLanguage";
 
+/**
+ * Функция установки определения и установки языка в localStorage.
+ */
 //= language 
 const language = () => {
-    // en, ru, pl
+    /**
+     * Язык по дефолту.
+     */
     const startLanguage: string = 'en';
+    /**
+     * Массив языков доступных для перевода сайта.
+     */
     const arrayLanguage: Array<string> = ['en', 'ru', 'pl', 'de'];
-
+    /**
+     * Массив 
+     */
     const radioButtons = document.querySelectorAll('.select-language__input') as NodeListOf<HTMLInputElement>;
     const body = document.querySelector('.select-language__body') as HTMLDivElement;
     const activeRadio = document.querySelector('.select-active') as HTMLDivElement;
     const activeImg = activeRadio.querySelector('.select-active__img') as HTMLImageElement;
     const activeText = activeRadio.querySelector('.select-active__text') as HTMLDivElement;
+    /**
+     * Язык установленый для перевода в localStorage.
+     */
     const language: string | null = localStorage.getItem('language');
-
 
     // если язык не установлен в localStorage
     if(!language) {
         // установка языка браузера в localStorage из массива предпочитаемых, en, ru, pl
-        const browserLanguages = navigator.languages;
-        console.log('',browserLanguages);
+        /**
+         * Массив языков установленых в браузере вида: ["ru-RU", "ru", "en-US", "en"]
+         */
+        const browserLanguages: readonly string[] = navigator.languages;
         for (var i = 0; i < browserLanguages.length; i++) {
             const cutLanguage = browserLanguages[i].slice(0,2);
             const isArrayLanguage =  arrayLanguage.includes(cutLanguage);
@@ -74,10 +88,15 @@ function eventChangeRadio(radioButtons: NodeListOf<HTMLInputElement>, activeImg:
     });
 }
 
-//* изминение активного блока силектора 
+/**
+ * Функция изминения текста и изображения у активного блока выбора языка.
+ * @param activeImg - Элемент изображения с флагом.
+ * @param activeText - Элемент с текстом, отражаюшем выбраный язык.
+ * @param value - Значение выбраного языка (ru, pl, de...).
+ */
 function setSelectActive(activeImg: HTMLImageElement, activeText: HTMLDivElement, value: string) {
     activeImg.src = `/img/flag/${value}.jpg`;
-    console.log(typeof activeImg);
+
     switch (value) {
         case 'ru':
             activeText.textContent = 'Russia';
@@ -97,14 +116,22 @@ function setSelectActive(activeImg: HTMLImageElement, activeText: HTMLDivElement
     }
 }
 
-//* изминение меню 
+/**
+ * Функция изминения текста меню в зависимости от выбранного языка.
+ * @param language - Выбраный язык.
+ */
 function setMenu(language: string): void {
+    /**
+     * Массив элементов меню с атрабутом "data-menu".
+     */
     const menuLinks = document.querySelectorAll('[data-menu]') as NodeListOf<HTMLInputElement>;
     
     menuLinks.forEach(link => {
         if(link.dataset.menu) {
+            /**
+             * Отображаемый текст меню (home, our story...).
+             */
             const data: string = link.dataset.menu;
-
             if(data && textMenu[data] && textMenu[data][language]) {
                 link.textContent = textMenu[data][language];
             }

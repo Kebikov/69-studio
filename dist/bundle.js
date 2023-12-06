@@ -10,6 +10,9 @@
 
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
+/**
+ * Функция перехода в верх страницы
+ */
 var backToTop = function () {
     function top() {
         window.scrollTo({
@@ -39,11 +42,14 @@ exports["default"] = backToTop;
 /***/ ((__unused_webpack_module, exports) => {
 
 
-// classBlock - отслеживаемый класс блока 
-// classPlus - класс добавляемый к отслеживаемому блоку
-// arrClassAlso - массив классов к которым так же добавится класс classPlussAlso
-// classPlussAlso - класс который добавится к каждому классу в массиве
 Object.defineProperty(exports, "__esModule", ({ value: true }));
+/**
+ * Функция слежения за элементом
+ * @param classBlock - отслеживаемый класс блока
+ * @param classPlus - класс добавляемый к отслеживаемому блоку
+ * @param arrClassAlso - массив классов к которым так же добавится класс classPlussAlso
+ * @param classPlussAlso - класс который добавится к каждому классу в массиве
+ */
 var intersectionObserver = function (classBlock, classPlus, arrClassAlso, classPlussAlso) {
     try {
         var block = document.querySelector(".".concat(classBlock));
@@ -99,22 +105,38 @@ exports["default"] = intersectionObserver;
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 var textLanguage_1 = __webpack_require__(/*! ./textLanguage */ "./js/modules/textLanguage.ts");
+/**
+ * Функция установки определения и установки языка в localStorage.
+ */
 //= language 
 var language = function () {
-    // en, ru, pl
+    /**
+     * Язык по дефолту.
+     */
     var startLanguage = 'en';
+    /**
+     * Массив языков доступных для перевода сайта.
+     */
     var arrayLanguage = ['en', 'ru', 'pl', 'de'];
+    /**
+     * Массив
+     */
     var radioButtons = document.querySelectorAll('.select-language__input');
     var body = document.querySelector('.select-language__body');
     var activeRadio = document.querySelector('.select-active');
     var activeImg = activeRadio.querySelector('.select-active__img');
     var activeText = activeRadio.querySelector('.select-active__text');
+    /**
+     * Язык установленый для перевода в localStorage.
+     */
     var language = localStorage.getItem('language');
     // если язык не установлен в localStorage
     if (!language) {
         // установка языка браузера в localStorage из массива предпочитаемых, en, ru, pl
+        /**
+         * Массив языков установленых в браузере вида: ["ru-RU", "ru", "en-US", "en"]
+         */
         var browserLanguages = navigator.languages;
-        console.log('', browserLanguages);
         for (var i = 0; i < browserLanguages.length; i++) {
             var cutLanguage = browserLanguages[i].slice(0, 2);
             var isArrayLanguage = arrayLanguage.includes(cutLanguage);
@@ -163,10 +185,14 @@ function eventChangeRadio(radioButtons, activeImg, activeText, body) {
         });
     });
 }
-//* изминение активного блока силектора 
+/**
+ * Функция изминения текста и изображения у активного блока выбора языка.
+ * @param activeImg - Элемент изображения с флагом.
+ * @param activeText - Элемент с текстом, отражаюшем выбраный язык.
+ * @param value - Значение выбраного языка (ru, pl, de...).
+ */
 function setSelectActive(activeImg, activeText, value) {
     activeImg.src = "/img/flag/".concat(value, ".jpg");
-    console.log(typeof activeImg);
     switch (value) {
         case 'ru':
             activeText.textContent = 'Russia';
@@ -185,11 +211,20 @@ function setSelectActive(activeImg, activeText, value) {
             break;
     }
 }
-//* изминение меню 
+/**
+ * Функция изминения текста меню в зависимости от выбранного языка.
+ * @param language - Выбраный язык.
+ */
 function setMenu(language) {
+    /**
+     * Массив элементов меню с атрабутом "data-menu".
+     */
     var menuLinks = document.querySelectorAll('[data-menu]');
     menuLinks.forEach(function (link) {
         if (link.dataset.menu) {
+            /**
+             * Отображаемый текст меню (home, our story...).
+             */
             var data = link.dataset.menu;
             if (data && textLanguage_1.textMenu[data] && textLanguage_1.textMenu[data][language]) {
                 link.textContent = textLanguage_1.textMenu[data][language];
@@ -363,6 +398,9 @@ exports.numberScroll = numberScroll;
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.textOurStory = exports.textMain = exports.textMenu = void 0;
+/**
+ * Обьект с обьектами названий меню ( textMenu.home.ru: 'Главная' ).
+ */
 exports.textMenu = {
     home: {
         ru: 'Главная',
@@ -389,6 +427,10 @@ exports.textMenu = {
         de: 'Kontakte'
     }
 };
+/**
+ * Обьект, содержащий обьекты с текстом для страницы:
+ * - Главная.
+ */
 exports.textMain = {
     'main title': {
         ru: 'Наши основные проекты.',
@@ -487,6 +529,10 @@ exports.textMain = {
         de: 'Zurück nach oben'
     },
 };
+/**
+ * Обьект, содержащий обьекты с текстом для страницы:
+ * - О нас.
+ */
 exports.textOurStory = {
     'project-block-title': {
         ru: 'о нас',

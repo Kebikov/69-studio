@@ -1,8 +1,12 @@
-// classBlock - отслеживаемый класс блока 
-// classPlus - класс добавляемый к отслеживаемому блоку
-// arrClassAlso - массив классов к которым так же добавится класс classPlussAlso
-// classPlussAlso - класс который добавится к каждому классу в массиве
 
+
+/**
+ * Функция слежения за элементом
+ * @param classBlock - отслеживаемый класс блока
+ * @param classPlus - класс добавляемый к отслеживаемому блоку
+ * @param arrClassAlso - массив классов к которым так же добавится класс classPlussAlso
+ * @param classPlussAlso - класс который добавится к каждому классу в массиве
+ */
 const intersectionObserver = (classBlock: string, classPlus: string, arrClassAlso: Array<string>, classPlussAlso: string) => {
 
     try {

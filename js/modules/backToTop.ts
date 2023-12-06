@@ -1,3 +1,7 @@
+
+/**
+ * Функция перехода в верх страницы
+ */
 const backToTop = () => {
 
     function top(): void {
