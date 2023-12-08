@@ -3,12 +3,16 @@ import { numberScroll } from "./modules/text";
 import backToTop from "./modules/backToTop";
 import lazyLoading from "./modules/lazyLoading";
 import language from "./modules/language";
+import pushPictures from "./modules/pushPictures";
+import addedImgToProject from "./modules/addedImgToProject";
 
 window.addEventListener('DOMContentLoaded', () => {
     menu();
+    pushPictures();
+    addedImgToProject();
     menuFill();
     numberScroll();
     backToTop();
-    lazyLoading();
     language();
+    lazyLoading();
 });

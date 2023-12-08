@@ -10,7 +10,7 @@ const lazyLoading = () => {
 
             entryAll.forEach((item) => {
                 if(item.isIntersecting){
-                    console.log(item.target);
+                    //console.log(item.target);
                     let itemTarget = item.target as HTMLImageElement;
                     let parent = itemTarget.parentElement as HTMLDivElement;
                     let sourceAll = parent.querySelectorAll('source') as NodeListOf<HTMLSourceElement>;
@@ -32,7 +32,7 @@ const lazyLoading = () => {
         });
 
         const imgElAll = document.querySelectorAll('.lazy-img');
-        console.log(imgElAll.length);
+        //console.log(imgElAll.length);
         if(imgElAll.length > 0) {
             imgElAll.forEach((item) => imgObserver.observe(item));
         }
