@@ -10,6 +10,13 @@ export type TranslationObject = {
 
 export const sorry: string = 'sorry, no translation';
 
+export const back = {
+    pl: 'Powrót do strony Projektów',
+    en: 'Back to Projects page',
+    ru: 'Назад к странице Проекты',
+    de: 'Zurück zur Seite Projekte'
+}
+
 
 export const textMain: Trasnslate = {
     'main title': {

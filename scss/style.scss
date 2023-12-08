@@ -1,4 +1,4 @@
-@import "__null", "__index", "__font", "__header", "__footer", "__addition", "__our-story", "__test", "__projects", "__supplement";
+@import "__null", "__index", "__font", "__header", "__footer", "__addition", "__our-story", "__test", "__projects", "__supplement", "__our-story";
 
 .wrapper {
     display: flex;
@@ -10,6 +10,14 @@
 
 .main {
     flex: 1 1 auto;
+}
+
+.container-full-width {
+    width: 100%;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .container {

@@ -4,25 +4,25 @@ export const textMenu: Trasnslate = {
     home: {
         pl: 'Strona główna',
         en: 'Home',
-        ru: sorry,
+        ru: 'Главная',
         de: sorry
     },
     'our story': {
         pl: 'o mnie',
         en: 'About me',
-        ru: sorry,
+        ru: 'О нас',
         de: sorry
     },
     projects: {
         pl: 'projekty',
         en: 'projects',
-        ru: sorry,
+        ru: 'Проекты',
         de: sorry
     },
     contacts: {
         pl: 'kontakty',
         en: 'contacts',
-        ru: sorry,
+        ru: 'Контакты',
         de: sorry
     }
 }

@@ -1,46 +1,22 @@
 import { Trasnslate, sorry } from "./textIndex"
 
 export const textOurStory: Trasnslate = {
-    'project-block-title': {
+    'our-story-1': {
+        pl: 'Pracownia 69.studio powstała w roku 1986 r. jako rodzinna firma o profilu projektowo –budowlanym. W tym czasie pod nazwą F.P.B Z&Z. Firma realizowała głównie projekty związane z budową obiektów, termomodernizacją , również projektowaniem i kompleksową realizacją wnętrz.<br/><br/>W r. 2018 firma została reaktywowana i ewoluowała na pracownię o profilu architektonicznym pod nazwą 69.studio.<br/><br/>Wiedza przekazywana z pokolenia na pokolenie zaowocowała innowacyjnym rozwojem pracowni w dziedzinie kompleksowego projektowania , wykorzystując doświadczenie w realizacji inwestycji.<br/><br/>Podstawową działalnością  f-my jest projektowanie architektury, kompleksowe przygotowanie projektów wielobranżowych, doradztwo techniczne, managment, oraz nadzór nad realizacją nietypowych indywidualnych budynków a także wnętrz.<br/><br/>Firma wykonuje projekty architektoniczne i wielobranżowe oraz zapewnia kompleksowy proces od analizy działki, jej kontekstu i uwarunkowań formalno – prawnych, przez projekty koncepcyjne, budowlane i techniczne aż po proces uzyskiwania uzgodnień, pozwoleń, udział w postępowaniach przetargowych i nadzór nad realizacją',
+        en: 'Pracownia 69.studio was established in 1986 as a family company with a design and construction profile. At that time, under the name F.P.B Z&Z. The company mainly carried out projects related to the construction of facilities, thermal modernization, as well as design and comprehensive implemen-tation of interiors.<br/><br/>In 2018, the company was reactivated and evolved into an architectural studio under the name 69.studio.<br/><br/>The knowledge passed down from generation to generation resulted in the innovative development of the studio in the field of comprehensive design, using experience in the implementation of invest-ments.<br/><br/>The main activity of the f-my is architecture design, comprehensive preparation of multi-discipline projects, technical consulting, management and supervision over the implementation of atypical indi-vidual buildings and interiors.<br/><br/>The company performs architectural and multi-discipline designs and provides a comprehensive pro-cess from the analysis of the plot, its context and formal and legal conditions, through conceptual, construction and technical designs, to the process of obtaining agreements, permits, participation in tender procedures and supervision over implementation.',
+        ru: sorry,
+        de: sorry
+    },
+    'our-story-2': {
+        pl: 'Właściciel pracowni : 69.studio, arch. Sławek Zieliński, jest Absolwentem  WA PK , uzyskał dyplom z wyróżnieniem pod kier. Prof. Witolda Cęckiewicza, opracowując zespołowy projekt urbanistyczno-architektoniczny ,,Krakowskiego Centrum Komunikacyjnego’’ wraz z terenami przyległymi , co zaowocowało późniejszymi realizacjami w tej części Krakowa. Jako główny architekt ,,nsMoonStudio’’ od 2015r. prowadził projekty i nadzorował realizację inwestycji mieszkalno - biurowych jak choćby zespół apartamentowy ,,Angel City ‘’ czy zespół biurowo - usługowy ,,HighFive’’ przy ul. Pawiej.<br/><br/>Doświadczenie i praktykę zdobywał jako architekt w f-mach A&E Engineering, Proinwest - Art,  P.P.A.B. w Krakowie.<br/><br/>Jako generalny projektant brał udział w wielu  znaczących dla współczesnej architektury projektach we współpracy z ,,MoonStudio’’ tj. np. :  ,,Alwernia Studios’’ – czyli znane kopuły przy Autostradzie A4 w Alwerni, Dom z gontu który w r. 2004 został nagrodzony pierwszą nagrodą SARP w kategorii budynek mieszkalny, a także wygrany konkurs i wielokrotnie nagradzany , zrealizowany obiekt ,, Siedziba ODSTK i Muzeum T. Kantora’’ w Krakowie.',
+        en: 'Studio owner: 69.studio, arch. Sławek Zieliński, is a graduate of WA PK, he obtained a diploma with honors under the supervision of prof. Witold Cęckie-wicz, developing a team urban and architectural design of the "Kraków Communication Center" along with adjacent areas, which resulted in later implementations in this part of Krakow. As the main architect of "nsMoonStudio" since 2015. he led projects and supervised the implementation of residential and office investments, such as the "Angel City" apartment complex or the "HighFive" office and service complex at ul. peacock.<br/><br/>He gained experience and practice as an architect in A&E Engineering, Proinwest - Art, P.P.A.B. in Cracow.<br/><br/>As a general designer, he participated in many projects significant for contemporary architecture in cooperation with "MoonStudio", i.e., for example: "Alwernia Studios" - well-known domes on the A4 highway in Alwernia, 2004 it was awarded the first prize of SARP in the category of a residential building, as well as a won competition and an award-winning, completed object "The seat of ODSTK and the T. Kantor Museum" in Krakow.',
+        ru: sorry,
+        de: sorry
+    },
+    'about-me': {
         pl: 'O mnie',
         en: 'About me',
         ru: sorry,
         de: sorry
-    },
-    'project-block-text': {
-        pl: '',
-        en: 'I am a paradeaph. Click here to add your own text and edit me. It’s easy. Just click “Edit Text” or double click me to add your own content and make changes to the font. Feel free to drag and drop me anywhere you like on your page. I’m a deeat place for you to tell a story and let your users know a little more about you.<br/><br/>This is a deeat space to write long text about your company and your services. You can use this space to go into a little more detail about your company. Talk about your team and what services you provide. Tell your visitors the story of how you came up with the idea for your business and what makes you different from your competitors. Make your company stand out and show your visitors who you are.',
-        ru: sorry,
-        de: sorry
-    },
-    'title': {
-        pl: '',
-        en: 'Our Team.',
-        ru: sorry,
-        de: sorry
-    },
-    'back to top': {
-        pl: '',
-        en: 'Back to top',
-        ru: sorry,
-        de: sorry
-    },
-    'phone': {
-        pl: '',
-        en: 'Tel.',
-        ru: sorry,
-        de: sorry
-    },
-    'partner': {
-        pl: '',
-        en: 'Partner',
-        ru: sorry,
-        de: sorry
-    },
-    'architect': {
-        pl: '',
-        en: 'Architect',
-        ru: sorry,
-        de: sorry
-    },
+    }
 }

@@ -85,14 +85,15 @@
 //= .project-block-text 
 .project-block-text {
     &.our-story__project-block-text {
-        position: absolute;
+        margin: 0px 0px 0px 0px;
+        position: relative;
         bottom: 0;
         left: 50%;
 
         width: 550px;
 
         @media (max-width: 1000px){
-            bottom: -200px;
+            bottom: -100px;
             left: 50%;
             transform: translateX(-50%);
     
