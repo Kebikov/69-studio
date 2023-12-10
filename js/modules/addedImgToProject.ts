@@ -1,3 +1,5 @@
+import lazyLoading from "./lazyLoading";
+
 /**
  * Функция выподаюших фотографий при нажатии на титульную фотографию.
  * - Фотографии будут добавлены после элемента с class="projects-our-story"
@@ -41,7 +43,7 @@ const addedImgToProject = () => {
             if(!parent) return;
             /**
              * Стартовый номер изображения для добавления.
-             * - В папке изображения пронумерованы цифрами от 1 и далее.
+             * - В папке изображения должны быть пронумерованы цифрами от 1 и далее.
              */
             const start: number = Number( parent.getAttribute('data-start') );
             /**
@@ -61,14 +63,15 @@ const addedImgToProject = () => {
                     'afterend',
                     `
                     <picture>
-                        <source srcset="${path}${i}.webp" type="image/webp">
-                        <img class="projects-our-story__img" src="${path}${i}.jpg" alt="my_alt">
+                        <source srcset="../../img/public/preloader.webp" data-srcset="${path}${i}.webp" type="image/webp">
+                        <img class="lazy-img projects-our-story__img" src="../../img/public/preloader.webp" data-src="${path}${i}.jpg" alt="my_alt">
                     </picture>
                     `
                 );
             };
-
-        }
+            lazyLoading();
+        };
+        
         // Проверка сушествования элементов projectsElements
         if(projectsElements) {
             // Установка слушателей событий.
@@ -82,3 +85,8 @@ const addedImgToProject = () => {
 }
 
 export default addedImgToProject;
+
+// <picture>
+//     <source srcset="${path}${i}.webp" type="image/webp">
+//     <img class="projects-our-story__img" src="${path}${i}.jpg" alt="my_alt">
+// </picture>

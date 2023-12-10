@@ -1,0 +1,12 @@
+.page-404 {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+    &__body {
+        text-align: center;
+        font-size: 20px;
+    }
+}
+

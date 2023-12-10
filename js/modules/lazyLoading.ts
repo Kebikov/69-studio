@@ -1,9 +1,15 @@
 
-{/* <picture>
-    <source data-srcset="../img/projects/1.webp" type="image/webp">
-    <img class="lazy-img" data-src="../img/projects/1.jpg" alt="my_alt">
-</picture> */}
-
+/**
+ * Функция отложенной загрузки изображений.
+ * - Найдет все изображения с классом "lazy-img".
+ * - Установит слушатель появления во viewport.
+ * - При появлении во viewport установит атрибуты с путем к изображению.
+ * @example
+ * <picture>
+ *     <source data-srcset="../img/projects/1.webp" type="image/webp">
+ *     <img class="lazy-img" data-src="../img/projects/1.jpg" alt="my_alt">
+ * </picture>
+ */
 const lazyLoading = () => {
     try{
         const imgObserver = new IntersectionObserver((entryAll, observer) => {

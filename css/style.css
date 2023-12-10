@@ -2388,6 +2388,19 @@ input[type=number]:focus {
   }
 }
 
+.page-404 {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+.page-404__body {
+  text-align: center;
+  font-size: 20px;
+}
+
 .wrapper {
   display: -webkit-box;
   display: -ms-flexbox;

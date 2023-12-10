@@ -6,45 +6,82 @@
 /*!*****************************************!*\
   !*** ./js/modules/addedImgToProject.ts ***!
   \*****************************************/
-/***/ ((__unused_webpack_module, exports) => {
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", ({ value: true }));
+var lazyLoading_1 = __importDefault(__webpack_require__(/*! ./lazyLoading */ "./js/modules/lazyLoading.ts"));
 /**
+ * Функция выподаюших фотографий при нажатии на титульную фотографию.
+ * - Фотографии будут добавлены после элемента с class="projects-our-story"
  * @example
  * <div
         class="projects-our-story"
         data-click="project"
-        data-start="1"
-        data-end="18"
-        data-path="../img/portfolio/HIGH5 office building complex/"
+        data-start="{...номер начального изображения}"
+        data-end="{...номер конечного изображения}"
+        data-path="{...путь к папке с изображениями}"
     >
         <picture>
-            <source srcset="../img/portfolio/HIGH5 office building complex/4.webp" type="image/webp">
-            <img class="projects-our-story__title-img" src="../img/portfolio/HIGH5 office building complex/4.jpg" alt="my_alt">
+            <source srcset="{...путь к img.webp}" type="image/webp">
+            <img class="projects-our-story__title-img" src="{...путь к img.jpg}" alt="my_alt">
         </picture>
-        <div class="projects-our-story__title"><span>,,HIGH5" office building complex</span></div>
+        <div class="projects-our-story__title"><span>{...Имя проекта}</span></div>
     </div>
  */
 var addedImgToProject = function () {
     try {
+        /**
+         * Массив элементов с атрибутом ( data-click="project" ).
+         */
         var projectsElements = document.querySelectorAll('[data-click="project"]');
+        /**
+         * - Функция получает данные о начальном, конечном кадре и пути из дата атрибутов.
+         * - Добавляет изображения после радительского элемента.
+         * @param event Событие элемента на котором призошол клик.
+         * @returns
+         */
         var addImg_1 = function (event) {
+            /**
+             * Дочерний элемент на котором произошел клик.
+             */
             var children = event.target;
+            /**
+             * Родительский элемент, в котором находится дочерний элемент, на котором произошло событие.
+             */
             var parent = children.closest('[data-click="project"]');
             if (!parent)
                 return;
+            /**
+             * Стартовый номер изображения для добавления.
+             * - В папке изображения должны быть пронумерованы цифрами от 1 и далее.
+             */
             var start = Number(parent.getAttribute('data-start'));
+            /**
+             * Конечный номер изображения для добавления.
+             * - В папке изображения пронумерованы цифрами от 1 и далее.
+             */
             var end = Number(parent.getAttribute('data-end'));
+            /**
+             * Путь к папке с изображениями.
+             */
             var path = parent.getAttribute('data-path');
+            // Если нет данных, то не добавляем изображения.
             if (!start && !end && !path)
                 return;
+            // Добавление изображений.
             for (var i = end; i >= start; i--) {
-                parent.insertAdjacentHTML('afterend', "\n                    <picture>\n                        <source srcset=\"".concat(path).concat(i, ".webp\" type=\"image/webp\">\n                        <img class=\"projects-our-story__img\" src=\"").concat(path).concat(i, ".jpg\" alt=\"my_alt\">\n                    </picture>\n                    "));
+                parent.insertAdjacentHTML('afterend', "\n                    <picture>\n                        <source srcset=\"../../img/public/preloader.webp\" data-srcset=\"".concat(path).concat(i, ".webp\" type=\"image/webp\">\n                        <img class=\"lazy-img projects-our-story__img\" src=\"../../img/public/preloader.webp\" data-src=\"").concat(path).concat(i, ".jpg\" alt=\"my_alt\">\n                    </picture>\n                    "));
             }
             ;
+            (0, lazyLoading_1.default)();
         };
+        // Проверка сушествования элементов projectsElements
         if (projectsElements) {
+            // Установка слушателей событий.
             projectsElements.forEach(function (project) {
                 project.addEventListener('click', addImg_1);
             });
@@ -55,6 +92,10 @@ var addedImgToProject = function () {
     }
 };
 exports["default"] = addedImgToProject;
+// <picture>
+//     <source srcset="${path}${i}.webp" type="image/webp">
+//     <img class="projects-our-story__img" src="${path}${i}.jpg" alt="my_alt">
+// </picture>
 
 
 /***/ }),
@@ -331,6 +372,7 @@ function setTextPage(language) {
         return translation[path];
     };
     var textForPage = changeTranslation(path);
+    console.log(textForPage);
     elementsText.forEach(function (element) {
         if (element.dataset.translation) {
             var data = element.dataset.translation;
@@ -353,11 +395,17 @@ exports["default"] = language;
 
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-{ /* <picture>
-    <source data-srcset="../img/projects/1.webp" type="image/webp">
-    <img class="lazy-img" data-src="../img/projects/1.jpg" alt="my_alt">
-</picture> */
-}
+/**
+ * Функция отложенной загрузки изображений.
+ * - Найдет все изображения с классом "lazy-img".
+ * - Установит слушатель появления во viewport.
+ * - При появлении во viewport установит атрибуты с путем к изображению.
+ * @example
+ * <picture>
+ *     <source data-srcset="../img/projects/1.webp" type="image/webp">
+ *     <img class="lazy-img" data-src="../img/projects/1.jpg" alt="my_alt">
+ * </picture>
+ */
 var lazyLoading = function () {
     try {
         var imgObserver_1 = new IntersectionObserver(function (entryAll, observer) {

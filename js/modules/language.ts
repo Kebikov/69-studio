@@ -186,7 +186,7 @@ function setTextPage(language: string) {
     }
 
     let textForPage: Trasnslate = changeTranslation(path);
-
+    console.log(textForPage);
     elementsText.forEach(element => {
         if(element.dataset.translation) {
             const data: string = element.dataset.translation;
