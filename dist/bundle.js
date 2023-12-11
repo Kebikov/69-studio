@@ -13,6 +13,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
+// str
 var lazyLoading_1 = __importDefault(__webpack_require__(/*! ./lazyLoading */ "./js/modules/lazyLoading.ts"));
 /**
  * Функция выподаюших фотографий при нажатии на титульную фотографию.
@@ -24,6 +25,7 @@ var lazyLoading_1 = __importDefault(__webpack_require__(/*! ./lazyLoading */ "./
         data-start="{...номер начального изображения}"
         data-end="{...номер конечного изображения}"
         data-path="{...путь к папке с изображениями}"
+        data-state="{ open | close} ...состояние открыть изображения или закрыть"
     >
         <picture>
             <source srcset="{...путь к img.webp}" type="image/webp">
@@ -53,6 +55,13 @@ var addedImgToProject = function () {
              * Родительский элемент, в котором находится дочерний элемент, на котором произошло событие.
              */
             var parent = children.closest('[data-click="project"]');
+            /**
+             * Функция установки значения атрибута data-state.
+             * @param state - Значение атрибута data-state.
+             */
+            var stateParent = function (state) {
+                parent.setAttribute('data-state', state);
+            };
             if (!parent)
                 return;
             /**
@@ -69,15 +78,33 @@ var addedImgToProject = function () {
              * Путь к папке с изображениями.
              */
             var path = parent.getAttribute('data-path');
+            /**
+             * Значение атрибута data-state, состояние родительского компанента, что необходимо сделать при нажатии.
+             * - open - Показать изображения.
+             * - close - Скрыть изображения.
+             */
+            var state = parent.getAttribute('data-state');
             // Если нет данных, то не добавляем изображения.
-            if (!start && !end && !path)
+            if (!start && !end && !path && !state)
                 return;
-            // Добавление изображений.
-            for (var i = end; i >= start; i--) {
-                parent.insertAdjacentHTML('afterend', "\n                    <picture>\n                        <source srcset=\"../../img/public/preloader.webp\" data-srcset=\"".concat(path).concat(i, ".webp\" type=\"image/webp\">\n                        <img class=\"lazy-img projects-our-story__img\" src=\"../../img/public/preloader.webp\" data-src=\"").concat(path).concat(i, ".jpg\" alt=\"my_alt\">\n                    </picture>\n                    "));
+            if (state === 'open') {
+                // open - Показать изображения.
+                for (var i = end; i >= start; i--) {
+                    parent.insertAdjacentHTML('afterend', "\n                        <picture data-id=\"".concat(path, "\">\n                            <source srcset=\"../../img/public/preloader.webp\" data-srcset=\"").concat(path).concat(i, ".webp\" type=\"image/webp\">\n                            <img class=\"lazy-img projects-our-story__img\" src=\"../../img/public/preloader.webp\" data-src=\"").concat(path).concat(i, ".jpg\" alt=\"my_alt\">\n                        </picture>\n                        "));
+                }
+                ;
+                stateParent('close');
+                (0, lazyLoading_1.default)();
             }
-            ;
-            (0, lazyLoading_1.default)();
+            else {
+                // close - Скрыть изображения.
+                var pictures = document.querySelectorAll("[data-id = \"".concat(path, "\"]"));
+                pictures.forEach(function (pic) {
+                    pic.remove();
+                });
+                parent.setAttribute('data-state', 'open');
+                stateParent('open');
+            }
         };
         // Проверка сушествования элементов projectsElements
         if (projectsElements) {
@@ -92,10 +119,6 @@ var addedImgToProject = function () {
     }
 };
 exports["default"] = addedImgToProject;
-// <picture>
-//     <source srcset="${path}${i}.webp" type="image/webp">
-//     <img class="projects-our-story__img" src="${path}${i}.jpg" alt="my_alt">
-// </picture>
 
 
 /***/ }),
