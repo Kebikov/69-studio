@@ -631,13 +631,28 @@ input[type=number]:focus {
 .contacts-blank {
   position: absolute;
   top: 50%;
-  right: 10%;
+  right: -20%;
   -webkit-transform: translateY(-50%);
       -ms-transform: translateY(-50%);
           transform: translateY(-50%);
   width: 35%;
   height: 85%;
   background: #FAFAFA;
+}
+@media (max-width: 1440px) {
+  .contacts-blank {
+    right: -10%;
+  }
+}
+@media (max-width: 1230px) {
+  .contacts-blank {
+    right: -5%;
+  }
+}
+@media (max-width: 1100px) {
+  .contacts-blank {
+    right: 0%;
+  }
 }
 @media (max-width: 1000px) {
   .contacts-blank {
