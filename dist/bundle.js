@@ -949,8 +949,8 @@ exports.textProjects = {
         de: textIndex_1.sorry
     },
     'alt-2': {
-        pl: 'BUDYNEK BIUROWY ,,TECHMAR’’ W KIELCACH',
-        en: '"TECHMAR" OFFICE BUILDING IN KIELCE',
+        pl: 'DOM Z WIÓRA',
+        en: 'CHIP HOUSE',
         ru: 'ДОМ ИЗ ЩЕПЫ',
         de: textIndex_1.sorry
     },

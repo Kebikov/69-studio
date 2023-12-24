@@ -1,0 +1,22 @@
+@import '../scss/mixin.scss';
+@import '../scss/variables.scss';
+
+.partner {
+    display: flex;
+    margin-top: 5px;
+    &__img {
+        width: 100px;
+        margin-right: 10px;
+        & img {
+            width: 100%;
+            object-fit: contain;
+        }
+    }
+    &__text {
+        display: flex;
+        align-items: center;
+        & span {
+            @include text_streach (11, 10, #000, 500);
+        }
+    }
+}
