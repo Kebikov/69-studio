@@ -388,17 +388,19 @@ input[type=number]:focus {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  padding: 40px 35px 45px 100px;
+  margin: 50px 0px 0px 0px;
+  padding: 50px 150px 50px 60px;
   border: 3px solid #000;
 }
 @media (max-width: 1000px) {
   .project-block-text-3__body {
+    margin: 0px 0px 0px 0px;
     padding: 20px 20px;
   }
 }
 .project-block-text-3__title {
   font-family: "Roboto";
-  font-size: 15px;
+  font-size: 17px;
   font-weight: 600;
   color: #000;
   line-height: 120%;
@@ -406,12 +408,12 @@ input[type=number]:focus {
 }
 @media (max-width: 1910px) {
   .project-block-text-3__title {
-    font-size: calc(13px + (2) * (100vw - 375px) / 1535);
+    font-size: calc(15px + (2) * (100vw - 375px) / 1535);
   }
 }
 @media (max-width: 375px) {
   .project-block-text-3__title {
-    font-size: 13px;
+    font-size: 15px;
   }
 }
 .project-block-text-3__line {
@@ -480,7 +482,8 @@ input[type=number]:focus {
   -webkit-box-flex: 1;
       -ms-flex: 1 0 auto;
           flex: 1 0 auto;
-  margin: 120px -50px 0px 0px;
+  margin: 20px -50px 0px 0px;
+  background: "red";
 }
 @media (max-width: 1000px) {
   .project-3__img {
@@ -488,7 +491,7 @@ input[type=number]:focus {
   }
 }
 .project-3__img img {
-  width: 361px;
+  width: 661px;
   aspect-ratio: 361/425;
   -o-object-fit: cover;
      object-fit: cover;
@@ -535,6 +538,12 @@ input[type=number]:focus {
   -webkit-box-flex: 1;
       -ms-flex: 1 0 auto;
           flex: 1 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
 }
 @media (max-width: 1000px) {
   .project-4__img {
@@ -1605,7 +1614,7 @@ input[type=number]:focus {
 }
 @media (max-width: 1000px) {
   .m_300_350 {
-    margin: -180px 20px 0px 20px;
+    margin: -30px 20px 0px 20px;
   }
 }
 

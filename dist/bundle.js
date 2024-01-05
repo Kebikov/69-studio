@@ -239,6 +239,7 @@ var project_4_1 = __webpack_require__(/*! ../translation/project-4 */ "./js/tran
 var project_5_1 = __webpack_require__(/*! ../translation/project-5 */ "./js/translation/project-5.ts");
 var project_6_1 = __webpack_require__(/*! ../translation/project-6 */ "./js/translation/project-6.ts");
 var project_7_1 = __webpack_require__(/*! ../translation/project-7 */ "./js/translation/project-7.ts");
+var contacts_1 = __webpack_require__(/*! ../translation/contacts */ "./js/translation/contacts.ts");
 /**
  * Функция установки определения и установки языка в localStorage.
  */
@@ -294,6 +295,14 @@ var language = function () {
 };
 //= functions 
 //* состояние при загрузке страницы
+/**
+ * Установка состояние при загрузке страницы.
+ * - У блока выбора языка, изображение и текст.
+ * - У текста меню.
+ * - У текста на странице.
+ * @param activeImg Элемент изображения HTMLDivElement.
+ * @param activeText Элемент текста HTMLDivElement.
+ */
 function beginningState(activeImg, activeText) {
     var language = localStorage.getItem('language');
     if (language) {
@@ -375,7 +384,10 @@ function setMenu(language) {
         }
     });
 }
-//* изминение текста на странице
+/**
+ * Изминение текста на странице
+ * @param language Выбранный язык для перевода.
+ */
 function setTextPage(language) {
     var path = window.location.pathname;
     var elementsText = document.querySelectorAll('[data-translation]');
@@ -391,11 +403,11 @@ function setTextPage(language) {
             '/project-5/': project_5_1.textProject5,
             '/project-6/': project_6_1.textProject6,
             '/project-7/': project_7_1.textProject7,
+            '/contacts/': contacts_1.contacts
         };
         return translation[path];
     };
     var textForPage = changeTranslation(path);
-    console.log(textForPage);
     elementsText.forEach(function (element) {
         if (element.dataset.translation) {
             var data = element.dataset.translation;
@@ -634,6 +646,41 @@ window.addEventListener('DOMContentLoaded', function () {
     (0, language_1.default)();
     (0, lazyLoading_1.default)();
 });
+
+
+/***/ }),
+
+/***/ "./js/translation/contacts.ts":
+/*!************************************!*\
+  !*** ./js/translation/contacts.ts ***!
+  \************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.contacts = void 0;
+var textIndex_1 = __webpack_require__(/*! ./textIndex */ "./js/translation/textIndex.ts");
+exports.contacts = {
+    'stay': {
+        pl: 'Pozostań w kontakcie.',
+        en: 'Stay In Touch.',
+        ru: 'Оставайтесь на связи.',
+        de: textIndex_1.sorry
+    },
+    'city': {
+        pl: '31-518 Kraków ul. Brodowicza 8/1',
+        en: '31-518 Cracow ul. Brodowicza 8/1',
+        ru: '31-518 Краков ul. Brodowicza 8/1',
+        de: textIndex_1.sorry
+    },
+    'partners': {
+        pl: 'Partnerzy :',
+        en: 'Partners :',
+        ru: 'Партнеры :',
+        de: textIndex_1.sorry
+    },
+    back: textIndex_1.back
+};
 
 
 /***/ }),
@@ -1149,6 +1196,24 @@ exports.textMain = {
         pl: 'Faks:',
         en: 'Fax:',
         ru: exports.sorry,
+        de: exports.sorry
+    },
+    'stay': {
+        pl: 'Pozostań w kontakcie.',
+        en: 'Stay In Touch.',
+        ru: 'Оставайтесь на связи.',
+        de: exports.sorry
+    },
+    'city': {
+        pl: '31-518 Kraków ul. Brodowicza 8/1',
+        en: '31-518 Cracow ul. Brodowicza 8/1',
+        ru: '31-518 Краков ul. Brodowicza 8/1',
+        de: exports.sorry
+    },
+    'partners': {
+        pl: 'Partnerzy :',
+        en: 'Partners :',
+        ru: 'Партнеры :',
         de: exports.sorry
     },
 };

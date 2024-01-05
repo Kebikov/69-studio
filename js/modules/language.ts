@@ -11,6 +11,7 @@ import { textProject4 } from "../translation/project-4";
 import { textProject5 } from "../translation/project-5";
 import { textProject6 } from "../translation/project-6";
 import { textProject7 } from "../translation/project-7";
+import { contacts } from "../translation/contacts";
 
 
 /**
@@ -72,6 +73,14 @@ const language = () => {
 //= functions 
 
 //* состояние при загрузке страницы
+/**
+ * Установка состояние при загрузке страницы.
+ * - У блока выбора языка, изображение и текст.
+ * - У текста меню.
+ * - У текста на странице.
+ * @param activeImg Элемент изображения HTMLDivElement.
+ * @param activeText Элемент текста HTMLDivElement.
+ */
 function beginningState(activeImg: HTMLImageElement, activeText: HTMLDivElement) {
     const language: string | null = localStorage.getItem('language');
 
@@ -163,7 +172,10 @@ function setMenu(language: string): void {
     });
 }
 
-//* изминение текста на странице
+/**
+ * Изминение текста на странице
+ * @param language Выбранный язык для перевода.
+ */
 function setTextPage(language: string) {
     const path = window.location.pathname;
 
@@ -181,12 +193,13 @@ function setTextPage(language: string) {
             '/project-5/': textProject5,
             '/project-6/': textProject6,
             '/project-7/': textProject7,
+            '/contacts/': contacts
         }
         return translation[path];
     }
 
     let textForPage: Trasnslate = changeTranslation(path);
-    console.log(textForPage);
+    
     elementsText.forEach(element => {
         if(element.dataset.translation) {
             const data: string = element.dataset.translation;
