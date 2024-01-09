@@ -58,17 +58,27 @@
     margin: 0px 30px -100px 50px;
 
     @media (max-width: 1000px){
-        margin: -100px 20px 0px 20px;
+        margin: -60px 20px 0px 20px;
     }
 }
 
 .m_-100_50_0_30 {
     position: relative;
     z-index: 2;
+    margin: -75px 50px 0px 30px;
+
+    @media (max-width: 1000px){
+        margin: -60px 20px 0px 20px;
+    }
+}
+
+.m_-100_50_0_30-7 {
+    position: relative;
+    z-index: 2;
     margin: -100px 50px 0px 30px;
 
     @media (max-width: 1000px){
-        margin: -100px 20px 0px 20px;
+        margin: -60px 20px 0px 20px;
     }
 }
 
@@ -78,14 +88,18 @@
     margin: 350px -300px 0px 0px;
 
     @media (max-width: 1000px){
-        margin: -30px 20px 0px 20px;
+        margin: -40px 20px 0px 20px;
     }
 }
 
 .mp5 {
-    margin: 0px 35px 0px 300px;
+    position: relative;
+    z-index: 2;
+    margin: -50px 35px 0px 400px;
+    width: 500px;
     @media (max-width: 1000px){
-        margin: 0px 20px 0px 20px;
+        margin: -30px 20px 0px 20px;
+        width: auto;
     }
 }
 
