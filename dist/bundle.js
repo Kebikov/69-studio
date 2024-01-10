@@ -1239,8 +1239,8 @@ exports.textMenu = {
         de: textIndex_1.sorry
     },
     'our story': {
-        pl: 'o mnie',
-        en: 'About me',
+        pl: 'o nas',
+        en: 'about us',
         ru: 'О нас',
         de: textIndex_1.sorry
     },

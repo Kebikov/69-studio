@@ -8,8 +8,8 @@ export const textMenu: Trasnslate = {
         de: sorry
     },
     'our story': {
-        pl: 'o mnie',
-        en: 'About me',
+        pl: 'o nas',
+        en: 'about us',
         ru: 'О нас',
         de: sorry
     },
