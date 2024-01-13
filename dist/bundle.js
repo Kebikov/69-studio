@@ -709,7 +709,7 @@ exports.textProject1 = {
         de: textIndex_1.sorry
     },
     'object': {
-        pl: 'Powrót do strony Projektów',
+        pl: 'Obiekt zrealizowany',
         en: 'Object completed',
         ru: 'Объект реализован',
         de: textIndex_1.sorry,
@@ -750,7 +750,7 @@ exports.textProject2 = {
         de: textIndex_1.sorry
     },
     'object': {
-        pl: 'Powrót do strony Projektów',
+        pl: 'Obiekt zrealizowany',
         en: 'Object completed',
         ru: 'Объект реализован',
         de: textIndex_1.sorry,

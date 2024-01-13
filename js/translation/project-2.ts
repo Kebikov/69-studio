@@ -14,7 +14,7 @@ export const textProject2: Trasnslate = {
         de: sorry
     },
     'object': {
-        pl: 'Powrót do strony Projektów',
+        pl: 'Obiekt zrealizowany',
         en: 'Object completed',
         ru: 'Объект реализован',
         de: sorry,
