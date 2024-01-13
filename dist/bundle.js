@@ -1030,6 +1030,12 @@ exports.textProjects = {
         en: 'TARNÓW – RESTAURANT ON THE ZGŁOBICE HILL',
         ru: 'TARNÓW-ресторан на холме ZBŁOBICE',
         de: textIndex_1.sorry
+    },
+    'alt-8': {
+        pl: 'Wnetrza',
+        en: 'Wnetrza',
+        ru: 'Wnetrza',
+        de: textIndex_1.sorry
     }
 };
 

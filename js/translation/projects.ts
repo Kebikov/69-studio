@@ -48,5 +48,11 @@ export const textProjects: Trasnslate = {
         en: 'TARNÓW – RESTAURANT ON THE ZGŁOBICE HILL',
         ru: 'TARNÓW-ресторан на холме ZBŁOBICE',
         de: sorry
+    },
+    'alt-8': {
+        pl: 'Wnetrza',
+        en: 'Wnetrza',
+        ru: 'Wnetrza',
+        de: sorry
     }
 }
