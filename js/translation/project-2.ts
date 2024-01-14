@@ -1,5 +1,8 @@
 import { Trasnslate, sorry, back } from "./textIndex";
 
+/**
+ * Перевод для проекта №2.
+ */
 export const textProject2: Trasnslate = {
     'title': {
         pl: 'DOM Z WIÓRA',
@@ -14,7 +17,7 @@ export const textProject2: Trasnslate = {
         de: sorry
     },
     'object': {
-        pl: 'Obiekt zrealizowany',
+        pl: 'Powrót do strony Projektów',
         en: 'Object completed',
         ru: 'Объект реализован',
         de: sorry,

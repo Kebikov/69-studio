@@ -1,5 +1,8 @@
 import { Trasnslate, sorry } from "./textIndex";
 
+/**
+ * Перевод для страницы с проектами.
+ */
 export const textProjects: Trasnslate = {
     'title': {
         pl: 'Projekty',
@@ -47,12 +50,6 @@ export const textProjects: Trasnslate = {
         pl: 'TARNÓW – RESTAURACJA NA WZGÓRZU ZGŁOBICE',
         en: 'TARNÓW – RESTAURANT ON THE ZGŁOBICE HILL',
         ru: 'TARNÓW-ресторан на холме ZBŁOBICE',
-        de: sorry
-    },
-    'alt-8': {
-        pl: 'Wnetrza',
-        en: 'Wnetrza',
-        ru: 'Wnetrza',
         de: sorry
     }
 }

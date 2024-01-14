@@ -1,5 +1,8 @@
 import { Trasnslate, sorry, back } from "./textIndex";
 
+/**
+ * Перевод для проекта №5.
+ */
 export const textProject5: Trasnslate = {
     'title': {
         pl: 'BRZYCZYNA, OSIEDLE DOMÓW',

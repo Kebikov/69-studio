@@ -1,5 +1,8 @@
 import { Trasnslate, sorry, back } from "./textIndex";
 
+/**
+ * Перевод для проекта №1.
+ */
 export const textProject1: Trasnslate = {
     'title': {
         pl: 'BUDYNEK BIUROWY "TECHMAR" W KIELCACH',
@@ -14,7 +17,7 @@ export const textProject1: Trasnslate = {
         de: sorry
     },
     'object': {
-        pl: 'Obiekt zrealizowany',
+        pl: 'Powrót do strony Projektów',
         en: 'Object completed',
         ru: 'Объект реализован',
         de: sorry,

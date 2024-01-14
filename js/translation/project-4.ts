@@ -1,5 +1,8 @@
 import { Trasnslate, sorry, back } from "./textIndex";
 
+/**
+ * Перевод для проекта №4.
+ */
 export const textProject4: Trasnslate = {
     'title': {
         pl: 'ZOREN-SLICZNA, BUDYNEK MIESZKALNY-WIELORODZINNY',

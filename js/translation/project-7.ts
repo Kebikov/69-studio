@@ -1,5 +1,8 @@
 import { Trasnslate, sorry, back } from "./textIndex";
 
+/**
+ * Перевод для проекта №7.
+ */
 export const textProject7: Trasnslate = {
     'title': {
         pl: 'TARNÓW – RESTAURACJA NA WZGÓRZU ZGŁOBICE',

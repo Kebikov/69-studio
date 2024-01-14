@@ -1,5 +1,8 @@
 import { Trasnslate, sorry } from "./textIndex";
 
+/**
+ * Перевод для меню.
+ */
 export const textMenu: Trasnslate = {
     home: {
         pl: 'Strona główna',
