@@ -43,7 +43,7 @@ const pushPictures = () => {
         
 
     }catch (error) {
-        console.log('Error in Function  pushPictures >>> ', error);
+        console.error('Error in Function  pushPictures >>> ', error);
     }
 }
 

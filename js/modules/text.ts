@@ -27,6 +27,6 @@ export const numberScroll = () => {
         }
 
     } catch (error) {
-        console.log('Error in function numberScroll >>> ', error);
+        console.error('Error in function numberScroll >>> ', error);
     }
 };

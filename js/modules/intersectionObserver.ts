@@ -32,7 +32,7 @@ const intersectionObserver = (classBlock: string, classPlus: string, arrClassAls
         divObserver.observe(block);
 
     } catch (error) {
-        console.log('Error in function intersectionObserver >>> ', error);
+        console.error('Error in function intersectionObserver >>> ', error);
     }
     
 }
@@ -51,7 +51,7 @@ function addAndRemoveArrayClass(arrClassAlso: Array<string>, classPlussAlso: str
             });
         }
     }catch(error){
-        console.log('Error in function addAndRemoveArrayClass >>> ', error);
+        console.error('Error in function addAndRemoveArrayClass >>> ', error);
     }
 }
 

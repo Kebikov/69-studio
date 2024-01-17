@@ -111,7 +111,7 @@ const addedImgToProject = () => {
         }
 
     }catch (error) {
-        console.log('Error in Function addedImgToProject >>> ', error);
+        console.error('Error in Function addedImgToProject >>> ', error);
     }
 }
 

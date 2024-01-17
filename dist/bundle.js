@@ -2,34 +2,107 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./js/language/function/beginningState.ts":
+/*!************************************************!*\
+  !*** ./js/language/function/beginningState.ts ***!
+  \************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const setSelectActive_1 = __importDefault(__webpack_require__(/*! ./setSelectActive */ "./js/language/function/setSelectActive.ts"));
+const setMenu_1 = __importDefault(__webpack_require__(/*! ./setMenu */ "./js/language/function/setMenu.ts"));
+const setTextPage_1 = __importDefault(__webpack_require__(/*! ./setTextPage */ "./js/language/function/setTextPage.ts"));
+//= beginningState 
+/**
+ * Установка состояние при загрузке страницы у элементов:
+ * - Блока выбора языка, изображение и текст.
+ * - Текста меню.
+ * - Текста на странице.
+ * @param activeImg Элемент изображения HTMLDivElement.
+ * @param activeText Элемент текста HTMLDivElement.
+ */
+const beginningState = (activeImg, activeText) => {
+    const language = localStorage.getItem('language');
+    if (language) {
+        (0, setSelectActive_1.default)(activeImg, activeText, language);
+        (0, setMenu_1.default)(language);
+        (0, setTextPage_1.default)(language);
+    }
+};
+exports["default"] = beginningState;
+
+
+/***/ }),
+
+/***/ "./js/language/function/eventChangeRadio.ts":
+/*!**************************************************!*\
+  !*** ./js/language/function/eventChangeRadio.ts ***!
+  \**************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const setSelectActive_1 = __importDefault(__webpack_require__(/*! ./setSelectActive */ "./js/language/function/setSelectActive.ts"));
+const setMenu_1 = __importDefault(__webpack_require__(/*! ./setMenu */ "./js/language/function/setMenu.ts"));
+const setTextPage_1 = __importDefault(__webpack_require__(/*! ./setTextPage */ "./js/language/function/setTextPage.ts"));
+//= eventChangeRadio 
+/**
+ * Изминение состояния при изминении выбора языка.
+ * @param radioButtons Элемены радио-кнопок, массив.
+ * @param activeImg Активное изображеник.
+ * @param activeText Активный текст.
+ * @param body Тело.
+ */
+const eventChangeRadio = (radioButtons, activeImg, activeText, body) => {
+    radioButtons.forEach(radio => {
+        radio.addEventListener('change', (event) => {
+            if (event.target instanceof HTMLInputElement) {
+                if (event.target.checked) {
+                    const value = event.target.value;
+                    (0, setSelectActive_1.default)(activeImg, activeText, value);
+                    localStorage.setItem('language', value);
+                    if (value) {
+                        (0, setMenu_1.default)(value);
+                        (0, setTextPage_1.default)(value);
+                    }
+                }
+            }
+            body.classList.toggle('active');
+        });
+    });
+};
+exports["default"] = eventChangeRadio;
+
+
+/***/ }),
+
 /***/ "./js/language/function/language.ts":
 /*!******************************************!*\
   !*** ./js/language/function/language.ts ***!
   \******************************************/
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const textIndex_1 = __webpack_require__(/*! ../translation/textIndex */ "./js/language/translation/textIndex.ts");
-const textMenu_1 = __webpack_require__(/*! ../translation/textMenu */ "./js/language/translation/textMenu.ts");
-const public_1 = __webpack_require__(/*! ../translation/public */ "./js/language/translation/public.ts");
-const textOurStory_1 = __webpack_require__(/*! ../translation/textOurStory */ "./js/language/translation/textOurStory.ts");
-const projects_1 = __webpack_require__(/*! ../translation/projects */ "./js/language/translation/projects.ts");
-const project_1_1 = __webpack_require__(/*! ../translation/project-1 */ "./js/language/translation/project-1.ts");
-const project_2_1 = __webpack_require__(/*! ../translation/project-2 */ "./js/language/translation/project-2.ts");
-const project_3_1 = __webpack_require__(/*! ../translation/project-3 */ "./js/language/translation/project-3.ts");
-const project_4_1 = __webpack_require__(/*! ../translation/project-4 */ "./js/language/translation/project-4.ts");
-const project_5_1 = __webpack_require__(/*! ../translation/project-5 */ "./js/language/translation/project-5.ts");
-const project_6_1 = __webpack_require__(/*! ../translation/project-6 */ "./js/language/translation/project-6.ts");
-const project_7_1 = __webpack_require__(/*! ../translation/project-7 */ "./js/language/translation/project-7.ts");
-const contacts_1 = __webpack_require__(/*! ../translation/contacts */ "./js/language/translation/contacts.ts");
+const beginningState_1 = __importDefault(__webpack_require__(/*! ./beginningState */ "./js/language/function/beginningState.ts"));
+const eventChangeRadio_1 = __importDefault(__webpack_require__(/*! ./eventChangeRadio */ "./js/language/function/eventChangeRadio.ts"));
+//= language 
 /**
  * Стартовая функция для перевода на сайте.
  * - 1) Определяет используемые языки в браузере.
  * - 2) Устанавливает приоритетный язык в localStorage.
- *
+ * - 3) Вызывает необходимые функции для дальнейшей работы перевода сайта.
  */
-//= language 
 const language = () => {
     /**
      * Язык по дефолту.
@@ -74,80 +147,33 @@ const language = () => {
         }
         ;
     }
-    beginningState(activeImg, activeText);
+    (0, beginningState_1.default)(activeImg, activeText);
     activeRadio.addEventListener('click', () => {
         body.classList.toggle('active');
     });
-    eventChangeRadio(radioButtons, activeImg, activeText, body);
+    (0, eventChangeRadio_1.default)(radioButtons, activeImg, activeText, body);
 };
-//= functions 
-//* состояние при загрузке страницы
-/**
- * Установка состояние при загрузке страницы.
- * - У блока выбора языка, изображение и текст.
- * - У текста меню.
- * - У текста на странице.
- * @param activeImg Элемент изображения HTMLDivElement.
- * @param activeText Элемент текста HTMLDivElement.
- */
-function beginningState(activeImg, activeText) {
-    const language = localStorage.getItem('language');
-    if (language) {
-        setSelectActive(activeImg, activeText, language);
-        setMenu(language);
-        setTextPage(language);
-    }
-}
-//* состояние при изминении выбора языка 
-function eventChangeRadio(radioButtons, activeImg, activeText, body) {
-    radioButtons.forEach(radio => {
-        radio.addEventListener('change', (event) => {
-            if (event.target instanceof HTMLInputElement) {
-                if (event.target.checked) {
-                    const value = event.target.value;
-                    setSelectActive(activeImg, activeText, value);
-                    localStorage.setItem('language', value);
-                    if (value) {
-                        setMenu(value);
-                        setTextPage(value);
-                    }
-                }
-            }
-            body.classList.toggle('active');
-        });
-    });
-}
-/**
- * Функция изминения текста и изображения у активного блока выбора языка.
- * @param activeImg - Элемент изображения с флагом.
- * @param activeText - Элемент с текстом, отражаюшем выбраный язык.
- * @param value - Значение выбраного языка (ru, pl, de...).
- */
-function setSelectActive(activeImg, activeText, value) {
-    activeImg.src = `/img/flag/${value}.jpg`;
-    switch (value) {
-        case 'ru':
-            activeText.textContent = 'Russia';
-            break;
-        case 'en':
-            activeText.textContent = 'English';
-            break;
-        case 'pl':
-            activeText.textContent = 'Polski';
-            break;
-        case 'de':
-            activeText.textContent = 'Deutsch';
-            break;
-        default:
-            activeText.textContent = '';
-            break;
-    }
-}
+exports["default"] = language;
+
+
+/***/ }),
+
+/***/ "./js/language/function/setMenu.ts":
+/*!*****************************************!*\
+  !*** ./js/language/function/setMenu.ts ***!
+  \*****************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const textMenu_1 = __webpack_require__(/*! ../translation/textMenu */ "./js/language/translation/textMenu.ts");
+const public_1 = __webpack_require__(/*! ../translation/public */ "./js/language/translation/public.ts");
+//= setMenu 
 /**
  * Функция изминения текста меню в зависимости от выбранного языка.
  * @param language - Выбраный язык.
  */
-function setMenu(language) {
+const setMenu = (language) => {
     /**
      * Массив элементов меню с атрабутом "data-menu".
      */
@@ -175,12 +201,76 @@ function setMenu(language) {
             }
         }
     });
-}
+};
+exports["default"] = setMenu;
+
+
+/***/ }),
+
+/***/ "./js/language/function/setSelectActive.ts":
+/*!*************************************************!*\
+  !*** ./js/language/function/setSelectActive.ts ***!
+  \*************************************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+/**
+ * Функция изминения текста и изображения у активного блока выбора языка.
+ * @param activeImg - Элемент изображения с флагом.
+ * @param activeText - Элемент с текстом, отражаюшем выбраный язык.
+ * @param value - Значение выбраного языка (ru, pl, de...).
+ */
+const setSelectActive = (activeImg, activeText, value) => {
+    activeImg.src = `/img/flag/${value}.jpg`;
+    switch (value) {
+        case 'ru':
+            activeText.textContent = 'Russia';
+            break;
+        case 'en':
+            activeText.textContent = 'English';
+            break;
+        case 'pl':
+            activeText.textContent = 'Polski';
+            break;
+        case 'de':
+            activeText.textContent = 'Deutsch';
+            break;
+        default:
+            activeText.textContent = '';
+            break;
+    }
+};
+exports["default"] = setSelectActive;
+
+
+/***/ }),
+
+/***/ "./js/language/function/setTextPage.ts":
+/*!*********************************************!*\
+  !*** ./js/language/function/setTextPage.ts ***!
+  \*********************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const textIndex_1 = __webpack_require__(/*! ../translation/textIndex */ "./js/language/translation/textIndex.ts");
+const textOurStory_1 = __webpack_require__(/*! ../translation/textOurStory */ "./js/language/translation/textOurStory.ts");
+const projects_1 = __webpack_require__(/*! ../translation/projects */ "./js/language/translation/projects.ts");
+const project_1_1 = __webpack_require__(/*! ../translation/project-1 */ "./js/language/translation/project-1.ts");
+const project_2_1 = __webpack_require__(/*! ../translation/project-2 */ "./js/language/translation/project-2.ts");
+const project_3_1 = __webpack_require__(/*! ../translation/project-3 */ "./js/language/translation/project-3.ts");
+const project_4_1 = __webpack_require__(/*! ../translation/project-4 */ "./js/language/translation/project-4.ts");
+const project_5_1 = __webpack_require__(/*! ../translation/project-5 */ "./js/language/translation/project-5.ts");
+const project_6_1 = __webpack_require__(/*! ../translation/project-6 */ "./js/language/translation/project-6.ts");
+const project_7_1 = __webpack_require__(/*! ../translation/project-7 */ "./js/language/translation/project-7.ts");
+const contacts_1 = __webpack_require__(/*! ../translation/contacts */ "./js/language/translation/contacts.ts");
+//= setTextPage 
 /**
  * Изминение текста на странице
  * @param language Выбранный язык для перевода.
  */
-function setTextPage(language) {
+const setTextPage = (language) => {
     const path = window.location.pathname;
     if (!path)
         return;
@@ -202,7 +292,7 @@ function setTextPage(language) {
     };
     let textForPage = changeTranslation(path);
     const elementsText = document.querySelectorAll('[data-translation]');
-    if (elementsText && Array.isArray(elementsText)) {
+    if (elementsText.length > 0) {
         elementsText.forEach(element => {
             var _a, _b;
             if ((_a = element === null || element === void 0 ? void 0 : element.dataset) === null || _a === void 0 ? void 0 : _a.translation) {
@@ -213,8 +303,8 @@ function setTextPage(language) {
             }
         });
     }
-}
-exports["default"] = language;
+};
+exports["default"] = setTextPage;
 
 
 /***/ }),
@@ -951,7 +1041,7 @@ const addedImgToProject = () => {
         }
     }
     catch (error) {
-        console.log('Error in Function addedImgToProject >>> ', error);
+        console.error('Error in Function addedImgToProject >>> ', error);
     }
 };
 exports["default"] = addedImgToProject;
@@ -984,7 +1074,7 @@ const backToTop = () => {
         arrowMobile.addEventListener('click', top);
     }
     catch (error) {
-        console.log('Error in function backToTop >>> ', error);
+        console.error('Error in function backToTop >>> ', error);
     }
 };
 exports["default"] = backToTop;
@@ -1027,7 +1117,7 @@ const intersectionObserver = (classBlock, classPlus, arrClassAlso, classPlussAls
         divObserver.observe(block);
     }
     catch (error) {
-        console.log('Error in function intersectionObserver >>> ', error);
+        console.error('Error in function intersectionObserver >>> ', error);
     }
 };
 function addAndRemoveArrayClass(arrClassAlso, classPlussAlso, isAddClass) {
@@ -1047,7 +1137,7 @@ function addAndRemoveArrayClass(arrClassAlso, classPlussAlso, isAddClass) {
         }
     }
     catch (error) {
-        console.log('Error in function addAndRemoveArrayClass >>> ', error);
+        console.error('Error in function addAndRemoveArrayClass >>> ', error);
     }
 }
 exports["default"] = intersectionObserver;
@@ -1079,7 +1169,6 @@ const lazyLoading = () => {
         const imgObserver = new IntersectionObserver((entryAll, observer) => {
             entryAll.forEach((item) => {
                 if (item.isIntersecting) {
-                    //console.log(item.target);
                     let itemTarget = item.target;
                     let parent = itemTarget.parentElement;
                     let sourceAll = parent.querySelectorAll('source');
@@ -1098,13 +1187,12 @@ const lazyLoading = () => {
             threshold: 0,
         });
         const imgElAll = document.querySelectorAll('.lazy-img');
-        //console.log(imgElAll.length);
         if (imgElAll.length > 0) {
             imgElAll.forEach((item) => imgObserver.observe(item));
         }
     }
     catch (error) {
-        console.log('Error in function lazyLoading >>> ', error);
+        console.error('Error in function lazyLoading >>> ', error);
     }
 };
 exports["default"] = lazyLoading;
@@ -1140,7 +1228,7 @@ const menu = () => {
         });
     }
     catch (error) {
-        console.log('Error in function menu >>> ', error);
+        console.error('Error in function menu >>> ', error);
     }
 };
 exports.menu = menu;
@@ -1157,7 +1245,7 @@ const menuFill = () => {
         window.addEventListener('resize', changeHight);
     }
     catch (error) {
-        console.log('Error in function menuFill >>> ', error);
+        console.error('Error in function menuFill >>> ', error);
     }
 };
 exports.menuFill = menuFill;
@@ -1215,7 +1303,7 @@ const pushPictures = () => {
         ;
     }
     catch (error) {
-        console.log('Error in Function  pushPictures >>> ', error);
+        console.error('Error in Function  pushPictures >>> ', error);
     }
 };
 exports["default"] = pushPictures;
@@ -1254,7 +1342,7 @@ const numberScroll = () => {
         }
     }
     catch (error) {
-        console.log('Error in function numberScroll >>> ', error);
+        console.error('Error in function numberScroll >>> ', error);
     }
 };
 exports.numberScroll = numberScroll;

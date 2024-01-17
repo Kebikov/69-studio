@@ -16,7 +16,7 @@ export const menu = () => {
             burger.classList.toggle('active-burger');
         });
     }catch(error) {
-        console.log('Error in function menu >>> ', error);
+        console.error('Error in function menu >>> ', error);
     } 
 };
 
@@ -37,7 +37,7 @@ export const menuFill = () => {
 
         
     }catch(error){
-        console.log('Error in function menuFill >>> ', error);
+        console.error('Error in function menuFill >>> ', error);
     }
 }
 

@@ -18,7 +18,7 @@ const backToTop = () => {
         arrowMobile.addEventListener('click', top);
         
     }catch(error){
-        console.log('Error in function backToTop >>> ', error);
+        console.error('Error in function backToTop >>> ', error);
     }
 }
 
