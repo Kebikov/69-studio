@@ -1,4 +1,7 @@
 //= numberScroll
+/**
+ * Функция по анимации цыфры 69 на главной странице.
+ */
 export const numberScroll = () => {
 
     try {

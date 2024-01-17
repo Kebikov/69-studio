@@ -2,279 +2,66 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./js/modules/addedImgToProject.ts":
-/*!*****************************************!*\
-  !*** ./js/modules/addedImgToProject.ts ***!
-  \*****************************************/
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-// str
-var lazyLoading_1 = __importDefault(__webpack_require__(/*! ./lazyLoading */ "./js/modules/lazyLoading.ts"));
-/**
- * Функция выподаюших фотографий при нажатии на титульную фотографию.
- * - Фотографии будут добавлены после элемента с class="projects-our-story"
- * @example
- * <div
-        class="projects-our-story"
-        data-click="project"
-        data-start="{...номер начального изображения}"
-        data-end="{...номер конечного изображения}"
-        data-path="{...путь к папке с изображениями}"
-        data-state="{ open | close} ...состояние открыть изображения или закрыть"
-    >
-        <picture>
-            <source srcset="{...путь к img.webp}" type="image/webp">
-            <img class="projects-our-story__title-img" src="{...путь к img.jpg}" alt="my_alt">
-        </picture>
-        <div class="projects-our-story__title"><span>{...Имя проекта}</span></div>
-    </div>
- */
-var addedImgToProject = function () {
-    try {
-        /**
-         * Массив элементов с атрибутом ( data-click="project" ).
-         */
-        var projectsElements = document.querySelectorAll('[data-click="project"]');
-        /**
-         * - Функция получает данные о начальном, конечном кадре и пути из дата атрибутов.
-         * - Добавляет изображения после радительского элемента.
-         * @param event Событие элемента на котором призошол клик.
-         * @returns
-         */
-        var addImg_1 = function (event) {
-            /**
-             * Дочерний элемент на котором произошел клик.
-             */
-            var children = event.target;
-            /**
-             * Родительский элемент, в котором находится дочерний элемент, на котором произошло событие.
-             */
-            var parent = children.closest('[data-click="project"]');
-            /**
-             * Функция установки значения атрибута data-state.
-             * @param state - Значение атрибута data-state.
-             */
-            var stateParent = function (state) {
-                parent.setAttribute('data-state', state);
-            };
-            if (!parent)
-                return;
-            /**
-             * Стартовый номер изображения для добавления.
-             * - В папке изображения должны быть пронумерованы цифрами от 1 и далее.
-             */
-            var start = Number(parent.getAttribute('data-start'));
-            /**
-             * Конечный номер изображения для добавления.
-             * - В папке изображения пронумерованы цифрами от 1 и далее.
-             */
-            var end = Number(parent.getAttribute('data-end'));
-            /**
-             * Путь к папке с изображениями.
-             */
-            var path = parent.getAttribute('data-path');
-            /**
-             * Значение атрибута data-state, состояние родительского компанента, что необходимо сделать при нажатии.
-             * - open - Показать изображения.
-             * - close - Скрыть изображения.
-             */
-            var state = parent.getAttribute('data-state');
-            // Если нет данных, то не добавляем изображения.
-            if (!start && !end && !path && !state)
-                return;
-            if (state === 'open') {
-                // open - Показать изображения.
-                for (var i = end; i >= start; i--) {
-                    parent.insertAdjacentHTML('afterend', "\n                        <picture data-id=\"".concat(path, "\">\n                            <source srcset=\"../../img/public/preloader.webp\" data-srcset=\"").concat(path).concat(i, ".webp\" type=\"image/webp\">\n                            <img class=\"lazy-img projects-our-story__img\" src=\"../../img/public/preloader.webp\" data-src=\"").concat(path).concat(i, ".jpg\" alt=\"my_alt\">\n                        </picture>\n                        "));
-                }
-                ;
-                stateParent('close');
-                (0, lazyLoading_1.default)();
-            }
-            else {
-                // close - Скрыть изображения.
-                var pictures = document.querySelectorAll("[data-id = \"".concat(path, "\"]"));
-                pictures.forEach(function (pic) {
-                    pic.remove();
-                });
-                parent.setAttribute('data-state', 'open');
-                stateParent('open');
-            }
-        };
-        // Проверка сушествования элементов projectsElements
-        if (projectsElements) {
-            // Установка слушателей событий.
-            projectsElements.forEach(function (project) {
-                project.addEventListener('click', addImg_1);
-            });
-        }
-    }
-    catch (error) {
-        console.log('Error in Function addedImgToProject >>> ', error);
-    }
-};
-exports["default"] = addedImgToProject;
-
-
-/***/ }),
-
-/***/ "./js/modules/backToTop.ts":
-/*!*********************************!*\
-  !*** ./js/modules/backToTop.ts ***!
-  \*********************************/
-/***/ ((__unused_webpack_module, exports) => {
-
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-/**
- * Функция перехода в верх страницы
- */
-var backToTop = function () {
-    function top() {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
-    }
-    try {
-        var body = document.querySelector('.back-to-top__body');
-        var arrowMobile = document.querySelector('.back-to-top__img-mobile');
-        body.addEventListener('click', top);
-        arrowMobile.addEventListener('click', top);
-    }
-    catch (error) {
-        console.log('Error in function backToTop >>> ', error);
-    }
-};
-exports["default"] = backToTop;
-
-
-/***/ }),
-
-/***/ "./js/modules/intersectionObserver.ts":
-/*!********************************************!*\
-  !*** ./js/modules/intersectionObserver.ts ***!
-  \********************************************/
-/***/ ((__unused_webpack_module, exports) => {
-
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-/**
- * Функция слежения за элементом
- * @param classBlock - отслеживаемый класс блока
- * @param classPlus - класс добавляемый к отслеживаемому блоку
- * @param arrClassAlso - массив классов к которым так же добавится класс classPlussAlso
- * @param classPlussAlso - класс который добавится к каждому классу в массиве
- */
-var intersectionObserver = function (classBlock, classPlus, arrClassAlso, classPlussAlso) {
-    try {
-        var block = document.querySelector(".".concat(classBlock));
-        var divObserver = new IntersectionObserver(function (entryAll) {
-            entryAll.forEach(function (item) {
-                if (item.isIntersecting) {
-                    item.target.classList.add("".concat(classPlus));
-                    addAndRemoveArrayClass(arrClassAlso, classPlussAlso, true);
-                }
-                else {
-                    item.target.classList.remove("".concat(classPlus));
-                    addAndRemoveArrayClass(arrClassAlso, classPlussAlso, false);
-                }
-            });
-        }, {
-            rootMargin: '0px 0px 150px 0px'
-        });
-        divObserver.observe(block);
-    }
-    catch (error) {
-        console.log('Error in function intersectionObserver >>> ', error);
-    }
-};
-function addAndRemoveArrayClass(arrClassAlso, classPlussAlso, isAddClass) {
-    try {
-        if (Array.isArray(arrClassAlso) && arrClassAlso.length > 0 && classPlussAlso) {
-            arrClassAlso.forEach(function (item) {
-                var element = document.querySelector(".".concat(item));
-                if (!element)
-                    return;
-                if (isAddClass) {
-                    element.classList.add("".concat(classPlussAlso));
-                }
-                else {
-                    element.classList.remove("".concat(classPlussAlso));
-                }
-            });
-        }
-    }
-    catch (error) {
-        console.log('Error in function addAndRemoveArrayClass >>> ', error);
-    }
-}
-exports["default"] = intersectionObserver;
-
-
-/***/ }),
-
-/***/ "./js/modules/language.ts":
-/*!********************************!*\
-  !*** ./js/modules/language.ts ***!
-  \********************************/
+/***/ "./js/language/function/language.ts":
+/*!******************************************!*\
+  !*** ./js/language/function/language.ts ***!
+  \******************************************/
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-var textIndex_1 = __webpack_require__(/*! ../translation/textIndex */ "./js/translation/textIndex.ts");
-var textMenu_1 = __webpack_require__(/*! ../translation/textMenu */ "./js/translation/textMenu.ts");
-var public_1 = __webpack_require__(/*! ../translation/public */ "./js/translation/public.ts");
-var textOurStory_1 = __webpack_require__(/*! ../translation/textOurStory */ "./js/translation/textOurStory.ts");
-var projects_1 = __webpack_require__(/*! ../translation/projects */ "./js/translation/projects.ts");
-var project_1_1 = __webpack_require__(/*! ../translation/project-1 */ "./js/translation/project-1.ts");
-var project_2_1 = __webpack_require__(/*! ../translation/project-2 */ "./js/translation/project-2.ts");
-var project_3_1 = __webpack_require__(/*! ../translation/project-3 */ "./js/translation/project-3.ts");
-var project_4_1 = __webpack_require__(/*! ../translation/project-4 */ "./js/translation/project-4.ts");
-var project_5_1 = __webpack_require__(/*! ../translation/project-5 */ "./js/translation/project-5.ts");
-var project_6_1 = __webpack_require__(/*! ../translation/project-6 */ "./js/translation/project-6.ts");
-var project_7_1 = __webpack_require__(/*! ../translation/project-7 */ "./js/translation/project-7.ts");
-var contacts_1 = __webpack_require__(/*! ../translation/contacts */ "./js/translation/contacts.ts");
+const textIndex_1 = __webpack_require__(/*! ../translation/textIndex */ "./js/language/translation/textIndex.ts");
+const textMenu_1 = __webpack_require__(/*! ../translation/textMenu */ "./js/language/translation/textMenu.ts");
+const public_1 = __webpack_require__(/*! ../translation/public */ "./js/language/translation/public.ts");
+const textOurStory_1 = __webpack_require__(/*! ../translation/textOurStory */ "./js/language/translation/textOurStory.ts");
+const projects_1 = __webpack_require__(/*! ../translation/projects */ "./js/language/translation/projects.ts");
+const project_1_1 = __webpack_require__(/*! ../translation/project-1 */ "./js/language/translation/project-1.ts");
+const project_2_1 = __webpack_require__(/*! ../translation/project-2 */ "./js/language/translation/project-2.ts");
+const project_3_1 = __webpack_require__(/*! ../translation/project-3 */ "./js/language/translation/project-3.ts");
+const project_4_1 = __webpack_require__(/*! ../translation/project-4 */ "./js/language/translation/project-4.ts");
+const project_5_1 = __webpack_require__(/*! ../translation/project-5 */ "./js/language/translation/project-5.ts");
+const project_6_1 = __webpack_require__(/*! ../translation/project-6 */ "./js/language/translation/project-6.ts");
+const project_7_1 = __webpack_require__(/*! ../translation/project-7 */ "./js/language/translation/project-7.ts");
+const contacts_1 = __webpack_require__(/*! ../translation/contacts */ "./js/language/translation/contacts.ts");
 /**
- * Функция установки определения и установки языка в localStorage.
+ * Стартовая функция для перевода на сайте.
+ * - 1) Определяет используемые языки в браузере.
+ * - 2) Устанавливает приоритетный язык в localStorage.
+ *
  */
 //= language 
-var language = function () {
+const language = () => {
     /**
      * Язык по дефолту.
      */
-    var startLanguage = 'en';
+    const startLanguage = 'en';
     /**
      * Массив языков доступных для перевода сайта.
      */
-    var arrayLanguage = ['en', 'ru', 'pl', 'de'];
+    const arrayLanguage = ['en', 'ru', 'pl', 'de'];
     /**
      * Массив
      */
-    var radioButtons = document.querySelectorAll('.select-language__input');
-    var body = document.querySelector('.select-language__body');
-    var activeRadio = document.querySelector('.select-active');
-    var activeImg = activeRadio.querySelector('.select-active__img');
-    var activeText = activeRadio.querySelector('.select-active__text');
+    const radioButtons = document.querySelectorAll('.select-language__input');
+    const body = document.querySelector('.select-language__body');
+    const activeRadio = document.querySelector('.select-active');
+    const activeImg = activeRadio.querySelector('.select-active__img');
+    const activeText = activeRadio.querySelector('.select-active__text');
     /**
      * Язык установленый для перевода в localStorage.
      */
-    var language = localStorage.getItem('language');
+    const language = localStorage.getItem('language');
     // если язык не установлен в localStorage
     if (!language) {
         // установка языка браузера в localStorage из массива предпочитаемых, en, ru, pl
         /**
-         * Массив языков установленых в браузере вида: ["ru-RU", "ru", "en-US", "en"]
+         * Массив языков установленых в браузере вида:
+         * - ["ru-RU", "ru", "en-US", "en"]
          */
-        var browserLanguages = navigator.languages;
+        const browserLanguages = navigator.languages;
         for (var i = 0; i < browserLanguages.length; i++) {
-            var cutLanguage = browserLanguages[i].slice(0, 2);
-            var isArrayLanguage = arrayLanguage.includes(cutLanguage);
+            const cutLanguage = browserLanguages[i].slice(0, 2);
+            const isArrayLanguage = arrayLanguage.includes(cutLanguage);
             // если язык есть в массиве языков сайта 
             if (isArrayLanguage) {
                 localStorage.setItem('language', cutLanguage);
@@ -288,7 +75,7 @@ var language = function () {
         ;
     }
     beginningState(activeImg, activeText);
-    activeRadio.addEventListener('click', function () {
+    activeRadio.addEventListener('click', () => {
         body.classList.toggle('active');
     });
     eventChangeRadio(radioButtons, activeImg, activeText, body);
@@ -304,7 +91,7 @@ var language = function () {
  * @param activeText Элемент текста HTMLDivElement.
  */
 function beginningState(activeImg, activeText) {
-    var language = localStorage.getItem('language');
+    const language = localStorage.getItem('language');
     if (language) {
         setSelectActive(activeImg, activeText, language);
         setMenu(language);
@@ -313,15 +100,17 @@ function beginningState(activeImg, activeText) {
 }
 //* состояние при изминении выбора языка 
 function eventChangeRadio(radioButtons, activeImg, activeText, body) {
-    radioButtons.forEach(function (radio) {
-        radio.addEventListener('change', function (event) {
+    radioButtons.forEach(radio => {
+        radio.addEventListener('change', (event) => {
             if (event.target instanceof HTMLInputElement) {
                 if (event.target.checked) {
-                    var value = event.target.value;
+                    const value = event.target.value;
                     setSelectActive(activeImg, activeText, value);
                     localStorage.setItem('language', value);
-                    setMenu(value);
-                    setTextPage(value);
+                    if (value) {
+                        setMenu(value);
+                        setTextPage(value);
+                    }
                 }
             }
             body.classList.toggle('active');
@@ -335,7 +124,7 @@ function eventChangeRadio(radioButtons, activeImg, activeText, body) {
  * @param value - Значение выбраного языка (ru, pl, de...).
  */
 function setSelectActive(activeImg, activeText, value) {
-    activeImg.src = "/img/flag/".concat(value, ".jpg");
+    activeImg.src = `/img/flag/${value}.jpg`;
     switch (value) {
         case 'ru':
             activeText.textContent = 'Russia';
@@ -362,22 +151,25 @@ function setMenu(language) {
     /**
      * Массив элементов меню с атрабутом "data-menu".
      */
-    var menuLinks = document.querySelectorAll('[data-menu]');
-    var elementsPublic = document.querySelectorAll('[data-public]');
-    menuLinks.forEach(function (link) {
-        if (link.dataset.menu) {
-            /**
-             * Отображаемый текст меню (home, our story...).
-             */
-            var data = link.dataset.menu;
-            if (data && textMenu_1.textMenu[data] && textMenu_1.textMenu[data][language]) {
-                link.textContent = textMenu_1.textMenu[data][language];
+    const menuLinks = document.querySelectorAll('[data-menu]');
+    if (menuLinks) {
+        menuLinks.forEach(link => {
+            var _a, _b;
+            if ((_a = link === null || link === void 0 ? void 0 : link.dataset) === null || _a === void 0 ? void 0 : _a.menu) {
+                /**
+                 * Отображаемый текст меню (home, our story, ...).
+                 */
+                const data = link.dataset.menu;
+                if ((_b = textMenu_1.textMenu === null || textMenu_1.textMenu === void 0 ? void 0 : textMenu_1.textMenu[data]) === null || _b === void 0 ? void 0 : _b[language]) {
+                    link.textContent = textMenu_1.textMenu[data][language];
+                }
             }
-        }
-    });
-    elementsPublic.forEach(function (link) {
+        });
+    }
+    const elementsPublic = document.querySelectorAll('[data-public]');
+    elementsPublic.forEach(link => {
         if (link.dataset.public) {
-            var data = link.dataset.public;
+            const data = link.dataset.public;
             if (data && public_1.textPublic[data] && public_1.textPublic[data][language]) {
                 link.textContent = public_1.textPublic[data][language];
             }
@@ -389,10 +181,11 @@ function setMenu(language) {
  * @param language Выбранный язык для перевода.
  */
 function setTextPage(language) {
-    var path = window.location.pathname;
-    var elementsText = document.querySelectorAll('[data-translation]');
-    var changeTranslation = function (path) {
-        var translation = {
+    const path = window.location.pathname;
+    if (!path)
+        return;
+    const changeTranslation = (path) => {
+        const translation = {
             '/': textIndex_1.textMain,
             '/our-story/': textOurStory_1.textOurStory,
             '/projects/': projects_1.textProjects,
@@ -407,294 +200,57 @@ function setTextPage(language) {
         };
         return translation[path];
     };
-    var textForPage = changeTranslation(path);
-    elementsText.forEach(function (element) {
-        if (element.dataset.translation) {
-            var data = element.dataset.translation;
-            if (textForPage[data][language]) {
-                element.innerHTML = textForPage[data][language];
+    let textForPage = changeTranslation(path);
+    const elementsText = document.querySelectorAll('[data-translation]');
+    if (elementsText && Array.isArray(elementsText)) {
+        elementsText.forEach(element => {
+            var _a, _b;
+            if ((_a = element === null || element === void 0 ? void 0 : element.dataset) === null || _a === void 0 ? void 0 : _a.translation) {
+                const data = element.dataset.translation;
+                if ((_b = textForPage === null || textForPage === void 0 ? void 0 : textForPage[data]) === null || _b === void 0 ? void 0 : _b[language]) {
+                    element.innerHTML = textForPage[data][language];
+                }
             }
-        }
-    });
+        });
+    }
 }
 exports["default"] = language;
 
 
 /***/ }),
 
-/***/ "./js/modules/lazyLoading.ts":
-/*!***********************************!*\
-  !*** ./js/modules/lazyLoading.ts ***!
-  \***********************************/
-/***/ ((__unused_webpack_module, exports) => {
-
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-/**
- * Функция отложенной загрузки изображений.
- * - Найдет все изображения с классом "lazy-img".
- * - Установит слушатель появления во viewport.
- * - При появлении во viewport установит атрибуты с путем к изображению.
- * @example
- * <picture>
- *     <source data-srcset="../img/projects/1.webp" type="image/webp">
- *     <img class="lazy-img" data-src="../img/projects/1.jpg" alt="my_alt">
- * </picture>
- */
-var lazyLoading = function () {
-    try {
-        var imgObserver_1 = new IntersectionObserver(function (entryAll, observer) {
-            entryAll.forEach(function (item) {
-                if (item.isIntersecting) {
-                    //console.log(item.target);
-                    var itemTarget = item.target;
-                    var parent_1 = itemTarget.parentElement;
-                    var sourceAll = parent_1.querySelectorAll('source');
-                    sourceAll.forEach(function (item) { item.dataset.srcset ? item.srcset = item.dataset.srcset : null; });
-                    if (itemTarget.dataset.src) {
-                        itemTarget.src = itemTarget.dataset.src;
-                        itemTarget.setAttribute('src', itemTarget.dataset.src);
-                    }
-                    observer.unobserve(itemTarget);
-                }
-            });
-        }, {
-            //тут пишем при необходимости опции
-            //root:,
-            rootMargin: '100px',
-            threshold: 0,
-        });
-        var imgElAll = document.querySelectorAll('.lazy-img');
-        //console.log(imgElAll.length);
-        if (imgElAll.length > 0) {
-            imgElAll.forEach(function (item) { return imgObserver_1.observe(item); });
-        }
-    }
-    catch (error) {
-        console.log('Error in function lazyLoading >>> ', error);
-    }
-};
-exports["default"] = lazyLoading;
-
-
-/***/ }),
-
-/***/ "./js/modules/menu.ts":
-/*!****************************!*\
-  !*** ./js/modules/menu.ts ***!
-  \****************************/
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.menuFill = exports.menu = void 0;
-var intersectionObserver_1 = __importDefault(__webpack_require__(/*! ./intersectionObserver */ "./js/modules/intersectionObserver.ts"));
-//= menu 
-var menu = function () {
-    try {
-        // отслеживание появления футера, для появления стрелки вверх
-        (0, intersectionObserver_1.default)('footer', 'active', ['back-to-top__img-mobile'], 'active');
-        var burger_1 = document.querySelector('.burger');
-        var burgerSpan_1 = document.querySelector('.burger__span');
-        var menuList_1 = document.querySelector('.menu__list');
-        burger_1 === null || burger_1 === void 0 ? void 0 : burger_1.addEventListener('click', function () {
-            burgerSpan_1 === null || burgerSpan_1 === void 0 ? void 0 : burgerSpan_1.classList.toggle('active-burger');
-            menuList_1 === null || menuList_1 === void 0 ? void 0 : menuList_1.classList.toggle('active-menu');
-            burger_1.classList.toggle('active-burger');
-        });
-    }
-    catch (error) {
-        console.log('Error in function menu >>> ', error);
-    }
-};
-exports.menu = menu;
-//= menuFill 
-var menuFill = function () {
-    function changeHight() {
-        var menu = document.querySelector('.menu');
-        var menuFill = document.querySelector('.menu-fill');
-        var menuHeight = menu.offsetHeight;
-        menuFill.style.paddingTop = "".concat(menuHeight - 1, "px");
-    }
-    try {
-        changeHight();
-        window.addEventListener('resize', changeHight);
-    }
-    catch (error) {
-        console.log('Error in function menuFill >>> ', error);
-    }
-};
-exports.menuFill = menuFill;
-
-
-/***/ }),
-
-/***/ "./js/modules/pushPictures.ts":
-/*!************************************!*\
-  !*** ./js/modules/pushPictures.ts ***!
-  \************************************/
-/***/ ((__unused_webpack_module, exports) => {
-
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-/**
- * Функция для вставки изображений на страницу.
- * @example
- * <div
- *      class="gallery__body"
- *      data-path="../img/project-3/"
- *      data-end="10"
- * >
- *      {блоки изображений}
- * </div>
- */
-var pushPictures = function () {
-    try {
-        /**
-         * DivElement контейнер для импорта изображений.
-         */
-        var galleryBody = document.querySelector('.gallery__body');
-        /**
-         * Путь к изображениям.
-         */
-        var path = galleryBody.getAttribute('data-path');
-        /**
-         * Номер последнего изображения, начинается всегда с 1 и заканчивается вставка изображений указанным номером.
-         */
-        var end = Number(galleryBody.getAttribute('data-end'));
-        if (path && end) {
-            for (var i = 1; i <= end; i++) {
-                galleryBody.insertAdjacentHTML('beforeend', "\n                    <div class=\"gallery__img\">\n                        <picture>\n                            <source data-srcset=\"".concat(path).concat(i, ".webp\" type=\"image/webp\">\n                            <img class=\"lazy-img\" data-src=\"").concat(path).concat(i, ".jpg\" alt=\"my_alt\" height=\"500\" width=\"500\" >\n                        </picture>\n                        <div class=\"gallery__text\"><span>I'am an image title</span></div>\n                    </div>\n                    "));
-            }
-            ;
-        }
-        ;
-    }
-    catch (error) {
-        console.log('Error in Function  pushPictures >>> ', error);
-    }
-};
-exports["default"] = pushPictures;
-
-
-/***/ }),
-
-/***/ "./js/modules/text.ts":
-/*!****************************!*\
-  !*** ./js/modules/text.ts ***!
-  \****************************/
-/***/ ((__unused_webpack_module, exports) => {
-
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.numberScroll = void 0;
-//= numberScroll
-var numberScroll = function () {
-    try {
-        var text69_1 = document.querySelector('.main-picture__text');
-        var studio_1 = document.querySelector('#studio');
-        var dot_1 = document.querySelector('#dot');
-        if (text69_1 && studio_1 && dot_1) {
-            var text69Size_1 = parseInt(window.getComputedStyle(text69_1).getPropertyValue('font-size'));
-            var studioSize_1 = parseInt(window.getComputedStyle(studio_1).getPropertyValue('font-size'));
-            var dotSize_1 = parseInt(window.getComputedStyle(dot_1).getPropertyValue('font-size'));
-            var scroll69 = function () {
-                text69_1.style.fontSize = "".concat(text69Size_1 - window.scrollY / 2, "px");
-                studio_1.style.fontSize = "".concat(studioSize_1 - window.scrollY / 2, "px");
-                dot_1.style.fontSize = "".concat(dotSize_1 - window.scrollY / 2, "px");
-            };
-            window.addEventListener('scroll', scroll69);
-        }
-    }
-    catch (error) {
-        console.log('Error in function numberScroll >>> ', error);
-    }
-};
-exports.numberScroll = numberScroll;
-
-
-/***/ }),
-
-/***/ "./js/script.ts":
-/*!**********************!*\
-  !*** ./js/script.ts ***!
-  \**********************/
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-var menu_1 = __webpack_require__(/*! ./modules/menu */ "./js/modules/menu.ts");
-var text_1 = __webpack_require__(/*! ./modules/text */ "./js/modules/text.ts");
-var backToTop_1 = __importDefault(__webpack_require__(/*! ./modules/backToTop */ "./js/modules/backToTop.ts"));
-var lazyLoading_1 = __importDefault(__webpack_require__(/*! ./modules/lazyLoading */ "./js/modules/lazyLoading.ts"));
-var language_1 = __importDefault(__webpack_require__(/*! ./modules/language */ "./js/modules/language.ts"));
-var pushPictures_1 = __importDefault(__webpack_require__(/*! ./modules/pushPictures */ "./js/modules/pushPictures.ts"));
-var addedImgToProject_1 = __importDefault(__webpack_require__(/*! ./modules/addedImgToProject */ "./js/modules/addedImgToProject.ts"));
-window.addEventListener('DOMContentLoaded', function () {
-    (0, menu_1.menu)();
-    (0, pushPictures_1.default)();
-    (0, addedImgToProject_1.default)();
-    (0, menu_1.menuFill)();
-    (0, text_1.numberScroll)();
-    (0, backToTop_1.default)();
-    (0, language_1.default)();
-    (0, lazyLoading_1.default)();
-});
-
-
-/***/ }),
-
-/***/ "./js/translation/contacts.ts":
-/*!************************************!*\
-  !*** ./js/translation/contacts.ts ***!
-  \************************************/
+/***/ "./js/language/translation/contacts.ts":
+/*!*********************************************!*\
+  !*** ./js/language/translation/contacts.ts ***!
+  \*********************************************/
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.contacts = void 0;
-var textIndex_1 = __webpack_require__(/*! ./textIndex */ "./js/translation/textIndex.ts");
-exports.contacts = {
-    'stay': {
-        pl: 'Pozostań w kontakcie.',
-        en: 'Stay In Touch.',
-        ru: 'Оставайтесь на связи.',
-        de: textIndex_1.sorry
-    },
-    'city': {
-        pl: '31-518 Kraków ul. Brodowicza 8/1',
-        en: '31-518 Cracow ul. Brodowicza 8/1',
-        ru: '31-518 Краков ul. Brodowicza 8/1',
-        de: textIndex_1.sorry
-    },
-    'partners': {
-        pl: 'Partnerzy :',
-        en: 'Partners :',
-        ru: 'Партнеры :',
-        de: textIndex_1.sorry
-    },
-    back: textIndex_1.back
-};
+const textIndex_1 = __webpack_require__(/*! ./textIndex */ "./js/language/translation/textIndex.ts");
+const public_1 = __webpack_require__(/*! ./public */ "./js/language/translation/public.ts");
+/**
+ * Перевод для контактов.
+ */
+exports.contacts = Object.assign(Object.assign({}, public_1.textPublicContact), { back: textIndex_1.back });
 
 
 /***/ }),
 
-/***/ "./js/translation/project-1.ts":
-/*!*************************************!*\
-  !*** ./js/translation/project-1.ts ***!
-  \*************************************/
+/***/ "./js/language/translation/project-1.ts":
+/*!**********************************************!*\
+  !*** ./js/language/translation/project-1.ts ***!
+  \**********************************************/
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.textProject1 = void 0;
-var textIndex_1 = __webpack_require__(/*! ./textIndex */ "./js/translation/textIndex.ts");
+const textIndex_1 = __webpack_require__(/*! ./textIndex */ "./js/language/translation/textIndex.ts");
+/**
+ * Перевод для проекта №1.
+ */
 exports.textProject1 = {
     'title': {
         pl: 'BUDYNEK BIUROWY "TECHMAR" W KIELCACH',
@@ -709,7 +265,7 @@ exports.textProject1 = {
         de: textIndex_1.sorry
     },
     'object': {
-        pl: 'Obiekt zrealizowany',
+        pl: 'Powrót do strony Projektów',
         en: 'Object completed',
         ru: 'Объект реализован',
         de: textIndex_1.sorry,
@@ -726,16 +282,19 @@ exports.textProject1 = {
 
 /***/ }),
 
-/***/ "./js/translation/project-2.ts":
-/*!*************************************!*\
-  !*** ./js/translation/project-2.ts ***!
-  \*************************************/
+/***/ "./js/language/translation/project-2.ts":
+/*!**********************************************!*\
+  !*** ./js/language/translation/project-2.ts ***!
+  \**********************************************/
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.textProject2 = void 0;
-var textIndex_1 = __webpack_require__(/*! ./textIndex */ "./js/translation/textIndex.ts");
+const textIndex_1 = __webpack_require__(/*! ./textIndex */ "./js/language/translation/textIndex.ts");
+/**
+ * Перевод для проекта №2.
+ */
 exports.textProject2 = {
     'title': {
         pl: 'DOM Z WIÓRA',
@@ -750,7 +309,7 @@ exports.textProject2 = {
         de: textIndex_1.sorry
     },
     'object': {
-        pl: 'Obiekt zrealizowany',
+        pl: 'Powrót do strony Projektów',
         en: 'Object completed',
         ru: 'Объект реализован',
         de: textIndex_1.sorry,
@@ -767,16 +326,19 @@ exports.textProject2 = {
 
 /***/ }),
 
-/***/ "./js/translation/project-3.ts":
-/*!*************************************!*\
-  !*** ./js/translation/project-3.ts ***!
-  \*************************************/
+/***/ "./js/language/translation/project-3.ts":
+/*!**********************************************!*\
+  !*** ./js/language/translation/project-3.ts ***!
+  \**********************************************/
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.textProject3 = void 0;
-var textIndex_1 = __webpack_require__(/*! ./textIndex */ "./js/translation/textIndex.ts");
+const textIndex_1 = __webpack_require__(/*! ./textIndex */ "./js/language/translation/textIndex.ts");
+/**
+ * Перевод для проекта №3.
+ */
 exports.textProject3 = {
     'title': {
         pl: 'DOM Z BETONU',
@@ -808,16 +370,19 @@ exports.textProject3 = {
 
 /***/ }),
 
-/***/ "./js/translation/project-4.ts":
-/*!*************************************!*\
-  !*** ./js/translation/project-4.ts ***!
-  \*************************************/
+/***/ "./js/language/translation/project-4.ts":
+/*!**********************************************!*\
+  !*** ./js/language/translation/project-4.ts ***!
+  \**********************************************/
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.textProject4 = void 0;
-var textIndex_1 = __webpack_require__(/*! ./textIndex */ "./js/translation/textIndex.ts");
+const textIndex_1 = __webpack_require__(/*! ./textIndex */ "./js/language/translation/textIndex.ts");
+/**
+ * Перевод для проекта №4.
+ */
 exports.textProject4 = {
     'title': {
         pl: 'ZOREN-SLICZNA, BUDYNEK MIESZKALNY-WIELORODZINNY',
@@ -849,16 +414,19 @@ exports.textProject4 = {
 
 /***/ }),
 
-/***/ "./js/translation/project-5.ts":
-/*!*************************************!*\
-  !*** ./js/translation/project-5.ts ***!
-  \*************************************/
+/***/ "./js/language/translation/project-5.ts":
+/*!**********************************************!*\
+  !*** ./js/language/translation/project-5.ts ***!
+  \**********************************************/
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.textProject5 = void 0;
-var textIndex_1 = __webpack_require__(/*! ./textIndex */ "./js/translation/textIndex.ts");
+const textIndex_1 = __webpack_require__(/*! ./textIndex */ "./js/language/translation/textIndex.ts");
+/**
+ * Перевод для проекта №5.
+ */
 exports.textProject5 = {
     'title': {
         pl: 'BRZYCZYNA, OSIEDLE DOMÓW',
@@ -890,16 +458,19 @@ exports.textProject5 = {
 
 /***/ }),
 
-/***/ "./js/translation/project-6.ts":
-/*!*************************************!*\
-  !*** ./js/translation/project-6.ts ***!
-  \*************************************/
+/***/ "./js/language/translation/project-6.ts":
+/*!**********************************************!*\
+  !*** ./js/language/translation/project-6.ts ***!
+  \**********************************************/
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.textProject6 = void 0;
-var textIndex_1 = __webpack_require__(/*! ./textIndex */ "./js/translation/textIndex.ts");
+const textIndex_1 = __webpack_require__(/*! ./textIndex */ "./js/language/translation/textIndex.ts");
+/**
+ * Перевод для проекта №6.
+ */
 exports.textProject6 = {
     'title': {
         pl: 'KLINY - BUDYNEK MIESZKALNY-WIELORODZINNY',
@@ -931,16 +502,19 @@ exports.textProject6 = {
 
 /***/ }),
 
-/***/ "./js/translation/project-7.ts":
-/*!*************************************!*\
-  !*** ./js/translation/project-7.ts ***!
-  \*************************************/
+/***/ "./js/language/translation/project-7.ts":
+/*!**********************************************!*\
+  !*** ./js/language/translation/project-7.ts ***!
+  \**********************************************/
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.textProject7 = void 0;
-var textIndex_1 = __webpack_require__(/*! ./textIndex */ "./js/translation/textIndex.ts");
+const textIndex_1 = __webpack_require__(/*! ./textIndex */ "./js/language/translation/textIndex.ts");
+/**
+ * Перевод для проекта №7.
+ */
 exports.textProject7 = {
     'title': {
         pl: 'TARNÓW – RESTAURACJA NA WZGÓRZU ZGŁOBICE',
@@ -972,16 +546,19 @@ exports.textProject7 = {
 
 /***/ }),
 
-/***/ "./js/translation/projects.ts":
-/*!************************************!*\
-  !*** ./js/translation/projects.ts ***!
-  \************************************/
+/***/ "./js/language/translation/projects.ts":
+/*!*********************************************!*\
+  !*** ./js/language/translation/projects.ts ***!
+  \*********************************************/
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.textProjects = void 0;
-var textIndex_1 = __webpack_require__(/*! ./textIndex */ "./js/translation/textIndex.ts");
+const textIndex_1 = __webpack_require__(/*! ./textIndex */ "./js/language/translation/textIndex.ts");
+/**
+ * Перевод для страницы с проектами.
+ */
 exports.textProjects = {
     'title': {
         pl: 'Projekty',
@@ -1030,28 +607,25 @@ exports.textProjects = {
         en: 'TARNÓW – RESTAURANT ON THE ZGŁOBICE HILL',
         ru: 'TARNÓW-ресторан на холме ZBŁOBICE',
         de: textIndex_1.sorry
-    },
-    'alt-8': {
-        pl: 'Wnetrza',
-        en: 'Wnetrza',
-        ru: 'Wnetrza',
-        de: textIndex_1.sorry
     }
 };
 
 
 /***/ }),
 
-/***/ "./js/translation/public.ts":
-/*!**********************************!*\
-  !*** ./js/translation/public.ts ***!
-  \**********************************/
+/***/ "./js/language/translation/public.ts":
+/*!*******************************************!*\
+  !*** ./js/language/translation/public.ts ***!
+  \*******************************************/
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.textPublic = void 0;
-var textIndex_1 = __webpack_require__(/*! ./textIndex */ "./js/translation/textIndex.ts");
+exports.textPublicContact = exports.textPublic = void 0;
+const textIndex_1 = __webpack_require__(/*! ./textIndex */ "./js/language/translation/textIndex.ts");
+/**
+ * Перевод обший.
+ */
 exports.textPublic = {
     'back to top': {
         pl: 'Powrót do góry',
@@ -1060,183 +634,141 @@ exports.textPublic = {
         de: textIndex_1.sorry
     },
 };
+/**
+ * Перевод обший для контактов.
+ */
+exports.textPublicContact = {
+    'stay': {
+        pl: 'Pozostań w kontakcie.',
+        en: 'Stay In Touch.',
+        ru: 'Оставайтесь на связи.',
+        de: textIndex_1.sorry
+    },
+    'city': {
+        pl: '31-518 Kraków ul. Brodowicza 8/1',
+        en: '31-518 Cracow ul. Brodowicza 8/1',
+        ru: '31-518 Краков ul. Brodowicza 8/1',
+        de: textIndex_1.sorry
+    },
+    'partners': {
+        pl: 'Partnerzy :',
+        en: 'Partners :',
+        ru: 'Партнеры :',
+        de: textIndex_1.sorry
+    },
+    'phone': {
+        pl: 'Tel:',
+        en: 'Tel:',
+        ru: textIndex_1.sorry,
+        de: textIndex_1.sorry
+    },
+    'fax': {
+        pl: 'Faks:',
+        en: 'Fax:',
+        ru: textIndex_1.sorry,
+        de: textIndex_1.sorry
+    }
+};
 
 
 /***/ }),
 
-/***/ "./js/translation/textIndex.ts":
-/*!*************************************!*\
-  !*** ./js/translation/textIndex.ts ***!
-  \*************************************/
-/***/ ((__unused_webpack_module, exports) => {
+/***/ "./js/language/translation/textIndex.ts":
+/*!**********************************************!*\
+  !*** ./js/language/translation/textIndex.ts ***!
+  \**********************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.textMain = exports.back = exports.sorry = void 0;
+const public_1 = __webpack_require__(/*! ./public */ "./js/language/translation/public.ts");
 ;
 exports.sorry = 'sorry, no translation';
+/**
+ * Перевод надписи стрелки.
+ */
 exports.back = {
     pl: 'Powrót do strony Projektów',
     en: 'Back to Projects page',
     ru: 'Назад к странице Проекты',
     de: 'Zurück zur Seite Projekte'
 };
-exports.textMain = {
-    'main title': {
+/**
+ * Перевод для главной страницы.
+ */
+exports.textMain = Object.assign({ 'main title': {
         pl: 'Nasze polecane projekty.',
         en: 'Our Featured Projects.',
-        ru: exports.sorry,
+        ru: 'Наши основные проекты.',
         de: exports.sorry
-    },
+    }, 
     //:project-1 
     'title project-1': {
         pl: 'BUDYNEK BIUROWY ,,TECHMAR’’ W KIELCACH',
         en: '"TECHMAR" OFFICE BUILDING IN KIELCE',
-        ru: exports.sorry,
+        ru: 'Офисное здание "TECHMAR" в KIELCE',
         de: exports.sorry
-    },
-    'text project-1': {
-        pl: 'Jestem paradą. Kliknij tutaj, aby dodać własny tekst i edytować mnie. Pozwól użytkownikom Cię poznać.',
-        en: 'I am a paradeaph. Click here to add your own text and edit me. Let your users get to know you.',
-        ru: exports.sorry,
-        de: exports.sorry
-    },
+    }, 
     //:project-2 
     'title project-2': {
         pl: 'DOM Z WIÓRA',
         en: 'CHIP HOUSE',
         ru: exports.sorry,
         de: exports.sorry
-    },
-    'text project-2': {
-        pl: 'Jestem paradą. Kliknij tutaj, aby dodać własny tekst i edytować mnie. Pozwól użytkownikom Cię poznać.',
-        en: 'I am a paradeaph. Click here to add your own text and edit me. Let your users get to know you.',
-        ru: exports.sorry,
-        de: exports.sorry
-    },
+    }, 
     //:project-3 
     'title project-3': {
         pl: 'DOM Z BETONU',
         en: 'CONCRETE HOUSE',
         ru: exports.sorry,
         de: exports.sorry
-    },
-    'text project-3': {
-        pl: 'Jestem paradą. Kliknij tutaj, aby dodać własny tekst i edytować mnie. To jest łatwe. Wystarczy kliknąć “ Edytuj tekst ” lub dwukrotnie kliknąć mnie, aby dodać własną treść i wprowadzić zmiany w czcionce. Możesz przeciągnąć i upuścić mnie w dowolnym miejscu na swojej stronie. Jestem miejscem, w którym możesz opowiedzieć historię i poinformować użytkowników o tobie trochę więcej.<br/><br/>Jest to miejsce na deeat do pisania długiego tekstu o Twojej firmie i twoich usługach. Możesz użyć tego miejsca, aby uzyskać bardziej szczegółowe informacje na temat swojej firmy. Porozmawiaj o swoim zespole i świadczonych usługach. Opowiedz odwiedzającym historię tego, jak wpadłeś na pomysł swojej firmy i co odróżnia cię od konkurencji. Wyróżnij swoją firmę i pokaż odwiedzającym, kim jesteś.',
-        en: 'I am a paradeaph. Click here to add your own text and edit me. It’s easy. Just click “Edit Text” or double click me to add your own content and make changes to the font. Feel free to drag and drop me anywhere you like on your page. I’m a deeat place for you to tell a story and let your users know a little more about you.<br/><br/>This is a deeat space to write long text about your company and your services. You can use this space to go into a little more detail about your company. Talk about your team and what services you provide. Tell your visitors the story of how you came up with the idea for your business and what makes you different from your competitors. Make your company stand out and show your visitors who you are.',
-        ru: exports.sorry,
-        de: exports.sorry
-    },
+    }, 
     //:project-4 
     'title project-4': {
         pl: 'ZOREN-SLICZNA, BUDYNEK MIESZKALNY-WIELORODZINNY',
         en: 'ZOREN-SLICZNA, RESIDENTIAL-MULTI-FAMILY BUILDING',
         ru: exports.sorry,
         de: exports.sorry
-    },
-    'text project-4': {
-        pl: 'Jestem paradą. Kliknij tutaj, aby dodać własny tekst i edytować mnie. To jest łatwe. Wystarczy kliknąć “ Edytuj tekst ” lub dwukrotnie kliknąć mnie, aby dodać własną treść i wprowadzić zmiany w czcionce. Możesz przeciągnąć i upuścić mnie w dowolnym miejscu na swojej stronie. Jestem miejscem, w którym możesz opowiedzieć historię i poinformować użytkowników o tobie trochę więcej.<br/><br/>Jest to miejsce na deeat do pisania długiego tekstu o Twojej firmie i twoich usługach. Możesz użyć tego miejsca, aby uzyskać bardziej szczegółowe informacje na temat swojej firmy. Porozmawiaj o swoim zespole i świadczonych usługach. Opowiedz odwiedzającym historię tego, jak wpadłeś na pomysł swojej firmy i co odróżnia cię od konkurencji. Wyróżnij swoją firmę i pokaż odwiedzającym, kim jesteś.',
-        en: 'I am a paradeaph. Click here to add your own text and edit me. It’s easy. Just click “Edit Text” or double click me to add your own content and make changes to the font. Feel free to drag and drop me anywhere you like on your page. I’m a deeat place for you to tell a story and let your users know a little more about you.<br/><br/>This is a deeat space to write long text about your company and your services. You can use this space to go into a little more detail about your company. Talk about your team and what services you provide. Tell your visitors the story of how you came up with the idea for your business and what makes you different from your competitors. Make your company stand out and show your visitors who you are.',
-        ru: exports.sorry,
-        de: exports.sorry
-    },
+    }, 
     //:project-5 
     'title project-5': {
         pl: 'BRZYCZYNA, OSIEDLE DOMÓW',
         en: 'BRZYCZYNA, ESTATE OF HOUSES',
         ru: exports.sorry,
         de: exports.sorry
-    },
-    'text project-5': {
-        pl: 'Jestem paradą. Kliknij tutaj, aby dodać własny tekst i edytować mnie. Pozwól użytkownikom Cię poznać.',
-        en: 'I am a paradeaph. Click here to add your own text and edit me. Let your users get to know you.',
-        ru: exports.sorry,
-        de: exports.sorry
-    },
+    }, 
     //:project-6 
     'title project-6': {
         pl: 'KLINY - BUDYNEK MIESZKALNY-WIELORODZINNY',
         en: 'KLINY - RESIDENTIAL-MULTI-FAMILY BUILDING',
         ru: exports.sorry,
         de: exports.sorry
-    },
-    'text project-6': {
-        pl: 'Jestem paradą. Kliknij tutaj, aby dodać własny tekst i edytować mnie. Pozwól użytkownikom Cię poznać.',
-        en: 'I am a paradeaph. Click here to add your own text and edit me. Let your users get to know you.',
-        ru: exports.sorry,
-        de: exports.sorry
-    },
+    }, 
     //:project-7 
     'title project-7': {
         pl: 'TARNÓW – RESTAURACJA NA WZGÓRZU ZGŁOBICE',
         en: 'TARNÓW – RESTAURANT ON THE ZGŁOBICE HILL',
         ru: exports.sorry,
         de: exports.sorry
-    },
-    'text project-7': {
-        pl: 'Jestem paradą. Kliknij tutaj, aby dodać własny tekst i edytować mnie. Pozwól użytkownikom Cię poznać.',
-        en: 'I am a paradeaph. Click here to add your own text and edit me. Let your users get to know you.',
-        ru: exports.sorry,
-        de: exports.sorry
-    },
-    //: contacts 
-    'title contacts': {
-        pl: 'Pozostać W Kontakcie.',
-        en: 'Stay In Touch.',
-        ru: exports.sorry,
-        de: exports.sorry
-    },
-    'adress street': {
-        pl: '500 Terry Francine Street<br/>San Francisco, CA 94158',
-        en: '500 Terry Francine Street<br/>San Francisco, CA 94158',
-        ru: exports.sorry,
-        de: exports.sorry
-    },
-    'phone': {
-        pl: 'Tel:',
-        en: 'Tel:',
-        ru: exports.sorry,
-        de: exports.sorry
-    },
-    'fax': {
-        pl: 'Faks:',
-        en: 'Fax:',
-        ru: exports.sorry,
-        de: exports.sorry
-    },
-    'stay': {
-        pl: 'Pozostań w kontakcie.',
-        en: 'Stay In Touch.',
-        ru: 'Оставайтесь на связи.',
-        de: exports.sorry
-    },
-    'city': {
-        pl: '31-518 Kraków ul. Brodowicza 8/1',
-        en: '31-518 Cracow ul. Brodowicza 8/1',
-        ru: '31-518 Краков ul. Brodowicza 8/1',
-        de: exports.sorry
-    },
-    'partners': {
-        pl: 'Partnerzy :',
-        en: 'Partners :',
-        ru: 'Партнеры :',
-        de: exports.sorry
-    },
-};
+    } }, public_1.textPublicContact);
 
 
 /***/ }),
 
-/***/ "./js/translation/textMenu.ts":
-/*!************************************!*\
-  !*** ./js/translation/textMenu.ts ***!
-  \************************************/
+/***/ "./js/language/translation/textMenu.ts":
+/*!*********************************************!*\
+  !*** ./js/language/translation/textMenu.ts ***!
+  \*********************************************/
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.textMenu = void 0;
-var textIndex_1 = __webpack_require__(/*! ./textIndex */ "./js/translation/textIndex.ts");
+const textIndex_1 = __webpack_require__(/*! ./textIndex */ "./js/language/translation/textIndex.ts");
+/**
+ * Перевод для меню.
+ */
 exports.textMenu = {
     home: {
         pl: 'Strona główna',
@@ -1267,16 +799,16 @@ exports.textMenu = {
 
 /***/ }),
 
-/***/ "./js/translation/textOurStory.ts":
-/*!****************************************!*\
-  !*** ./js/translation/textOurStory.ts ***!
-  \****************************************/
+/***/ "./js/language/translation/textOurStory.ts":
+/*!*************************************************!*\
+  !*** ./js/language/translation/textOurStory.ts ***!
+  \*************************************************/
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.textOurStory = void 0;
-var textIndex_1 = __webpack_require__(/*! ./textIndex */ "./js/translation/textIndex.ts");
+const textIndex_1 = __webpack_require__(/*! ./textIndex */ "./js/language/translation/textIndex.ts");
 exports.textOurStory = {
     'our-story-1': {
         pl: 'Pracownia 69.studio powstała w roku 1986 r. jako rodzinna firma o profilu projektowo –budowlanym. W tym czasie pod nazwą F.P.B Z&Z. Firma realizowała głównie projekty związane z budową obiektów, termomodernizacją , również projektowaniem i kompleksową realizacją wnętrz.<br/><br/>W r. 2018 firma została reaktywowana i ewoluowała na pracownię o profilu architektonicznym pod nazwą 69.studio.<br/><br/>Wiedza przekazywana z pokolenia na pokolenie zaowocowała innowacyjnym rozwojem pracowni w dziedzinie kompleksowego projektowania , wykorzystując doświadczenie w realizacji inwestycji.<br/><br/>Podstawową działalnością  f-my jest projektowanie architektury, kompleksowe przygotowanie projektów wielobranżowych, doradztwo techniczne, managment, oraz nadzór nad realizacją nietypowych indywidualnych budynków a także wnętrz.<br/><br/>Firma wykonuje projekty architektoniczne i wielobranżowe oraz zapewnia kompleksowy proces od analizy działki, jej kontekstu i uwarunkowań formalno – prawnych, przez projekty koncepcyjne, budowlane i techniczne aż po proces uzyskiwania uzgodnień, pozwoleń, udział w postępowaniach przetargowych i nadzór nad realizacją',
@@ -1297,6 +829,467 @@ exports.textOurStory = {
         de: textIndex_1.sorry
     }
 };
+
+
+/***/ }),
+
+/***/ "./js/modules/addedImgToProject.ts":
+/*!*****************************************!*\
+  !*** ./js/modules/addedImgToProject.ts ***!
+  \*****************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+// str
+const lazyLoading_1 = __importDefault(__webpack_require__(/*! ./lazyLoading */ "./js/modules/lazyLoading.ts"));
+/**
+ * Функция выподаюших фотографий при нажатии на титульную фотографию.
+ * - Фотографии будут добавлены после элемента с class="projects-our-story"
+ * @example
+ * <div
+        class="projects-our-story"
+        data-click="project"
+        data-start="{...номер начального изображения}"
+        data-end="{...номер конечного изображения}"
+        data-path="{...путь к папке с изображениями}"
+        data-state="{ open | close} ...состояние открыть изображения или закрыть"
+    >
+        <picture>
+            <source srcset="{...путь к img.webp}" type="image/webp">
+            <img class="projects-our-story__title-img" src="{...путь к img.jpg}" alt="my_alt">
+        </picture>
+        <div class="projects-our-story__title"><span>{...Имя проекта}</span></div>
+    </div>
+ */
+const addedImgToProject = () => {
+    try {
+        /**
+         * Массив элементов с атрибутом ( data-click="project" ).
+         */
+        const projectsElements = document.querySelectorAll('[data-click="project"]');
+        /**
+         * - Функция получает данные о начальном, конечном кадре и пути из дата атрибутов.
+         * - Добавляет изображения после радительского элемента.
+         * @param event Событие элемента на котором призошол клик.
+         * @returns
+         */
+        const addImg = (event) => {
+            /**
+             * Дочерний элемент на котором произошел клик.
+             */
+            const children = event.target;
+            /**
+             * Родительский элемент, в котором находится дочерний элемент, на котором произошло событие.
+             */
+            const parent = children.closest('[data-click="project"]');
+            /**
+             * Функция установки значения атрибута data-state.
+             * @param state - Значение атрибута data-state.
+             */
+            const stateParent = (state) => {
+                parent.setAttribute('data-state', state);
+            };
+            if (!parent)
+                return;
+            /**
+             * Стартовый номер изображения для добавления.
+             * - В папке изображения должны быть пронумерованы цифрами от 1 и далее.
+             */
+            const start = Number(parent.getAttribute('data-start'));
+            /**
+             * Конечный номер изображения для добавления.
+             * - В папке изображения пронумерованы цифрами от 1 и далее.
+             */
+            const end = Number(parent.getAttribute('data-end'));
+            /**
+             * Путь к папке с изображениями.
+             */
+            const path = parent.getAttribute('data-path');
+            /**
+             * Значение атрибута data-state, состояние родительского компанента, что необходимо сделать при нажатии.
+             * - open - Показать изображения.
+             * - close - Скрыть изображения.
+             */
+            const state = parent.getAttribute('data-state');
+            // Если нет данных, то не добавляем изображения.
+            if (!start && !end && !path && !state)
+                return;
+            if (state === 'open') {
+                // open - Показать изображения.
+                for (let i = end; i >= start; i--) {
+                    parent.insertAdjacentHTML('afterend', `
+                        <picture data-id="${path}">
+                            <source srcset="../../img/public/preloader.webp" data-srcset="${path}${i}.webp" type="image/webp">
+                            <img class="lazy-img projects-our-story__img" src="../../img/public/preloader.webp" data-src="${path}${i}.jpg" alt="my_alt">
+                        </picture>
+                        `);
+                }
+                ;
+                stateParent('close');
+                (0, lazyLoading_1.default)();
+            }
+            else {
+                // close - Скрыть изображения.
+                const pictures = document.querySelectorAll(`[data-id = "${path}"]`);
+                pictures.forEach(pic => {
+                    pic.remove();
+                });
+                parent.setAttribute('data-state', 'open');
+                stateParent('open');
+            }
+        };
+        // Проверка сушествования элементов projectsElements
+        if (projectsElements) {
+            // Установка слушателей событий.
+            projectsElements.forEach(project => {
+                project.addEventListener('click', addImg);
+            });
+        }
+    }
+    catch (error) {
+        console.log('Error in Function addedImgToProject >>> ', error);
+    }
+};
+exports["default"] = addedImgToProject;
+
+
+/***/ }),
+
+/***/ "./js/modules/backToTop.ts":
+/*!*********************************!*\
+  !*** ./js/modules/backToTop.ts ***!
+  \*********************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+/**
+ * Функция перехода в верх страницы
+ */
+const backToTop = () => {
+    function top() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    }
+    try {
+        const body = document.querySelector('.back-to-top__body');
+        const arrowMobile = document.querySelector('.back-to-top__img-mobile');
+        body.addEventListener('click', top);
+        arrowMobile.addEventListener('click', top);
+    }
+    catch (error) {
+        console.log('Error in function backToTop >>> ', error);
+    }
+};
+exports["default"] = backToTop;
+
+
+/***/ }),
+
+/***/ "./js/modules/intersectionObserver.ts":
+/*!********************************************!*\
+  !*** ./js/modules/intersectionObserver.ts ***!
+  \********************************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+/**
+ * Функция слежения за элементом
+ * @param classBlock - отслеживаемый класс блока
+ * @param classPlus - класс добавляемый к отслеживаемому блоку
+ * @param arrClassAlso - массив классов к которым так же добавится класс classPlussAlso
+ * @param classPlussAlso - класс который добавится к каждому классу в массиве
+ */
+const intersectionObserver = (classBlock, classPlus, arrClassAlso, classPlussAlso) => {
+    try {
+        const block = document.querySelector(`.${classBlock}`);
+        const divObserver = new IntersectionObserver((entryAll) => {
+            entryAll.forEach((item) => {
+                if (item.isIntersecting) {
+                    item.target.classList.add(`${classPlus}`);
+                    addAndRemoveArrayClass(arrClassAlso, classPlussAlso, true);
+                }
+                else {
+                    item.target.classList.remove(`${classPlus}`);
+                    addAndRemoveArrayClass(arrClassAlso, classPlussAlso, false);
+                }
+            });
+        }, {
+            rootMargin: '0px 0px 150px 0px'
+        });
+        divObserver.observe(block);
+    }
+    catch (error) {
+        console.log('Error in function intersectionObserver >>> ', error);
+    }
+};
+function addAndRemoveArrayClass(arrClassAlso, classPlussAlso, isAddClass) {
+    try {
+        if (Array.isArray(arrClassAlso) && arrClassAlso.length > 0 && classPlussAlso) {
+            arrClassAlso.forEach(item => {
+                const element = document.querySelector(`.${item}`);
+                if (!element)
+                    return;
+                if (isAddClass) {
+                    element.classList.add(`${classPlussAlso}`);
+                }
+                else {
+                    element.classList.remove(`${classPlussAlso}`);
+                }
+            });
+        }
+    }
+    catch (error) {
+        console.log('Error in function addAndRemoveArrayClass >>> ', error);
+    }
+}
+exports["default"] = intersectionObserver;
+
+
+/***/ }),
+
+/***/ "./js/modules/lazyLoading.ts":
+/*!***********************************!*\
+  !*** ./js/modules/lazyLoading.ts ***!
+  \***********************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+/**
+ * Функция отложенной загрузки изображений.
+ * - Найдет все изображения с классом "lazy-img".
+ * - Установит слушатель появления во viewport.
+ * - При появлении во viewport установит атрибуты с путем к изображению.
+ * @example
+ * <picture>
+ *     <source data-srcset="../img/projects/1.webp" type="image/webp">
+ *     <img class="lazy-img" data-src="../img/projects/1.jpg" alt="my_alt">
+ * </picture>
+ */
+const lazyLoading = () => {
+    try {
+        const imgObserver = new IntersectionObserver((entryAll, observer) => {
+            entryAll.forEach((item) => {
+                if (item.isIntersecting) {
+                    //console.log(item.target);
+                    let itemTarget = item.target;
+                    let parent = itemTarget.parentElement;
+                    let sourceAll = parent.querySelectorAll('source');
+                    sourceAll.forEach((item) => { item.dataset.srcset ? item.srcset = item.dataset.srcset : null; });
+                    if (itemTarget.dataset.src) {
+                        itemTarget.src = itemTarget.dataset.src;
+                        itemTarget.setAttribute('src', itemTarget.dataset.src);
+                    }
+                    observer.unobserve(itemTarget);
+                }
+            });
+        }, {
+            //тут пишем при необходимости опции
+            //root:,
+            rootMargin: '100px',
+            threshold: 0,
+        });
+        const imgElAll = document.querySelectorAll('.lazy-img');
+        //console.log(imgElAll.length);
+        if (imgElAll.length > 0) {
+            imgElAll.forEach((item) => imgObserver.observe(item));
+        }
+    }
+    catch (error) {
+        console.log('Error in function lazyLoading >>> ', error);
+    }
+};
+exports["default"] = lazyLoading;
+
+
+/***/ }),
+
+/***/ "./js/modules/menu.ts":
+/*!****************************!*\
+  !*** ./js/modules/menu.ts ***!
+  \****************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.menuFill = exports.menu = void 0;
+const intersectionObserver_1 = __importDefault(__webpack_require__(/*! ./intersectionObserver */ "./js/modules/intersectionObserver.ts"));
+//= menu 
+const menu = () => {
+    try {
+        // отслеживание появления футера, для появления стрелки вверх
+        (0, intersectionObserver_1.default)('footer', 'active', ['back-to-top__img-mobile'], 'active');
+        const burger = document.querySelector('.burger');
+        const burgerSpan = document.querySelector('.burger__span');
+        const menuList = document.querySelector('.menu__list');
+        burger === null || burger === void 0 ? void 0 : burger.addEventListener('click', () => {
+            burgerSpan === null || burgerSpan === void 0 ? void 0 : burgerSpan.classList.toggle('active-burger');
+            menuList === null || menuList === void 0 ? void 0 : menuList.classList.toggle('active-menu');
+            burger.classList.toggle('active-burger');
+        });
+    }
+    catch (error) {
+        console.log('Error in function menu >>> ', error);
+    }
+};
+exports.menu = menu;
+//= menuFill 
+const menuFill = () => {
+    function changeHight() {
+        const menu = document.querySelector('.menu');
+        const menuFill = document.querySelector('.menu-fill');
+        const menuHeight = menu.offsetHeight;
+        menuFill.style.paddingTop = `${menuHeight - 1}px`;
+    }
+    try {
+        changeHight();
+        window.addEventListener('resize', changeHight);
+    }
+    catch (error) {
+        console.log('Error in function menuFill >>> ', error);
+    }
+};
+exports.menuFill = menuFill;
+
+
+/***/ }),
+
+/***/ "./js/modules/pushPictures.ts":
+/*!************************************!*\
+  !*** ./js/modules/pushPictures.ts ***!
+  \************************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+/**
+ * Функция для вставки изображений на страницу.
+ * @example
+ * <div
+ *      class="gallery__body"
+ *      data-path="../img/project-3/"
+ *      data-end="10"
+ * >
+ *      {блоки изображений}
+ * </div>
+ */
+const pushPictures = () => {
+    try {
+        /**
+         * DivElement контейнер для импорта изображений.
+         */
+        const galleryBody = document.querySelector('.gallery__body');
+        /**
+         * Путь к изображениям.
+         */
+        const path = galleryBody.getAttribute('data-path');
+        /**
+         * Номер последнего изображения, начинается всегда с 1 и заканчивается вставка изображений указанным номером.
+         */
+        const end = Number(galleryBody.getAttribute('data-end'));
+        if (path && end) {
+            for (let i = 1; i <= end; i++) {
+                galleryBody.insertAdjacentHTML('beforeend', `
+                    <div class="gallery__img">
+                        <picture>
+                            <source data-srcset="${path}${i}.webp" type="image/webp">
+                            <img class="lazy-img" data-src="${path}${i}.jpg" alt="my_alt" height="500" width="500" >
+                        </picture>
+                        <div class="gallery__text"><span>I'am an image title</span></div>
+                    </div>
+                    `);
+            }
+            ;
+        }
+        ;
+    }
+    catch (error) {
+        console.log('Error in Function  pushPictures >>> ', error);
+    }
+};
+exports["default"] = pushPictures;
+
+
+/***/ }),
+
+/***/ "./js/modules/text.ts":
+/*!****************************!*\
+  !*** ./js/modules/text.ts ***!
+  \****************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.numberScroll = void 0;
+//= numberScroll
+/**
+ * Функция по анимации цыфры 69 на главной странице.
+ */
+const numberScroll = () => {
+    try {
+        const text69 = document.querySelector('.main-picture__text');
+        const studio = document.querySelector('#studio');
+        const dot = document.querySelector('#dot');
+        if (text69 && studio && dot) {
+            const text69Size = parseInt(window.getComputedStyle(text69).getPropertyValue('font-size'));
+            const studioSize = parseInt(window.getComputedStyle(studio).getPropertyValue('font-size'));
+            const dotSize = parseInt(window.getComputedStyle(dot).getPropertyValue('font-size'));
+            const scroll69 = () => {
+                text69.style.fontSize = `${text69Size - window.scrollY / 2}px`;
+                studio.style.fontSize = `${studioSize - window.scrollY / 2}px`;
+                dot.style.fontSize = `${dotSize - window.scrollY / 2}px`;
+            };
+            window.addEventListener('scroll', scroll69);
+        }
+    }
+    catch (error) {
+        console.log('Error in function numberScroll >>> ', error);
+    }
+};
+exports.numberScroll = numberScroll;
+
+
+/***/ }),
+
+/***/ "./js/script.ts":
+/*!**********************!*\
+  !*** ./js/script.ts ***!
+  \**********************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const menu_1 = __webpack_require__(/*! ./modules/menu */ "./js/modules/menu.ts");
+const text_1 = __webpack_require__(/*! ./modules/text */ "./js/modules/text.ts");
+const backToTop_1 = __importDefault(__webpack_require__(/*! ./modules/backToTop */ "./js/modules/backToTop.ts"));
+const lazyLoading_1 = __importDefault(__webpack_require__(/*! ./modules/lazyLoading */ "./js/modules/lazyLoading.ts"));
+const language_1 = __importDefault(__webpack_require__(/*! ./language/function/language */ "./js/language/function/language.ts"));
+const pushPictures_1 = __importDefault(__webpack_require__(/*! ./modules/pushPictures */ "./js/modules/pushPictures.ts"));
+const addedImgToProject_1 = __importDefault(__webpack_require__(/*! ./modules/addedImgToProject */ "./js/modules/addedImgToProject.ts"));
+window.addEventListener('DOMContentLoaded', () => {
+    (0, menu_1.menu)();
+    (0, pushPictures_1.default)();
+    (0, addedImgToProject_1.default)();
+    (0, menu_1.menuFill)();
+    (0, text_1.numberScroll)();
+    (0, backToTop_1.default)();
+    (0, language_1.default)();
+    (0, lazyLoading_1.default)();
+});
 
 
 /***/ })

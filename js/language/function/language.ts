@@ -15,7 +15,10 @@ import { contacts } from "../translation/contacts";
 
 
 /**
- * Функция установки определения и установки языка в localStorage.
+ * Стартовая функция для перевода на сайте.
+ * - 1) Определяет используемые языки в браузере.
+ * - 2) Устанавливает приоритетный язык в localStorage.
+ * 
  */
 //= language 
 const language = () => {
@@ -44,7 +47,8 @@ const language = () => {
     if(!language) {
         // установка языка браузера в localStorage из массива предпочитаемых, en, ru, pl
         /**
-         * Массив языков установленых в браузере вида: ["ru-RU", "ru", "en-US", "en"]
+         * Массив языков установленых в браузере вида: 
+         * - ["ru-RU", "ru", "en-US", "en"]
          */
         const browserLanguages: readonly string[] = navigator.languages;
         for (var i = 0; i < browserLanguages.length; i++) {
@@ -101,8 +105,10 @@ function eventChangeRadio(radioButtons: NodeListOf<HTMLInputElement>, activeImg:
                     const value = event.target.value;
                     setSelectActive(activeImg, activeText, value);
                     localStorage.setItem('language', value);
-                    setMenu(value);
-                    setTextPage(value);
+                    if(value) {
+                        setMenu(value);
+                        setTextPage(value);
+                    }
                 }
             }
             body.classList.toggle('active');
@@ -147,19 +153,22 @@ function setMenu(language: string): void {
      * Массив элементов меню с атрабутом "data-menu".
      */
     const menuLinks = document.querySelectorAll('[data-menu]') as NodeListOf<HTMLInputElement>;
-    const elementsPublic = document.querySelectorAll('[data-public]') as NodeListOf<HTMLInputElement>;
-    
-    menuLinks.forEach(link => {
-        if(link.dataset.menu) {
-            /**
-             * Отображаемый текст меню (home, our story...).
-             */
-            const data: string = link.dataset.menu;
-            if(data && textMenu[data] && textMenu[data][language]) {
-                link.textContent = textMenu[data][language];
+
+    if(menuLinks) {
+        menuLinks.forEach(link => {
+            if(link?.dataset?.menu) {
+                /**
+                 * Отображаемый текст меню (home, our story, ...).
+                 */
+                const data: string = link.dataset.menu;
+                if(textMenu?.[data]?.[language]) {
+                    link.textContent = textMenu[data][language];
+                }
             }
-        }
-    });
+        });
+    }
+
+    const elementsPublic = document.querySelectorAll('[data-public]') as NodeListOf<HTMLInputElement>;
 
     elementsPublic.forEach(link => {
         if(link.dataset.public) {
@@ -177,9 +186,8 @@ function setMenu(language: string): void {
  * @param language Выбранный язык для перевода.
  */
 function setTextPage(language: string) {
-    const path = window.location.pathname;
-
-    const elementsText = document.querySelectorAll('[data-translation]') as NodeListOf<HTMLDivElement>;
+    const path: string | undefined = window.location.pathname;
+    if(!path) return;
 
     const changeTranslation = (path: string) => {
         const translation: TranslationObject = {
@@ -199,16 +207,20 @@ function setTextPage(language: string) {
     }
 
     let textForPage: Trasnslate = changeTranslation(path);
-    
-    elementsText.forEach(element => {
-        if(element.dataset.translation) {
-            const data: string = element.dataset.translation;
 
-            if(textForPage[data][language]) {
-                element.innerHTML = textForPage[data][language];
+    const elementsText = document.querySelectorAll('[data-translation]') as NodeListOf<HTMLDivElement>;
+    
+    if(elementsText && Array.isArray(elementsText)) {
+        elementsText.forEach(element => {
+            if(element?.dataset?.translation) {
+                const data: string = element.dataset.translation;
+
+                if(textForPage?.[data]?.[language]) {
+                    element.innerHTML = textForPage[data][language];
+                }
             }
-        }
-    })
+        })
+    }
 }
 
 export default language;
