@@ -241,6 +241,9 @@
     }
 }
 
+.simple-text {
+    @include text_streach (15, 13, #000, 300);
+}
 
 
 
