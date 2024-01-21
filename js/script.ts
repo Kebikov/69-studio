@@ -14,5 +14,5 @@ window.addEventListener('DOMContentLoaded', () => {
     numberScroll();
     backToTop();
     language();
-    lazyLoading();
+    lazyLoading(); 
 });

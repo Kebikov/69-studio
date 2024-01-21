@@ -28,5 +28,17 @@ export const textProject2: Trasnslate = {
         ru: 'Расположение: ул. Сарня 8, поселок городского типа Любожицкий  , Краков<br/>Площадь участка-1 150м2<br/>Полезная площадь здания-327, 20м2<br/>Общая площадь-512, 00м2<br/>Кубическая емкость-1 576, 56м3',
         de: sorry,
     },
+    'sketch': {
+        pl: 'szkic córki',
+        en: 'daughter sketch',
+        ru: 'эскиз дочери',
+        de: sorry
+    },
+    'text-project': {
+        pl: 'projekt',
+        en: 'project',
+        ru: 'проект',
+        de: sorry
+    },
     back
 }

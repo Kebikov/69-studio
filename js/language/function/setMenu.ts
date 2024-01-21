@@ -3,7 +3,7 @@ import { textPublic } from "../translation/public";
 
 //= setMenu 
 /**
- * Функция изминения текста меню в зависимости от выбранного языка.
+ * Изминения текста меню в зависимости от выбранного языка.
  * @param language - Выбраный язык.
  */
 const setMenu = (language: string): void => {

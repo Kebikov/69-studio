@@ -14,12 +14,12 @@
         position: relative;
         padding: 20px 10px 0px 0px;
 
-        background:#fff url('../img/project-7/1.jpg') 0 0 / cover no-repeat;
+        background:#fff url('../img/contacts/1.jpg') 0 0 / cover no-repeat;
 
         @supports (
-                background: url('../img/project-7/1.webp') 0 0 / cover no-repeat) 
+                background: url('../img/contacts/1.webp') 0 0 / cover no-repeat) 
             {
-                background-image: url('../img/project-7/1.webp');
+                background-image: url('../img/contacts/1.webp');
             }
         
     }
@@ -130,6 +130,12 @@
 
         @include text_streach(20, 18, #ffffffcc);
     }
+}
+
+.award {
+    margin-top: 20px;
+    @include text_streach (15, 13, #000, 400);
+    line-height: 150%;
 }
 
 

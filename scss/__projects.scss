@@ -1,12 +1,13 @@
 @import '../scss/mixin.scss';
 @import '../scss/variables.scss';
 
+.simple-text {
+    @include text_streach (17, 15, #000, 600);
+    width: 100%;
+}
+
 //= .projects-img 
 .projects-img {
-    // .projects-img__body
-    &__body {
-
-    }
     // .projects-img__img
     &__img {
         
@@ -29,9 +30,6 @@
     justify-content: center;
 
     margin: -350px 0px 0px 0px;
-    // .projects-collections__body
-    &__body {
-    }
     // .projects-collections__grid
     &__grid {
         padding: 80px 60px 60px 60px;
@@ -196,9 +194,9 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        flex-direction: column; 
+        flex-direction: column;
 
-        gap: $value-gallery-gap;
+        //gap: $value-gallery-gap;
 
         @media (max-width: 1000px){
             gap: $value-gallery-gap-mobile;
@@ -208,32 +206,13 @@
     // .gallery__img
     &__img {
         position: relative;
-
         width: 100%;
+        margin-top: 20px;
         & img {
             width: 100%;
-
+            height: 100%;
             object-fit: cover;
         }
-        // &:hover .gallery__text {
-        //     display: block;
-
-        //     position: absolute;
-        //     top: 0;
-        //     left: 0;
-        //     width: 100%;
-        //     height: 100%;
-    
-        //     background: #ffffff75;
-        //     & span {
-        //         position: absolute;
-        //         top: 50%;
-        //         left: 50%;
-        //         transform: translate(-50%, -50%);
-    
-        //         @include text_streach (14, 12, #000, 600);
-        //     }
-        // }
     }
 
     &__text {
@@ -241,9 +220,6 @@
     }
 }
 
-.simple-text {
-    @include text_streach (15, 13, #000, 300);
-}
 
 
 

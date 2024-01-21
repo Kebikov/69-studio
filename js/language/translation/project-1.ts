@@ -28,5 +28,23 @@ export const textProject1: Trasnslate = {
         ru: 'Расположение: ул. Витоса, <br/>Площадь участка-2 219,<br/>Полезная площадь здания-793,<br/>Общая площадь-844,<br/>Кубическая емкость - 3 013,40м3',
         de: sorry,
     },
+    'idea': {
+        pl: 'idea',
+        en: 'idea',
+        ru: 'идея',
+        de: sorry
+    },
+    'stan': {
+        pl: 'stan istniejący',
+        en: 'existing state',
+        ru: 'cуществующее состояние',
+        de: sorry
+    },
+    'text-project': {
+        pl: 'projekt',
+        en: 'project',
+        ru: 'проект',
+        de: sorry
+    },
     back
 }

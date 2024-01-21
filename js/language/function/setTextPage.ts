@@ -9,11 +9,12 @@ import { textProject5 } from "../translation/project-5";
 import { textProject6 } from "../translation/project-6";
 import { textProject7 } from "../translation/project-7";
 import { contacts } from "../translation/contacts";
+import { textWnetrza } from "../translation/wnetrza";
 
 
 //= setTextPage 
 /**
- * Изминение текста на странице
+ * Изминение текста на странице.
  * @param language Выбранный язык для перевода.
  */
 const setTextPage = (language: string) => {
@@ -32,7 +33,8 @@ const setTextPage = (language: string) => {
             '/project-5/': textProject5,
             '/project-6/': textProject6,
             '/project-7/': textProject7,
-            '/contacts/': contacts
+            '/contacts/': contacts,
+            '/wnetrza/': textWnetrza
         }
         return translation[path];
     }
@@ -42,10 +44,14 @@ const setTextPage = (language: string) => {
     const elementsText = document.querySelectorAll('[data-translation]') as NodeListOf<HTMLDivElement>;
 
     if(elementsText.length > 0) {
-        elementsText.forEach(element => {
+        elementsText.forEach(element => { 
             if(element?.dataset?.translation) {
+                /**
+                 * Значение установленое в атрибуте.
+                 * - data-translation="idea" 
+                 * - получим "idea"
+                 */
                 const data: string = element.dataset.translation;
-
                 if(textForPage?.[data]?.[language]) {
                     element.innerHTML = textForPage[data][language];
                 }

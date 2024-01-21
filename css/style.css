@@ -271,6 +271,7 @@ input[type=number]:focus {
   color: #000;
   line-height: 120%;
   padding: 0px 0px 17px 0px;
+  text-transform: uppercase;
 }
 @media (max-width: 1910px) {
   .project-block-text__title {
@@ -1702,11 +1703,11 @@ input[type=number]:focus {
   width: 100%;
   position: relative;
   padding: 20px 10px 0px 0px;
-  background: #fff url("../img/project-7/1.jpg") 0 0/cover no-repeat;
+  background: #fff url("../img/contacts/1.jpg") 0 0/cover no-repeat;
 }
-@supports (background: url("../img/project-7/1.webp") 0 0/cover no-repeat) {
+@supports (background: url("../img/contacts/1.webp") 0 0/cover no-repeat) {
   .our-story-main__body {
-    background-image: url("../img/project-7/1.webp");
+    background-image: url("../img/contacts/1.webp");
   }
 }
 .our-story-main__img {
@@ -1846,6 +1847,26 @@ input[type=number]:focus {
   }
 }
 
+.award {
+  margin-top: 20px;
+  font-family: "Roboto";
+  font-size: 15px;
+  font-weight: 400;
+  color: #000;
+  line-height: 120%;
+  line-height: 150%;
+}
+@media (max-width: 1910px) {
+  .award {
+    font-size: calc(13px + (2) * (100vw - 375px) / 1535);
+  }
+}
+@media (max-width: 375px) {
+  .award {
+    font-size: 13px;
+  }
+}
+
 .info-employees.our-story__info-employees {
   width: 370px;
   position: relative;
@@ -1962,6 +1983,25 @@ input[type=number]:focus {
 }
 .info-employees__arrow img {
   width: 30px;
+}
+
+.simple-text {
+  font-family: "Roboto";
+  font-size: 17px;
+  font-weight: 600;
+  color: #000;
+  line-height: 120%;
+  width: 100%;
+}
+@media (max-width: 1910px) {
+  .simple-text {
+    font-size: calc(15px + (2) * (100vw - 375px) / 1535);
+  }
+}
+@media (max-width: 375px) {
+  .simple-text {
+    font-size: 15px;
+  }
 }
 
 .projects-img__img img {
@@ -2213,7 +2253,6 @@ input[type=number]:focus {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  gap: 50px;
 }
 @media (max-width: 1000px) {
   .gallery__body {
@@ -2223,9 +2262,11 @@ input[type=number]:focus {
 .gallery__img {
   position: relative;
   width: 100%;
+  margin-top: 20px;
 }
 .gallery__img img {
   width: 100%;
+  height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
 }
@@ -2258,11 +2299,11 @@ input[type=number]:focus {
   width: 100%;
   position: relative;
   padding: 20px 10px 0px 0px;
-  background: #fff url("../img/project-7/1.jpg") 0 0/cover no-repeat;
+  background: #fff url("../img/contacts/1.jpg") 0 0/cover no-repeat;
 }
-@supports (background: url("../img/project-7/1.webp") 0 0/cover no-repeat) {
+@supports (background: url("../img/contacts/1.webp") 0 0/cover no-repeat) {
   .our-story-main__body {
-    background-image: url("../img/project-7/1.webp");
+    background-image: url("../img/contacts/1.webp");
   }
 }
 .our-story-main__img {
@@ -2399,6 +2440,26 @@ input[type=number]:focus {
 @media (max-width: 375px) {
   .projects-our-story__title {
     font-size: 18px;
+  }
+}
+
+.award {
+  margin-top: 20px;
+  font-family: "Roboto";
+  font-size: 15px;
+  font-weight: 400;
+  color: #000;
+  line-height: 120%;
+  line-height: 150%;
+}
+@media (max-width: 1910px) {
+  .award {
+    font-size: calc(13px + (2) * (100vw - 375px) / 1535);
+  }
+}
+@media (max-width: 375px) {
+  .award {
+    font-size: 13px;
   }
 }
 

@@ -170,7 +170,7 @@ const textMenu_1 = __webpack_require__(/*! ../translation/textMenu */ "./js/lang
 const public_1 = __webpack_require__(/*! ../translation/public */ "./js/language/translation/public.ts");
 //= setMenu 
 /**
- * Функция изминения текста меню в зависимости от выбранного языка.
+ * Изминения текста меню в зависимости от выбранного языка.
  * @param language - Выбраный язык.
  */
 const setMenu = (language) => {
@@ -216,7 +216,7 @@ exports["default"] = setMenu;
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 /**
- * Функция изминения текста и изображения у активного блока выбора языка.
+ * Изминения текста и изображения у активного блока выбора языка.
  * @param activeImg - Элемент изображения с флагом.
  * @param activeText - Элемент с текстом, отражаюшем выбраный язык.
  * @param value - Значение выбраного языка (ru, pl, de...).
@@ -265,9 +265,10 @@ const project_5_1 = __webpack_require__(/*! ../translation/project-5 */ "./js/la
 const project_6_1 = __webpack_require__(/*! ../translation/project-6 */ "./js/language/translation/project-6.ts");
 const project_7_1 = __webpack_require__(/*! ../translation/project-7 */ "./js/language/translation/project-7.ts");
 const contacts_1 = __webpack_require__(/*! ../translation/contacts */ "./js/language/translation/contacts.ts");
+const wnetrza_1 = __webpack_require__(/*! ../translation/wnetrza */ "./js/language/translation/wnetrza.ts");
 //= setTextPage 
 /**
- * Изминение текста на странице
+ * Изминение текста на странице.
  * @param language Выбранный язык для перевода.
  */
 const setTextPage = (language) => {
@@ -286,7 +287,8 @@ const setTextPage = (language) => {
             '/project-5/': project_5_1.textProject5,
             '/project-6/': project_6_1.textProject6,
             '/project-7/': project_7_1.textProject7,
-            '/contacts/': contacts_1.contacts
+            '/contacts/': contacts_1.contacts,
+            '/wnetrza/': wnetrza_1.textWnetrza
         };
         return translation[path];
     };
@@ -296,6 +298,11 @@ const setTextPage = (language) => {
         elementsText.forEach(element => {
             var _a, _b;
             if ((_a = element === null || element === void 0 ? void 0 : element.dataset) === null || _a === void 0 ? void 0 : _a.translation) {
+                /**
+                 * Значение установленое в атрибуте.
+                 * - data-translation="idea"
+                 * - получим "idea"
+                 */
                 const data = element.dataset.translation;
                 if ((_b = textForPage === null || textForPage === void 0 ? void 0 : textForPage[data]) === null || _b === void 0 ? void 0 : _b[language]) {
                     element.innerHTML = textForPage[data][language];
@@ -366,6 +373,24 @@ exports.textProject1 = {
         ru: 'Расположение: ул. Витоса, <br/>Площадь участка-2 219,<br/>Полезная площадь здания-793,<br/>Общая площадь-844,<br/>Кубическая емкость - 3 013,40м3',
         de: textIndex_1.sorry,
     },
+    'idea': {
+        pl: 'idea',
+        en: 'idea',
+        ru: 'идея',
+        de: textIndex_1.sorry
+    },
+    'stan': {
+        pl: 'stan istniejący',
+        en: 'existing state',
+        ru: 'cуществующее состояние',
+        de: textIndex_1.sorry
+    },
+    'text-project': {
+        pl: 'projekt',
+        en: 'project',
+        ru: 'проект',
+        de: textIndex_1.sorry
+    },
     back: textIndex_1.back
 };
 
@@ -409,6 +434,18 @@ exports.textProject2 = {
         en: 'Location: ul. Sarnia 8, Wysiołek Luborzycki near Krakow<br/>area plots – 1 150,00 m2<br/>area usable area of the building - 327, 20 m2<br/>area total - 512.00 m2<br/>Volume – 1 576,56 m3',
         ru: 'Расположение: ул. Сарня 8, поселок городского типа Любожицкий  , Краков<br/>Площадь участка-1 150м2<br/>Полезная площадь здания-327, 20м2<br/>Общая площадь-512, 00м2<br/>Кубическая емкость-1 576, 56м3',
         de: textIndex_1.sorry,
+    },
+    'sketch': {
+        pl: 'szkic córki',
+        en: 'daughter sketch',
+        ru: 'эскиз дочери',
+        de: textIndex_1.sorry
+    },
+    'text-project': {
+        pl: 'projekt',
+        en: 'project',
+        ru: 'проект',
+        de: textIndex_1.sorry
     },
     back: textIndex_1.back
 };
@@ -697,6 +734,12 @@ exports.textProjects = {
         en: 'TARNÓW – RESTAURANT ON THE ZGŁOBICE HILL',
         ru: 'TARNÓW-ресторан на холме ZBŁOBICE',
         de: textIndex_1.sorry
+    },
+    'alt-8': {
+        pl: 'WNETRZA',
+        en: 'INTERIORS',
+        ru: 'ИНТЕРЬЕРЫ',
+        de: textIndex_1.sorry
     }
 };
 
@@ -802,9 +845,9 @@ exports.textMain = Object.assign({ 'main title': {
     }, 
     //:project-2 
     'title project-2': {
-        pl: 'DOM Z WIÓRA',
-        en: 'CHIP HOUSE',
-        ru: exports.sorry,
+        pl: 'DOM Z WIÓRA OSIKOWEGO',
+        en: 'aspen shingle house',
+        ru: 'ДОМ ИЗ ОСИНОВЫХ ЩЕПОК',
         de: exports.sorry
     }, 
     //:project-3 
@@ -913,9 +956,58 @@ exports.textOurStory = {
         de: textIndex_1.sorry
     },
     'about-me': {
-        pl: 'O mnie',
-        en: 'About me',
-        ru: textIndex_1.sorry,
+        pl: 'O nas',
+        en: 'About us',
+        ru: 'О нас',
+        de: textIndex_1.sorry
+    },
+    'award': {
+        pl: '<u><b>Konkursy/ Nagrody</b></u><br/>● I nagroda - Konkurs ,,Mister Budownictwa’’, za Budynek biurowy com-40 k. Kalisza.<br/>● I nagroda - Konkurs na Muzeum T. Kantora i siedzibę ODSTK Cricoteka.<br/>● I nagroda SARP w kategorii budynek mieszkalny - projekt realizacyjny ,,Dom z Gontu’’.<br/>● II nagroda - Konkurs na Centrum handlowe w Białymstoku<br/>● III nagroda - Konkurs na Centrum miasta Tychy<br/>● Konkurs na zagospodarowanie ,,Wyspy Gubernatora’’ w Nowym Jorku <br/>● Konkurs na Centrum administracyjno - handlowe w Bejrucie<br/>● Konkurs na Pawilon Polski na Expo 2000 w Hanowerze<br/>● Konkurs na nową siedzibę Radia Kraków<br/>● Konkurs na przebudowę teatru ,,Żeromskiego’’ w Kielcach<br/>● Konkurs na schronisko górskie ,,Jeżowa woda ‘’.<br/>● Nominacja DOMU Z BETONU do 10 najlepszych realizacji – Konkurs ,,Polski cement w architekturze’’.<br/>',
+        en: '<u><b>Competitions/Prizes</b></u><br/>● 1st prize - "Mister Construction" competition, for the com-40 office building near Kalisz<br/>● 1st prize - Competition for the T. Kantor Museum and the headquarters of ODSTK Cricoteka<br/>● 1st SARP award in the residential building category - implementation project "House of Shingles"<br/>● 2nd prize - Competition for a shopping center in Białystok<br/>● 3rd prize - Competition for the Tychy city center<br/>● Competition for the development of Governor`s Island in New York<br/>● Competition for the Administrative and Commercial Center in Beirut<br/>● Competition for the Polish Pavilion at Expo 2000 in Hannover<br/>● Competition for the new headquarters of Radio Kraków<br/>● Competition for the reconstruction of the "Żeromski" theater in Kielce<br/>● Competition for the "Jeżowa Woda" mountain shelter.<br/>● Nomination of the CONCRETE HOUSE for the 10 best projects - "Polish cement in architecture’’ ',
+        ru: 'О нас',
+        de: textIndex_1.sorry
+    }
+};
+
+
+/***/ }),
+
+/***/ "./js/language/translation/wnetrza.ts":
+/*!********************************************!*\
+  !*** ./js/language/translation/wnetrza.ts ***!
+  \********************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.textWnetrza = void 0;
+const textIndex_1 = __webpack_require__(/*! ./textIndex */ "./js/language/translation/textIndex.ts");
+/**
+ * Перевод для страницы "wnetrza".
+ */
+exports.textWnetrza = {
+    'alt-1': {
+        pl: 'Gabinet kosmetyczny–Kraków',
+        en: 'beauty salon Kraków',
+        ru: 'Салон красоты в Кракове',
+        de: textIndex_1.sorry
+    },
+    'alt-2': {
+        pl: 'DOM Z WIÓRA OSIKOWEGO',
+        en: 'aspen shingle house',
+        ru: 'ДОМ ИЗ ОСИНОВЫХ ЩЕПОК',
+        de: textIndex_1.sorry
+    },
+    'alt-3': {
+        pl: 'DOM Z BETONU',
+        en: 'concrete house',
+        ru: 'БЕТОННЫЙ ДОМ',
+        de: textIndex_1.sorry
+    },
+    'alt-4': {
+        pl: 'UJ Wnetrza',
+        en: 'J.U. interiors',
+        ru: 'U.J. Интерьеры',
         de: textIndex_1.sorry
     }
 };

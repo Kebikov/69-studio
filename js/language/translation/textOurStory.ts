@@ -14,9 +14,15 @@ export const textOurStory: Trasnslate = {
         de: sorry
     },
     'about-me': {
-        pl: 'O mnie',
-        en: 'About me',
-        ru: sorry,
+        pl: 'O nas',
+        en: 'About us',
+        ru: 'О нас',
+        de: sorry
+    },
+    'award': {
+        pl: '<u><b>Konkursy/ Nagrody</b></u><br/>● I nagroda - Konkurs ,,Mister Budownictwa’’, za Budynek biurowy com-40 k. Kalisza.<br/>● I nagroda - Konkurs na Muzeum T. Kantora i siedzibę ODSTK Cricoteka.<br/>● I nagroda SARP w kategorii budynek mieszkalny - projekt realizacyjny ,,Dom z Gontu’’.<br/>● II nagroda - Konkurs na Centrum handlowe w Białymstoku<br/>● III nagroda - Konkurs na Centrum miasta Tychy<br/>● Konkurs na zagospodarowanie ,,Wyspy Gubernatora’’ w Nowym Jorku <br/>● Konkurs na Centrum administracyjno - handlowe w Bejrucie<br/>● Konkurs na Pawilon Polski na Expo 2000 w Hanowerze<br/>● Konkurs na nową siedzibę Radia Kraków<br/>● Konkurs na przebudowę teatru ,,Żeromskiego’’ w Kielcach<br/>● Konkurs na schronisko górskie ,,Jeżowa woda ‘’.<br/>● Nominacja DOMU Z BETONU do 10 najlepszych realizacji – Konkurs ,,Polski cement w architekturze’’.<br/>',
+        en: '<u><b>Competitions/Prizes</b></u><br/>● 1st prize - "Mister Construction" competition, for the com-40 office building near Kalisz<br/>● 1st prize - Competition for the T. Kantor Museum and the headquarters of ODSTK Cricoteka<br/>● 1st SARP award in the residential building category - implementation project "House of Shingles"<br/>● 2nd prize - Competition for a shopping center in Białystok<br/>● 3rd prize - Competition for the Tychy city center<br/>● Competition for the development of Governor`s Island in New York<br/>● Competition for the Administrative and Commercial Center in Beirut<br/>● Competition for the Polish Pavilion at Expo 2000 in Hannover<br/>● Competition for the new headquarters of Radio Kraków<br/>● Competition for the reconstruction of the "Żeromski" theater in Kielce<br/>● Competition for the "Jeżowa Woda" mountain shelter.<br/>● Nomination of the CONCRETE HOUSE for the 10 best projects - "Polish cement in architecture’’ ',
+        ru: 'О нас',
         de: sorry
     }
 }
