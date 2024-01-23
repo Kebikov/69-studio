@@ -2,10 +2,10 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./js/language/function/beginningState.ts":
-/*!************************************************!*\
-  !*** ./js/language/function/beginningState.ts ***!
-  \************************************************/
+/***/ "./src/ts/language/function/beginningState.ts":
+/*!****************************************************!*\
+  !*** ./src/ts/language/function/beginningState.ts ***!
+  \****************************************************/
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
@@ -13,9 +13,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const setSelectActive_1 = __importDefault(__webpack_require__(/*! ./setSelectActive */ "./js/language/function/setSelectActive.ts"));
-const setMenu_1 = __importDefault(__webpack_require__(/*! ./setMenu */ "./js/language/function/setMenu.ts"));
-const setTextPage_1 = __importDefault(__webpack_require__(/*! ./setTextPage */ "./js/language/function/setTextPage.ts"));
+const setSelectActive_1 = __importDefault(__webpack_require__(/*! ./setSelectActive */ "./src/ts/language/function/setSelectActive.ts"));
+const setMenu_1 = __importDefault(__webpack_require__(/*! ./setMenu */ "./src/ts/language/function/setMenu.ts"));
+const setTextPage_1 = __importDefault(__webpack_require__(/*! ./setTextPage */ "./src/ts/language/function/setTextPage.ts"));
 //= beginningState 
 /**
  * Установка состояние при загрузке страницы у элементов:
@@ -38,10 +38,10 @@ exports["default"] = beginningState;
 
 /***/ }),
 
-/***/ "./js/language/function/eventChangeRadio.ts":
-/*!**************************************************!*\
-  !*** ./js/language/function/eventChangeRadio.ts ***!
-  \**************************************************/
+/***/ "./src/ts/language/function/eventChangeRadio.ts":
+/*!******************************************************!*\
+  !*** ./src/ts/language/function/eventChangeRadio.ts ***!
+  \******************************************************/
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
@@ -49,9 +49,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const setSelectActive_1 = __importDefault(__webpack_require__(/*! ./setSelectActive */ "./js/language/function/setSelectActive.ts"));
-const setMenu_1 = __importDefault(__webpack_require__(/*! ./setMenu */ "./js/language/function/setMenu.ts"));
-const setTextPage_1 = __importDefault(__webpack_require__(/*! ./setTextPage */ "./js/language/function/setTextPage.ts"));
+const setSelectActive_1 = __importDefault(__webpack_require__(/*! ./setSelectActive */ "./src/ts/language/function/setSelectActive.ts"));
+const setMenu_1 = __importDefault(__webpack_require__(/*! ./setMenu */ "./src/ts/language/function/setMenu.ts"));
+const setTextPage_1 = __importDefault(__webpack_require__(/*! ./setTextPage */ "./src/ts/language/function/setTextPage.ts"));
 //= eventChangeRadio 
 /**
  * Изминение состояния при изминении выбора языка.
@@ -83,10 +83,10 @@ exports["default"] = eventChangeRadio;
 
 /***/ }),
 
-/***/ "./js/language/function/language.ts":
-/*!******************************************!*\
-  !*** ./js/language/function/language.ts ***!
-  \******************************************/
+/***/ "./src/ts/language/function/language.ts":
+/*!**********************************************!*\
+  !*** ./src/ts/language/function/language.ts ***!
+  \**********************************************/
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
@@ -94,8 +94,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const beginningState_1 = __importDefault(__webpack_require__(/*! ./beginningState */ "./js/language/function/beginningState.ts"));
-const eventChangeRadio_1 = __importDefault(__webpack_require__(/*! ./eventChangeRadio */ "./js/language/function/eventChangeRadio.ts"));
+const beginningState_1 = __importDefault(__webpack_require__(/*! ./beginningState */ "./src/ts/language/function/beginningState.ts"));
+const eventChangeRadio_1 = __importDefault(__webpack_require__(/*! ./eventChangeRadio */ "./src/ts/language/function/eventChangeRadio.ts"));
 //= language 
 /**
  * Стартовая функция для перевода на сайте.
@@ -158,16 +158,17 @@ exports["default"] = language;
 
 /***/ }),
 
-/***/ "./js/language/function/setMenu.ts":
-/*!*****************************************!*\
-  !*** ./js/language/function/setMenu.ts ***!
-  \*****************************************/
+/***/ "./src/ts/language/function/setMenu.ts":
+/*!*********************************************!*\
+  !*** ./src/ts/language/function/setMenu.ts ***!
+  \*********************************************/
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const textMenu_1 = __webpack_require__(/*! ../translation/textMenu */ "./js/language/translation/textMenu.ts");
-const public_1 = __webpack_require__(/*! ../translation/public */ "./js/language/translation/public.ts");
+const textMenu_1 = __webpack_require__(/*! ../translation/textMenu */ "./src/ts/language/translation/textMenu.ts");
+const public_1 = __webpack_require__(/*! ../translation/public */ "./src/ts/language/translation/public.ts");
+console.log(public_1.textPublic);
 //= setMenu 
 /**
  * Изминения текста меню в зависимости от выбранного языка.
@@ -183,7 +184,7 @@ const setMenu = (language) => {
             var _a, _b;
             if ((_a = link === null || link === void 0 ? void 0 : link.dataset) === null || _a === void 0 ? void 0 : _a.menu) {
                 /**
-                 * Отображаемый текст меню (home, our story, ...).
+                 * Отображаемый текст меню (home, about-us, ...).
                  */
                 const data = link.dataset.menu;
                 if ((_b = textMenu_1.textMenu === null || textMenu_1.textMenu === void 0 ? void 0 : textMenu_1.textMenu[data]) === null || _b === void 0 ? void 0 : _b[language]) {
@@ -207,10 +208,10 @@ exports["default"] = setMenu;
 
 /***/ }),
 
-/***/ "./js/language/function/setSelectActive.ts":
-/*!*************************************************!*\
-  !*** ./js/language/function/setSelectActive.ts ***!
-  \*************************************************/
+/***/ "./src/ts/language/function/setSelectActive.ts":
+/*!*****************************************************!*\
+  !*** ./src/ts/language/function/setSelectActive.ts ***!
+  \*****************************************************/
 /***/ ((__unused_webpack_module, exports) => {
 
 
@@ -246,26 +247,26 @@ exports["default"] = setSelectActive;
 
 /***/ }),
 
-/***/ "./js/language/function/setTextPage.ts":
-/*!*********************************************!*\
-  !*** ./js/language/function/setTextPage.ts ***!
-  \*********************************************/
+/***/ "./src/ts/language/function/setTextPage.ts":
+/*!*************************************************!*\
+  !*** ./src/ts/language/function/setTextPage.ts ***!
+  \*************************************************/
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const textIndex_1 = __webpack_require__(/*! ../translation/textIndex */ "./js/language/translation/textIndex.ts");
-const textOurStory_1 = __webpack_require__(/*! ../translation/textOurStory */ "./js/language/translation/textOurStory.ts");
-const projects_1 = __webpack_require__(/*! ../translation/projects */ "./js/language/translation/projects.ts");
-const project_1_1 = __webpack_require__(/*! ../translation/project-1 */ "./js/language/translation/project-1.ts");
-const project_2_1 = __webpack_require__(/*! ../translation/project-2 */ "./js/language/translation/project-2.ts");
-const project_3_1 = __webpack_require__(/*! ../translation/project-3 */ "./js/language/translation/project-3.ts");
-const project_4_1 = __webpack_require__(/*! ../translation/project-4 */ "./js/language/translation/project-4.ts");
-const project_5_1 = __webpack_require__(/*! ../translation/project-5 */ "./js/language/translation/project-5.ts");
-const project_6_1 = __webpack_require__(/*! ../translation/project-6 */ "./js/language/translation/project-6.ts");
-const project_7_1 = __webpack_require__(/*! ../translation/project-7 */ "./js/language/translation/project-7.ts");
-const contacts_1 = __webpack_require__(/*! ../translation/contacts */ "./js/language/translation/contacts.ts");
-const wnetrza_1 = __webpack_require__(/*! ../translation/wnetrza */ "./js/language/translation/wnetrza.ts");
+const textIndex_1 = __webpack_require__(/*! ../translation/textIndex */ "./src/ts/language/translation/textIndex.ts");
+const textOurStory_1 = __webpack_require__(/*! ../translation/textOurStory */ "./src/ts/language/translation/textOurStory.ts");
+const projects_1 = __webpack_require__(/*! ../translation/projects */ "./src/ts/language/translation/projects.ts");
+const project_1_1 = __webpack_require__(/*! ../translation/project-1 */ "./src/ts/language/translation/project-1.ts");
+const project_2_1 = __webpack_require__(/*! ../translation/project-2 */ "./src/ts/language/translation/project-2.ts");
+const project_3_1 = __webpack_require__(/*! ../translation/project-3 */ "./src/ts/language/translation/project-3.ts");
+const project_4_1 = __webpack_require__(/*! ../translation/project-4 */ "./src/ts/language/translation/project-4.ts");
+const project_5_1 = __webpack_require__(/*! ../translation/project-5 */ "./src/ts/language/translation/project-5.ts");
+const project_6_1 = __webpack_require__(/*! ../translation/project-6 */ "./src/ts/language/translation/project-6.ts");
+const project_7_1 = __webpack_require__(/*! ../translation/project-7 */ "./src/ts/language/translation/project-7.ts");
+const contacts_1 = __webpack_require__(/*! ../translation/contacts */ "./src/ts/language/translation/contacts.ts");
+const wnetrza_1 = __webpack_require__(/*! ../translation/wnetrza */ "./src/ts/language/translation/wnetrza.ts");
 //= setTextPage 
 /**
  * Изминение текста на странице.
@@ -278,7 +279,7 @@ const setTextPage = (language) => {
     const changeTranslation = (path) => {
         const translation = {
             '/': textIndex_1.textMain,
-            '/our-story/': textOurStory_1.textOurStory,
+            '/about-us/': textOurStory_1.textOurStory,
             '/projects/': projects_1.textProjects,
             '/project-1/': project_1_1.textProject1,
             '/project-2/': project_2_1.textProject2,
@@ -316,17 +317,17 @@ exports["default"] = setTextPage;
 
 /***/ }),
 
-/***/ "./js/language/translation/contacts.ts":
-/*!*********************************************!*\
-  !*** ./js/language/translation/contacts.ts ***!
-  \*********************************************/
+/***/ "./src/ts/language/translation/contacts.ts":
+/*!*************************************************!*\
+  !*** ./src/ts/language/translation/contacts.ts ***!
+  \*************************************************/
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.contacts = void 0;
-const textIndex_1 = __webpack_require__(/*! ./textIndex */ "./js/language/translation/textIndex.ts");
-const public_1 = __webpack_require__(/*! ./public */ "./js/language/translation/public.ts");
+const textIndex_1 = __webpack_require__(/*! ./textIndex */ "./src/ts/language/translation/textIndex.ts");
+const public_1 = __webpack_require__(/*! ./public */ "./src/ts/language/translation/public.ts");
 /**
  * Перевод для контактов.
  */
@@ -335,16 +336,16 @@ exports.contacts = Object.assign(Object.assign({}, public_1.textPublicContact), 
 
 /***/ }),
 
-/***/ "./js/language/translation/project-1.ts":
-/*!**********************************************!*\
-  !*** ./js/language/translation/project-1.ts ***!
-  \**********************************************/
+/***/ "./src/ts/language/translation/project-1.ts":
+/*!**************************************************!*\
+  !*** ./src/ts/language/translation/project-1.ts ***!
+  \**************************************************/
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.textProject1 = void 0;
-const textIndex_1 = __webpack_require__(/*! ./textIndex */ "./js/language/translation/textIndex.ts");
+const textIndex_1 = __webpack_require__(/*! ./textIndex */ "./src/ts/language/translation/textIndex.ts");
 /**
  * Перевод для проекта №1.
  */
@@ -397,16 +398,16 @@ exports.textProject1 = {
 
 /***/ }),
 
-/***/ "./js/language/translation/project-2.ts":
-/*!**********************************************!*\
-  !*** ./js/language/translation/project-2.ts ***!
-  \**********************************************/
+/***/ "./src/ts/language/translation/project-2.ts":
+/*!**************************************************!*\
+  !*** ./src/ts/language/translation/project-2.ts ***!
+  \**************************************************/
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.textProject2 = void 0;
-const textIndex_1 = __webpack_require__(/*! ./textIndex */ "./js/language/translation/textIndex.ts");
+const textIndex_1 = __webpack_require__(/*! ./textIndex */ "./src/ts/language/translation/textIndex.ts");
 /**
  * Перевод для проекта №2.
  */
@@ -453,16 +454,16 @@ exports.textProject2 = {
 
 /***/ }),
 
-/***/ "./js/language/translation/project-3.ts":
-/*!**********************************************!*\
-  !*** ./js/language/translation/project-3.ts ***!
-  \**********************************************/
+/***/ "./src/ts/language/translation/project-3.ts":
+/*!**************************************************!*\
+  !*** ./src/ts/language/translation/project-3.ts ***!
+  \**************************************************/
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.textProject3 = void 0;
-const textIndex_1 = __webpack_require__(/*! ./textIndex */ "./js/language/translation/textIndex.ts");
+const textIndex_1 = __webpack_require__(/*! ./textIndex */ "./src/ts/language/translation/textIndex.ts");
 /**
  * Перевод для проекта №3.
  */
@@ -497,16 +498,16 @@ exports.textProject3 = {
 
 /***/ }),
 
-/***/ "./js/language/translation/project-4.ts":
-/*!**********************************************!*\
-  !*** ./js/language/translation/project-4.ts ***!
-  \**********************************************/
+/***/ "./src/ts/language/translation/project-4.ts":
+/*!**************************************************!*\
+  !*** ./src/ts/language/translation/project-4.ts ***!
+  \**************************************************/
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.textProject4 = void 0;
-const textIndex_1 = __webpack_require__(/*! ./textIndex */ "./js/language/translation/textIndex.ts");
+const textIndex_1 = __webpack_require__(/*! ./textIndex */ "./src/ts/language/translation/textIndex.ts");
 /**
  * Перевод для проекта №4.
  */
@@ -541,16 +542,16 @@ exports.textProject4 = {
 
 /***/ }),
 
-/***/ "./js/language/translation/project-5.ts":
-/*!**********************************************!*\
-  !*** ./js/language/translation/project-5.ts ***!
-  \**********************************************/
+/***/ "./src/ts/language/translation/project-5.ts":
+/*!**************************************************!*\
+  !*** ./src/ts/language/translation/project-5.ts ***!
+  \**************************************************/
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.textProject5 = void 0;
-const textIndex_1 = __webpack_require__(/*! ./textIndex */ "./js/language/translation/textIndex.ts");
+const textIndex_1 = __webpack_require__(/*! ./textIndex */ "./src/ts/language/translation/textIndex.ts");
 /**
  * Перевод для проекта №5.
  */
@@ -585,16 +586,16 @@ exports.textProject5 = {
 
 /***/ }),
 
-/***/ "./js/language/translation/project-6.ts":
-/*!**********************************************!*\
-  !*** ./js/language/translation/project-6.ts ***!
-  \**********************************************/
+/***/ "./src/ts/language/translation/project-6.ts":
+/*!**************************************************!*\
+  !*** ./src/ts/language/translation/project-6.ts ***!
+  \**************************************************/
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.textProject6 = void 0;
-const textIndex_1 = __webpack_require__(/*! ./textIndex */ "./js/language/translation/textIndex.ts");
+const textIndex_1 = __webpack_require__(/*! ./textIndex */ "./src/ts/language/translation/textIndex.ts");
 /**
  * Перевод для проекта №6.
  */
@@ -629,16 +630,16 @@ exports.textProject6 = {
 
 /***/ }),
 
-/***/ "./js/language/translation/project-7.ts":
-/*!**********************************************!*\
-  !*** ./js/language/translation/project-7.ts ***!
-  \**********************************************/
+/***/ "./src/ts/language/translation/project-7.ts":
+/*!**************************************************!*\
+  !*** ./src/ts/language/translation/project-7.ts ***!
+  \**************************************************/
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.textProject7 = void 0;
-const textIndex_1 = __webpack_require__(/*! ./textIndex */ "./js/language/translation/textIndex.ts");
+const textIndex_1 = __webpack_require__(/*! ./textIndex */ "./src/ts/language/translation/textIndex.ts");
 /**
  * Перевод для проекта №7.
  */
@@ -673,16 +674,16 @@ exports.textProject7 = {
 
 /***/ }),
 
-/***/ "./js/language/translation/projects.ts":
-/*!*********************************************!*\
-  !*** ./js/language/translation/projects.ts ***!
-  \*********************************************/
+/***/ "./src/ts/language/translation/projects.ts":
+/*!*************************************************!*\
+  !*** ./src/ts/language/translation/projects.ts ***!
+  \*************************************************/
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.textProjects = void 0;
-const textIndex_1 = __webpack_require__(/*! ./textIndex */ "./js/language/translation/textIndex.ts");
+const textIndex_1 = __webpack_require__(/*! ./textIndex */ "./src/ts/language/translation/textIndex.ts");
 /**
  * Перевод для страницы с проектами.
  */
@@ -746,16 +747,16 @@ exports.textProjects = {
 
 /***/ }),
 
-/***/ "./js/language/translation/public.ts":
-/*!*******************************************!*\
-  !*** ./js/language/translation/public.ts ***!
-  \*******************************************/
+/***/ "./src/ts/language/translation/public.ts":
+/*!***********************************************!*\
+  !*** ./src/ts/language/translation/public.ts ***!
+  \***********************************************/
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.textPublicContact = exports.textPublic = void 0;
-const textIndex_1 = __webpack_require__(/*! ./textIndex */ "./js/language/translation/textIndex.ts");
+const textIndex_1 = __webpack_require__(/*! ./textIndex */ "./src/ts/language/translation/textIndex.ts");
 /**
  * Перевод обший.
  */
@@ -806,16 +807,16 @@ exports.textPublicContact = {
 
 /***/ }),
 
-/***/ "./js/language/translation/textIndex.ts":
-/*!**********************************************!*\
-  !*** ./js/language/translation/textIndex.ts ***!
-  \**********************************************/
+/***/ "./src/ts/language/translation/textIndex.ts":
+/*!**************************************************!*\
+  !*** ./src/ts/language/translation/textIndex.ts ***!
+  \**************************************************/
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.textMain = exports.back = exports.sorry = void 0;
-const public_1 = __webpack_require__(/*! ./public */ "./js/language/translation/public.ts");
+const public_1 = __webpack_require__(/*! ./public */ "./src/ts/language/translation/public.ts");
 ;
 exports.sorry = 'sorry, no translation';
 /**
@@ -889,16 +890,16 @@ exports.textMain = Object.assign({ 'main title': {
 
 /***/ }),
 
-/***/ "./js/language/translation/textMenu.ts":
-/*!*********************************************!*\
-  !*** ./js/language/translation/textMenu.ts ***!
-  \*********************************************/
+/***/ "./src/ts/language/translation/textMenu.ts":
+/*!*************************************************!*\
+  !*** ./src/ts/language/translation/textMenu.ts ***!
+  \*************************************************/
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.textMenu = void 0;
-const textIndex_1 = __webpack_require__(/*! ./textIndex */ "./js/language/translation/textIndex.ts");
+const textIndex_1 = __webpack_require__(/*! ./textIndex */ "./src/ts/language/translation/textIndex.ts");
 /**
  * Перевод для меню.
  */
@@ -909,7 +910,7 @@ exports.textMenu = {
         ru: 'Главная',
         de: textIndex_1.sorry
     },
-    'our story': {
+    'about-us': {
         pl: 'o nas',
         en: 'about us',
         ru: 'О нас',
@@ -932,16 +933,16 @@ exports.textMenu = {
 
 /***/ }),
 
-/***/ "./js/language/translation/textOurStory.ts":
-/*!*************************************************!*\
-  !*** ./js/language/translation/textOurStory.ts ***!
-  \*************************************************/
+/***/ "./src/ts/language/translation/textOurStory.ts":
+/*!*****************************************************!*\
+  !*** ./src/ts/language/translation/textOurStory.ts ***!
+  \*****************************************************/
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.textOurStory = void 0;
-const textIndex_1 = __webpack_require__(/*! ./textIndex */ "./js/language/translation/textIndex.ts");
+const textIndex_1 = __webpack_require__(/*! ./textIndex */ "./src/ts/language/translation/textIndex.ts");
 exports.textOurStory = {
     'our-story-1': {
         pl: 'Pracownia 69.studio powstała w roku 1986 r. jako rodzinna firma o profilu projektowo –budowlanym. W tym czasie pod nazwą F.P.B Z&Z. Firma realizowała głównie projekty związane z budową obiektów, termomodernizacją , również projektowaniem i kompleksową realizacją wnętrz.<br/><br/>W r. 2018 firma została reaktywowana i ewoluowała na pracownię o profilu architektonicznym pod nazwą 69.studio.<br/><br/>Wiedza przekazywana z pokolenia na pokolenie zaowocowała innowacyjnym rozwojem pracowni w dziedzinie kompleksowego projektowania , wykorzystując doświadczenie w realizacji inwestycji.<br/><br/>Podstawową działalnością  f-my jest projektowanie architektury, kompleksowe przygotowanie projektów wielobranżowych, doradztwo techniczne, managment, oraz nadzór nad realizacją nietypowych indywidualnych budynków a także wnętrz.<br/><br/>Firma wykonuje projekty architektoniczne i wielobranżowe oraz zapewnia kompleksowy proces od analizy działki, jej kontekstu i uwarunkowań formalno – prawnych, przez projekty koncepcyjne, budowlane i techniczne aż po proces uzyskiwania uzgodnień, pozwoleń, udział w postępowaniach przetargowych i nadzór nad realizacją',
@@ -972,16 +973,16 @@ exports.textOurStory = {
 
 /***/ }),
 
-/***/ "./js/language/translation/wnetrza.ts":
-/*!********************************************!*\
-  !*** ./js/language/translation/wnetrza.ts ***!
-  \********************************************/
+/***/ "./src/ts/language/translation/wnetrza.ts":
+/*!************************************************!*\
+  !*** ./src/ts/language/translation/wnetrza.ts ***!
+  \************************************************/
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.textWnetrza = void 0;
-const textIndex_1 = __webpack_require__(/*! ./textIndex */ "./js/language/translation/textIndex.ts");
+const textIndex_1 = __webpack_require__(/*! ./textIndex */ "./src/ts/language/translation/textIndex.ts");
 /**
  * Перевод для страницы "wnetrza".
  */
@@ -1015,10 +1016,10 @@ exports.textWnetrza = {
 
 /***/ }),
 
-/***/ "./js/modules/addedImgToProject.ts":
-/*!*****************************************!*\
-  !*** ./js/modules/addedImgToProject.ts ***!
-  \*****************************************/
+/***/ "./src/ts/modules/addedImgToProject.ts":
+/*!*********************************************!*\
+  !*** ./src/ts/modules/addedImgToProject.ts ***!
+  \*********************************************/
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
@@ -1027,7 +1028,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 // str
-const lazyLoading_1 = __importDefault(__webpack_require__(/*! ./lazyLoading */ "./js/modules/lazyLoading.ts"));
+const lazyLoading_1 = __importDefault(__webpack_require__(/*! ./lazyLoading */ "./src/ts/modules/lazyLoading.ts"));
 /**
  * Функция выподаюших фотографий при нажатии на титульную фотографию.
  * - Фотографии будут добавлены после элемента с class="projects-our-story"
@@ -1141,10 +1142,10 @@ exports["default"] = addedImgToProject;
 
 /***/ }),
 
-/***/ "./js/modules/backToTop.ts":
-/*!*********************************!*\
-  !*** ./js/modules/backToTop.ts ***!
-  \*********************************/
+/***/ "./src/ts/modules/backToTop.ts":
+/*!*************************************!*\
+  !*** ./src/ts/modules/backToTop.ts ***!
+  \*************************************/
 /***/ ((__unused_webpack_module, exports) => {
 
 
@@ -1174,10 +1175,10 @@ exports["default"] = backToTop;
 
 /***/ }),
 
-/***/ "./js/modules/intersectionObserver.ts":
-/*!********************************************!*\
-  !*** ./js/modules/intersectionObserver.ts ***!
-  \********************************************/
+/***/ "./src/ts/modules/intersectionObserver.ts":
+/*!************************************************!*\
+  !*** ./src/ts/modules/intersectionObserver.ts ***!
+  \************************************************/
 /***/ ((__unused_webpack_module, exports) => {
 
 
@@ -1237,10 +1238,10 @@ exports["default"] = intersectionObserver;
 
 /***/ }),
 
-/***/ "./js/modules/lazyLoading.ts":
-/*!***********************************!*\
-  !*** ./js/modules/lazyLoading.ts ***!
-  \***********************************/
+/***/ "./src/ts/modules/lazyLoading.ts":
+/*!***************************************!*\
+  !*** ./src/ts/modules/lazyLoading.ts ***!
+  \***************************************/
 /***/ ((__unused_webpack_module, exports) => {
 
 
@@ -1292,10 +1293,10 @@ exports["default"] = lazyLoading;
 
 /***/ }),
 
-/***/ "./js/modules/menu.ts":
-/*!****************************!*\
-  !*** ./js/modules/menu.ts ***!
-  \****************************/
+/***/ "./src/ts/modules/menu.ts":
+/*!********************************!*\
+  !*** ./src/ts/modules/menu.ts ***!
+  \********************************/
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
@@ -1304,7 +1305,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.menuFill = exports.menu = void 0;
-const intersectionObserver_1 = __importDefault(__webpack_require__(/*! ./intersectionObserver */ "./js/modules/intersectionObserver.ts"));
+const intersectionObserver_1 = __importDefault(__webpack_require__(/*! ./intersectionObserver */ "./src/ts/modules/intersectionObserver.ts"));
 //= menu 
 const menu = () => {
     try {
@@ -1345,10 +1346,10 @@ exports.menuFill = menuFill;
 
 /***/ }),
 
-/***/ "./js/modules/pushPictures.ts":
-/*!************************************!*\
-  !*** ./js/modules/pushPictures.ts ***!
-  \************************************/
+/***/ "./src/ts/modules/pushPictures.ts":
+/*!****************************************!*\
+  !*** ./src/ts/modules/pushPictures.ts ***!
+  \****************************************/
 /***/ ((__unused_webpack_module, exports) => {
 
 
@@ -1403,10 +1404,10 @@ exports["default"] = pushPictures;
 
 /***/ }),
 
-/***/ "./js/modules/text.ts":
-/*!****************************!*\
-  !*** ./js/modules/text.ts ***!
-  \****************************/
+/***/ "./src/ts/modules/text.ts":
+/*!********************************!*\
+  !*** ./src/ts/modules/text.ts ***!
+  \********************************/
 /***/ ((__unused_webpack_module, exports) => {
 
 
@@ -1442,10 +1443,10 @@ exports.numberScroll = numberScroll;
 
 /***/ }),
 
-/***/ "./js/script.ts":
-/*!**********************!*\
-  !*** ./js/script.ts ***!
-  \**********************/
+/***/ "./src/ts/script.ts":
+/*!**************************!*\
+  !*** ./src/ts/script.ts ***!
+  \**************************/
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
@@ -1453,13 +1454,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const menu_1 = __webpack_require__(/*! ./modules/menu */ "./js/modules/menu.ts");
-const text_1 = __webpack_require__(/*! ./modules/text */ "./js/modules/text.ts");
-const backToTop_1 = __importDefault(__webpack_require__(/*! ./modules/backToTop */ "./js/modules/backToTop.ts"));
-const lazyLoading_1 = __importDefault(__webpack_require__(/*! ./modules/lazyLoading */ "./js/modules/lazyLoading.ts"));
-const language_1 = __importDefault(__webpack_require__(/*! ./language/function/language */ "./js/language/function/language.ts"));
-const pushPictures_1 = __importDefault(__webpack_require__(/*! ./modules/pushPictures */ "./js/modules/pushPictures.ts"));
-const addedImgToProject_1 = __importDefault(__webpack_require__(/*! ./modules/addedImgToProject */ "./js/modules/addedImgToProject.ts"));
+const menu_1 = __webpack_require__(/*! ./modules/menu */ "./src/ts/modules/menu.ts");
+const text_1 = __webpack_require__(/*! ./modules/text */ "./src/ts/modules/text.ts");
+const backToTop_1 = __importDefault(__webpack_require__(/*! ./modules/backToTop */ "./src/ts/modules/backToTop.ts"));
+const lazyLoading_1 = __importDefault(__webpack_require__(/*! ./modules/lazyLoading */ "./src/ts/modules/lazyLoading.ts"));
+const language_1 = __importDefault(__webpack_require__(/*! ./language/function/language */ "./src/ts/language/function/language.ts"));
+const pushPictures_1 = __importDefault(__webpack_require__(/*! ./modules/pushPictures */ "./src/ts/modules/pushPictures.ts"));
+const addedImgToProject_1 = __importDefault(__webpack_require__(/*! ./modules/addedImgToProject */ "./src/ts/modules/addedImgToProject.ts"));
 window.addEventListener('DOMContentLoaded', () => {
     (0, menu_1.menu)();
     (0, pushPictures_1.default)();
@@ -1505,7 +1506,7 @@ window.addEventListener('DOMContentLoaded', () => {
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module is referenced by other modules so it can't be inlined
-/******/ 	var __webpack_exports__ = __webpack_require__("./js/script.ts");
+/******/ 	var __webpack_exports__ = __webpack_require__("./src/ts/script.ts");
 /******/ 	
 /******/ })()
 ;
