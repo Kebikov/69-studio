@@ -4,7 +4,7 @@ import backToTop from "./modules/backToTop";
 import lazyLoading from "./modules/lazyLoading";
 import language from "./language/function/language";
 import pushPictures from "./modules/pushPictures";
-import addedImgToProject from "./modules/addedImgToProject";
+import addedImgToProject from "./modules/addedImgToProject"; 
 
 window.addEventListener('DOMContentLoaded', () => {
     menu();
