@@ -168,7 +168,6 @@ exports["default"] = language;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 const textMenu_1 = __webpack_require__(/*! ../translation/textMenu */ "./src/ts/language/translation/textMenu.ts");
 const public_1 = __webpack_require__(/*! ../translation/public */ "./src/ts/language/translation/public.ts");
-console.log(public_1.textPublic);
 //= setMenu 
 /**
  * Изминения текста меню в зависимости от выбранного языка.
@@ -1443,6 +1442,34 @@ exports.numberScroll = numberScroll;
 
 /***/ }),
 
+/***/ "./src/ts/screenMode/darkMode.ts":
+/*!***************************************!*\
+  !*** ./src/ts/screenMode/darkMode.ts ***!
+  \***************************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const darkMode = () => {
+    const path = window.location.pathname;
+    const isDarkTheme = window === null || window === void 0 ? void 0 : window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (path === '/' && isDarkTheme) {
+        document.body.setAttribute('dark', '');
+        const arrows = document.querySelectorAll('.ar_128_32');
+        const arrowUpDiv = document.querySelector('.back-to-top__img');
+        const arrowUpImg = arrowUpDiv.querySelector('img');
+        arrowUpImg.src = "../img/icon/arrow-up-white.png";
+        arrows.forEach(item => {
+            item.src = "../img/icon/arrow-white.png";
+        });
+        console.log('');
+    }
+};
+exports["default"] = darkMode;
+
+
+/***/ }),
+
 /***/ "./src/ts/script.ts":
 /*!**************************!*\
   !*** ./src/ts/script.ts ***!
@@ -1461,7 +1488,9 @@ const lazyLoading_1 = __importDefault(__webpack_require__(/*! ./modules/lazyLoad
 const language_1 = __importDefault(__webpack_require__(/*! ./language/function/language */ "./src/ts/language/function/language.ts"));
 const pushPictures_1 = __importDefault(__webpack_require__(/*! ./modules/pushPictures */ "./src/ts/modules/pushPictures.ts"));
 const addedImgToProject_1 = __importDefault(__webpack_require__(/*! ./modules/addedImgToProject */ "./src/ts/modules/addedImgToProject.ts"));
+const darkMode_1 = __importDefault(__webpack_require__(/*! ./screenMode/darkMode */ "./src/ts/screenMode/darkMode.ts"));
 window.addEventListener('DOMContentLoaded', () => {
+    (0, darkMode_1.default)();
     (0, menu_1.menu)();
     (0, pushPictures_1.default)();
     (0, addedImgToProject_1.default)();

@@ -5,8 +5,10 @@ import lazyLoading from "./modules/lazyLoading";
 import language from "./language/function/language";
 import pushPictures from "./modules/pushPictures";
 import addedImgToProject from "./modules/addedImgToProject"; 
+import darkMode from "./screenMode/darkMode";
 
 window.addEventListener('DOMContentLoaded', () => {
+    darkMode();
     menu();
     pushPictures();
     addedImgToProject();

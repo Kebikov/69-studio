@@ -1,5 +1,19 @@
 @import "__null", "__index", "__font", "__header", "__footer", "__addition", "__our-story", "__test", "__projects", "__supplement", "__our-story", "__page-404", "__contacts";
 
+:root {
+    --dark-background: #E9EBEB;
+    --dark-background-2: #FAFAFA;
+    --dark-cart: #fff;
+    --dark-text: #000;
+}
+
+[dark] {
+    --dark-background: #232020;
+    --dark-background-2: #322E2D;
+    --dark-cart: #B89772;
+    --dark-text: #fff;
+}
+
 .wrapper {
     display: flex;
     flex-direction: column; 
@@ -10,6 +24,7 @@
 
 .main {
     flex: 1 1 auto;
+    background-color: var(--dark-background);
 }
 
 .container-full-width {

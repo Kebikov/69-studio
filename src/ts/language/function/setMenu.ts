@@ -1,7 +1,6 @@
 import { textMenu } from "../translation/textMenu";
 import { textPublic } from "../translation/public";
 
-console.log(textPublic);
 
 //= setMenu 
 /**

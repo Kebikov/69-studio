@@ -8,7 +8,6 @@
     &__body {
         position: relative;
 
-    
         overflow: hidden;
 
         padding-top: 80vh;
@@ -90,7 +89,7 @@
 }
 //= .title-main 
 .title-main {
-    @include text_streach (30, 23, #000, 600);
+    @include text_streach (30, 23, var(--dark-text), 600);
     text-align: center;
 }
 
@@ -124,7 +123,7 @@
 
         padding: 40px 60px;
 
-        background-color: #fff;
+        background-color: var(--dark-cart);
 
         @media (max-width: 1000px){
             padding: 20px 20px;
@@ -132,7 +131,7 @@
     }
     // .project-block-text__title
     &__title {
-        @include text_streach (17, 15, #000, 600);
+        @include text_streach (17, 15, var(--dark-text), 600);
 
         padding: 0px 0px 17px 0px;
         text-transform: uppercase;
@@ -231,7 +230,7 @@
         margin: 50px 0px 0px 0px;
         padding: 50px 150px 50px 100px;
 
-        background: #fff;
+        background: var(--dark-cart);
         @media (max-width: 1000px){
             margin: 0px 0px 0px 0px;
             padding: 20px 20px;
@@ -239,7 +238,7 @@
     }
     // .project-block-text__title
     &__title {
-        @include text_streach (17, 15, #000, 600);
+        @include text_streach (17, 15, var(--dark-text), 600);
         white-space: nowrap;
         padding: 0px 0px 17px 0px;
     }
@@ -266,6 +265,7 @@
         }
     }
 }
+
 //= .project-3 
 .project-3 {
     margin: 25px 0px 0px 0px;
@@ -397,7 +397,7 @@
     display: flex;
     justify-content: center;
 
-    background-color: $color-bg-main-2;
+    background-color: var(--dark-background);
 
     position: relative;
     // .contacts-main__body
@@ -432,7 +432,7 @@
     width: 35%;
     height: 85%;
 
-    background: $color-bg-main-2;
+    background: var(--dark-cart);
 
     @media (max-width: 1440px){
         right: -10%;
@@ -462,7 +462,7 @@
     }
     // .contacts-blank__title
     &__title {
-        @include text_streach (25, 23, #000, 400, 'Rubik');
+        @include text_streach (25, 23, var(--dark-text), 400, 'Rubik');
         & span {
             color: red;
         }
@@ -476,22 +476,22 @@
     // .contacts-blank__adress
     &__adress {
         margin: 20px 0px 0px 0px;
-        @include text_streach (17, 15, #000, 400);
+        @include text_streach (17, 15, var(--dark-text), 400);
     }
     // .contacts-blank__email
     &__email {
         margin: 20px 0px 0px 0px;
-        @include text_streach (17, 15, #000, 400);
+        @include text_streach (17, 15, var(--dark-text), 400);
     }
     // .contacts-blank__phone
     &__phone {
-        margin: 20px 0px 0px 0px;
-        @include text_streach (17, 15, #000, 400);
+        margin: 5px 0px 0px 0px;
+        @include text_streach (17, 15, var(--dark-text), 400);
     }
     // .contacts-blank__fax
     &__fax {
         margin: 5px 0px 0px 0px;
-        @include text_streach (17, 15, #000, 400);
+        @include text_streach (17, 15, var(--dark-text), 400);
     }
     // .contacts-blank__social
     &__social {
@@ -519,7 +519,7 @@
 }
 //= .back-to-top 
 .back-to-top {
-    background: $color-bg-main-2;
+    background: var(--dark-background-2);
 
     display: flex;
     justify-content: center;
@@ -591,7 +591,7 @@
     }
     // .back-to-top__text
     &__text {
-        @include text_streach (17, 15, #000, 600);
+        @include text_streach (17, 15, var(--dark-text), 600);
 
         @media (max-width: 1000px){
             display: none;

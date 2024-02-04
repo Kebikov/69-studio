@@ -18,7 +18,7 @@ function readFromFile(filePath) {
  * Переменная для установки минификации конечного html 
  */
 const isMinify = true;
-
+ 
 
 module.exports = {
     mode: 'development', // Режим разработки(в финале сборки production/development).

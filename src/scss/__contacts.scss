@@ -16,7 +16,7 @@
         display: flex;
         align-items: center;
         & span {
-            @include text_streach (11, 10, #000, 500);
+            @include text_streach (11, 10, var(--dark-text), 500);
         }
     }
 }
