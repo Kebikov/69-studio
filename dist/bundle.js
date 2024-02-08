@@ -1257,6 +1257,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
  * </picture>
  */
 const lazyLoading = () => {
+    console.log('lazyLoading');
     try {
         const imgObserver = new IntersectionObserver((entryAll, observer) => {
             entryAll.forEach((item) => {
@@ -1279,6 +1280,7 @@ const lazyLoading = () => {
             threshold: 0,
         });
         const imgElAll = document.querySelectorAll('.lazy-img');
+        console.log('', imgElAll);
         if (imgElAll.length > 0) {
             imgElAll.forEach((item) => imgObserver.observe(item));
         }
@@ -1452,19 +1454,54 @@ exports.numberScroll = numberScroll;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 const darkMode = () => {
     const path = window.location.pathname;
-    const isDarkTheme = window === null || window === void 0 ? void 0 : window.matchMedia('(prefers-color-scheme: dark)').matches;
-    if (path === '/' && isDarkTheme) {
-        document.body.setAttribute('dark', '');
-        const arrows = document.querySelectorAll('.ar_128_32');
-        const arrowUpDiv = document.querySelector('.back-to-top__img');
-        const arrowUpImg = arrowUpDiv.querySelector('img');
-        arrowUpImg.src = "../img/icon/arrow-up-white.png";
-        arrows.forEach(item => {
-            item.src = "../img/icon/arrow-white.png";
+    // const isDarkTheme = window?.matchMedia('(prefers-color-scheme: dark)').matches;
+    // if(path === '/' && isDarkTheme) {}
+    if (path === '/') {
+        const moon = document.querySelector('.moon');
+        const isMode = localStorage.getItem('mode');
+        console.log('', isMode);
+        if (isMode === 'dark')
+            onDark();
+        if (isMode === 'light')
+            onLight();
+        moon === null || moon === void 0 ? void 0 : moon.addEventListener('click', () => {
+            const isMode = localStorage.getItem('mode');
+            if (isMode === null || isMode === 'dark') {
+                localStorage.setItem('mode', 'light');
+                onLight();
+            }
+            else {
+                localStorage.setItem('mode', 'dark');
+                onDark();
+            }
         });
-        console.log('');
     }
 };
+function onDark() {
+    document.body.setAttribute('dark', '');
+    const arrows = document.querySelectorAll('.ar_128_32');
+    const arrowUpDiv = document.querySelector('.back-to-top__img');
+    const arrowUpImg = arrowUpDiv.querySelector('img');
+    const moonImg = document.querySelector('#moon');
+    moonImg.src = "/img/icon/sun.png";
+    arrowUpImg.src = "../img/icon/arrow-up-white.png";
+    arrows.forEach(item => {
+        item.src = "../img/icon/arrow-white.png";
+    });
+}
+function onLight() {
+    console.log('work light');
+    document.body.removeAttribute('dark');
+    const arrows = document.querySelectorAll('.ar_128_32');
+    const arrowUpDiv = document.querySelector('.back-to-top__img');
+    const arrowUpImg = arrowUpDiv.querySelector('img');
+    const moonImg = document.querySelector('#moon');
+    moonImg.src = "/img/icon/moon.png";
+    arrowUpImg.src = "../img/icon/arrow-up.png";
+    arrows.forEach(item => {
+        item.src = "../img/icon/arrow.png";
+    });
+}
 exports["default"] = darkMode;
 
 

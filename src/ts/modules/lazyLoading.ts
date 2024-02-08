@@ -11,6 +11,7 @@
  * </picture>
  */
 const lazyLoading = () => {
+    console.log('lazyLoading'); 
     try{
         const imgObserver = new IntersectionObserver((entryAll, observer) => {
 
@@ -37,6 +38,7 @@ const lazyLoading = () => {
         });
 
         const imgElAll = document.querySelectorAll('.lazy-img');
+        console.log('',imgElAll);
         if(imgElAll.length > 0) {
             imgElAll.forEach((item) => imgObserver.observe(item));
         }

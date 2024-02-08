@@ -17,7 +17,7 @@ function readFromFile(filePath) {
 /**
  * Переменная для установки минификации конечного html 
  */
-const isMinify = true;
+const isMinify = false;
  
 
 module.exports = {
