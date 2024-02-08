@@ -1,19 +1,31 @@
+
+/**
+ * Изминение темы сайта, светлая/темная.
+ */
 const darkMode = () => {
+    /**
+     * Адрес страницы.
+     */
     const path: string = window.location.pathname;
     // const isDarkTheme = window?.matchMedia('(prefers-color-scheme: dark)').matches;
     // if(path === '/' && isDarkTheme) {}
 
     
     if(path === '/') {
-        const moon = document.querySelector('.moon');
+        /**
+         * div с иконкой переключения темы.
+         */
+        const moon = document.querySelector('.moon') as HTMLDivElement;
+        /**
+         * Установленая тема на сайте.
+         */
+        const isMode: string | null = localStorage.getItem('mode');
 
-        const isMode = localStorage.getItem('mode');
-        console.log('',isMode);
         if(isMode === 'dark') onDark();
         if(isMode === 'light') onLight();
 
         moon?.addEventListener('click', () => {
-            const isMode = localStorage.getItem('mode');
+            const isMode: string | null = localStorage.getItem('mode');
             
             if(isMode === null || isMode === 'dark') {
                 localStorage.setItem('mode', 'light');
@@ -23,11 +35,16 @@ const darkMode = () => {
                 onDark();
             }
         });
+    } else {
+        const moon = document.querySelector('.moon') as HTMLDivElement;
+        moon.style.display = 'none';
     }
 
 }
 
-
+/**
+ * Включение темной темы на главной странице.
+ */
 function onDark() {
     document.body.setAttribute('dark', '');
 
@@ -44,8 +61,10 @@ function onDark() {
     }); 
 }
 
+/**
+ * Включение светлой темы на главной странице.
+ */
 function onLight() {
-    console.log('work light');
     document.body.removeAttribute('dark');
 
     const arrows = document.querySelectorAll('.ar_128_32') as NodeListOf<HTMLImageElement>;
