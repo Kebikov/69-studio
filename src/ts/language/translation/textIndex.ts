@@ -26,6 +26,12 @@ export const back = {
  * Перевод для главной страницы.
  */
 export const textMain: Trasnslate = {
+    'slogan': {
+        pl: 'Architekci do spraw pozornie nierealnych, koncepcje, projekty, management, realizacja',
+        en: 'Architectc for seemingly unrealistic matters, concepts, projects, management implementation',
+        ru: 'Архитекторы для кажущихся нереалистичными задач, концепций, проектов, управления и реализации',
+        de: sorry
+    },
     'main title': {
         pl: 'Nasze polecane projekty.',
         en: 'Our Featured Projects.',
@@ -50,35 +56,35 @@ export const textMain: Trasnslate = {
     'title project-3': {
         pl: 'DOM Z BETONU',
         en: 'CONCRETE HOUSE',
-        ru: sorry,
+        ru: 'ДОМ ИЗ БЕТОНА',
         de: sorry
     },
     //:project-4 
     'title project-4': {
         pl: 'ZOREN-SLICZNA, BUDYNEK MIESZKALNY-WIELORODZINNY',
         en: 'ZOREN-SLICZNA, RESIDENTIAL-MULTI-FAMILY BUILDING',
-        ru: sorry,
+        ru: 'ЖИЛОЕ-МНОГОКВАРТИРНОЕ ЗДАНИЕ "ZOREN-SLICZNA"',
         de: sorry
     },
     //:project-5 
     'title project-5': {
         pl: 'BRZYCZYNA, OSIEDLE DOMÓW',
         en: 'BRZYCZYNA, ESTATE OF HOUSES',
-        ru: sorry,
+        ru: 'УСАДЬБА ДОМОВ, "BRZYCZYNA"',
         de: sorry
     },
     //:project-6 
     'title project-6': {
         pl: 'KLINY - BUDYNEK MIESZKALNY-WIELORODZINNY',
         en: 'KLINY - RESIDENTIAL-MULTI-FAMILY BUILDING',
-        ru: sorry,
+        ru: '"KLINY" - МНОГОКВАРТИРНОЕ ЖИЛОЕ ЗДАНИЕ',
         de: sorry
     },
     //:project-7 
     'title project-7': {
         pl: 'TARNÓW – RESTAURACJA NA WZGÓRZU ZGŁOBICE',
         en: 'TARNÓW – RESTAURANT ON THE ZGŁOBICE HILL',
-        ru: sorry,
+        ru: 'TARNÓW – РЕСТОРАН НА ЗВОБИНСКОМ ХОЛМЕ',
         de: sorry
     },
     //: contacts 

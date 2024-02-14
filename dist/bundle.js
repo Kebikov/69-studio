@@ -830,7 +830,12 @@ exports.back = {
 /**
  * Перевод для главной страницы.
  */
-exports.textMain = Object.assign({ 'main title': {
+exports.textMain = Object.assign({ 'slogan': {
+        pl: 'Architekci do spraw pozornie nierealnych, koncepcje, projekty, management, realizacja',
+        en: 'Architectc for seemingly unrealistic matters, concepts, projects, management implementation',
+        ru: 'Архитекторы для кажущихся нереалистичными задач, концепций, проектов, управления и реализации',
+        de: exports.sorry
+    }, 'main title': {
         pl: 'Nasze polecane projekty.',
         en: 'Our Featured Projects.',
         ru: 'Наши основные проекты.',
@@ -854,35 +859,35 @@ exports.textMain = Object.assign({ 'main title': {
     'title project-3': {
         pl: 'DOM Z BETONU',
         en: 'CONCRETE HOUSE',
-        ru: exports.sorry,
+        ru: 'ДОМ ИЗ БЕТОНА',
         de: exports.sorry
     }, 
     //:project-4 
     'title project-4': {
         pl: 'ZOREN-SLICZNA, BUDYNEK MIESZKALNY-WIELORODZINNY',
         en: 'ZOREN-SLICZNA, RESIDENTIAL-MULTI-FAMILY BUILDING',
-        ru: exports.sorry,
+        ru: 'ЖИЛОЕ-МНОГОКВАРТИРНОЕ ЗДАНИЕ "ZOREN-SLICZNA"',
         de: exports.sorry
     }, 
     //:project-5 
     'title project-5': {
         pl: 'BRZYCZYNA, OSIEDLE DOMÓW',
         en: 'BRZYCZYNA, ESTATE OF HOUSES',
-        ru: exports.sorry,
+        ru: 'УСАДЬБА ДОМОВ, "BRZYCZYNA"',
         de: exports.sorry
     }, 
     //:project-6 
     'title project-6': {
         pl: 'KLINY - BUDYNEK MIESZKALNY-WIELORODZINNY',
         en: 'KLINY - RESIDENTIAL-MULTI-FAMILY BUILDING',
-        ru: exports.sorry,
+        ru: '"KLINY" - МНОГОКВАРТИРНОЕ ЖИЛОЕ ЗДАНИЕ',
         de: exports.sorry
     }, 
     //:project-7 
     'title project-7': {
         pl: 'TARNÓW – RESTAURACJA NA WZGÓRZU ZGŁOBICE',
         en: 'TARNÓW – RESTAURANT ON THE ZGŁOBICE HILL',
-        ru: exports.sorry,
+        ru: 'TARNÓW – РЕСТОРАН НА ЗВОБИНСКОМ ХОЛМЕ',
         de: exports.sorry
     } }, public_1.textPublicContact);
 
