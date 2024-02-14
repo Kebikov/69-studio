@@ -833,7 +833,7 @@ exports.back = {
 exports.textMain = Object.assign({ 'slogan': {
         pl: 'Architekci do spraw pozornie nierealnych, koncepcje, projekty, management, realizacja',
         en: 'Architectc for seemingly unrealistic matters, concepts, projects, management implementation',
-        ru: 'Архитекторы для кажущихся нереалистичными задач, концепций, проектов, управления и реализации',
+        ru: 'Архитекторы для задач, концепций, проектов, надзора за реализацией проектов, а так же для задач, которые кажутся нереальными',
         de: exports.sorry
     }, 'main title': {
         pl: 'Nasze polecane projekty.',
