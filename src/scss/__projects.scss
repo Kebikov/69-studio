@@ -76,6 +76,7 @@
                 transform: translate(-50%, -50%);
     
                 @include text_streach (16, 13, #000, 600);
+                text-transform: uppercase;
                 text-align: center;
             }
         }

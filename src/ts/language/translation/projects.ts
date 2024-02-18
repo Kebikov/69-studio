@@ -16,10 +16,10 @@ export const textProjects: Trasnslate = {
         ru: 'Здание офиса  ,,TECHMAR " в Кельце.',
         de: sorry
     },
-    'alt-2': {
-        pl: 'DOM Z WIÓRA',
-        en: 'CHIP HOUSE',
-        ru: 'ДОМ ИЗ ЩЕПЫ',
+    'alt-2': { //
+        pl: 'DOM Z WIÓRA OSIKOWEGO',
+        en: 'aspen shingle house',
+        ru: 'ДОМ ИЗ ОСИНОВЫХ ЩЕПОК',
         de: sorry
     },
     'alt-3': {

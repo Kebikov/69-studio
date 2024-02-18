@@ -46,7 +46,7 @@ export const textMain: Trasnslate = {
         de: sorry
     },
     //:project-2 
-    'title project-2': {
+    'title project-2': { //
         pl: 'DOM Z WIÓRA OSIKOWEGO',
         en: 'aspen shingle house',
         ru: 'ДОМ ИЗ ОСИНОВЫХ ЩЕПОК',

@@ -700,9 +700,9 @@ exports.textProjects = {
         de: textIndex_1.sorry
     },
     'alt-2': {
-        pl: 'DOM Z WIÓRA',
-        en: 'CHIP HOUSE',
-        ru: 'ДОМ ИЗ ЩЕПЫ',
+        pl: 'DOM Z WIÓRA OSIKOWEGO',
+        en: 'aspen shingle house',
+        ru: 'ДОМ ИЗ ОСИНОВЫХ ЩЕПОК',
         de: textIndex_1.sorry
     },
     'alt-3': {
@@ -1004,7 +1004,7 @@ exports.textOurStory = {
     },
     'Onyx': {
         pl: 'Osiedle mieszkaniowe "Cystersów Garden"',
-        en: '"Cystersów Garden" housing estate',
+        en: '"Cystersow Garden" housing estate',
         ru: 'Жилой комплекс "Цистерсов сад"',
         de: textIndex_1.sorry
     },

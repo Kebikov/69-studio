@@ -57,7 +57,7 @@ export const textOurStory: Trasnslate = {
     },
     'Onyx': {
         pl: 'Osiedle mieszkaniowe "Cystersów Garden"',
-        en: '"Cystersów Garden" housing estate',
+        en: '"Cystersow Garden" housing estate',
         ru: 'Жилой комплекс "Цистерсов сад"',
         de: sorry
     },
