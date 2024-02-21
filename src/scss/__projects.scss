@@ -34,7 +34,7 @@
     &__grid {
         padding: 80px 60px 60px 60px;
 
-        background-color: $color-bg-main-2;
+        background-color: var(--dark-cart);
 
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -122,7 +122,7 @@
 
         padding: 40px 60px 40px 60px;
 
-        background: $color-bg-main-2;
+        background: var(--dark-cart);
 
         @media (max-width: 1000px){
             width: 90%;
@@ -132,23 +132,23 @@
     }
     // .back-link__title
     &__title {
-        @include text_streach (18, 16, #000, 300);
+        @include text_streach (18, 16, var(--dark-text), 300);
     }
     &__object {
-        @include text_streach (15, 13, #000, 500);
+        @include text_streach (15, 13, var(--dark-text), 500);
     }
     // .back-link__line
     &__line {
         margin: 25px 0px 0px 0px;
 
         width: 60px;
-        border-bottom: 1px solid #000;
+        border-bottom: 1px solid var(--dark-text);
     }
     // .back-link__text
     &__text {
         margin: 25px 0px 40px 0px;
 
-        @include text_streach (15, 13, #000, 300);
+        @include text_streach (15, 13, var(--dark-text), 300);
         line-height: 140%;
 
         @media (max-width: 1000px){
@@ -157,7 +157,7 @@
     }
     // .back-link__link
     &__link {
-        @include text_streach (14, 12, #000, 600);
+        @include text_streach (14, 12, var(--dark-text), 600);
 
         padding: 0px 0px 0px 50px;
 
@@ -170,10 +170,14 @@
             left: 2%;
             width: 40px;
             height: 10px;
-            background:#fff url('../img/icon/arrow.png') 0 0 / cover no-repeat;
+            background: url('../img/icon/arrow.png') 0 0 / cover no-repeat;
             transform: translateY(-50%) rotate(180deg);
         }
     }
+}
+
+body[dark] .back-link__link::before {
+    background: url('../img/icon/arrow-white.png') 0 0 / cover no-repeat;
 }
 
 //= .gallery 

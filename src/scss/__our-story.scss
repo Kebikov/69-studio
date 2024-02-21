@@ -134,7 +134,7 @@
 
 .award {
     margin-top: 20px;
-    @include text_streach (15, 13, #000, 400);
+    @include text_streach (15, 13, var(--dark-text), 400);
     line-height: 150%;
 }
 

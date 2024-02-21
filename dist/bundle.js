@@ -1208,9 +1208,11 @@ const backToTop = () => {
     }
     try {
         const body = document.querySelector('.back-to-top__body');
-        const arrowMobile = document.querySelector('.back-to-top__img-mobile');
-        body.addEventListener('click', top);
-        arrowMobile.addEventListener('click', top);
+        if (body) {
+            const arrowMobile = document.querySelector('.back-to-top__img-mobile');
+            body.addEventListener('click', top);
+            arrowMobile.addEventListener('click', top);
+        }
     }
     catch (error) {
         console.error('Error in function backToTop >>> ', error);
@@ -1491,14 +1493,118 @@ exports.numberScroll = numberScroll;
 
 /***/ }),
 
-/***/ "./src/ts/screenMode/darkMode.ts":
-/*!***************************************!*\
-  !*** ./src/ts/screenMode/darkMode.ts ***!
-  \***************************************/
+/***/ "./src/ts/screenMode/changeArrawBackImg.ts":
+/*!*************************************************!*\
+  !*** ./src/ts/screenMode/changeArrawBackImg.ts ***!
+  \*************************************************/
 /***/ ((__unused_webpack_module, exports) => {
 
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
+/**
+ * Замена стрелки к верху страницы возврат.
+ */
+function changeArrawBackImg(mode) {
+    /**
+     * Родитель со стрелкой к верху страницы возврат.
+     */
+    const arrowUpDiv = document.querySelector('.back-to-top__img');
+    if (arrowUpDiv) {
+        /**
+         * Стрелка к верху страницы возврат.
+         */
+        const arrowUpImg = arrowUpDiv.querySelector('img');
+        if (mode === 'dark') {
+            arrowUpImg.src = "../img/icon/arrow-up-white.png";
+        }
+        if (mode === 'light') {
+            arrowUpImg.src = "../img/icon/arrow-up.png";
+        }
+    }
+}
+exports["default"] = changeArrawBackImg;
+
+
+/***/ }),
+
+/***/ "./src/ts/screenMode/changeIconMode.ts":
+/*!*********************************************!*\
+  !*** ./src/ts/screenMode/changeIconMode.ts ***!
+  \*********************************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+/**
+ * Изминение иконки луна/солнце.
+ */
+const changeIconMode = (mode) => {
+    /**
+     * Иконка для переключения темы.
+     */
+    const moonImg = document.querySelector('#moon');
+    if (moonImg) {
+        if (mode === 'dark') {
+            moonImg.src = "/img/icon/sun.png";
+        }
+        if (mode === 'light') {
+            moonImg.src = "/img/icon/moon.png";
+        }
+    }
+};
+exports["default"] = changeIconMode;
+
+
+/***/ }),
+
+/***/ "./src/ts/screenMode/changeProjectImg.ts":
+/*!***********************************************!*\
+  !*** ./src/ts/screenMode/changeProjectImg.ts ***!
+  \***********************************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+/**
+ * Замена элементов в блоках с проектами.
+ */
+const changeProjectImg = (mode) => {
+    /**
+     * Массив стрелок найденых на странице в блоках с проектами.
+     */
+    const arrows = document.querySelectorAll('[data-change="arrow"]');
+    if (arrows instanceof NodeList && arrows.length > 0) {
+        if (mode === 'dark') {
+            arrows.forEach(item => {
+                item.src = "../img/icon/arrow-white.png";
+            });
+        }
+        if (mode === 'light') {
+            arrows.forEach(item => {
+                item.src = "../img/icon/arrow.png";
+            });
+        }
+    }
+};
+exports["default"] = changeProjectImg;
+
+
+/***/ }),
+
+/***/ "./src/ts/screenMode/darkMode.ts":
+/*!***************************************!*\
+  !*** ./src/ts/screenMode/darkMode.ts ***!
+  \***************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const changeProjectImg_1 = __importDefault(__webpack_require__(/*! ./changeProjectImg */ "./src/ts/screenMode/changeProjectImg.ts"));
+const changeArrawBackImg_1 = __importDefault(__webpack_require__(/*! ./changeArrawBackImg */ "./src/ts/screenMode/changeArrawBackImg.ts"));
+const changeIconMode_1 = __importDefault(__webpack_require__(/*! ./changeIconMode */ "./src/ts/screenMode/changeIconMode.ts"));
 /**
  * Изминение темы сайта, светлая/темная.
  */
@@ -1507,22 +1613,29 @@ const darkMode = () => {
      * Адрес страницы.
      */
     const path = window.location.pathname;
+    console.log(path);
     // const isDarkTheme = window?.matchMedia('(prefers-color-scheme: dark)').matches;
     // if(path === '/' && isDarkTheme) {}
-    if (path === '/') {
+    /**
+     * Страницы на которых работает переключение режимов темы.
+     */
+    const links = ['/', '/about-us/', '/projects/', '/contacts/', '/project-1/', '/project-2/', '/project-3/', '/project-4/', '/project-5/', '/project-6/', '/project-7/', '/wnetrza/'];
+    /**
+     * div с иконкой переключения темы.
+     */
+    const moon = document.querySelector('.moon');
+    if (!moon)
+        return;
+    if (links.includes(path)) {
         /**
-         * div с иконкой переключения темы.
-         */
-        const moon = document.querySelector('.moon');
-        /**
-         * Установленая тема на сайте.
+         * Установленая тема на сайте в localStorage.
          */
         const isMode = localStorage.getItem('mode');
         if (isMode === 'dark')
             onDark();
         if (isMode === 'light')
             onLight();
-        moon === null || moon === void 0 ? void 0 : moon.addEventListener('click', () => {
+        moon.addEventListener('click', () => {
             const isMode = localStorage.getItem('mode');
             if (isMode === null || isMode === 'dark') {
                 localStorage.setItem('mode', 'light');
@@ -1535,7 +1648,6 @@ const darkMode = () => {
         });
     }
     else {
-        const moon = document.querySelector('.moon');
         moon.style.display = 'none';
     }
 };
@@ -1544,30 +1656,18 @@ const darkMode = () => {
  */
 function onDark() {
     document.body.setAttribute('dark', '');
-    const arrows = document.querySelectorAll('.ar_128_32');
-    const arrowUpDiv = document.querySelector('.back-to-top__img');
-    const arrowUpImg = arrowUpDiv.querySelector('img');
-    const moonImg = document.querySelector('#moon');
-    moonImg.src = "/img/icon/sun.png";
-    arrowUpImg.src = "../img/icon/arrow-up-white.png";
-    arrows.forEach(item => {
-        item.src = "../img/icon/arrow-white.png";
-    });
+    (0, changeIconMode_1.default)('dark');
+    (0, changeProjectImg_1.default)('dark');
+    (0, changeArrawBackImg_1.default)('dark');
 }
 /**
  * Включение светлой темы на главной странице.
  */
 function onLight() {
     document.body.removeAttribute('dark');
-    const arrows = document.querySelectorAll('.ar_128_32');
-    const arrowUpDiv = document.querySelector('.back-to-top__img');
-    const arrowUpImg = arrowUpDiv.querySelector('img');
-    const moonImg = document.querySelector('#moon');
-    moonImg.src = "/img/icon/moon.png";
-    arrowUpImg.src = "../img/icon/arrow-up.png";
-    arrows.forEach(item => {
-        item.src = "../img/icon/arrow.png";
-    });
+    (0, changeIconMode_1.default)('light');
+    (0, changeProjectImg_1.default)('light');
+    (0, changeArrawBackImg_1.default)('light');
 }
 exports["default"] = darkMode;
 

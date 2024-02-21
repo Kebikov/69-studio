@@ -70,7 +70,7 @@
             right: -100%;
             width: 100vw;
             height: 100vh;
-            background-color: #fff;
+            background-color: var(--dark-menu);
 
             transform: translateY(-10%);
 
@@ -85,7 +85,7 @@
                 right: 0%;
                 width: 100vw;
                 height: 100vh;
-                background-color: #fff;
+                background-color: var(--dark-menu);
 
                 transform: translateY(-10%);
             }
@@ -114,7 +114,7 @@
                 border-top: 3px solid #ffffff76;
             }
             @media (max-width: 1000px){
-                color: #00000036;
+                color: #fff;
             }
         }
 
@@ -125,10 +125,10 @@
 
         @media (max-width: 1000px){
             width: 200px;
-            border-bottom: 1px solid #000;
+            border-bottom: 1px solid var(--dark-text);
             text-align: center;
 
-            @include text_streach (15, 13, #000, 400);
+            @include text_streach (15, 13, var(--dark-text), 400);
         }
     }
 }
@@ -198,7 +198,7 @@
         position: relative;
         &.active-burger {
             height: 0;
-            background-color: $color-header;
+            background-color: var(--dark-text);
         }
         &.active-burger::before{
             transform: rotate(45deg);

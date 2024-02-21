@@ -139,14 +139,14 @@
 
     // .project-block-text__line
     &__line {
-        border-top: 1px solid #000;
+        border-top: 1px solid var(--dark-text);
         width: 80px;
 
         padding: 0px 0px 17px 0px;
     }
     // .project-block-text__text
     &__text {
-        @include text_streach (15, 13, #000, 400);
+        @include text_streach (15, 13, var(--dark-text), 400);
         line-height: 140%;
     }
     // .project-block-text__arrow

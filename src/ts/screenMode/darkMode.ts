@@ -1,3 +1,8 @@
+import changeProjectImg from "./changeProjectImg";
+import changeContactsImg from "./changeContactsImg";
+import changeArrawBackImg from "./changeArrawBackImg";
+import changeIconMode from "./changeIconMode";
+export type TMode = 'dark' | 'light';
 
 /**
  * Изминение темы сайта, светлая/темная.
@@ -7,25 +12,32 @@ const darkMode = () => {
      * Адрес страницы.
      */
     const path: string = window.location.pathname;
+    console.log(path);
     // const isDarkTheme = window?.matchMedia('(prefers-color-scheme: dark)').matches;
     // if(path === '/' && isDarkTheme) {}
 
-    
-    if(path === '/') {
+    /**
+     * Страницы на которых работает переключение режимов темы.
+     */
+    const links = ['/', '/about-us/', '/projects/', '/contacts/', '/project-1/', '/project-2/', '/project-3/', '/project-4/', '/project-5/', '/project-6/', '/project-7/', '/wnetrza/'];
+
+    /**
+     * div с иконкой переключения темы.
+     */
+    const moon = document.querySelector('.moon') as HTMLDivElement;
+    if(!moon) return; 
+
+    if( links.includes(path) ) {
         /**
-         * div с иконкой переключения темы.
+         * Установленая тема на сайте в localStorage.
          */
-        const moon = document.querySelector('.moon') as HTMLDivElement;
-        /**
-         * Установленая тема на сайте.
-         */
-        const isMode: string | null = localStorage.getItem('mode');
+        const isMode: TMode | null = localStorage.getItem('mode') as TMode;
 
         if(isMode === 'dark') onDark();
         if(isMode === 'light') onLight();
 
-        moon?.addEventListener('click', () => {
-            const isMode: string | null = localStorage.getItem('mode');
+        moon.addEventListener('click', () => {
+            const isMode: TMode | null = localStorage.getItem('mode') as TMode;
             
             if(isMode === null || isMode === 'dark') {
                 localStorage.setItem('mode', 'light');
@@ -36,7 +48,6 @@ const darkMode = () => {
             }
         });
     } else {
-        const moon = document.querySelector('.moon') as HTMLDivElement;
         moon.style.display = 'none';
     }
 
@@ -48,17 +59,9 @@ const darkMode = () => {
 function onDark() {
     document.body.setAttribute('dark', '');
 
-    const arrows = document.querySelectorAll('.ar_128_32') as NodeListOf<HTMLImageElement>;
-    const arrowUpDiv = document.querySelector('.back-to-top__img') as HTMLDivElement;
-    const arrowUpImg = arrowUpDiv.querySelector('img') as HTMLImageElement;
-    const moonImg = document.querySelector('#moon') as HTMLImageElement;
-
-    moonImg.src = "/img/icon/sun.png";
-    arrowUpImg.src = "../img/icon/arrow-up-white.png";
-
-    arrows.forEach(item => {
-        item.src = "../img/icon/arrow-white.png";
-    }); 
+    changeIconMode('dark');
+    changeProjectImg('dark');
+    changeArrawBackImg('dark');
 }
 
 /**
@@ -66,18 +69,11 @@ function onDark() {
  */
 function onLight() {
     document.body.removeAttribute('dark');
-
-    const arrows = document.querySelectorAll('.ar_128_32') as NodeListOf<HTMLImageElement>;
-    const arrowUpDiv = document.querySelector('.back-to-top__img') as HTMLDivElement;
-    const arrowUpImg = arrowUpDiv.querySelector('img') as HTMLImageElement;
-    const moonImg = document.querySelector('#moon') as HTMLImageElement;
-
-    moonImg.src = "/img/icon/moon.png";
-    arrowUpImg.src = "../img/icon/arrow-up.png";
-
-    arrows.forEach(item => {
-        item.src = "../img/icon/arrow.png";
-    }); 
+    
+    changeIconMode('light');
+    changeProjectImg('light');
+    changeArrawBackImg('light');
 }
+
 
 export default darkMode;
